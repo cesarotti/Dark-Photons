@@ -56,41 +56,44 @@ B2CalorimeterSD::~B2CalorimeterSD()
 void B2CalorimeterSD::Initialize(G4HCofThisEvent* hce)
 {
   // Create hits collection
-
+  
   fHitsCollection 
     = new B2CalorimeterHitsCollection(SensitiveDetectorName, collectionName[0]); 
 
   // Add this collection in hce
-
+  
   G4int hcID 
     = G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]);
   hce->AddHitsCollection( hcID, fHitsCollection ); 
   G4cout << "New hits collection for Calorimeter was created" << G4endl;
+  
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 G4bool B2CalorimeterSD::ProcessHits(G4Step* aStep, 
                                      G4TouchableHistory*)
-{  
+{ 
+  
   // energy deposit
   G4double edep = aStep->GetTotalEnergyDeposit();
   G4int PDGEID = aStep->GetTrack()->GetDefinition()->GetPDGEncoding();
-
+  
   if (edep==0.) return false;
+  
+  if (PDGEID==22)
+    {
+       B2CalorHit* newHit = new B2CalorHit();
+       G4cout << "Hit added to Calorimeter" << G4endl;
 
-  if (PDGEID==22){
-  B2CalorHit* newHit = new B2CalorHit();
-  G4cout << "Hit added to Calorimeter" << G4endl;
-
-  newHit->SetTrackID  (aStep->GetTrack()->GetTrackID());
-  newHit->SetEdep(edep);
-  newHit->SetPos (aStep->GetPostStepPoint()->GetPosition());
-
-  fHitsCollection->insert( newHit ); }
-
+    newHit->SetTrackID  (aStep->GetTrack()->GetTrackID());
+    newHit->SetEdep(edep);
+    newHit->SetPos (aStep->GetPostStepPoint()->GetPosition());
+  
+    fHitsCollection->insert( newHit ); 
+    }
   // newHit->Print();
-
+  
   return true;
 }
 

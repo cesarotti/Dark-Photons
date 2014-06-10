@@ -42,7 +42,7 @@
 
 #include <iomanip>
 
-G4ThreadLocal G4Allocator<B2CalorHit>* B2CalorHitAllocator=0;
+G4ThreadLocal G4Allocator<B2CalorHit>* B2CalorimeterHitAllocator;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

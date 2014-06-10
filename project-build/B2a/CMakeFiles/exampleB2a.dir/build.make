@@ -97,57 +97,9 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerHit.cc.o.provides: B2a/CMakeFiles/exa
 B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerHit.cc.o.provides.build: B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerHit.cc.o
 .PHONY : B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerHit.cc.o.provides.build
 
-B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
-B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o: /home/local1/Desktop/project/B2a/src/B2CalorimeterHit.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o"
-	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o -c /home/local1/Desktop/project/B2a/src/B2CalorimeterHit.cc
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.i"
-	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/local1/Desktop/project/B2a/src/B2CalorimeterHit.cc > CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.i
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.s"
-	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/local1/Desktop/project/B2a/src/B2CalorimeterHit.cc -o CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.s
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.requires:
-.PHONY : B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.requires
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.provides: B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.requires
-	$(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.provides.build
-.PHONY : B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.provides
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.provides.build: B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o
-.PHONY : B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.provides.build
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
-B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o: /home/local1/Desktop/project/B2a/src/B2Calorimeter.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o"
-	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o -c /home/local1/Desktop/project/B2a/src/B2Calorimeter.cc
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.i"
-	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/local1/Desktop/project/B2a/src/B2Calorimeter.cc > CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.i
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.s"
-	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/local1/Desktop/project/B2a/src/B2Calorimeter.cc -o CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.s
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.requires:
-.PHONY : B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.requires
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.provides: B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.requires
-	$(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.provides.build
-.PHONY : B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.provides
-
-B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.provides.build: B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o
-.PHONY : B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.provides.build
-
 B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o: /home/local1/Desktop/project/B2a/src/B2CalorimeterSD.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o -c /home/local1/Desktop/project/B2a/src/B2CalorimeterSD.cc
 
@@ -171,7 +123,7 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o.provides.build: B2a/CMake
 
 B2a/CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o: /home/local1/Desktop/project/B2a/src/B2ActionInitialization.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o -c /home/local1/Desktop/project/B2a/src/B2ActionInitialization.cc
 
@@ -195,7 +147,7 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o.provides.build: B2
 
 B2a/CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o: /home/local1/Desktop/project/B2a/src/B2CalorHit.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o -c /home/local1/Desktop/project/B2a/src/B2CalorHit.cc
 
@@ -219,7 +171,7 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o.provides.build: B2a/CMakeFiles
 
 B2a/CMakeFiles/exampleB2a.dir/src/B2aDetectorMessenger.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2aDetectorMessenger.cc.o: /home/local1/Desktop/project/B2a/src/B2aDetectorMessenger.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2aDetectorMessenger.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2aDetectorMessenger.cc.o -c /home/local1/Desktop/project/B2a/src/B2aDetectorMessenger.cc
 
@@ -243,7 +195,7 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2aDetectorMessenger.cc.o.provides.build: B2a/
 
 B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerSD.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerSD.cc.o: /home/local1/Desktop/project/B2a/src/B2TrackerSD.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerSD.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2TrackerSD.cc.o -c /home/local1/Desktop/project/B2a/src/B2TrackerSD.cc
 
@@ -267,7 +219,7 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerSD.cc.o.provides.build: B2a/CMakeFile
 
 B2a/CMakeFiles/exampleB2a.dir/src/B2EventAction.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2EventAction.cc.o: /home/local1/Desktop/project/B2a/src/B2EventAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2EventAction.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2EventAction.cc.o -c /home/local1/Desktop/project/B2a/src/B2EventAction.cc
 
@@ -291,7 +243,7 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2EventAction.cc.o.provides.build: B2a/CMakeFi
 
 B2a/CMakeFiles/exampleB2a.dir/src/B2aDetectorConstruction.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2aDetectorConstruction.cc.o: /home/local1/Desktop/project/B2a/src/B2aDetectorConstruction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2aDetectorConstruction.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2aDetectorConstruction.cc.o -c /home/local1/Desktop/project/B2a/src/B2aDetectorConstruction.cc
 
@@ -315,7 +267,7 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2aDetectorConstruction.cc.o.provides.build: B
 
 B2a/CMakeFiles/exampleB2a.dir/src/B2RunAction.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2RunAction.cc.o: /home/local1/Desktop/project/B2a/src/B2RunAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2RunAction.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2RunAction.cc.o -c /home/local1/Desktop/project/B2a/src/B2RunAction.cc
 
@@ -339,7 +291,7 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2RunAction.cc.o.provides.build: B2a/CMakeFile
 
 B2a/CMakeFiles/exampleB2a.dir/src/B2PrimaryGeneratorAction.cc.o: B2a/CMakeFiles/exampleB2a.dir/flags.make
 B2a/CMakeFiles/exampleB2a.dir/src/B2PrimaryGeneratorAction.cc.o: /home/local1/Desktop/project/B2a/src/B2PrimaryGeneratorAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Desktop/project-build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object B2a/CMakeFiles/exampleB2a.dir/src/B2PrimaryGeneratorAction.cc.o"
 	cd /home/local1/Desktop/project-build/B2a && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/exampleB2a.dir/src/B2PrimaryGeneratorAction.cc.o -c /home/local1/Desktop/project/B2a/src/B2PrimaryGeneratorAction.cc
 
@@ -365,8 +317,6 @@ B2a/CMakeFiles/exampleB2a.dir/src/B2PrimaryGeneratorAction.cc.o.provides.build: 
 exampleB2a_OBJECTS = \
 "CMakeFiles/exampleB2a.dir/exampleB2a.cc.o" \
 "CMakeFiles/exampleB2a.dir/src/B2TrackerHit.cc.o" \
-"CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o" \
-"CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o" \
 "CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o" \
 "CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o" \
 "CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o" \
@@ -382,8 +332,6 @@ exampleB2a_EXTERNAL_OBJECTS =
 
 B2a/exampleB2a: B2a/CMakeFiles/exampleB2a.dir/exampleB2a.cc.o
 B2a/exampleB2a: B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerHit.cc.o
-B2a/exampleB2a: B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o
-B2a/exampleB2a: B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o
 B2a/exampleB2a: B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o
 B2a/exampleB2a: B2a/CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o
 B2a/exampleB2a: B2a/CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o
@@ -451,8 +399,6 @@ B2a/CMakeFiles/exampleB2a.dir/build: B2a/exampleB2a
 
 B2a/CMakeFiles/exampleB2a.dir/requires: B2a/CMakeFiles/exampleB2a.dir/exampleB2a.cc.o.requires
 B2a/CMakeFiles/exampleB2a.dir/requires: B2a/CMakeFiles/exampleB2a.dir/src/B2TrackerHit.cc.o.requires
-B2a/CMakeFiles/exampleB2a.dir/requires: B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o.requires
-B2a/CMakeFiles/exampleB2a.dir/requires: B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o.requires
 B2a/CMakeFiles/exampleB2a.dir/requires: B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o.requires
 B2a/CMakeFiles/exampleB2a.dir/requires: B2a/CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o.requires
 B2a/CMakeFiles/exampleB2a.dir/requires: B2a/CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o.requires

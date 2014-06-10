@@ -371,7 +371,7 @@ fLogicCalor =
 void B2aDetectorConstruction::ConstructSDandField()
 {
   // Sensitive detectors
-  /*
+  
   G4cout << "Placing the SDs" << G4endl;
    G4String calorimeterSDname = "CalorimeterSD";
   B2CalorimeterSD* calorimSD = new B2CalorimeterSD(calorimeterSDname, "CalorimeterHitsCollection");
@@ -380,7 +380,7 @@ void B2aDetectorConstruction::ConstructSDandField()
 
   G4cout << "Calorimeter SD........okay! \n" <<
     " Hits Collection is CalorimeterHitsCollection " << G4endl;
-  */
+  
   
 
   

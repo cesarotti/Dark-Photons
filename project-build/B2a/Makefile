@@ -225,54 +225,6 @@ src/B2CalorHit.cc.s:
 	cd /home/local1/Desktop/project-build && $(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.s
 .PHONY : src/B2CalorHit.cc.s
 
-src/B2Calorimeter.o: src/B2Calorimeter.cc.o
-.PHONY : src/B2Calorimeter.o
-
-# target to build an object file
-src/B2Calorimeter.cc.o:
-	cd /home/local1/Desktop/project-build && $(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o
-.PHONY : src/B2Calorimeter.cc.o
-
-src/B2Calorimeter.i: src/B2Calorimeter.cc.i
-.PHONY : src/B2Calorimeter.i
-
-# target to preprocess a source file
-src/B2Calorimeter.cc.i:
-	cd /home/local1/Desktop/project-build && $(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.i
-.PHONY : src/B2Calorimeter.cc.i
-
-src/B2Calorimeter.s: src/B2Calorimeter.cc.s
-.PHONY : src/B2Calorimeter.s
-
-# target to generate assembly for a file
-src/B2Calorimeter.cc.s:
-	cd /home/local1/Desktop/project-build && $(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.s
-.PHONY : src/B2Calorimeter.cc.s
-
-src/B2CalorimeterHit.o: src/B2CalorimeterHit.cc.o
-.PHONY : src/B2CalorimeterHit.o
-
-# target to build an object file
-src/B2CalorimeterHit.cc.o:
-	cd /home/local1/Desktop/project-build && $(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o
-.PHONY : src/B2CalorimeterHit.cc.o
-
-src/B2CalorimeterHit.i: src/B2CalorimeterHit.cc.i
-.PHONY : src/B2CalorimeterHit.i
-
-# target to preprocess a source file
-src/B2CalorimeterHit.cc.i:
-	cd /home/local1/Desktop/project-build && $(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.i
-.PHONY : src/B2CalorimeterHit.cc.i
-
-src/B2CalorimeterHit.s: src/B2CalorimeterHit.cc.s
-.PHONY : src/B2CalorimeterHit.s
-
-# target to generate assembly for a file
-src/B2CalorimeterHit.cc.s:
-	cd /home/local1/Desktop/project-build && $(MAKE) -f B2a/CMakeFiles/exampleB2a.dir/build.make B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.s
-.PHONY : src/B2CalorimeterHit.cc.s
-
 src/B2CalorimeterSD.o: src/B2CalorimeterSD.cc.o
 .PHONY : src/B2CalorimeterSD.o
 
@@ -487,12 +439,6 @@ help:
 	@echo "... src/B2CalorHit.o"
 	@echo "... src/B2CalorHit.i"
 	@echo "... src/B2CalorHit.s"
-	@echo "... src/B2Calorimeter.o"
-	@echo "... src/B2Calorimeter.i"
-	@echo "... src/B2Calorimeter.s"
-	@echo "... src/B2CalorimeterHit.o"
-	@echo "... src/B2CalorimeterHit.i"
-	@echo "... src/B2CalorimeterHit.s"
 	@echo "... src/B2CalorimeterSD.o"
 	@echo "... src/B2CalorimeterSD.i"
 	@echo "... src/B2CalorimeterSD.s"

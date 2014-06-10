@@ -42,7 +42,7 @@
 
 #include <iomanip>
 
-G4ThreadLocal G4Allocator<B2CalorHit>* B2CalorHitAllocator=0;
+G4ThreadLocal G4Allocator<B2CalorHit>* B2CalorimeterHitAllocator;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -59,7 +59,7 @@ B2CalorHit::~B2CalorHit() {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-B2CalorHit::B2CalorHit(const B2CalorHit& right)
+B2CalorHit::B2CalorHit(const B2CalorHit& right) 
   : G4VHit()
 {
   fTrackID   = right.fTrackID;

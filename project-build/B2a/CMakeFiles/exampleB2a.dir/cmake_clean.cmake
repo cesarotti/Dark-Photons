@@ -1,8 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/exampleB2a.dir/exampleB2a.cc.o"
   "CMakeFiles/exampleB2a.dir/src/B2TrackerHit.cc.o"
-  "CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o"
-  "CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o"
   "CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o"
   "CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o"
   "CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o"

@@ -371,7 +371,7 @@ fLogicCalor =
 void B2aDetectorConstruction::ConstructSDandField()
 {
   // Sensitive detectors
-  
+  /*
   G4cout << "Placing the SDs" << G4endl;
    G4String calorimeterSDname = "CalorimeterSD";
   B2CalorimeterSD* calorimSD = new B2CalorimeterSD(calorimeterSDname, "CalorimeterHitsCollection");
@@ -380,10 +380,10 @@ void B2aDetectorConstruction::ConstructSDandField()
 
   G4cout << "Calorimeter SD........okay! \n" <<
     " Hits Collection is CalorimeterHitsCollection " << G4endl;
- 
+  */
   
 
-  /*
+  
   G4String trackerChamberSDname = "B2/TrackerChamberSD";
   B2TrackerSD* aTrackerSD = new B2TrackerSD(trackerChamberSDname,
                                    "TrackerHitsCollection");
@@ -391,7 +391,7 @@ void B2aDetectorConstruction::ConstructSDandField()
   // Setting aTrackerSD to all logical volumes with the same name 
   // of "Chamber_LV".
   SetSensitiveDetector("Chamber_LV", aTrackerSD, true);
-  */
+  
 
   // Create global magnetic field messenger.
   // Uniform magnetic field is then created automatically if

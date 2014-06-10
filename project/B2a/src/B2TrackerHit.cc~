@@ -105,7 +105,9 @@ void B2TrackerHit::Draw()
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-  G4cout
+  
+void B2TrackerHit::Print(){
+G4cout
      << "  trackID: " << fTrackID << " chamberNb: " << fChamberNb
      << "Edep: "
      << std::setw(7) << G4BestUnit(fEdep,"Energy")

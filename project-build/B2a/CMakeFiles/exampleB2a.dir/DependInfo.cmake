@@ -7,8 +7,6 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/local1/Desktop/project/B2a/exampleB2a.cc" "/home/local1/Desktop/project-build/B2a/CMakeFiles/exampleB2a.dir/exampleB2a.cc.o"
   "/home/local1/Desktop/project/B2a/src/B2ActionInitialization.cc" "/home/local1/Desktop/project-build/B2a/CMakeFiles/exampleB2a.dir/src/B2ActionInitialization.cc.o"
   "/home/local1/Desktop/project/B2a/src/B2CalorHit.cc" "/home/local1/Desktop/project-build/B2a/CMakeFiles/exampleB2a.dir/src/B2CalorHit.cc.o"
-  "/home/local1/Desktop/project/B2a/src/B2Calorimeter.cc" "/home/local1/Desktop/project-build/B2a/CMakeFiles/exampleB2a.dir/src/B2Calorimeter.cc.o"
-  "/home/local1/Desktop/project/B2a/src/B2CalorimeterHit.cc" "/home/local1/Desktop/project-build/B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterHit.cc.o"
   "/home/local1/Desktop/project/B2a/src/B2CalorimeterSD.cc" "/home/local1/Desktop/project-build/B2a/CMakeFiles/exampleB2a.dir/src/B2CalorimeterSD.cc.o"
   "/home/local1/Desktop/project/B2a/src/B2EventAction.cc" "/home/local1/Desktop/project-build/B2a/CMakeFiles/exampleB2a.dir/src/B2EventAction.cc.o"
   "/home/local1/Desktop/project/B2a/src/B2PrimaryGeneratorAction.cc" "/home/local1/Desktop/project-build/B2a/CMakeFiles/exampleB2a.dir/src/B2PrimaryGeneratorAction.cc.o"
