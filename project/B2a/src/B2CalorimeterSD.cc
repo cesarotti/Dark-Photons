@@ -35,15 +35,18 @@
 #include "G4ThreeVector.hh"
 #include "G4SDManager.hh"
 #include "G4ios.hh"
+#include "G4SystemOfUnits.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 B2CalorimeterSD::B2CalorimeterSD(const G4String& name,
                          const G4String& hitsCollectionName) 
  : G4VSensitiveDetector(name),
-   fHitsCollection(NULL)
+   fHitsCollection(NULL), 
+   thresholdEnergy(0) //CJC 6.11.14
 {
   collectionName.insert(hitsCollectionName);
+  thresholdEnergy = 1*MeV; //CJC 6.11.14
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -65,7 +68,7 @@ void B2CalorimeterSD::Initialize(G4HCofThisEvent* hce)
   G4int hcID 
     = G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]);
   hce->AddHitsCollection( hcID, fHitsCollection ); 
-  G4cout << "New hits collection for Calorimeter was created" << G4endl;
+  //G4cout << "New hits collection for Calorimeter was created" << G4endl;
   
 }
 
@@ -79,12 +82,14 @@ G4bool B2CalorimeterSD::ProcessHits(G4Step* aStep,
   G4double edep = aStep->GetTotalEnergyDeposit();
   G4int PDGEID = aStep->GetTrack()->GetDefinition()->GetPDGEncoding();
   
-  if (edep==0.) return false;
+
+  //Define a minimum to ignore background
+  if (edep<thresholdEnergy) return false;
   
   if (PDGEID==22)
     {
        B2CalorHit* newHit = new B2CalorHit();
-       G4cout << "Hit added to Calorimeter" << G4endl;
+         G4cout << "Hit added to Calorimeter" << G4endl;
 
     newHit->SetTrackID  (aStep->GetTrack()->GetTrackID());
     newHit->SetEdep(edep);
@@ -101,7 +106,7 @@ G4bool B2CalorimeterSD::ProcessHits(G4Step* aStep,
 
 void B2CalorimeterSD::EndOfEvent(G4HCofThisEvent*)
 {
-  G4cout << "End Of Event Calorimeter SD" << G4endl;
+  // G4cout << "End Of Event Calorimeter SD" << G4endl;
   if ( verboseLevel>1 ) { 
      G4int nofHits = fHitsCollection->entries();
      G4cout << "\n-------->Hits Collection: in this event they are " << nofHits 

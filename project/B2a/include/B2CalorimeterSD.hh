@@ -62,6 +62,7 @@ class B2CalorimeterSD : public G4VSensitiveDetector
 
   private:
     B2CalorimeterHitsCollection* fHitsCollection;
+  int thresholdEnergy;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

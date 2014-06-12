@@ -97,7 +97,7 @@ G4bool B2TrackerSD::ProcessHits(G4Step* aStep,
 
 void B2TrackerSD::EndOfEvent(G4HCofThisEvent*)
 {
-  G4cout << "End of event of the Tracker SD" << G4endl;
+  //G4cout << "End of event of the Tracker SD" << G4endl;
   if ( verboseLevel>1 ) { 
      G4int nofHits = fHitsCollection->entries();
      G4cout << "\n-------->Hits Collection: in this event they are " << nofHits 

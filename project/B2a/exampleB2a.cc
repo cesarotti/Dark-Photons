@@ -40,7 +40,7 @@
 #endif
 
 #include "G4UImanager.hh"
-#include "FTFP_BERT.hh"
+#include "PositronPhysicsList1.hh"
 #include "G4StepLimiterPhysics.hh"
 
 #include "Randomize.hh"
@@ -73,8 +73,7 @@ int main(int argc,char** argv)
 
   runManager->SetUserInitialization(new B2aDetectorConstruction());
 
-  G4VModularPhysicsList* physicsList = new FTFP_BERT;
-  physicsList->RegisterPhysics(new G4StepLimiterPhysics());
+  G4VUserPhysicsList* physicsList = new PositronPhysicsList1;
   runManager->SetUserInitialization(physicsList);
   runManager->SetUserInitialization(new B2ActionInitialization());
   
@@ -84,10 +83,10 @@ int main(int argc,char** argv)
   
 #ifdef G4VIS_USE
   // Initialize visualization
-  G4VisManager* visManager = new G4VisExecutive;
+  //  G4VisManager* visManager = new G4VisExecutive;
   // G4VisExecutive can take a verbosity argument - see /vis/verbose guidance.
   // G4VisManager* visManager = new G4VisExecutive("Quiet");
-  visManager->Initialize();
+  // visManager->Initialize();
 #endif
 
   // Get the pointer to the User Interface manager
@@ -102,6 +101,7 @@ int main(int argc,char** argv)
     }
   else
     {  // interactive mode : define UI session
+   
 #ifdef G4UI_USE
       G4UIExecutive* ui = new G4UIExecutive(argc, argv);
 #ifdef G4VIS_USE
@@ -114,6 +114,7 @@ int main(int argc,char** argv)
       ui->SessionStart();
       delete ui;
 #endif
+     
     }
 
   // Job termination
@@ -121,9 +122,9 @@ int main(int argc,char** argv)
   // owned and deleted by the run manager, so they should not be deleted
   // in the main() program !
 
-#ifdef G4VIS_USE
-  delete visManager;
-#endif
+  //#ifdef G4VIS_USE
+  //  delete visManager;
+  //#endif
   delete runManager;
 
   return 0;

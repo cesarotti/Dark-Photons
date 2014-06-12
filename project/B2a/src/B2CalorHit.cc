@@ -106,10 +106,10 @@ void B2CalorHit::Draw()
 
 void B2CalorHit::Print()
 {
-  G4cout
-     << "  trackID: " << fTrackID
+  G4cout << "Next Calorimeter Event" << G4endl 
+    << "  trackID: " << fTrackID << G4endl
      << "Edep: "
-     << std::setw(7) << G4BestUnit(fEdep,"Energy")
+    << std::setw(7) << G4BestUnit(fEdep,"Energy") << G4endl
      << " Position: "
      << std::setw(7) << G4BestUnit( fPos,"Length")
      << G4endl;

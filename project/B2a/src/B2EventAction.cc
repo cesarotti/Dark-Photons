@@ -81,8 +81,8 @@ void B2EventAction::EndOfEventAction(const G4Event* event)
     G4int collectionID = fSDM->GetCollectionID("TrackerHitsCollection");
     G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(collectionID);
 
-    G4cout << "    " << hc->GetSize() << " tracker hits stored in this event" <<
-      G4endl;
+    //G4cout << "    " << hc->GetSize() << " tracker hits stored in this event" <<
+    //G4endl;
    
     /*
      G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(0);
@@ -98,6 +98,11 @@ void B2EventAction::EndOfEventAction(const G4Event* event)
 
   G4cout << "    " << hc2->GetSize() << " calorimeter hits sorted in this event"
 	 << G4endl;
+  for (int i=0; i<(hc2->GetSize()); i++)
+    {
+      hc2->GetHit(i)->Print();
+      G4cout << G4endl;
+    }
   
 
 
