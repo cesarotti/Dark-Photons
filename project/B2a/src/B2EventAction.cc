@@ -32,6 +32,11 @@
 #include "B2CalorHit.hh" //CJC 6.9.14
 #include "B2TrackerHit.hh"
 
+#include "Analysis.hh" //CJC 6.13.14
+#include "G4SystemOfUnits.hh"
+#include "Randomize.hh"
+#include <iomanip>
+
 #include "G4Event.hh"
 #include "G4EventManager.hh"
 #include "G4TrajectoryContainer.hh"
@@ -39,10 +44,14 @@
 #include "G4ios.hh"
 #include "G4SDManager.hh"
 
+
+
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 B2EventAction::B2EventAction()
-: G4UserEventAction()
+  : G4UserEventAction(),
+  fEdep(0.)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -52,13 +61,25 @@ B2EventAction::~B2EventAction()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void B2EventAction::BeginOfEventAction(const G4Event*)
-{}
+void B2EventAction::BeginOfEventAction(const G4Event* run)
+{
+
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void B2EventAction::EndOfEventAction(const G4Event* event)
 {
+  //Histogrammin'
+  //CJC 6.13.14
+  G4AnalysisManager* analysisMan = G4AnalysisManager::Instance(); 
+  analysisMan->FillH1(0, fEdep);
+
+
+
+  //YE WHO ENTER BEWARE VERBOSITY 
+
+
   // get number of stored trajectories
   G4cout << "End of Event Action" << G4endl;
 

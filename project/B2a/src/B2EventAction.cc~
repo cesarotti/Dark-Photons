@@ -32,12 +32,17 @@
 #include "B2CalorHit.hh" //CJC 6.9.14
 #include "B2TrackerHit.hh"
 
+#include "Analysis.hh" //CJC 6.13.14
+#include "G4SystemOfUnits.hh"
+
 #include "G4Event.hh"
 #include "G4EventManager.hh"
 #include "G4TrajectoryContainer.hh"
 #include "G4Trajectory.hh"
 #include "G4ios.hh"
 #include "G4SDManager.hh"
+
+
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -52,13 +57,21 @@ B2EventAction::~B2EventAction()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void B2EventAction::BeginOfEventAction(const G4Event*)
-{}
+void B2EventAction::BeginOfEventAction(const G4Event* run)
+{
+
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void B2EventAction::EndOfEventAction(const G4Event* event)
 {
+  //Histogrammin'
+  //CJC 6.13.14
+  G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
+  analysisMan->FillH1(0, fEdep);
+
+
   // get number of stored trajectories
   G4cout << "End of Event Action" << G4endl;
 
@@ -81,8 +94,8 @@ void B2EventAction::EndOfEventAction(const G4Event* event)
     G4int collectionID = fSDM->GetCollectionID("TrackerHitsCollection");
     G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(collectionID);
 
-    G4cout << "    " << hc->GetSize() << " tracker hits stored in this event" <<
-      G4endl;
+    //G4cout << "    " << hc->GetSize() << " tracker hits stored in this event" <<
+    //G4endl;
    
     /*
      G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(0);

@@ -36,9 +36,6 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-class G4Run;
-
-/// Run action class
 
 class B2RunAction : public G4UserRunAction
 {

@@ -33,19 +33,35 @@
 #include "G4Run.hh"
 #include "G4RunManager.hh"
 
+#include "Analysis.hh" //CJC 6.13.14
+#include "G4SystemOfUnits.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 B2RunAction::B2RunAction()
  : G4UserRunAction()
 { 
   // set printing event number per each 100 events
-  G4RunManager::GetRunManager()->SetPrintProgress(1000);     
+  G4RunManager::GetRunManager()->SetPrintProgress(1000);   
+
+  //Analysis
+  //CJC 6.13.14
+  G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
+  analysisMan->SetFirstHistoId(0);
+
+  analysisMan->CreateH1("0", "Edep in calorimeter", 100, 1.0*MeV, 100.0*MeV);
+
+
+  
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 B2RunAction::~B2RunAction()
-{}
+{
+  delete G4AnalysisManager::Instance();
+
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -53,11 +69,28 @@ void B2RunAction::BeginOfRunAction(const G4Run*)
 { 
   //inform the runManager to save random number seed
   G4RunManager::GetRunManager()->SetRandomNumberStore(false);
+ //Data Storage
+  G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
+
+  //Open an output file
+  G4String fileName = "Positron Annihilation to two Gammas";
+  analysisMan->OpenFile(fileName);
+
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void B2RunAction::EndOfRunAction(const G4Run* )
-{}
+{
+G4cout << "End of Run Action " << G4endl;
+
+//Histogrammin'
+//CJC 6.13.14
+G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
+//analysisMan->Write();
+// analysisMan->CloseFile();
+
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

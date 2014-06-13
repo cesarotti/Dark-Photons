@@ -45,6 +45,9 @@ class B2EventAction : public G4UserEventAction
 
     virtual void  BeginOfEventAction(const G4Event* );
     virtual void    EndOfEventAction(const G4Event* );
+
+private:
+  G4double fEdep;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
