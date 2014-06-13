@@ -165,7 +165,7 @@ G4VPhysicalVolume* B2aDetectorConstruction::DefineVolumes()
   targetLength = 0.5*targetLength;             // Half length of the Target  
   G4double trackerSize   = 0.5*trackerLength;  // Half length of the Tracker
 
-  G4double calorSide = 50.0*cm;
+  G4double calorSide = 200.0*cm;
   G4double calorDepth = 2.0*cm;
 
   // Definitions of Solids, Logical Volumes, Physical Volumes

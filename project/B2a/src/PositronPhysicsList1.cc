@@ -58,6 +58,8 @@ void PositronPhysicsList1::ConstructEM()
   G4ProcessManager* pman = positron->GetProcessManager();
 
   pman->AddProcess(new G4eplusAnnihilation(), 0, -1, 4);
+
+
 }
 
 

@@ -74,7 +74,6 @@ int main(int argc,char** argv)
   runManager->SetUserInitialization(new B2aDetectorConstruction());
 
   G4VUserPhysicsList* physicsList = new PositronPhysicsList1;
-  physicsList->RegisterPhysics(new G4StepLimiterPhysics());
   runManager->SetUserInitialization(physicsList);
   runManager->SetUserInitialization(new B2ActionInitialization());
   
