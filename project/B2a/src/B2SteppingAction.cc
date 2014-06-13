@@ -23,53 +23,54 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: B2EventAction.hh 
-//
-/// \file B2EventAction.hh
-/// \brief Definition of the B2EventAction class
+// $Id: B2SteppingAction.cc 68058 2013-03-13 14:47:43Z gcosmo $
+// 
+/// \file B2SteppingAction.cc
+/// \brief Implementation of the B2SteppingAction class
 
-#ifndef B2EventAction_h
-#define B2EventAction_h 1
+#include "B2SteppingAction.hh"
+#include "B2EventAction.hh"
+#include "B2aDetectorConstruction.hh"
 
-#include "G4UserEventAction.hh"
+#include "G4Step.hh"
+#include "G4RunManager.hh"
 
-#include "globals.hh"
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-/// Event action class
-
-class B2EventAction : public G4UserEventAction
+B2SteppingAction::B2SteppingAction(
+                      const B2aDetectorConstruction* detectorConstruction,
+                      B2EventAction* eventAction)
+  : G4UserSteppingAction(),
+    fDetConstruction(detectorConstruction),
+    fEventAction(eventAction)
 {
-  public:
-    B2EventAction();
-    virtual ~B2EventAction();
-
-    virtual void  BeginOfEventAction(const G4Event* );
-    virtual void    EndOfEventAction(const G4Event* );
-
-  void AddEn(G4double de, G4double dl);
-  void AddGap(G4double de, G4double dl);
-
-private:
-  G4double fEdep;
-  G4double fEnergyGap;
-  G4double fTrackLAbs;
-  G4double fTrackLGap;
-};
-
-//inline functions
-
-inline void B2EventAction::AddEn(G4double de, G4double dl)
- {
-  fEdep += de;
-  fTrackLAbs += dl;
-}
-
-inline void B2EventAction::AddGap(G4double de, G4double dl)
-{
-  fEnergyGap += de;
-  fTrackLGap += dl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#endif
+B2SteppingAction::~B2SteppingAction()
+{ 
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+void B2SteppingAction::UserSteppingAction(const G4Step* step)
+{
+// Collect energy and track length step by step
+
+  // get volume of the current step
+  G4VPhysicalVolume* volume 
+    = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume();
+  
+  // energy deposit
+  G4double edep = step->GetTotalEnergyDeposit();
+  
+  // step length
+  G4double stepLength = 0.;
+  if ( step->GetTrack()->GetDefinition()->GetPDGCharge() != 0. ) {
+    stepLength = step->GetStepLength();
+  }
+
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -50,6 +50,13 @@ B2RunAction::B2RunAction()
   analysisMan->SetFirstHistoId(0);
 
   analysisMan->CreateH1("0", "Edep in calorimeter", 100, 1.0*MeV, 100.0*MeV);
+  /*
+  analysisMan->CreateNtuple("Positron Annihilation", "Photon Hits");
+  analysisMan->CreateNtupleIColumn("Number of Hits"); 
+  analysisMan->CreateNtupleDColumn("X Position"); 
+  analysisMan->CreateNtupleDColumn("Y Position");
+  analysisMan->FinishNtuple();
+  */
 
 
   

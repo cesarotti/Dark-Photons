@@ -51,7 +51,10 @@
 
 B2EventAction::B2EventAction()
   : G4UserEventAction(),
-  fEdep(0.)
+    fEdep(0.),
+    fEnergyGap(0.), 
+    fTrackLAbs(0. ),
+    fTrackLGap(0. )
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -63,7 +66,10 @@ B2EventAction::~B2EventAction()
 
 void B2EventAction::BeginOfEventAction(const G4Event* run)
 {
-
+  fEdep = 0.0;
+  fEnergyGap =0.0;
+  fTrackLAbs = 0.0;
+  fTrackLGap = 0.0;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

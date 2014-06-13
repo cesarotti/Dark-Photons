@@ -88,8 +88,8 @@ G4cout << "End of Run Action " << G4endl;
 //Histogrammin'
 //CJC 6.13.14
 G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
-//analysisMan->Write();
-// analysisMan->CloseFile();
+analysisMan->Write();
+analysisMan->CloseFile();
 
 }
 
