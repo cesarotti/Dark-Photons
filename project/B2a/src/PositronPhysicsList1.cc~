@@ -19,9 +19,10 @@
 #include "G4Gamma.hh"
 
 #include "G4VUserPhysicsList.hh"
+#include "G4PhysicsHelper.hh"
 
-#include "G4hIonisation.hh"
-#include "G4eIonisation.hh"
+#include "G4hIonization.hh"
+#include "G4eIonization.hh"
 
 #include "G4hBremsstrahlung.hh"
 #include "G4eBremsstrahlung.hh"
@@ -54,7 +55,7 @@ void PositronPhysicsList1::ConstructProcess()
 
 void PositronPhysicsList1::ConstructEM()
 {
-  G4ParticleDefinition* positron = G4Positron::PositronDefinition();
+  G4ParticleDefintion* positron = G4Positron::PositronDefinition();
   G4ProcessManager* pman = positron->GetProcessManager();
 
   pman->AddProcess(new G4eplusAnnihilation(), 0, -1, 4);
