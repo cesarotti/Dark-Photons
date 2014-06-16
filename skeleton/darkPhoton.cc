@@ -50,12 +50,13 @@ int main(int argc, char** argv)
 // 3. Setting the action initialization
 // 4. Initializing the G4 kernel
    */
-
-  runManager->SetUserInitialization(new DetectorConstruction());
-  //!!!!
   //use specific physics list
   G4VUserPhysicsList* physicsList = new PositronPhysicsList1(); 
   runManager->SetUserInitialization(physicsList);
+  //  DetectorConstruction* test = new DetectorConstruction();
+  runManager->SetUserInitialization(new DetectorConstruction());
+  //!!!!
+
 
   runManager->SetUserInitialization(new ActionInitialization());
 

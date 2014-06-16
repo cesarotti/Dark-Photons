@@ -15,14 +15,21 @@
 #include "G4Box.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
+#include "G4PVRelpica.hh"
 #include "G4SDManager.hh"
 #include "G4GeometryTolerance.hh"
 #include "G4GeometryManager.hh"
-#include "G4VPhysicalVolume.hh"
+
+#include "G4PhysicalVolumeStore.hh"
+#include "G4LogicalVolumeStore.hh"
+#include "G4LogicalVolumeStore.hh"
+#include "G4SolidStore.hh"
 
 #include "G4UserLimits.hh"
 #include "G4VisAttributes.hh"
 #include "G4Colour.hh"
+
+#include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
 
@@ -205,7 +212,18 @@ G4LogicalVolume* motherXLV =
 //Crystals
 G4Box* crystalS = 
   new G4Box("crystal", crystalFace/2, crystalFace/2, crystalLength/2);
+fCrystalLogic = 
  G4LogicalVolume(crystalS, fCalorMaterial, "Crystal", 0,0,0);
+
+new G4PVPlacement(0, 
+		   posCalMother, 
+		   motherLV, 
+		   "Mother of Calorimeter", 
+		   worldLV, 
+		   false, 
+		   0, 
+		   fCheckOverlaps);
+
 
  //X-Array by replicas
 
@@ -222,21 +240,16 @@ G4Box* crystalS =
 		  kYAxis, numArray, crystalFace, 0);
 
 
- new G4PVPlacement(0, 
-		   posCalMother, 
-		   motherLV, 
-		   "Mother of Calorimeter", 
-		   worldLV, 
-		   false, 
-		   0, 
-		   fCheckOverlaps);
 
  //Visualization
 
  G4VisAttributes* color = new G4VisAttributes(G4Colour(1.0, 0.4, 0.8));
  G4VisAttributes* white = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0));
 
- worldLV ->SetVisAttributes(white);
+ worldLV ->VisAttributes(white);
+
+ color->SetVisibility(true);
+
  fLogicTaret ->SetVisAttributes(color);
  fLogicCalor ->SetVistAttributes(color);
  crystalLV ->SetVisAttributes(color);
@@ -250,7 +263,7 @@ G4Box* crystalS =
 
 }
 
-void DetectorConstruction::ConstructSD()
+void DetectorConstruction::ConstructSDandField()
 {
   //!!!
   //Create a sensitive detector and put it with logical volumes
@@ -297,7 +310,19 @@ G4Material* pttoMaterial =
 }
 
 
+void DetectorConstruction::SetMaxStep(G4double maxStep)
+{
+  if ((fStepLimit)&&(maxStep>0.)) fStepLimit->SetMaxAllowedStep(maxStep);
+}
 
+void DetectorConstruction::SetCheckOverlaps(G4bool checkOverlaps)
+{
+  G4cout << "Checking overlaps....." <<G4endl;
+  fCheckOverlaps = checkOverlaps; 
+  G4cout << fCheckOverlaps <<G4endl;
+}
+
+       
 
 
 

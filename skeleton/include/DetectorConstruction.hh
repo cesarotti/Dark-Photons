@@ -11,11 +11,13 @@
 #include "globals.hh"
 #include "G4VUserDetectorConstruction.hh"
 #include "tls.hh"
+#include "DetectorMessenger.hh"
 
 class G4VPhysicalVolume;
 class G4LogicalVolume;
 class G4Material;
 class G4UserLimits;
+
 class DetectorMessenger;
 
 /*
@@ -34,7 +36,7 @@ public:
   //constructs the geometries
   virtual G4VPhysicalVolume* Construct();
   //applies the sensitive detectors
-  virtual void ConstructSD();
+  virtual void ConstructSDandField();
 
   //set methods
   //!!!

@@ -7,7 +7,6 @@
  */
 
 #include "DetectorConstruction.hh"
-#include "DetectorMessenger.hh"
 
 #include "G4Material.hh"
 #include "G4NistManager.hh"
@@ -15,14 +14,21 @@
 #include "G4Box.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
+#include "G4PVRelpica.hh"
 #include "G4SDManager.hh"
 #include "G4GeometryTolerance.hh"
 #include "G4GeometryManager.hh"
-#include "G4VPhysicalVolume.hh"
+
+#include "G4PhysicalVolumeStore.hh"
+#include "G4LogicalVolumeStore.hh"
+#include "G4LogicalVolumeStore.hh"
+#include "G4SolidStore.hh"
 
 #include "G4UserLimits.hh"
 #include "G4VisAttributes.hh"
 #include "G4Colour.hh"
+
+#include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
 
@@ -208,6 +214,16 @@ G4Box* crystalS =
 fCrystalLogic = 
  G4LogicalVolume(crystalS, fCalorMaterial, "Crystal", 0,0,0);
 
+new G4PVPlacement(0, 
+		   posCalMother, 
+		   motherLV, 
+		   "Mother of Calorimeter", 
+		   worldLV, 
+		   false, 
+		   0, 
+		   fCheckOverlaps);
+
+
  //X-Array by replicas
 
  G4PVReplica repX("LinearArrayX", 
@@ -223,21 +239,16 @@ fCrystalLogic =
 		  kYAxis, numArray, crystalFace, 0);
 
 
- new G4PVPlacement(0, 
-		   posCalMother, 
-		   motherLV, 
-		   "Mother of Calorimeter", 
-		   worldLV, 
-		   false, 
-		   0, 
-		   fCheckOverlaps);
 
  //Visualization
 
  G4VisAttributes* color = new G4VisAttributes(G4Colour(1.0, 0.4, 0.8));
  G4VisAttributes* white = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0));
 
- worldLV ->SetVisAttributes(white);
+ worldLV ->VisAttributes(white);
+
+ color->SetVisibility(true);
+
  fLogicTaret ->SetVisAttributes(color);
  fLogicCalor ->SetVistAttributes(color);
  crystalLV ->SetVisAttributes(color);
@@ -251,7 +262,7 @@ fCrystalLogic =
 
 }
 
-void DetectorConstruction::ConstructSD()
+void DetectorConstruction::ConstructSDandField()
 {
   //!!!
   //Create a sensitive detector and put it with logical volumes

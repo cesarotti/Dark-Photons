@@ -11,10 +11,12 @@
 #include "globals.hh"
 #include "G4UImessenger.hh"
 
-class DetectorConstruction;
+#include "DetectorConstruction.hh"
+
 class G4UIdirectory;
 class G4UIcmdWithAString;
 class G4UIcmdWithADoubleAndUnit;
+class DetectorConstruction;
 
 /*
  * The messenger class defines commands for the 

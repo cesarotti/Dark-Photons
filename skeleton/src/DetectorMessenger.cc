@@ -8,7 +8,6 @@
  */
 
 #include "DetectorMessenger.hh"
-#include "DetectorConstruction.hh"
 
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithAString.hh"
@@ -48,7 +47,7 @@ DetectorMessenger::~DetectorMessenger()
   delete fTargMatCmd;
   delete fCalMatCmd;
   delete fStepMaxCmd;
-  delete fB2Directory;
+  delete fDirectory;
   delete fDetDirectory;
 }
 
