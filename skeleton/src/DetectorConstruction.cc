@@ -135,7 +135,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double motherFace = numArray*crystalFace; //defining mother volumes for crystals
   G4double motherLength = crystalLength;
 
-  G4double worldLength = 1.3*(calorDist+crystalLength+targetLength);
+  G4double worldLength = 2*(calorDist+crystalLength+targetLength);
 
   //Definitions of geometries
 

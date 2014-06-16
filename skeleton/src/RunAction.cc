@@ -4,6 +4,9 @@
  *    CJC 6.14.15 created
  *
  * file RunAction.cc
+ * Description: 
+ * Run Action is called for every run. Consider what data should be collected
+ * over long runs
  */
 
 

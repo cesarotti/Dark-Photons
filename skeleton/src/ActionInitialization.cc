@@ -19,14 +19,14 @@ ActionInitialization::ActionInitialization()
 ActionInitialization::~ActionInitialization()
 {}
 
-// Creates instances of multiple classes
+// Creates instances of the necessary classes for running
 void ActionInitialization::BuildForMaster() const
 {
-  SetUserAction(new PrimaryGeneratorAction);
   SetUserAction(new RunAction);
-  SetUserAction(new EventAction);
 }
 
+
+//Creates instances of the necessary classes for Geant
 void ActionInitialization::Build() const
 {
   SetUserAction(new PrimaryGeneratorAction);

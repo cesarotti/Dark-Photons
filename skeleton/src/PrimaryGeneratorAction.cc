@@ -4,6 +4,13 @@
  *    CJC 6.14.15 created
  *
  * file: Primary Generator Action
+ *
+ * Description
+ * This class sets up the experiment, including the world volume and the 
+ * particle beam.
+ * Methods to update:
+ * PrimaryGeneratorAction
+ * {adjust energy settings of the gun and particles}
  */
 
 #include "PrimaryGeneratorAction.hh"

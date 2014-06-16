@@ -8,7 +8,6 @@
  */
 
 #include "ActionInitialization.hh"
-
 #include "PrimaryGeneratorAction.hh"
 #include "RunAction.hh"
 #include "EventAction.hh"
@@ -21,7 +20,14 @@ ActionInitialization::~ActionInitialization()
 {}
 
 // Creates instances of multiple classes
-ActionInitialization::BuildForMaster() const
+void ActionInitialization::BuildForMaster() const
+{
+  SetUserAction(new PrimaryGeneratorAction);
+  SetUserAction(new RunAction);
+  SetUserAction(new EventAction);
+}
+
+void ActionInitialization::Build() const
 {
   SetUserAction(new PrimaryGeneratorAction);
   SetUserAction(new RunAction);

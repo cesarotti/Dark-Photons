@@ -7,6 +7,18 @@
  */
 
 #include "EventAction.hh"
+#include "G4SystemOfUnits.hh"
+#include "Randomize.hh"
+#include <iomanip>
+
+#include "Analysis.hh"
+
+#include "G4Event.hh"
+#include "G4EventManager.hh"
+#include "G4TrajectoryContainer.hh"
+#include "G4Trajectory.hh"
+#include "G4ios.hh"
+#include "G4SDManager.hh"
 
 EventAction::EventAction()
 {
