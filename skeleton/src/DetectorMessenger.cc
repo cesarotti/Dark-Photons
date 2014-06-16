@@ -18,7 +18,7 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction* Det)
  : G4UImessenger(),
    fDetectorConstruction(Det)
 {
-  fDirectory = new G4UIdirector("/darkPhotons/");
+  fDirectory = new G4UIdirectory("/darkPhotons/");
   fDirectory->SetGuidance("UI commands specific to this eample.");
 
   fDetDirectory = new G4UIdirectory("/darkPhotons/det/");
@@ -31,10 +31,10 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction* Det)
 
   fCalMatCmd = new G4UIcmdWithAString("/darkPhotons/det/setCalorMaterial",this);
   fCalMatCmd->SetGuidance("Select Material of the Calorimeter");
-  fCalMatCmd->SetParamterName("choice",false);
+  fCalMatCmd->SetParameterName("choice",false);
   fCalMatCmd->AvailableForStates(G4State_PreInit, G4State_Idle);
 
-  fStepMaxCmd = G4UIcmdWithADoubleAndUnit("/darkPhotons/det/stepMax",this);
+  fStepMaxCmd = new G4UIcmdWithADoubleAndUnit("/darkPhotons/det/stepMax",this);
   fStepMaxCmd->SetGuidance("Define a step max");
   fStepMaxCmd->SetParameterName("stepMax", false);
   fStepMaxCmd->SetUnitCategory("Length");
@@ -58,7 +58,7 @@ void DetectorMessenger::SetNewValue(G4UIcommand* command,G4String newValue)
    { fDetectorConstruction->SetTargetMaterial(newValue);}
 
   if( command == fCalMatCmd )
-   { fDetectorConstruction->SetChamberMaterial(newValue);}
+   { fDetectorConstruction->SetCalorMaterial(newValue);}
 
   if( command == fStepMaxCmd ) {
     fDetectorConstruction

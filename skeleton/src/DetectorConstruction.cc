@@ -15,7 +15,7 @@
 #include "G4Box.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
-#include "G4PVRelpica.hh"
+#include "G4PVReplica.hh"
 #include "G4SDManager.hh"
 #include "G4GeometryTolerance.hh"
 #include "G4GeometryManager.hh"
@@ -36,6 +36,7 @@ G4ThreadLocal
 G4GlobalMagFieldMessenger* DetectorConstruction::fMagFieldMessenger = 0;
 
 DetectorConstruction::DetectorConstruction()
+  : G4VUserDetectorConstruction(),
 fLogicCrystal(NULL), //logical volume for calorimeter
   fLogicTarget(NULL), //logical volume for target
   fTargetMaterial(NULL), //material of target
@@ -68,13 +69,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
  * can be found in the NIST directory
  */
 
-void DetectorConstrcution::DefineMaterials()
+void DetectorConstruction::DefineMaterials()
 {
 
   G4NistManager* nistManager = G4NistManager::Instance();
 
   //Air defined using NIST
-  nistManager->FindOrBuild("G4_Air");
+  nistManager->FindOrBuildMaterial("G4_Air");
 
   //Liquid Hydrogen for the target
   G4double z, a, density;
@@ -95,11 +96,12 @@ void DetectorConstrcution::DefineMaterials()
   fTargetMaterial = lh2; // Target material is now liquid hydrogen
 
   //Cesium Iodide for the crystals
-  a = 132.9*g/cm3;
+
+  a = 132.9*g/mole;
   G4Element* ele_Cs = new G4Element(name = "Cesium", symbol = "Cs", z = 55., a);
 
   a =126.9*g/mole;
-  G4Element* ele_I = new G4Element(name="Iodide", symbole = "I", z = 53., a);
+  G4Element* ele_I = new G4Element(name="Iodide", symbol = "I", z = 53., a);
 
   density = 4.51*g/cm3;
   G4Material* CsI = new G4Material(name="Cesium Iodide", density, nComp=2);
@@ -137,7 +139,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 
   //Definitions of geometries
 
-  G4GeometeryManager::GetInstance()->SetWorldMaximumExtent(worldLength);
+  G4GeometryManager::GetInstance()->SetWorldMaximumExtent(worldLength);
 
 
   G4cout << "Computed tolerance = "
@@ -189,7 +191,7 @@ G4Box* targetS =
 		   0, // copy number
 		   fCheckOverlaps); //true
 
- G4cout << "Target is " << TargetLength/cm << " cm of " <<
+ G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
 
  //!!!
@@ -213,8 +215,8 @@ G4LogicalVolume* motherXLV =
 //Crystals
 G4Box* crystalS = 
   new G4Box("crystal", crystalFace/2, crystalFace/2, crystalLength/2);
-fCrystalLogic = 
- G4LogicalVolume(crystalS, fCalorMaterial, "Crystal", 0,0,0);
+fLogicCrystal = 
+ new  G4LogicalVolume(crystalS, fCalorMaterial, "Crystal", 0,0,0);
 
 new G4PVPlacement(0, 
 		   posCalMother, 
@@ -229,7 +231,7 @@ new G4PVPlacement(0,
  //X-Array by replicas
 
  G4PVReplica repX("LinearArrayX", 
-		  crystalLV, 
+		  fLogicCrystal, 
 		  motherXLV, 
 		  kXAxis, numArray, crystalFace, 0);
 
@@ -247,13 +249,12 @@ new G4PVPlacement(0,
  G4VisAttributes* color = new G4VisAttributes(G4Colour(1.0, 0.4, 0.8));
  G4VisAttributes* white = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0));
 
- worldLV ->VisAttributes(white);
+ worldLV ->SetVisAttributes(white);
 
  color->SetVisibility(true);
 
- fLogicTaret ->SetVisAttributes(color);
- fLogicCalor ->SetVistAttributes(color);
- crystalLV ->SetVisAttributes(color);
+ fLogicTarget ->SetVisAttributes(color);
+ fLogicCrystal ->SetVisAttributes(color);
 
  //Setting user Limits
 
@@ -299,8 +300,8 @@ G4Material* pttoMaterial =
 
  if(fTargetMaterial != pttoMaterial) {
    if ( pttoMaterial) {
-     fTargetMaterial = pttoMaterial; 
-     if (fCrystalTarget) fCrystalTarget->SetMaterial(fCrystalMaterial);
+     fCalorMaterial = pttoMaterial; 
+     if (fLogicCrystal) fLogicCrystal->SetMaterial(fCalorMaterial);
      G4cout << "\n-----> The target is made of " << materialName << G4endl;
    }
    else {

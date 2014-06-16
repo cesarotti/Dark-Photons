@@ -48,13 +48,13 @@ public:
 
 private:
   //methods
-  void Definematerials(); //defines materials for elements of the detector
+  void DefineMaterials(); //defines materials for elements of the detector
   G4VPhysicalVolume* DefineVolumes(); //defines geometry
 
   //data members
 
+  G4LogicalVolume* fLogicCrystal; //pointer to logical crystal in caloriemter
   G4LogicalVolume* fLogicTarget; //pointer to logical target
-  G4LogicalVolume* fLogicCrystal; //pointer to logical crystal in calorimeter
 
   G4Material* fTargetMaterial; // pointer to target material
   G4Material* fCalorMaterial; // pointer to calorimeter material

@@ -38,7 +38,7 @@ private:
   G4UIdirectory* fDetDirectory;
 
   G4UIcmdWithAString* fTargMatCmd;
-  G4UIcmdWithAString* fChamMatCmd;
+  G4UIcmdWithAString* fCalMatCmd;
 
   G4UIcmdWithADoubleAndUnit* fStepMaxCmd;
 
