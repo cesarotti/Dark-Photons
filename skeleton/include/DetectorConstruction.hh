@@ -5,18 +5,18 @@
  *
  */
 
-#ifdef DetectorConstruction_h
+#ifndef DetectorConstruction_h
 #define DetectorConstruction_h 1
 
 #include "globals.hh"
 #include "G4VUserDetectorConstruction.hh"
 #include "tls.hh"
-#include "DetectorMessenger.hh"
 
 class G4VPhysicalVolume;
 class G4LogicalVolume;
 class G4Material;
 class G4UserLimits;
+class G4GlobalMagFieldMessenger;
 
 class DetectorMessenger;
 
@@ -64,6 +64,8 @@ private:
   DetectorMessenger* fMessenger; // messenger
 
   G4bool fCheckOverlaps; // option to turn on or off overlap checking.
+
+  static G4ThreadLocal G4GlobalMagFieldMessenger* fMagFieldMessenger;
 
 
 

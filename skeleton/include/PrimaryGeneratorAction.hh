@@ -15,7 +15,7 @@
 class G4ParticleGun;
 class G4Event; 
 
-class PrimaryGeneratorAction : publicl G4VUserPrimaryGeneratorAction
+class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
 public:
   PrimaryGeneratorAction();

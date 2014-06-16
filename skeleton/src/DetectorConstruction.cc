@@ -7,6 +7,7 @@
  */
 
 #include "DetectorConstruction.hh"
+#include "DetectorMessenger.hh"
 
 #include "G4Material.hh"
 #include "G4NistManager.hh"
@@ -31,7 +32,8 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
-
+G4ThreadLocal
+G4GlobalMagFieldMessenger* DetectorConstruction::fMagFieldMessenger = 0;
 
 DetectorConstruction::DetectorConstruction()
 fLogicCrystal(NULL), //logical volume for calorimeter

@@ -8,7 +8,8 @@
 #define ActionInitialization_h 1
 
 #include "G4VUserActionInitialization.hh"
-#include "DetectorConstruction.hh"
+
+class DetectorConstruction;
 
 class ActionInitialization : public G4VUserActionInitialization
 {

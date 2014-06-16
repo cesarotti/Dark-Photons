@@ -53,11 +53,9 @@ int main(int argc, char** argv)
   //use specific physics list
   G4VUserPhysicsList* physicsList = new PositronPhysicsList1(); 
   runManager->SetUserInitialization(physicsList);
-  //  DetectorConstruction* test = new DetectorConstruction();
-  runManager->SetUserInitialization(new DetectorConstruction());
-  //!!!!
-
-
+  DetectorConstruction* test = new DetectorConstruction();
+  runManager->SetUserInitialization(test);
+  //!!!
   runManager->SetUserInitialization(new ActionInitialization());
 
   //Initialize G4 kernel
@@ -74,7 +72,7 @@ int main(int argc, char** argv)
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
   //!!!!
   //Sets default verbosity for tracking
-  UImanager->ApplyCommand("/tracking/verbose 1")
+  UImanager->ApplyCommand("/tracking/verbose 1");
 
     //batch mode
     if (argc !=1)
@@ -90,7 +88,7 @@ int main(int argc, char** argv)
 
 	//checks if visualization is used
 #ifdef G4VIS_USE
-	UIManager->ApplyCommand("/control/execute init_vis.mac");
+	UImanager->ApplyCommand("/control/execute init_vis.mac");
 
 #else
 	UImanager->ApplyCommand("/control/execture init.mac");
