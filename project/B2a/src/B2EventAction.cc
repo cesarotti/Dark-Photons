@@ -32,6 +32,11 @@
 #include "B2CalorHit.hh" //CJC 6.9.14
 #include "B2TrackerHit.hh"
 
+#include "Analysis.hh" //CJC 6.13.14
+#include "G4SystemOfUnits.hh"
+#include "Randomize.hh"
+#include <iomanip>
+
 #include "G4Event.hh"
 #include "G4EventManager.hh"
 #include "G4TrajectoryContainer.hh"
@@ -39,10 +44,17 @@
 #include "G4ios.hh"
 #include "G4SDManager.hh"
 
+
+
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 B2EventAction::B2EventAction()
-: G4UserEventAction()
+  : G4UserEventAction(),
+    fEdep(0.),
+    fEnergyGap(0.), 
+    fTrackLAbs(0. ),
+    fTrackLGap(0. )
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -52,14 +64,53 @@ B2EventAction::~B2EventAction()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void B2EventAction::BeginOfEventAction(const G4Event*)
-{}
+void B2EventAction::BeginOfEventAction(const G4Event* run)
+{
+  fEdep = 0.0;
+  fEnergyGap =0.0;
+  fTrackLAbs = 0.0;
+  fTrackLGap = 0.0;
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void B2EventAction::EndOfEventAction(const G4Event* event)
 {
+  //Histogrammin'
+  //CJC 6.13.14
+  G4HCofThisEvent* hce = event->GetHCofThisEvent();
+
+
+  G4AnalysisManager* analysisMan = G4AnalysisManager::Instance(); 
+  analysisMan->FillH1(0, fEdep); //Updated by stepping action
+  G4SDManager*fSDM = G4SDManager::GetSDMpointer();
+
+  G4int collectionID = fSDM->GetCollectionID("CalorimeterHitsCollection");
+
+  B2CalorimeterHitsCollection* cHC = static_cast<B2CalorimeterHitsCollection*>(hce->GetHC(collectionID)); 
+
+  G4int numHit = cHC->entries();
+  analysisMan->FillNtupleIColumn(0, numHit);
+
+  for (G4int i=0; i<numHit; i++)
+    {
+      B2CalorHit* hit = (*cHC)[i];
+      G4ThreeVector position = hit->GetPos();
+      analysisMan->FillNtupleDColumn(1, position.x());
+      analysisMan->FillNtupleDColumn(2, position.y());
+    }
+
+  analysisMan->AddNtupleRow();
+
+
+
+
+
+  //YE WHO ENTER BEWARE VERBOSITY 
+
+
   // get number of stored trajectories
+  /*
   G4cout << "End of Event Action" << G4endl;
 
   G4TrajectoryContainer* trajectoryContainer = event->GetTrajectoryContainer();
@@ -68,7 +119,7 @@ void B2EventAction::EndOfEventAction(const G4Event* event)
   
   // periodic printing
   
-  G4int eventID = event->GetEventID();
+  G4int eventID = event->GetEventID("CalorimeterHitsCollection");
   if ( eventID < 100 || eventID % 100 == 0) {
     G4cout << ">>> Event: " << eventID  << G4endl;
     if ( trajectoryContainer ) {
@@ -76,24 +127,23 @@ void B2EventAction::EndOfEventAction(const G4Event* event)
              << " trajectories stored in this event." << G4endl;
     }
 
-    G4SDManager* fSDM = G4SDManager::GetSDMpointer();
 
-    G4int collectionID = fSDM->GetCollectionID("TrackerHitsCollection");
+    collectionID = fSDM->GetCollectionID("TrackerHitsCollection");
     G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(collectionID);
 
     //G4cout << "    " << hc->GetSize() << " tracker hits stored in this event" <<
     //G4endl;
    
-    /*
+    
      G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(0);
     G4cout << "    "  
     << hc->GetSize() << " hits stored in this event" << G4endl;
-    */
+    
   }
   
-  G4SDManager* fSDM = G4SDManager::GetSDMpointer();
+  
 
-  G4int collectionID = fSDM->GetCollectionID("CalorimeterHitsCollection");
+  collectionID = fSDM->GetCollectionID("CalorimeterHitsCollection");
   G4VHitsCollection* hc2 = event->GetHCofThisEvent()->GetHC(collectionID);
 
   G4cout << "    " << hc2->GetSize() << " calorimeter hits sorted in this event"
@@ -103,7 +153,7 @@ void B2EventAction::EndOfEventAction(const G4Event* event)
       hc2->GetHit(i)->Print();
       G4cout << G4endl;
     }
-  
+*/  
 
 
 }  

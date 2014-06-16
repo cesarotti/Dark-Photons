@@ -23,52 +23,38 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: B2EventAction.hh 
-//
-/// \file B2EventAction.hh
-/// \brief Definition of the B2EventAction class
+// $Id: B2SteppingAction.hh
+// 
+/// \file B2SteppingAction.hh
+/// \brief Definition of the B2SteppingAction class
 
-#ifndef B2EventAction_h
-#define B2EventAction_h 1
+#ifndef B2SteppingAction_h
+#define B2SteppingAction_h 1
 
-#include "G4UserEventAction.hh"
+#include "G4UserSteppingAction.hh"
 
-#include "globals.hh"
+class B2aDetectorConstruction;
+class B2EventAction;
 
-/// Event action class
+/// Stepping action class.
+///
+/// In UserSteppingAction() there are collected the energy deposit and track 
+/// lengths of charged particles in Absober and Gap layers and
+/// updated in B4aEventAction.
 
-class B2EventAction : public G4UserEventAction
+class B2SteppingAction : public G4UserSteppingAction
 {
-  public:
-    B2EventAction();
-    virtual ~B2EventAction();
+public:
+  B2SteppingAction(const B2aDetectorConstruction* detectorConstruction,
+                    B2EventAction* eventAction);
+  virtual ~B2SteppingAction();
 
-    virtual void  BeginOfEventAction(const G4Event* );
-    virtual void    EndOfEventAction(const G4Event* );
-
-  void AddEn(G4double de, G4double dl);
-  void AddGap(G4double de, G4double dl);
-
+  virtual void UserSteppingAction(const G4Step* step);
+    
 private:
-  G4double fEdep;
-  G4double fEnergyGap;
-  G4double fTrackLAbs;
-  G4double fTrackLGap;
+  const B2aDetectorConstruction* fDetConstruction;
+  B2EventAction*  fEventAction;  
 };
-
-//inline functions
-
-inline void B2EventAction::AddEn(G4double de, G4double dl)
- {
-  fEdep += de;
-  fTrackLAbs += dl;
-}
-
-inline void B2EventAction::AddGap(G4double de, G4double dl)
-{
-  fEnergyGap += de;
-  fTrackLGap += dl;
-}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

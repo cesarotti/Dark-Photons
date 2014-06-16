@@ -32,6 +32,7 @@
 #include "B2aDetectorMessenger.hh"
 #include "B2TrackerSD.hh"
 #include "B2CalorimeterSD.hh"
+#include "G4PVReplica.hh"
 
 #include "G4Material.hh"
 #include "G4NistManager.hh"
@@ -165,8 +166,17 @@ G4VPhysicalVolume* B2aDetectorConstruction::DefineVolumes()
   targetLength = 0.5*targetLength;             // Half length of the Target  
   G4double trackerSize   = 0.5*trackerLength;  // Half length of the Tracker
 
-  G4double calorSide = 50.0*cm;
+  G4double calorSide = 200.0*cm;
   G4double calorDepth = 2.0*cm;
+
+  G4double calZpos = 130.0*cm;
+
+  //CJC 6.14.14
+  G4int numArray = 10; //square root of the number of xtals in the calorimeter
+  G4double crystalFace = 3.0*cm; //CHECK WITH JIM
+  G4double crystalLength = 12.0*cm; //CHECK WITH JIM
+  G4double motherFace = numArray*crystalFace;
+  G4double motherLength = crystalLength; 
 
   // Definitions of Solids, Logical Volumes, Physical Volumes
 
@@ -225,7 +235,7 @@ G4VPhysicalVolume* B2aDetectorConstruction::DefineVolumes()
 //Photo Detector (Calorimeter)
   //CJC 6.6.14
 
-  G4ThreeVector positionCalor = G4ThreeVector(0,0,130.0*cm); 
+  G4ThreeVector positionCalor = G4ThreeVector(0,0,calZpos); 
 
 G4Box* calorS = 
   new G4Box("calorimeter", 
@@ -264,6 +274,49 @@ fLogicCalor =
  fLogicCalor->SetSensitiveDetector(detector);
  */
 
+ //Calorimeter Array
+ G4ThreeVector posCalMother = G4ThreeVector(0,0,calZpos+calorDepth+motherLength/2);
+
+ //Mother
+G4Box* motherS = 
+  new G4Box("mother solid", motherFace/2, motherFace/2, motherLength/2);
+G4LogicalVolume* motherLV = 
+  new G4LogicalVolume(motherS, fCalorMaterial, "Mother", 0,0,0);
+
+//X Array
+ G4Box* motherXS = 
+   new G4Box("mother solid x", motherFace/2, crystalFace/2, motherLength/2);
+G4LogicalVolume* motherXLV = 
+  new G4LogicalVolume(motherXS, fCalorMaterial, "MotherX", 0,0,0);
+
+//Crystals
+G4Box* crystalS = 
+  new G4Box("crystal solid", crystalFace/2, crystalFace/2, crystalLength/2);
+G4LogicalVolume* crystalLV = 
+  new G4LogicalVolume(crystalS, fCalorMaterial, "Crystal", 0,0,0);
+
+ new G4PVPlacement(0, 
+		   posCalMother,
+		   motherLV, 
+		   "Mother of Calorimeter", 
+		   worldLV, 
+		   false, 
+		   0,
+		   fCheckOverlaps);
+
+ G4PVReplica repX("LinearArrayX", 
+		  crystalLV, 
+		  motherXLV, 
+		     kXAxis, numArray, crystalFace, 0);
+ G4PVReplica repY("LinearArrayY",
+		  motherXLV, 
+		  motherLV, 
+		       kYAxis, numArray, crystalFace, 0);
+
+
+
+
+
 
   // Tracker
 
@@ -288,11 +341,15 @@ fLogicCalor =
   G4VisAttributes* boxVisAtt= new G4VisAttributes(G4Colour(1.0,1.0,1.0));
   G4VisAttributes* chamberVisAtt = new G4VisAttributes(G4Colour(1.0,1.0,0.0));
   G4VisAttributes* calorVisAtt = new G4VisAttributes(G4Colour(1.0,1.0,0.0)); //CJC 6.6.14
+  G4VisAttributes* motherVisAtt = new G4VisAttributes(G4Colour(0.8, 0.8, 1.0)); //CJC 6.14.14
+  G4VisAttributes* crystalVisAtt = new G4VisAttributes(G4Colour(1.0, 0.75, 0.4));//CJC 6.14.14
 
   worldLV      ->SetVisAttributes(boxVisAtt);
   fLogicTarget ->SetVisAttributes(boxVisAtt);
   trackerLV    ->SetVisAttributes(boxVisAtt);
   fLogicCalor  ->SetVisAttributes(calorVisAtt); //CJC 6.6.14
+  // motherXLV ->SetVisAttributes(motherVisAtt); //CJC 6.14.14
+
 
 
   // Tracker segments
