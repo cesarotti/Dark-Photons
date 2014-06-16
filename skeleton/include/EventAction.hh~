@@ -22,5 +22,16 @@ public:
 
   virtual void BeginOfEventAction(const G4Event* );
   virtual void EndOfEventAction(const G4Event* );
-}
+
+  void AddEn(G4double de, G4double dl);
+  void AddGap(G4double de, G4double dl);
+
+private:
+  //Variables to keep track of in data storage
+G4double fEdep;
+G4double fEnergyGap;
+  G4double fTrackAbs;
+  G4double fTrackGap;
+
+};
  #endif

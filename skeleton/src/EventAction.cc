@@ -2,6 +2,7 @@
  * Dark Photon Event Action
  *!!!History
  *   CJC 6.15.14 created
+ *   CJC 6.16.14 analysis added
  *
  * file: EventAction.cc
  *
@@ -17,6 +18,10 @@
  * {fill all of the data storage methods with the analysis manager, 
  * i.e. hisotgrams or ntuples. Also include whatever verbose arguments
  * you want in your final read out.}
+ *
+ *Variables:
+ *fEdep
+ *fTrackAbs
  * 
  */
 
@@ -35,8 +40,12 @@
 #include "G4SDManager.hh"
 
 EventAction::EventAction()
+  : G4UserEventAction(),
+    fEdep(0.), 
+    fTrackAbs(0. )
 {
 }
+
 
 EventAction::~EventAction()
 {}
@@ -45,6 +54,9 @@ EventAction::~EventAction()
 //Reset your variables
 void EventAction::BeginOfEventAction(const G4Event* run)
 {
+  fEdep = 0.0;
+  fTrackAbs = 0.0;
+
 }
 
 //!!!
@@ -52,5 +64,18 @@ void EventAction::BeginOfEventAction(const G4Event* run)
 //Add verbosity
 void EventAction::EndOfEventAction(const G4Event* event)
 {
+  G4HCofThisEvent* hce = event->GetHCofThisEvent(); //hit collection array allows for several kinds of hits
+
+  //analysis manager
+  G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
+
+  //get the hit collection desired and look through results
+
+  //always finish ntuples with AddNtupleRow
+  
+
+
+
+
 }
 

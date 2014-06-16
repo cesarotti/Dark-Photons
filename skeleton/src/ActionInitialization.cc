@@ -3,8 +3,12 @@
  *Dark Photon Action Initialization 
  *!!!History 
  *   CJC 6.15.14 created
+ * 
  *
  *file: ActionInitialization.cc
+ *
+ * Description:
+ * Initiates necessary classes
  */
 
 #include "ActionInitialization.hh"
