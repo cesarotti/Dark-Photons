@@ -1,0 +1,41 @@
+/*
+ * Dark Photon  Detector Messenger 
+ * !!!History 
+ *    CJC 6.15.14 created
+ */
+
+#include "DetectorMessenger.hh"
+#include "DetectorConstruction.hh"
+
+#include "G4UIdirectory.hh"
+#include "G4UIcmdWithAString.hh"
+#include "G4UIcmdWithADoubleAndUnit.hh"
+
+DetectorMessenger::DetectorMessenger(DetectorConstruction* Det)
+ : G4UImessenger(),
+   fDetectorConstruction(Det)
+{
+
+
+DetectorMessenger::~DetectorMessenger()
+{
+  delete fTargMatCmd;
+  delete fChamMatCmd;
+  delete fStepMaxCmd;
+  delete fB2Directory;
+  delete fDetDirectory;
+}
+
+void DetectorMessenger::SetNewValue(G4UIcommand* command,G4String newValue)
+{
+  if( command == fTargMatCmd )
+   { fDetectorConstruction->SetTargetMaterial(newValue);}
+
+  if( command == fChamMatCmd )
+   { fDetectorConstruction->SetChamberMaterial(newValue);}
+
+  if( command == fStepMaxCmd ) {
+    fDetectorConstruction
+      ->SetMaxStep(fStepMaxCmd->GetNewDoubleValue(newValue));
+  }   
+}
