@@ -36,6 +36,8 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 {
   // Collect energy and track length step by step
 
+  G4cout << "Stepping Action" << G4endl;
+
   // get volume of the current step
 G4VPhysicalVolume* volume
   = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume();

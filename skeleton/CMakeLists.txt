@@ -1,4 +1,4 @@
-# $Id: CMakeLists.txt 68058 2013-03-13 14:47:43Z gcosmo $
+# $Id: CMakeLists.txt
 
 #----------------------------------------------------------------------------
 # Setup the project
@@ -44,16 +44,12 @@ target_link_libraries(darkPhoton ${Geant4_LIBRARIES})
 # relies on these scripts being in the current working directory.
 #
 set(DARKPHOTON_SCRIPTS
-#  exampleB2a.out
-#  exampleB2.in
-#  icons.mac
-#  gui.mac
-#  run.png
+  icons.mac
+  gui.mac
+  run.png
   init.mac
   init_vis.mac
-#  run1.mac
-#  run2.mac
-#  vis.mac
+  vis.mac
   )
 
 foreach(_script ${DARKPHOTON_SCRIPTS})

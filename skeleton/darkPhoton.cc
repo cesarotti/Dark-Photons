@@ -91,9 +91,12 @@ int main(int argc, char** argv)
 	UImanager->ApplyCommand("/control/execute init_vis.mac");
 
 #else
-	UImanager->ApplyCommand("/control/execture init.mac");
-
+	UImanager->ApplyCommand("/control/execute init.mac");
 #endif
+	if (ui->IsGUI())
+	  UImanager->ApplyCommand("/control/execute gui.mac");
+          ui->SessionStart();
+	  delete ui;
 #endif
       }
 
@@ -103,9 +106,9 @@ int main(int argc, char** argv)
    *along with the deletion of the run manager
    *at the termination of the run.
    */
-#ifdef G4VIS_USE
-  delete visManager;
-#endif
+    //#ifdef G4VIS_USE
+    //  delete visManager;
+    //#endif
 
   delete runManager;
 

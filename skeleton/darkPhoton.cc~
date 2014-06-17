@@ -72,7 +72,7 @@ int main(int argc, char** argv)
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
   //!!!!
   //Sets default verbosity for tracking
-  UImanager->ApplyCommand("/tracking/verbose 1")
+  UImanager->ApplyCommand("/tracking/verbose 1");
 
     //batch mode
     if (argc !=1)
@@ -88,12 +88,15 @@ int main(int argc, char** argv)
 
 	//checks if visualization is used
 #ifdef G4VIS_USE
-	UIManager->ApplyCommand("/control/execute init_vis.mac");
+	UImanager->ApplyCommand("/control/execute init_vis.mac");
 
 #else
 	UImanager->ApplyCommand("/control/execture init.mac");
-
 #endif
+	if (ui->IsGUI())
+	  UImanager->ApplyCommand("/control/execute/ gui.mac");
+          ui->SessionStart();
+	  delete ui;
 #endif
       }
 
@@ -103,9 +106,9 @@ int main(int argc, char** argv)
    *along with the deletion of the run manager
    *at the termination of the run.
    */
-#ifdef G4VIS_USE
-  delete visManager;
-#endif
+    //#ifdef G4VIS_USE
+    //  delete visManager;
+    //#endif
 
   delete runManager;
 

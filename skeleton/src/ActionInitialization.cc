@@ -26,6 +26,7 @@ ActionInitialization::~ActionInitialization()
 // Creates instances of the necessary classes for running
 void ActionInitialization::BuildForMaster() const
 {
+ 
   SetUserAction(new RunAction);
 }
 
@@ -33,7 +34,10 @@ void ActionInitialization::BuildForMaster() const
 //Creates instances of the necessary classes for Geant
 void ActionInitialization::Build() const
 {
+
   SetUserAction(new PrimaryGeneratorAction);
   SetUserAction(new RunAction);
   SetUserAction(new EventAction);
+
+  G4cout << "Action initializer complete" << G4endl;
 }

@@ -75,7 +75,7 @@ void DetectorConstruction::DefineMaterials()
   G4NistManager* nistManager = G4NistManager::Instance();
 
   //Air defined using NIST
-  nistManager->FindOrBuildMaterial("G4_Air");
+  nistManager->FindOrBuildMaterial("G4_AIR");
 
   //Liquid Hydrogen for the target
   G4double z, a, density;
@@ -135,7 +135,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double motherFace = numArray*crystalFace; //defining mother volumes for crystals
   G4double motherLength = crystalLength;
 
-  G4double worldLength = 1.3*(calorDist+crystalLength+targetLength);
+  G4double worldLength = 2*(calorDist+crystalLength+targetLength);
 
   //Definitions of geometries
 
@@ -269,6 +269,7 @@ void DetectorConstruction::ConstructSDandField()
 {
   //!!!
   //Create a sensitive detector and put it with logical volumes
+  G4cout << "SD Construction" << G4endl;
 }
 
 void DetectorConstruction::SetTargetMaterial(G4String materialName)

@@ -25,14 +25,17 @@
 RunAction::RunAction()
   : G4UserRunAction()
 {
+
+  G4cout << " Run action created " << G4endl;
+
   //set printing event number for each 100 events
-  G4RunManager::GetRunManager()->SetPrintProgress(1000);
+  G4RunManager::GetRunManager()->SetPrintProgress(100);
 
   //Analysis
-
+  /*
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
   analysisMan ->SetFirstHistoId(0); //first id is 0
-  /*
+  
    *Example how to create an N tuple
 analysisMan->CreateNtuple("Two Gamma Annihilation:, "Photon hits");
 analysisMan->CreateNtupleIColumn("Number of hits");
@@ -45,13 +48,16 @@ analysisMan->FinishNtuple();
 //delete your analysis manager
 RunAction::~RunAction()
 {
-  delete G4AnalysisManager::Instance();
+  //delete G4AnalysisManager::Instance();
 }
 
 //!!!
 //Data storage
 void RunAction::BeginOfRunAction(const G4Run*)
 {
+
+  G4cout << "Begin of Run Action" << G4endl;
+
   //Save random number seed
   G4RunManager::GetRunManager()->SetRandomNumberStore(false);
   /*
@@ -70,9 +76,10 @@ void RunAction::BeginOfRunAction(const G4Run*)
 //Finish and close data file
 void RunAction::EndOfRunAction(const G4Run* )
 {
-
+  /*
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
   analysisMan->Write();
   analysisMan->CloseFile();
+  */
 
 }

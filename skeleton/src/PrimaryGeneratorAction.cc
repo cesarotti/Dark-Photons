@@ -29,6 +29,7 @@
 PrimaryGeneratorAction::PrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction()
 {
+  G4cout << "Primaries started" << G4endl;
   G4int nofParticles = 1;
   fParticleGun = new G4ParticleGun(nofParticles);
 
@@ -44,6 +45,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
    //!!!
    //Energy Set to 5 GeV
   fParticleGun->SetParticleEnergy(5.0*GeV);
+  G4cout << "Primaries finished" << G4endl;
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
@@ -53,6 +55,8 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
+
+  G4cout << "Generating Primaries" << G4endl;
   // This function is called at the begining of event
 
   // In order to avoid dependence of PrimaryGeneratorAction
@@ -74,4 +78,5 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   fParticleGun->SetParticlePosition(G4ThreeVector(0., 0., -worldZHalfLength));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
+ 
 }

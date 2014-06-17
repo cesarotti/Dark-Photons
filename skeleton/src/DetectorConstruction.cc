@@ -32,8 +32,8 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
-G4ThreadLocal
-G4GlobalMagFieldMessenger* DetectorConstruction::fMagFieldMessenger = 0;
+//G4ThreadLocal
+//G4GlobalMagFieldMessenger* DetectorConstruction::fMagFieldMessenger = 0;
 
 DetectorConstruction::DetectorConstruction()
   : G4VUserDetectorConstruction(),
@@ -44,7 +44,7 @@ fLogicCrystal(NULL), //logical volume for calorimeter
   fStepLimit(NULL), 
   fCheckOverlaps(true)
 {
-  fMessenger = new DetectorMessenger(this);
+ fMessenger = new DetectorMessenger(this);
 }
 
 DetectorConstruction::~DetectorConstruction()
@@ -75,7 +75,7 @@ void DetectorConstruction::DefineMaterials()
   G4NistManager* nistManager = G4NistManager::Instance();
 
   //Air defined using NIST
-  nistManager->FindOrBuildMaterial("G4_Air");
+  nistManager->FindOrBuildMaterial("G4_AIR");
 
   //Liquid Hydrogen for the target
   G4double z, a, density;
@@ -261,6 +261,8 @@ new G4PVPlacement(0,
  G4double maxStep = 1.0*cm;
  fStepLimit = new G4UserLimits(maxStep);
 
+
+
  return worldPV;
 
 }
@@ -269,6 +271,7 @@ void DetectorConstruction::ConstructSDandField()
 {
   //!!!
   //Create a sensitive detector and put it with logical volumes
+  G4cout << "SD Construction" << G4endl;
 }
 
 void DetectorConstruction::SetTargetMaterial(G4String materialName)

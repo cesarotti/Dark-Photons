@@ -54,6 +54,7 @@ EventAction::~EventAction()
 //Reset your variables
 void EventAction::BeginOfEventAction(const G4Event* run)
 {
+  G4cout << "Being of Event Action" << G4endl;
   fEdep = 0.0;
   fTrackAbs = 0.0;
 
@@ -64,11 +65,13 @@ void EventAction::BeginOfEventAction(const G4Event* run)
 //Add verbosity
 void EventAction::EndOfEventAction(const G4Event* event)
 {
+  G4cout << "End of Event Action" << G4endl;
+  /*
   G4HCofThisEvent* hce = event->GetHCofThisEvent(); //hit collection array allows for several kinds of hits
 
   //analysis manager
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
-
+  */
   //get the hit collection desired and look through results
 
   //always finish ntuples with AddNtupleRow
