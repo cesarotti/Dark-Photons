@@ -27,6 +27,7 @@
 #include "G4eBremsstrahlung.hh"
 
 #include "G4eplusAnnihilation.hh"
+#include "AlwaysTwoGamma.hh"
 
 
 PositronPhysicsList1::PositronPhysicsList1()
@@ -57,7 +58,7 @@ void PositronPhysicsList1::ConstructEM()
   G4ParticleDefinition* positron = G4Positron::PositronDefinition();
   G4ProcessManager* pman = positron->GetProcessManager();
 
-  pman->AddProcess(new G4eplusAnnihilation(), 0, -1, 4);
+  pman->AddProcess(new AlwaysTwoGamma(), 0, -1, 4);
 
 
 }
