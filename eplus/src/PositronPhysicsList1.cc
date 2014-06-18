@@ -28,6 +28,8 @@
 
 #include "G4eplusAnnihilation.hh"
 
+#include "G4VEmProcess.hh"
+
 
 PositronPhysicsList1::PositronPhysicsList1()
 {
@@ -50,15 +52,24 @@ void PositronPhysicsList1::ConstructProcess()
 {
   AddTransportation();
   ConstructEM();
+
 }
 
 void PositronPhysicsList1::ConstructEM()
 {
   G4ParticleDefinition* positron = G4Positron::PositronDefinition();
   G4ProcessManager* pman = positron->GetProcessManager();
+  
 
-  pman->AddProcess(new G4eplusAnnihilation(), 0, -1, 4);
 
+  G4VEmProcess* eplusProc = new G4eplusAnnihilation();
+  // eplusProc->ActivateForcedInteraction(0.0, "test", true);
+  eplusProc->SetCrossSectionBiasingFactor(1e+06, true);
+  pman->AddProcess(eplusProc, 0, -1, 4);
+  
+
+  //pman->AddProcess(new G4eplusAnnihilation(), 0, -1, 4);
+ 
 
 }
 

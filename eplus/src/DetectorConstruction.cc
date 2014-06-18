@@ -34,6 +34,9 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
+#include "G4Region.hh"
+
+
 //G4ThreadLocal
 //G4GlobalMagFieldMessenger* DetectorConstruction::fMagFieldMessenger = 0;
 
@@ -43,6 +46,7 @@ fLogicCalor(NULL), //logical volume for calorimeter
   fLogicTarget(NULL), //logical volume for target
   fTargetMaterial(NULL), //material of target
   fCalorMaterial(NULL), //material of calorimeter
+    fWorldMaterial(NULL),
   fStepLimit(NULL), 
   fCheckOverlaps(true)
 {
@@ -76,14 +80,25 @@ void DetectorConstruction::DefineMaterials()
 
   G4NistManager* nistManager = G4NistManager::Instance();
 
-  //Air defined using NIST
-  nistManager->FindOrBuildMaterial("G4_AIR");
-
-  //Liquid Hydrogen for the target
-  G4double z, a, density;
+ 
+  G4double z, a, density, pressure, temperature;
   G4String name, symbol;
   G4int nComp, nAtom;
 
+
+  //Vacuum for chamber
+  density = universe_mean_density;
+  pressure = 1.e-19*pascal;
+  temperature = 0.1*kelvin;
+  G4Material* vacuum = new G4Material(name="Vacuum", z=1., a=1.01*g/mole, 
+					  density, kStateGas, temperature, 
+					  pressure);
+
+  fWorldMaterial = vacuum;
+
+
+
+  //Liquid hydrogen for the target
   a = 1.01*g/mole;
   G4Element* ele_H = new G4Element(
 				   name="Hydrogen", //name
@@ -120,7 +135,6 @@ void DetectorConstruction::DefineMaterials()
 
 G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 {
-  G4Material* air = G4Material::GetMaterial("G4_AIR");
 
   //Sizes and lengths
 
@@ -158,7 +172,7 @@ G4Box* worldS =
 G4LogicalVolume* worldLV
   = new G4LogicalVolume(
 			worldS, // solid
-			air,  // material
+			fWorldMaterial,  // material
 			"World"); //logical volume's name
 
 // Place the world
@@ -185,6 +199,17 @@ G4Box* targetS =
 
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
+
+ G4Region* testRegion = new G4Region("test");
+ 
+ fLogicTarget->SetRegion(testRegion); 
+
+ testRegion->AddRootLogicalVolume(fLogicTarget);
+
+
+
+
+
  new G4PVPlacement(0, // no rotation
 		   positionTarget, // at (x,y,z)
 		   fLogicTarget, // logical volume
@@ -197,9 +222,9 @@ G4Box* targetS =
  G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
 
+
  //!!!
- //Using replicas to generate crystal array
- //Calorimeter Array
+ //Calorimeter 
 
  G4ThreeVector posCal = G4ThreeVector(0,0, calorPos); 
 
@@ -235,7 +260,7 @@ new G4PVPlacement(0,
  color->SetVisibility(true);
 
  fLogicTarget ->SetVisAttributes(color);
- fLogicCalor ->SetVisAttributes(color);
+ fLogicCalor ->SetVisAttributes(white);
 
  //Setting user Limits
 

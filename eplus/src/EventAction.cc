@@ -48,7 +48,7 @@ EventAction::~EventAction()
 
 //!!!
 //Reset your variables
-void EventAction::BeginOfEventAction(const G4Event* run)
+void EventAction::BeginOfEventAction(const G4Event* /* run*/)
 {
   G4cout << "Being of Event Action" << G4endl;
 
