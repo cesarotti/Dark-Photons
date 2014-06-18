@@ -31,9 +31,20 @@ RunAction::RunAction()
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
   G4cout << "Using" << analysisMan->GetType() << G4endl;
+  analysisMan->SetVerboseLevel(2);
 
   //Creating directories
    analysisMan->SetNtupleDirectoryName("ntuples");
+
+   analysisMan->CreateH1("2Gamma", 
+			 "Photon Hits", 
+			 100, 
+			 0.,
+			 100.0, 
+			 "none",
+			 "none",
+			 "linear");
+
 
    analysisMan->CreateNtuple("2Gamma", "Photon hits");
    analysisMan->CreateNtupleIColumn("Number of hits"); // 0

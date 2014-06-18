@@ -87,6 +87,8 @@ void EventAction::EndOfEventAction(const G4Event* event)
 }
 
   analysisMan->AddNtupleRow();
+
+  analysisMan->FillH1(0, numHits, 1.0);
   
 
 
