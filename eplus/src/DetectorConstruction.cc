@@ -34,7 +34,6 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
-#include "G4Region.hh"
 
 
 //G4ThreadLocal
@@ -200,16 +199,6 @@ G4Box* targetS =
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
 
- G4Region* testRegion = new G4Region("test");
- 
- fLogicTarget->SetRegion(testRegion); 
-
- testRegion->AddRootLogicalVolume(fLogicTarget);
-
-
-
-
-
  new G4PVPlacement(0, // no rotation
 		   positionTarget, // at (x,y,z)
 		   fLogicTarget, // logical volume
@@ -252,15 +241,15 @@ new G4PVPlacement(0,
 
  //Visualization
 
- G4VisAttributes* color = new G4VisAttributes(G4Colour(1.0, 0.4, 0.8));
- G4VisAttributes* white = new G4VisAttributes(G4Colour(1.0, 1.0, 1.0));
+ G4VisAttributes* pink = new G4VisAttributes(G4Colour(1.0, 0.4, 0.8));
+ G4VisAttributes* color  = new G4VisAttributes(G4Colour(0.9, 0.7, 0.2));
 
- worldLV ->SetVisAttributes(white);
+ worldLV ->SetVisAttributes(new G4VisAttributes(G4Colour(1.0,1.0,1.0)));
 
  color->SetVisibility(true);
 
- fLogicTarget ->SetVisAttributes(color);
- fLogicCalor ->SetVisAttributes(white);
+ fLogicTarget ->SetVisAttributes(pink);
+ fLogicCalor ->SetVisAttributes(color);
 
  //Setting user Limits
 

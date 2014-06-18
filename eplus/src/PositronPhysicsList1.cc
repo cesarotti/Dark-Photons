@@ -6,10 +6,12 @@
  
  !!!History
     CJC 6.11.14 Created
+    cJC 6.18.14 Modified likelihood of collision
 
  */
 
 #include "PositronPhysicsList1.hh"
+
 
 #include "G4ProcessManager.hh"
 #include "G4SystemOfUnits.hh"
@@ -63,7 +65,6 @@ void PositronPhysicsList1::ConstructEM()
 
 
   G4VEmProcess* eplusProc = new G4eplusAnnihilation();
-  // eplusProc->ActivateForcedInteraction(0.0, "test", true);
   eplusProc->SetCrossSectionBiasingFactor(1e+06, true);
   pman->AddProcess(eplusProc, 0, -1, 4);
   

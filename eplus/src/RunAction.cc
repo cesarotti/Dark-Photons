@@ -39,8 +39,8 @@ RunAction::RunAction()
    analysisMan->CreateH1("2Gamma", 
 			 "Photon Hits", 
 			 10, 
-			 -5.,
-			 2.5, 
+			 -.5,
+			 5., 
 			 "none",
 			 "none",
 			 "linear");
