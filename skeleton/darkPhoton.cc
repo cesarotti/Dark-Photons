@@ -14,7 +14,13 @@
 
 
 // Required by Geant to actually run
+//#include "G4RunManager.hh"
+
+#ifdef G4MULTITHREADED
+#include "G4MTRunManager.hh"
+#else
 #include "G4RunManager.hh"
+#endif
 
 
 #include "G4UImanager.hh"
@@ -42,7 +48,15 @@ int main(int argc, char** argv)
 
   //construct default run manager
 
+  //G4RunManager * runManager = new G4RunManager;
+  #ifdef G4MULTITHREADED
+  G4MTRunManager * runManager = new G4MTRunManager;
+  runManager->SetNumberOfThreads(7);
+  #else
   G4RunManager * runManager = new G4RunManager;
+  #endif
+
+  //multithreading test
 
   /*Set classes required by Geant. Geant needs for 
 // 1. Defining detector construction
