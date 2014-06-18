@@ -77,12 +77,10 @@ G4bool CalorimeterSD::ProcessHits(G4Step* aStep,
 
 void CalorimeterSD::EndOfEvent(G4HCofThisEvent*)
 {
-  if (verboseLevel>1) {
 	G4int nofHits = fHitsCollection->entries();
 	G4cout << "------->Hits Collection: in this event they are " << nofHits 
 	       << " hits in the calorimeter" << G4endl;
 	for (G4int i =0; i<nofHits; i++) (*fHitsCollection)[i]->Print();
-      }
 }
 
 

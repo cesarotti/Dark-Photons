@@ -2,6 +2,7 @@
  * Dark Photon Detector Construction
  * !!!History:
  *    CJC 6.15.14 created
+ *    CJC 6.18.14 changed calorimeter into tube
  *
  * file: DetectorConstruction.cc
  */
@@ -14,6 +15,7 @@
 #include "G4NistManager.hh"
 
 #include "G4Box.hh"
+#include "G4Tubs.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4PVReplica.hh"
@@ -22,7 +24,6 @@
 #include "G4GeometryManager.hh"
 
 #include "G4PhysicalVolumeStore.hh"
-#include "G4LogicalVolumeStore.hh"
 #include "G4LogicalVolumeStore.hh"
 #include "G4SolidStore.hh"
 
@@ -125,18 +126,20 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 
   G4double targetLength = 10.0*cm; // depth of target
   G4double targetFace = 10.0*cm; //lengths of sides of face of target
-  G4double targetPos = -50.0*cm; // Z coordinate of center of target
-  //!!!
-  G4double calorDist = 200.0*cm; //distance from target to calorimeter
+
+  G4double calorDist = 10*m; //distance from target to calorimeter
+  G4double targetPos = -(.5*calorDist); //position of Z coordinate of target
   G4double calorPos = calorDist + targetPos; //position of calorimeter
 
-  G4int numArray = 50; //number of crystals along a side of the calorimeter
-  G4double crystalFace = 3.0*cm; // length of one side of the cross section of crystal
   G4double crystalLength = 2.54*12.0*cm; //length of crystal
-  G4double calorFace = numArray*crystalFace; //defining mother volumes for crystals
+  // G4double calorFace = numArray*crystalFace; //defining mother volumes for crystals
+
+  G4double calorOuterRad = 1.0*m; //outer radius of calorimeter
+  G4double calorInnerRad = 0.; //inner radius of calorimeter
+
   G4double calorLength = crystalLength;
 
-  G4double worldLength = 2*(calorDist+crystalLength+targetLength);
+  G4double worldLength = 1.2*(calorDist+crystalLength+targetLength-targetPos);
 
 
   G4GeometryManager::GetInstance()->SetWorldMaximumExtent(worldLength);
@@ -200,22 +203,16 @@ G4Box* targetS =
 
  G4ThreeVector posCal = G4ThreeVector(0,0, calorPos); 
 
- //Mother volume
-G4Box* calorimeterS = 
-  new G4Box("calorimeter",
-            calorFace/2,
-	    calorFace/2,
-	    calorLength/2);
+ //Calorimeter Solid as a tube
+G4Tubs* calorimeterS = 
+  new G4Tubs("calorimeter",
+	     calorInnerRad,
+	     calorOuterRad,
+	     calorLength/2, 
+	     0.,
+	     2*pi);
 fLogicCalor = 
   new G4LogicalVolume(calorimeterS, fCalorMaterial, "Calorimeter", 0,0,0);
-
-/*
-//Mother volume along x axis 
-G4Box* motherXS = 
-  new G4Box("mother solid x", motherFace/2, crystalFace/2, motherLength/2);
-G4LogicalVolume* motherXLV = 
-  new G4LogicalVolume(motherXS, fCalorMaterial, "MotherX", 0,0,0);
-*/
 
 
 new G4PVPlacement(0, 
@@ -226,25 +223,6 @@ new G4PVPlacement(0,
 		   false, 
 		   0, 
 		   fCheckOverlaps);
-
-
-
-/*
- //X-Array by replicas
-
- G4PVReplica repX("LinearArrayX", 
-		  fLogicCrystal, 
-		  motherXLV, 
-		  kXAxis, numArray, crystalFace, 0);
-
- // Y-Array by replicas
-
- G4PVReplica repY("LinearArrayY", 
-		  motherXLV, 
-		  motherLV, 
-		  kYAxis, numArray, crystalFace, 0);
-*/
-
 
 
  //Visualization

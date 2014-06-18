@@ -74,16 +74,16 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   G4int numHits = hitColl->entries();
   
-  analysisMan->FillNtupleIColumn(0, numHits);
+  analysisMan->FillNtupleIColumn(0,0, numHits);
   
   for (G4int i=0; (i<numHits) && (i<2); i++)
     {
       CalorHit* newHit = (*hitColl)[i];
       G4ThreeVector position = newHit->GetPos();
-      analysisMan->FillNtupleDColumn(1+(i*3), position.x());
-      analysisMan->FillNtupleDColumn(2+(i*3), position.y());
+      analysisMan->FillNtupleDColumn(0,1+(i*3), position.x());
+      analysisMan->FillNtupleDColumn(0, 2+(i*3), position.y());
       G4double totEnergy = newHit->GetTotalEnergy();
-      analysisMan->FillNtupleDColumn(3+(i*3), totEnergy);
+      analysisMan->FillNtupleDColumn(0, 3+(i*3), totEnergy);
 }
 
   analysisMan->AddNtupleRow();

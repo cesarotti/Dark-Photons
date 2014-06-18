@@ -93,7 +93,7 @@ AlwaysTwoGammaModel::AlwaysTwoGammaModel(const G4ParticleDefinition*,
 {
   theGamma = G4Gamma::Gamma();
   fParticleChange = 0;
-  multiplier = 1.0e+06;
+  multiplier = 1.0e+07;
 
 }
 

@@ -38,22 +38,22 @@ RunAction::RunAction()
 
    analysisMan->CreateH1("2Gamma", 
 			 "Photon Hits", 
-			 100, 
-			 0.,
-			 100.0, 
+			 10, 
+			 -5.,
+			 2.5, 
 			 "none",
 			 "none",
 			 "linear");
 
 
    analysisMan->CreateNtuple("2Gamma", "Photon hits");
-   analysisMan->CreateNtupleIColumn("Number of hits"); // 0
-   analysisMan->CreateNtupleDColumn("X Position Photon1"); // 1
-   analysisMan->CreateNtupleDColumn("Y Position Photon1"); // 2
-   analysisMan->CreateNtupleDColumn("Total Energy Per Photon1"); // 3
-   analysisMan->CreateNtupleDColumn("X Position Photon2"); //4
-   analysisMan->CreateNtupleDColumn("Y Position Photon2"); //5
-   analysisMan->CreateNtupleDColumn("Total Energy Per Photon2"); // 6
+   analysisMan->CreateNtupleIColumn("numHits"); // 0
+   analysisMan->CreateNtupleDColumn("photon1xPos"); // 1
+   analysisMan->CreateNtupleDColumn("photo1yPos"); // 2
+   analysisMan->CreateNtupleDColumn("totEnergyPhoton1"); // 3
+   analysisMan->CreateNtupleDColumn("photon2xPos"); //4
+   analysisMan->CreateNtupleDColumn("photon2yPos"); //5
+   analysisMan->CreateNtupleDColumn("totEnergyPhoton2"); // 6
    analysisMan->FinishNtuple();
   
 
