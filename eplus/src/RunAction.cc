@@ -14,6 +14,7 @@
 #include "RunAction.hh"
 
 #include "G4Run.hh"
+#include "Run.hh"
 #include "G4RunManager.hh"
 
 #include "Analysis.hh"
@@ -65,6 +66,9 @@ RunAction::~RunAction()
 {
   delete G4AnalysisManager::Instance();
 }
+
+G4Run* RunAction::GenerateRun()
+{ return new Run; }
 
 //!!!
 //Data storage
