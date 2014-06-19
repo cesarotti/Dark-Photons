@@ -40,7 +40,7 @@ RunAction::RunAction()
 			 "Photon Hits", 
 			 10, 
 			 -.5,
-			 5., 
+			 3., 
 			 "none",
 			 "none",
 			 "linear");
