@@ -72,13 +72,12 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
  * Liquid hydrogen for the target has to be defined
  * as well as Cesium Iodide for the crystals. Other materials
  * can be found in the NIST directory
+ * CJC 6.18.14
+ * vacuum for tunnel 
  */
 
 void DetectorConstruction::DefineMaterials()
 {
-
-  G4NistManager* nistManager = G4NistManager::Instance();
-
  
   G4double z, a, density, pressure, temperature;
   G4String name, symbol;
@@ -147,8 +146,8 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double crystalLength = 2.54*12.0*cm; //length of crystal
   // G4double calorFace = numArray*crystalFace; //defining mother volumes for crystals
 
-  G4double calorOuterRad = 1.0*m; //outer radius of calorimeter
-  G4double calorInnerRad = 0.; //inner radius of calorimeter
+  G4double calorOuterRad = 5.0*m; //outer radius of calorimeter
+  G4double calorInnerRad = 5.0*cm; //inner radius of calorimeter
 
   G4double calorLength = crystalLength;
 
