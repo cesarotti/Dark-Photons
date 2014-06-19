@@ -38,9 +38,14 @@
 
 #include "CalorHit.hh"
 
+
 EventAction::EventAction()
-  : G4UserEventAction()
-{}
+  : G4UserEventAction(),
+    fDistance(0.) //distance from center of target to front of calorimeter
+{
+  DetectorConstruction* detector = new DetectorConstruction();
+  fDistance = 10*m;
+}
 
 
 EventAction::~EventAction()
@@ -52,6 +57,17 @@ void EventAction::BeginOfEventAction(const G4Event* /* run*/)
 {
   G4cout << "Being of Event Action" << G4endl;
 
+}
+
+G4double EventAction::CalcTheta(G4double x, G4double y)
+{
+  G4double distance;
+  distance  = std::sqrt(x*x+y*y);
+
+  G4float theta =  std::atan(distance/fDistance);
+
+
+  return G4double(theta);
 }
 
 //!!!
@@ -80,10 +96,12 @@ void EventAction::EndOfEventAction(const G4Event* event)
     {
       CalorHit* newHit = (*hitColl)[i];
       G4ThreeVector position = newHit->GetPos();
+      G4cout << "x: " << position.x() << " y: " << position.y();
       analysisMan->FillNtupleDColumn(0,1+(i*3), position.x());
       analysisMan->FillNtupleDColumn(0, 2+(i*3), position.y());
       G4double totEnergy = newHit->GetTotalEnergy();
       analysisMan->FillNtupleDColumn(0, 3+(i*3), totEnergy);
+      analysisMan->FillNtupleDColumn(0, 7+(i%2), CalcTheta(position.x(), position.y()));
 }
 
   analysisMan->AddNtupleRow();

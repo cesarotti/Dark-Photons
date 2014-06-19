@@ -45,6 +45,10 @@ public:
   void SetMaxStep(G4double );
   void SetCheckOverlaps(G4bool );
 
+  //get methods
+  // G4double GetCalorDistance();
+
+
 
 private:
   //methods
@@ -65,6 +69,8 @@ private:
   DetectorMessenger* fMessenger; // messenger
 
   G4bool fCheckOverlaps; // option to turn on or off overlap checking.
+
+  //G4double fCenterToFront; //distance from center fo the target to the 
 
   static G4ThreadLocal G4GlobalMagFieldMessenger* fMagFieldMessenger;
 

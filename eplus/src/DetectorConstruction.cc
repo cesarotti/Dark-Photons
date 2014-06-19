@@ -47,7 +47,8 @@ fLogicCalor(NULL), //logical volume for calorimeter
   fCalorMaterial(NULL), //material of calorimeter
     fWorldMaterial(NULL),
   fStepLimit(NULL), 
-  fCheckOverlaps(true)
+    fCheckOverlaps(true) 
+    //  fCenterToFront(0.)
 {
  fMessenger = new DetectorMessenger(this);
 }
@@ -139,19 +140,20 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double targetLength = 10.0*cm; // depth of target
   G4double targetFace = 10.0*cm; //lengths of sides of face of target
 
-  G4double calorDist = 10*m; //distance from target to calorimeter
-  G4double targetPos = -(.5*calorDist); //position of Z coordinate of target
-  G4double calorPos = calorDist + targetPos; //position of calorimeter
-
-  G4double crystalLength = 2.54*12.0*cm; //length of crystal
-  // G4double calorFace = numArray*crystalFace; //defining mother volumes for crystals
-
-  G4double calorOuterRad = 5.0*m; //outer radius of calorimeter
-  G4double calorInnerRad = 5.0*cm; //inner radius of calorimeter
-
+  G4double crystalLength = 2.54*12.0*cm; 
   G4double calorLength = crystalLength;
 
+  G4double calorSpacing = 10*m; //distance from target to calorimeter
+  G4double targetPos = -(.5*calorSpacing); //position of Z coordinate of target
+  G4double calorDist = 10*m + .5*targetLength;
+  G4double calorPos = calorDist + targetPos; //position of calorimeter
+
+  G4double calorOuterRad = 5.0*m; //outer radius of calorimeter
+  G4double calorInnerRad = 2.0*cm; //inner radius of calorimeter
+
   G4double worldLength = 1.2*(calorDist+crystalLength+targetLength-targetPos);
+
+  //fCenterToFront = calorDist-0.5*calorLength;
 
 
   G4GeometryManager::GetInstance()->SetWorldMaximumExtent(worldLength);
@@ -327,6 +329,13 @@ void DetectorConstruction::SetCheckOverlaps(G4bool checkOverlaps)
   G4cout << fCheckOverlaps <<G4endl;
 }
 
+//Implement later
+/*
+G4double DetectorConstruction::GetCalorDistance()
+{
+  return fCenterToFront;
+}
+*/
        
 
 

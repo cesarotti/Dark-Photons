@@ -14,7 +14,6 @@
 #include "RunAction.hh"
 
 #include "G4Run.hh"
-#include "Run.hh"
 #include "G4RunManager.hh"
 
 #include "Analysis.hh"
@@ -37,7 +36,7 @@ RunAction::RunAction()
   //Creating directories
    analysisMan->SetNtupleDirectoryName("ntuples");
 
-   analysisMan->CreateH1("2Gamma", 
+   analysisMan->CreateH1("Photon_Hits", 
 			 "Photon Hits", 
 			 10, 
 			 -.5,
@@ -47,7 +46,7 @@ RunAction::RunAction()
 			 "linear");
 
 
-   analysisMan->CreateNtuple("2Gamma", "Photon hits");
+   analysisMan->CreateNtuple("Gamma_Info", "Photon hits");
    analysisMan->CreateNtupleIColumn("numHits"); // 0
    analysisMan->CreateNtupleDColumn("photon1xPos"); // 1
    analysisMan->CreateNtupleDColumn("photo1yPos"); // 2
@@ -55,6 +54,8 @@ RunAction::RunAction()
    analysisMan->CreateNtupleDColumn("photon2xPos"); //4
    analysisMan->CreateNtupleDColumn("photon2yPos"); //5
    analysisMan->CreateNtupleDColumn("totEnergyPhoton2"); // 6
+   analysisMan->CreateNtupleDColumn("theta1"); //7
+   analysisMan->CreateNtupleDColumn("theta2"); //8
    analysisMan->FinishNtuple();
   
 
@@ -67,9 +68,6 @@ RunAction::~RunAction()
   delete G4AnalysisManager::Instance();
 }
 
-G4Run* RunAction::GenerateRun()
-{ return new Run; }
-
 //!!!
 //Data storage
 void RunAction::BeginOfRunAction(const G4Run*)
@@ -81,7 +79,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
  
-   analysisMan->OpenFile("2Gamma");
+   analysisMan->OpenFile("TwoGamma");
 
 }
 
