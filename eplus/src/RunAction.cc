@@ -56,6 +56,8 @@ RunAction::RunAction()
    analysisMan->CreateNtupleDColumn("totEnergyPhoton2"); // 6
    analysisMan->CreateNtupleDColumn("theta1"); //7
    analysisMan->CreateNtupleDColumn("theta2"); //8
+   analysisMan->CreateNtupleIColumn("crystalNum1"); //9
+   analysisMan->CreateNtupleIColumn("cyrstalNum2"); //10
    analysisMan->FinishNtuple();
   
 

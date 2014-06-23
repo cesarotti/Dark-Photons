@@ -3,6 +3,7 @@
  *
  *!!!History
  *   CJC 6.17.14 created
+ *   CJC 6.23.14 updated for multiple crystal calorimeter
  */
 
 #include "CalorimeterSD.hh"
@@ -13,11 +14,15 @@
 #include "G4SDManager.hh"
 #include "G4ios.hh"
 #include "G4SystemOfUnits.hh"
+#include "G4Colour.hh"
+#include "G4LogicalVolume.hh"
+#include "G4VPhysicalVolume.hh"
 
 CalorimeterSD::CalorimeterSD(const G4String& name,
 			   const G4String& hitsCollectionName)
   : G4VSensitiveDetector(name), 
     fHitsCollection(NULL),
+    fCrystalNum(0),
     thresholdEnergy(0.) // minimal energy to count as a hit
 {
   collectionName.insert(hitsCollectionName);
@@ -67,8 +72,16 @@ G4bool CalorimeterSD::ProcessHits(G4Step* aStep,
       newHit->SetTrackID (aStep->GetTrack()->GetTrackID());
       newHit->SetTotalEnergy(aStep->GetTrack()->GetTotalEnergy()); 
       newHit->SetPos (aStep->GetPostStepPoint()->GetPosition());
-      newHit->SetMomentum(aStep->GetTrack()->GetMomentum());
+      newHit->SetCrystalNumber(aStep->GetPreStepPoint()->GetTouchableHandle()
+			       ->GetReplicaNumber());
+      G4int copyNum = aStep->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(1);
+  G4int replicaNum = aStep->GetPreStepPoint()->GetTouchableHandle()->GetReplicaNumber();
+      
+  G4cout << "copy number: " << copyNum << G4endl;
+  G4cout << "replica number: " << replicaNum << G4endl;
 
+      newHit->SetMomentum(aStep->GetTrack()->GetMomentum());
+     
       fHitsCollection->insert(newHit);
     }
 
@@ -78,8 +91,6 @@ G4bool CalorimeterSD::ProcessHits(G4Step* aStep,
 void CalorimeterSD::EndOfEvent(G4HCofThisEvent*)
 {
 	G4int nofHits = fHitsCollection->entries();
-	G4cout << "------->Hits Collection: in this event they are " << nofHits 
-	       << " hits in the calorimeter" << G4endl;
 	for (G4int i =0; i<nofHits; i++) (*fHitsCollection)[i]->Print();
 }
 

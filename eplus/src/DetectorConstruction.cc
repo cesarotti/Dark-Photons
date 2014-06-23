@@ -19,6 +19,7 @@
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4PVReplica.hh"
+#include "G4VPhysicalVolume.hh"
 #include "G4SDManager.hh"
 #include "G4GeometryTolerance.hh"
 #include "G4GeometryManager.hh"
@@ -51,6 +52,7 @@ fLogicCalor(NULL), //logical volume for calorimeter
     //  fCenterToFront(0.)
 {
  fMessenger = new DetectorMessenger(this);
+ fLogicCalor = new G4LogicalVolume*[10];
 }
 
 DetectorConstruction::~DetectorConstruction()
@@ -79,6 +81,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 void DetectorConstruction::DefineMaterials()
 {
+
+  G4NistManager* nistManager = G4NistManager::Instance();
+
+  nistManager->FindOrBuildMaterial("G4_AIR");
  
   G4double z, a, density, pressure, temperature;
   G4String name, symbol;
@@ -135,6 +141,8 @@ void DetectorConstruction::DefineMaterials()
 G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 {
 
+  G4Material* Air = G4Material::GetMaterial("G4_AIR");
+
   //Sizes and lengths
 
   G4double targetLength = 10.0*cm; // depth of target
@@ -148,8 +156,8 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double calorDist = 10*m + .5*targetLength;
   G4double calorPos = calorDist + targetPos; //position of calorimeter
 
-  G4double calorOuterRad = 5.0*m; //outer radius of calorimeter
-  G4double calorInnerRad = 2.0*cm; //inner radius of calorimeter
+  G4double calorOuterRad = 87.0*cm; //outer radius of calorimeter
+  G4double calorInnerRad = 35.0*cm; //inner radius of calorimeter
 
   G4double worldLength = 1.2*(calorDist+crystalLength+targetLength-targetPos);
 
@@ -216,8 +224,9 @@ G4Box* targetS =
  //!!!
  //Calorimeter 
 
+ 
  G4ThreeVector posCal = G4ThreeVector(0,0, calorPos); 
-
+/*
  //Calorimeter Solid as a tube
 G4Tubs* calorimeterS = 
   new G4Tubs("calorimeter",
@@ -238,6 +247,53 @@ new G4PVPlacement(0,
 		   false, 
 		   0, 
 		   fCheckOverlaps);
+*/
+
+ double arc = 2*pi*rad;
+ double calorSeg = (calorOuterRad-calorInnerRad)/10.;
+
+ for (int copyNum=0; copyNum<10; copyNum++) 
+{
+  double newRad = calorInnerRad+(copyNum*calorSeg);
+  int angleDiv = int( pi*2*newRad/50.); //finds best number of slices
+
+  G4Tubs* calorimeterS = new G4Tubs("calorimeter", 
+				    newRad, 
+				    newRad+calorSeg, 
+				    calorLength/2, 
+				    0.,
+				    arc);
+
+  fLogicCalor[copyNum] = new G4LogicalVolume(calorimeterS, 
+					     Air, 
+					     "CalorimeterLV", 
+					     0, 0, 0);
+
+  fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(0.4,1.0, 1.0)); 
+  // G4VPhysicalVolume* calorPV = 
+  new G4PVPlacement(0, 
+		    posCal, 
+		    fLogicCalor[copyNum],
+		    "Calorimeter_MV", 
+		    worldLV, 
+		    false, 
+		    copyNum, 
+		    fCheckOverlaps);
+
+G4Tubs* crystalS = 
+  new G4Tubs("crystal",
+	     newRad, newRad+calorSeg, calorLength/2, 
+	     0., arc/angleDiv);
+
+G4LogicalVolume* crystalLV = 
+  new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV", 0,0,0);
+
+//G4VPhysicalVolume* crystalRep = 
+  new G4PVReplica("crystalRep", crystalLV, fLogicCalor[copyNum],
+		kPhi, angleDiv, arc/angleDiv);
+
+
+ }
 
 
  //Visualization
@@ -250,7 +306,7 @@ new G4PVPlacement(0,
  color->SetVisibility(true);
 
  fLogicTarget ->SetVisAttributes(pink);
- fLogicCalor ->SetVisAttributes(color);
+ //fLogicCalor ->SetVisAttributes(color);
 
  //Setting user Limits
 
@@ -271,7 +327,7 @@ void DetectorConstruction::ConstructSDandField()
   CalorimeterSD* calorimeterSD =
     new CalorimeterSD(calorimeterSDname, "CalorimeterHitsCollection");
 
-  SetSensitiveDetector("Calorimeter", calorimeterSD, true);
+  SetSensitiveDetector("CrystalLV", calorimeterSD, true); //sets SD to all logical volumes with the name CrystalLV
 
   G4cout << "SD Construction.....Complete!" << G4endl;
 }
@@ -306,8 +362,10 @@ G4Material* pttoMaterial =
  if(fTargetMaterial != pttoMaterial) {
    if ( pttoMaterial) {
      fCalorMaterial = pttoMaterial; 
-     if (fLogicCalor) fLogicCalor->SetMaterial(fCalorMaterial);
+     for (G4int copyNum=0; copyNum<10; copyNum++){
+     if (fLogicCalor[copyNum]) fLogicCalor[copyNum]->SetMaterial(fCalorMaterial);
      G4cout << "\n-----> The calorimeter is made of " << materialName << G4endl;
+     }
    }
    else {
      G4cout << "\n --> Warning from SetCalorMaterial: " << 

@@ -44,6 +44,8 @@ public:
   {fPos = pos;};
   void SetMomentum(G4ThreeVector pv)
   {fMomentum = pv;};
+  void SetCrystalNumber(G4int copyNo)
+  {fCrystalNum = copyNo;};
 
   //Get methods
   G4int GetTrack()
@@ -54,6 +56,8 @@ public:
   {return fPos;};
   G4ThreeVector GetMomentum()
   {return fMomentum;};
+  G4int GetCrystalNumber()
+  {return fCrystalNum;};
 
 private:
 
@@ -61,6 +65,7 @@ private:
   G4double fTotalEnergy;
   G4ThreeVector fPos;
   G4ThreeVector fMomentum;
+  G4int fCrystalNum;
 };
 
 //Allow for a hits collection of CalorHits

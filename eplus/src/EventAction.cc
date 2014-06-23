@@ -29,6 +29,8 @@
 
 #include "Analysis.hh"
 
+#include "G4PhysicalConstants.hh"
+
 #include "G4Event.hh"
 #include "G4EventManager.hh"
 #include "G4TrajectoryContainer.hh"
@@ -59,6 +61,10 @@ void EventAction::BeginOfEventAction(const G4Event* /* run*/)
 
 }
 
+/*
+ *Calculates the angle from the Z axis the photon hits the target
+ *returns G4double angle in degrees
+ */
 G4double EventAction::CalcTheta(G4double x, G4double y)
 {
   G4double distance;
@@ -67,7 +73,7 @@ G4double EventAction::CalcTheta(G4double x, G4double y)
   G4float theta =  std::atan(distance/fDistance);
 
 
-  return G4double(theta);
+  return G4double(theta*180/pi);
 }
 
 //!!!
@@ -100,8 +106,9 @@ void EventAction::EndOfEventAction(const G4Event* event)
       analysisMan->FillNtupleDColumn(0,1+(i*3), position.x());
       analysisMan->FillNtupleDColumn(0, 2+(i*3), position.y());
       G4double totEnergy = newHit->GetTotalEnergy();
-      analysisMan->FillNtupleDColumn(0, 3+(i*3), totEnergy);
+      analysisMan->FillNtupleDColumnx(0, 3+(i*3), totEnergy);
       analysisMan->FillNtupleDColumn(0, 7+(i%2), CalcTheta(position.x(), position.y()));
+      analysisMan->FillNtupleIColumn(0, 9+i, newHit->GetCrystalNumber());
 }
 
   analysisMan->AddNtupleRow();
