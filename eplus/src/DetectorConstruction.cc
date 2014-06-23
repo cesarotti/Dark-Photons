@@ -147,7 +147,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   // G4double calorFace = numArray*crystalFace; //defining mother volumes for crystals
 
   G4double calorOuterRad = 5.0*m; //outer radius of calorimeter
-  G4double calorInnerRad = 5.0*cm; //inner radius of calorimeter
+  G4double calorInnerRad = 100.0*cm; //inner radius of calorimeter
 
   G4double calorLength = crystalLength;
 
@@ -198,7 +198,7 @@ G4Box* targetS =
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
 
- new G4PVPlacement(0, // no rotation
+ fPhysicalTarget = new G4PVPlacement(0, // no rotation
 		   positionTarget, // at (x,y,z)
 		   fLogicTarget, // logical volume
 		   "Target", //name

@@ -35,7 +35,7 @@ RunAction::RunAction()
 
   //Creating directories
    analysisMan->SetNtupleDirectoryName("ntuples");
-
+  /*
    analysisMan->CreateH1("2Gamma", 
 			 "Photon Hits", 
 			 10, 
@@ -49,14 +49,33 @@ RunAction::RunAction()
    analysisMan->CreateNtuple("2Gamma", "Photon hits");
    analysisMan->CreateNtupleIColumn("numHits"); // 0
    analysisMan->CreateNtupleDColumn("photon1xPos"); // 1
-   analysisMan->CreateNtupleDColumn("photo1yPos"); // 2
+   analysisMan->CreateNtupleDColumn("photon1yPos"); // 2
    analysisMan->CreateNtupleDColumn("totEnergyPhoton1"); // 3
-   analysisMan->CreateNtupleDColumn("photon2xPos"); //4
-   analysisMan->CreateNtupleDColumn("photon2yPos"); //5
-   analysisMan->CreateNtupleDColumn("totEnergyPhoton2"); // 6
-   analysisMan->FinishNtuple();
-  
+   analysisMan->CreateNtupleDColumn("photon1xMomentum"); // 4
+   analysisMan->CreateNtupleDColumn("photon1yMomentum"); // 5
+   analysisMan->CreateNtupleDColumn("photon1zMomentum"); // 6
 
+
+   analysisMan->CreateNtupleDColumn("photon2xPos"); //7
+   analysisMan->CreateNtupleDColumn("photon2yPos"); //8
+   analysisMan->CreateNtupleDColumn("totEnergyPhoton2"); // 9
+   analysisMan->CreateNtupleDColumn("photon2xMomentum"); // 10
+   analysisMan->CreateNtupleDColumn("photon2yMomentum"); // 11
+   analysisMan->CreateNtupleDColumn("photon2zMomentum"); // 12
+   analysisMan->FinishNtuple();
+    */
+
+   analysisMan->CreateNtuple("qanalysis", "Photon Positron");
+   analysisMan->CreateNtupleDColumn("Energy_Photon"); // 0
+   analysisMan->CreateNtupleDColumn("photon_x_Momentum"); // 1
+   analysisMan->CreateNtupleDColumn("photon_y_Momentum"); // 2
+   analysisMan->CreateNtupleDColumn("photon_z_Momentum"); // 3
+
+   analysisMan->CreateNtupleDColumn("Energy_Positron"); // 4
+   analysisMan->CreateNtupleDColumn("positron_x_Momentum"); // 5
+   analysisMan->CreateNtupleDColumn("positron_y_Momentum"); // 6
+   analysisMan->CreateNtupleDColumn("positron_z_Momentum"); // 7
+   analysisMan->FinishNtuple();
 }
 
 
@@ -77,7 +96,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
  
-   analysisMan->OpenFile("2Gamma");
+   analysisMan->OpenFile("qanalysis");
 
 }
 

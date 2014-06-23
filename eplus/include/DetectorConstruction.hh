@@ -45,6 +45,7 @@ public:
   void SetMaxStep(G4double );
   void SetCheckOverlaps(G4bool );
 
+  const G4VPhysicalVolume* GetTargetPV() const;
 
 private:
   //methods
@@ -55,6 +56,8 @@ private:
 
   G4LogicalVolume* fLogicCalor; //pointer to calorimeter
   G4LogicalVolume* fLogicTarget; //pointer to logical target
+
+  G4VPhysicalVolume* fPhysicalTarget;
 
   G4Material* fTargetMaterial; // pointer to target material
   G4Material* fCalorMaterial; // pointer to calorimeter material
@@ -71,5 +74,10 @@ private:
 
 
 };
+
+inline const G4VPhysicalVolume* DetectorConstruction::GetTargetPV() const { 
+  return fPhysicalTarget; 
+}
+
 
 #endif

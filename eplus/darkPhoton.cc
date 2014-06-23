@@ -60,12 +60,14 @@ int main(int argc, char** argv)
 // 4. Initializing the G4 kernel
    */
   //use specific physics list
-  G4VUserPhysicsList* physicsList = new PositronPhysicsList1(); 
-  runManager->SetUserInitialization(physicsList);
   DetectorConstruction* test = new DetectorConstruction();
   runManager->SetUserInitialization(test);
+
+  G4VUserPhysicsList* physicsList = new PositronPhysicsList1(); 
+  runManager->SetUserInitialization(physicsList);
+ 
   //!!!
-  runManager->SetUserInitialization(new ActionInitialization());
+  runManager->SetUserInitialization(new ActionInitialization(test));
 
   //Initialize G4 kernel
 
@@ -81,14 +83,21 @@ int main(int argc, char** argv)
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
   //!!!!
   //Sets default verbosity for tracking
-  UImanager->ApplyCommand("/tracking/verbose 1");
+  //UImanager->ApplyCommand("/tracking/verbose 1");
 
     //batch mode
     if (argc !=1)
       {
-	G4String command = "/control/execture ";
+        G4cout << __LINE__ << G4endl;
+	G4String command = "/control/execute ";
+          G4cout << __LINE__ << G4endl;
+
 	G4String fileName = argv[1]; 
+          G4cout << fileName << G4endl;
+
 	UImanager->ApplyCommand(command+fileName);
+          G4cout << __LINE__ << G4endl;
+
       }
     else
       {   // interactive mode: define UI session
@@ -119,6 +128,9 @@ int main(int argc, char** argv)
     //  delete visManager;
     //#endif
 
+#ifdef G4VIS_USE
+  delete visManager;
+#endif
   delete runManager;
 
   return 0;

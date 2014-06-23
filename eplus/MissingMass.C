@@ -8,15 +8,17 @@
 using namespace std;
 
 int MissingMass(){
-  //everything is in units of MeV
+  //everything is in units of MeV,m
   const double eMass=0.511;
-  const double E1=3000;
+  const double E1=5000;
   const double E2=eMass;
   const double epz=pow(pow(E1,2)-pow(eMass,2),0.5);
   const double epy=0;
   const double epx=0;
   const double target_x=0;
   const double target_y=0;
+  const double target_z=-5;
+  const double calo_z=5;
 
   TBranch *xBranch1;
   TBranch *yBranch1;
@@ -32,17 +34,35 @@ int MissingMass(){
   double E_2;
   TBranch *nHitBranch;
   int nhit;
+  TBranch *xMomentumBranch1;
+  TBranch *yMomentumBranch1;
+  TBranch *zMomentumBranch1;
+  TBranch *xMomentumBranch2;
+  TBranch *yMomentumBranch2;
+  TBranch *zMomentumBranch2;
+  double px_1;
+  double py_1;
+  double pz_1;
+  double px_2;
+  double py_2;
+  double pz_2;
   TFile *data = new TFile("2Gamma.root","OPEN");
 
   TTree *tree = (TTree *)data->Get("ntuples/2Gamma");
-  tree->SetMakeClass(7);
-  tree->SetBranchAddress("Number_of_hits", &nhit, &nHitBranch);
-  tree->SetBranchAddress("X_Position_Photon1", &pos_x_1, &xBranch1);
-  tree->SetBranchAddress("X_Position_Photon2", &pos_x_2, &xBranch2);
-  tree->SetBranchAddress("Y_Position_Photon1", &pos_y_1, &yBranch1);
-  tree->SetBranchAddress("Y_Position_Photon2", &pos_y_2, &yBranch2);
-  tree->SetBranchAddress("Total_Energy_Per_Photon1", &E_1, &EBranch1);
-  tree->SetBranchAddress("Total_Energy_Per_Photon2", &E_2, &EBranch2);
+  tree->SetMakeClass(1);
+  tree->SetBranchAddress("numHits", &nhit, &nHitBranch);
+  tree->SetBranchAddress("photon1xPos", &pos_x_1, &xBranch1);
+  tree->SetBranchAddress("photon2xPos", &pos_x_2, &xBranch2);
+  tree->SetBranchAddress("photon1yPos", &pos_y_1, &yBranch1);
+  tree->SetBranchAddress("photon2yPos", &pos_y_2, &yBranch2);
+  tree->SetBranchAddress("totEnergyPhoton1", &E_1, &EBranch1);
+  tree->SetBranchAddress("totEnergyPhoton2", &E_2, &EBranch2);
+  tree->SetBranchAddress("photon1xMomentum", &px_1, &xMomentumBranch1);
+  tree->SetBranchAddress("photon1yMomentum", &py_1, &yMomentumBranch1);
+  tree->SetBranchAddress("photon1zMomentum", &pz_1, &zMomentumBranch1);
+  tree->SetBranchAddress("photon2xMomentum", &px_2, &xMomentumBranch2);
+  tree->SetBranchAddress("photon2yMomentum", &py_2, &yMomentumBranch2);
+  tree->SetBranchAddress("photon2zMomentum", &pz_2, &zMomentumBranch2);
 
 
   TFile *f = new TFile("output.root","RECREAT");
@@ -53,20 +73,17 @@ int MissingMass(){
     xBranch1->GetEntry(ev);
     yBranch1->GetEntry(ev);
     EBranch1->GetEntry(ev);
+    xMomentumBranch1->GetEntry(ev);
+    yMomentumBranch1->GetEntry(ev);
+    zMomentumBranch1->GetEntry(ev);
     
     double tempE=E1+E2-E_1;
-    double arc = pow(pow((pos_x_1-target_x),2)+pow((pos_y_1-target_y),2),0.5);
-    double cosine=(pos_x_1-target_x)/arc;
-    double sine=(pos_y_1-target_y)/arc;
-    double px=E_1*cosine;
-    double py=E_1*sine;
-    double pz=0;
 
-    double temppx=epx-px;
-    double temppy=epy-py;
-    double temppz=epz-pz;
+    double temppx=epx-px_1;
+    double temppy=epy-py_1;
+    double temppz=epz-pz_1;
+    //double misMass=2*pow(eMass,2)+2*E1*(E2-E_1)-2*E2*E_1+2*pz*epz;
     double misMass=pow(pow(tempE,2)-pow(temppx,2)-pow(temppy,2)-pow(temppz,2),0.5);
-    
     /*
     if (misMass<0) {
       cout << "====== Output information ======" << endl;
@@ -75,8 +92,8 @@ int MissingMass(){
       cout << pz << endl;
       cout << E << endl;
     }*/
-
-    hmm->Fill(misMass);
+    if (E_1!=0) 
+      hmm->Fill(misMass);
   }
   
   TCanvas *c1 = new TCanvas("c1", "px_distribution", 800, 800);

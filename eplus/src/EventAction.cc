@@ -51,6 +51,10 @@ EventAction::~EventAction()
 void EventAction::BeginOfEventAction(const G4Event* /* run*/)
 {
   G4cout << "Being of Event Action" << G4endl;
+  StorePhoton(0,0,0,0);
+  StorePositron(0,0,0,0);
+
+
 
 }
 
@@ -65,6 +69,23 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   //analysis manager
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
+
+   if ((fPhotonE!=0) && (fPositronE!=0)) {
+    
+    // fill ntuple
+    analysisMan->FillNtupleDColumn(0, fPhotonE/MeV);
+    analysisMan->FillNtupleDColumn(1, fPhotonPx/MeV);
+    analysisMan->FillNtupleDColumn(2, fPhotonPy/MeV);
+    analysisMan->FillNtupleDColumn(3, fPhotonPz/MeV);
+
+    analysisMan->FillNtupleDColumn(4, fPositronE/MeV);
+    analysisMan->FillNtupleDColumn(5, fPositronPx/MeV);
+    analysisMan->FillNtupleDColumn(6, fPositronPy/MeV);
+    analysisMan->FillNtupleDColumn(7, fPositronPz/MeV);
+
+    analysisMan->AddNtupleRow();  
+  }
+  /*
   G4SDManager* fSDM = G4SDManager::GetSDMpointer();
 
   //get ID for the calorimeter's hit collection
@@ -80,15 +101,20 @@ void EventAction::EndOfEventAction(const G4Event* event)
     {
       CalorHit* newHit = (*hitColl)[i];
       G4ThreeVector position = newHit->GetPos();
-      analysisMan->FillNtupleDColumn(0,1+(i*3), position.x());
-      analysisMan->FillNtupleDColumn(0, 2+(i*3), position.y());
+      analysisMan->FillNtupleDColumn(0, 1+(i*6), position.x()/m);
+      analysisMan->FillNtupleDColumn(0, 2+(i*6), position.y()/m);
       G4double totEnergy = newHit->GetTotalEnergy();
-      analysisMan->FillNtupleDColumn(0, 3+(i*3), totEnergy);
+      analysisMan->FillNtupleDColumn(0, 3+(i*6), totEnergy/MeV);
+      G4ThreeVector momentum = newHit->GetMomentum();
+      analysisMan->FillNtupleDColumn(0, 4+(i*6), momentum.x()/MeV);
+      analysisMan->FillNtupleDColumn(0, 5+(i*6), momentum.y()/MeV);
+      analysisMan->FillNtupleDColumn(0, 6+(i*6), momentum.z()/MeV);
 }
 
   analysisMan->AddNtupleRow();
 
   analysisMan->FillH1(0, numHits, 1.0);
+  */
   
 
 

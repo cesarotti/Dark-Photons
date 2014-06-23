@@ -14,10 +14,11 @@
 #include "ActionInitialization.hh"
 #include "PrimaryGeneratorAction.hh"
 #include "RunAction.hh"
+#include "SteppingAction.hh"
 #include "EventAction.hh"
 
-ActionInitialization::ActionInitialization()
-  : G4VUserActionInitialization()
+ActionInitialization::ActionInitialization(DetectorConstruction *detConstruction)
+ : G4VUserActionInitialization(), fDetConstruction(detConstruction)
 {}
 
 ActionInitialization::~ActionInitialization()
@@ -37,7 +38,9 @@ void ActionInitialization::Build() const
 
   SetUserAction(new PrimaryGeneratorAction);
   SetUserAction(new RunAction);
-  SetUserAction(new EventAction);
+  EventAction* eventAction = new EventAction();
+  SetUserAction(eventAction);
+  SetUserAction(new SteppingAction(fDetConstruction,eventAction));
 
   G4cout << "Action initializer complete" << G4endl;
 }

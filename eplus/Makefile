@@ -443,6 +443,30 @@ src/RunAction.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/RunAction.cc.s
 .PHONY : src/RunAction.cc.s
 
+src/SteppingAction.o: src/SteppingAction.cc.o
+.PHONY : src/SteppingAction.o
+
+# target to build an object file
+src/SteppingAction.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/SteppingAction.cc.o
+.PHONY : src/SteppingAction.cc.o
+
+src/SteppingAction.i: src/SteppingAction.cc.i
+.PHONY : src/SteppingAction.i
+
+# target to preprocess a source file
+src/SteppingAction.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/SteppingAction.cc.i
+.PHONY : src/SteppingAction.cc.i
+
+src/SteppingAction.s: src/SteppingAction.cc.s
+.PHONY : src/SteppingAction.s
+
+# target to generate assembly for a file
+src/SteppingAction.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/SteppingAction.cc.s
+.PHONY : src/SteppingAction.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -492,6 +516,9 @@ help:
 	@echo "... src/RunAction.o"
 	@echo "... src/RunAction.i"
 	@echo "... src/RunAction.s"
+	@echo "... src/SteppingAction.o"
+	@echo "... src/SteppingAction.i"
+	@echo "... src/SteppingAction.s"
 .PHONY : help
 
 

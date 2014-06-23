@@ -22,7 +22,35 @@ public:
 
   virtual void BeginOfEventAction(const G4Event* );
   virtual void EndOfEventAction(const G4Event* );
+  
+  void StorePhoton(G4double px, G4double py, G4double pz, G4double E);
+  void StorePositron(G4double px, G4double py, G4double pz, G4double E);
 
+  private:
+  	G4double fPhotonPx;
+  	G4double fPhotonPy;
+  	G4double fPhotonPz;
+  	G4double fPhotonE;
+  	G4double fPositronPx;
+  	G4double fPositronPy;
+  	G4double fPositronPz;
+  	G4double fPositronE;  	
 
 };
+
+inline void EventAction::StorePhoton(G4double px, G4double py, G4double pz, G4double E){
+	fPhotonPx=px;
+	fPhotonPy=py;
+	fPhotonPz=pz;
+	fPhotonE=E;
+}
+
+inline void EventAction::StorePositron(G4double px, G4double py, G4double pz, G4double E){
+	fPositronPx=px;
+	fPositronPy=py;
+	fPositronPz=pz;
+	fPositronE=E;
+}
+
+
  #endif
