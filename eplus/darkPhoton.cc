@@ -88,16 +88,9 @@ int main(int argc, char** argv)
     //batch mode
     if (argc !=1)
       {
-        G4cout << __LINE__ << G4endl;
 	G4String command = "/control/execute ";
-          G4cout << __LINE__ << G4endl;
-
 	G4String fileName = argv[1]; 
-          G4cout << fileName << G4endl;
-
 	UImanager->ApplyCommand(command+fileName);
-          G4cout << __LINE__ << G4endl;
-
       }
     else
       {   // interactive mode: define UI session
