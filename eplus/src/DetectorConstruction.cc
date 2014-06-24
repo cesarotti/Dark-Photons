@@ -252,10 +252,10 @@ new G4PVPlacement(0,
  double arc = 2*pi*rad;
  double calorSeg = (calorOuterRad-calorInnerRad)/10.;
 
- for (int copyNum=0; copyNum<10; copyNum++) 
+ for (int copyNum=1; copyNum<11; copyNum++) //ten rings, start at 1
 {
-  double newRad = calorInnerRad+(copyNum*calorSeg);
-  int angleDiv = int( pi*2*newRad/50.); //finds best number of slices
+  double newRad = calorInnerRad+((copyNum-1)*calorSeg);
+  int angleDiv = 60; //int( pi*2*newRad/50.); //finds best number of slices
 
   G4Tubs* calorimeterS = new G4Tubs("calorimeter", 
 				    newRad, 
@@ -269,7 +269,7 @@ new G4PVPlacement(0,
 					     "CalorimeterLV", 
 					     0, 0, 0);
 
-  fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(0.4,1.0, 1.0)); 
+  fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(0.1*(copyNum-1),1.0-(copyNum-1)*.1, 1.0)); 
   // G4VPhysicalVolume* calorPV = 
   new G4PVPlacement(0, 
 		    posCal, 
