@@ -45,7 +45,7 @@ EventAction::EventAction()
   : G4UserEventAction(),
     fDistance(0.) //distance from center of target to front of calorimeter
 {
-  DetectorConstruction* detector = new DetectorConstruction();
+  // DetectorConstruction* detector = new DetectorConstruction();
   fDistance = 10*m;
 }
 
@@ -106,9 +106,10 @@ void EventAction::EndOfEventAction(const G4Event* event)
       analysisMan->FillNtupleDColumn(0,1+(i*3), position.x());
       analysisMan->FillNtupleDColumn(0, 2+(i*3), position.y());
       G4double totEnergy = newHit->GetTotalEnergy();
-      analysisMan->FillNtupleDColumnx(0, 3+(i*3), totEnergy);
+      analysisMan->FillNtupleDColumn(0, 3+(i*3), totEnergy);
       analysisMan->FillNtupleDColumn(0, 7+(i%2), CalcTheta(position.x(), position.y()));
       analysisMan->FillNtupleIColumn(0, 9+i, newHit->GetCrystalNumber());
+      analysisMan->FillNtupleIColumn(0, 10+i, newHit->GetRow());
 }
 
   analysisMan->AddNtupleRow();

@@ -22,7 +22,6 @@ CalorimeterSD::CalorimeterSD(const G4String& name,
 			   const G4String& hitsCollectionName)
   : G4VSensitiveDetector(name), 
     fHitsCollection(NULL),
-    fCrystalNum(0),
     thresholdEnergy(0.) // minimal energy to count as a hit
 {
   collectionName.insert(hitsCollectionName);
@@ -74,11 +73,8 @@ G4bool CalorimeterSD::ProcessHits(G4Step* aStep,
       newHit->SetPos (aStep->GetPostStepPoint()->GetPosition());
       newHit->SetCrystalNumber(aStep->GetPreStepPoint()->GetTouchableHandle()
 			       ->GetReplicaNumber());
-      G4int copyNum = aStep->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(1);
-  G4int replicaNum = aStep->GetPreStepPoint()->GetTouchableHandle()->GetReplicaNumber();
-      
-  G4cout << "copy number: " << copyNum << G4endl;
-  G4cout << "replica number: " << replicaNum << G4endl;
+      newHit->SetRow( aStep->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(1));
+
 
       newHit->SetMomentum(aStep->GetTrack()->GetMomentum());
      

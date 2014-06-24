@@ -27,7 +27,8 @@ CalorHit::CalorHit()
     fTotalEnergy(0.),
     fPos(G4ThreeVector()), 
     fMomentum(G4ThreeVector()), 
-    fCrystalNum(-1)
+    fCrystalNum(-1), 
+    fRow(-1)
 {}
 
 CalorHit::~CalorHit()
@@ -42,6 +43,7 @@ CalorHit::CalorHit(const CalorHit& hit)
   fPos = hit.fPos;
   fMomentum = hit.fMomentum;
   fCrystalNum = hit.fCrystalNum;
+  fRow = hit.fRow;
 }
 
 const CalorHit& CalorHit::operator=(const CalorHit& hit)
@@ -51,6 +53,7 @@ const CalorHit& CalorHit::operator=(const CalorHit& hit)
   fPos = hit.fPos;
   fMomentum = hit.fMomentum;
   fCrystalNum = hit.fCrystalNum;
+  fRow = hit.fRow;
 
   return *this;
 

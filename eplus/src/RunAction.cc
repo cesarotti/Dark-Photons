@@ -58,6 +58,8 @@ RunAction::RunAction()
    analysisMan->CreateNtupleDColumn("theta2"); //8
    analysisMan->CreateNtupleIColumn("crystalNum1"); //9
    analysisMan->CreateNtupleIColumn("cyrstalNum2"); //10
+   analysisMan->CreateNtupleIColumn("ringNum1"); // 11
+   analysisMan->CreateNtupleIColumn("ringNum2"); // 12 
    analysisMan->FinishNtuple();
   
 
