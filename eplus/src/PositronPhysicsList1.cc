@@ -30,6 +30,18 @@
 
 #include "G4eplusAnnihilation.hh"
 
+// ####################################### BRIAN SHIN ####################################
+#include "G4PositronNuclearProcess.hh"
+#include "G4ElectroVDNuclearModel.hh"
+
+#include "G4BosonConstructor.hh"
+#include "G4LeptonConstructor.hh"
+#include "G4MesonConstructor.hh"
+#include "G4BaryonConstructor.hh"
+#include "G4IonConstructor.hh"
+#include "G4ShortLivedConstructor.hh"
+// ####################################### BRIAN SHIN ####################################
+
 #include "G4VEmProcess.hh"
 
 
@@ -44,16 +56,35 @@ PositronPhysicsList1::~PositronPhysicsList1()
 
 void PositronPhysicsList1::ConstructParticle()
 {
-  G4Gamma::GammaDefinition();
-  G4Positron::PositronDefinition();
-  G4Electron::ElectronDefinition();
-  G4Proton::ProtonDefinition();
+  //G4Gamma::GammaDefinition();
+  //G4Positron::PositronDefinition();
+  //G4Electron::ElectronDefinition();
+  //G4Proton::ProtonDefinition();
+
+  G4BosonConstructor bosonCons;
+  bosonCons.ConstructParticle();
+
+  G4LeptonConstructor lepCons;
+  lepCons.ConstructParticle();
+
+  G4MesonConstructor mesonCons;
+  mesonCons.ConstructParticle();
+
+  G4IonConstructor ionCons;
+  ionCons.ConstructParticle();
+
+  G4BaryonConstructor baryonCons;
+  baryonCons.ConstructParticle();
+
+  G4ShortLivedConstructor slCons;
+  slCons.ConstructParticle();
 }
 
 void PositronPhysicsList1::ConstructProcess()
 {
   AddTransportation();
-  ConstructEM();
+  //ConstructEM(); // commented out to isolate positron-nuclear process
+  ConstructHadronic();
 
 }
 
@@ -74,7 +105,27 @@ void PositronPhysicsList1::ConstructEM()
 
 }
 
+// ####################################### BRIAN SHIN ####################################
+void PositronPhysicsList1::ConstructHadronic()
+{
+  // get pointer to positron process manager
+  G4ParticleDefinition* positron = G4Positron::PositronDefinition();
+  G4ProcessManager* pman = positron->GetProcessManager();
 
+  // get pointer to positron-nuclear process
+  G4PositronNuclearProcess* pnproc = new G4PositronNuclearProcess("PositronNuclear");
+  
+  // register positron-nuclear model
+  G4ElectroVDNuclearModel* pnmodel = new G4ElectroVDNuclearModel();
+  pnproc->RegisterMe(pnmodel);
+
+  // set biasing
+  pnproc->BiasCrossSectionByFactor(1000.);
+
+  // add process to process manager
+  pman->AddDiscreteProcess(pnproc);
+}
+// ###################################### BRIAN SHIN ####################################
 
 void PositronPhysicsList1::SetCuts()
 {
@@ -83,7 +134,3 @@ void PositronPhysicsList1::SetCuts()
   SetCutValue(defaultCutValue, "e+");
   SetCutValue(defaultCutValue, "proton");
 }
-
-
-
-
