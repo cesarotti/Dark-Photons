@@ -83,7 +83,7 @@ void PositronPhysicsList1::ConstructParticle()
 void PositronPhysicsList1::ConstructProcess()
 {
   AddTransportation();
-  //ConstructEM(); // commented out to isolate positron-nuclear process
+  ConstructEM();
   ConstructHadronic();
 
 }
