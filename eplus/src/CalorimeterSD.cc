@@ -3,6 +3,7 @@
  *
  *!!!History
  *   CJC 6.17.14 created
+ *   CJC 6.23.14 updated for multiple crystal calorimeter
  */
 
 #include "CalorimeterSD.hh"
@@ -13,6 +14,9 @@
 #include "G4SDManager.hh"
 #include "G4ios.hh"
 #include "G4SystemOfUnits.hh"
+#include "G4Colour.hh"
+#include "G4LogicalVolume.hh"
+#include "G4VPhysicalVolume.hh"
 
 CalorimeterSD::CalorimeterSD(const G4String& name,
 			   const G4String& hitsCollectionName)
@@ -67,8 +71,19 @@ G4bool CalorimeterSD::ProcessHits(G4Step* aStep,
       newHit->SetTrackID (aStep->GetTrack()->GetTrackID());
       newHit->SetTotalEnergy(aStep->GetTrack()->GetTotalEnergy()); 
       newHit->SetPos (aStep->GetPostStepPoint()->GetPosition());
-      newHit->SetMomentum(aStep->GetTrack()->GetMomentum());
+      G4int check = aStep->GetPreStepPoint()->GetTouchableHandle()
+	->GetCopyNumber(1);
+      if (check<1)
+	{newHit->SetColumn(-1);}
+      else 
+{newHit->SetColumn(aStep->GetPreStepPoint()
+		   ->GetTouchableHandle()->GetReplicaNumber());}
 
+      newHit->SetRow(check);
+
+
+      newHit->SetMomentum(aStep->GetTrack()->GetMomentum());
+     
       fHitsCollection->insert(newHit);
     }
 
@@ -78,8 +93,6 @@ G4bool CalorimeterSD::ProcessHits(G4Step* aStep,
 void CalorimeterSD::EndOfEvent(G4HCofThisEvent*)
 {
 	G4int nofHits = fHitsCollection->entries();
-	G4cout << "------->Hits Collection: in this event they are " << nofHits 
-	       << " hits in the calorimeter" << G4endl;
 	for (G4int i =0; i<nofHits; i++) (*fHitsCollection)[i]->Print();
 }
 

@@ -30,8 +30,8 @@ public:
   virtual void EndOfEvent(G4HCofThisEvent* hitCollection);
 
 private:
-  CalorimeterHitsCollection* fHitsCollection;
-  int thresholdEnergy;
+  CalorimeterHitsCollection* fHitsCollection; 
+  G4double thresholdEnergy;
 };
 
 #endif

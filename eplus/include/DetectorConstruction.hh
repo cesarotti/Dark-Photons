@@ -57,7 +57,7 @@ private:
 
   //data members
 
-  G4LogicalVolume* fLogicCalor; //pointer to calorimeter
+  G4LogicalVolume** fLogicCalor; //pointer to calorimeter
   G4LogicalVolume* fLogicTarget; //pointer to logical target
 
   G4Material* fTargetMaterial; // pointer to target material

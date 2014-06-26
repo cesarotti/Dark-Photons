@@ -1,0 +1,1 @@
+This is relevent to the plot.C file. To use it, copy the file into the folder with the root files you want to analyze. Make sure that the tree is called Gamma_Info in the directory of ntuples. After opening the TBrowser, go into that folder and double click on plot.C to run. Give it a few minutes, then out should appear two histograms. 

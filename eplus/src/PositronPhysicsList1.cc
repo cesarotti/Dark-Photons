@@ -75,7 +75,6 @@ void PositronPhysicsList1::ConstructEM()
 }
 
 
-
 void PositronPhysicsList1::SetCuts()
 {
   SetCutValue(defaultCutValue, "gamma");
