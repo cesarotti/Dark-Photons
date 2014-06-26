@@ -44,8 +44,8 @@ public:
   {fPos = pos;};
   void SetMomentum(G4ThreeVector pv)
   {fMomentum = pv;};
-  void SetCrystalNumber(G4int copyNo)
-  {fCrystalNum = copyNo;};
+  void SetColumn(G4int copyNo)
+  {fColumn = copyNo;};
   void SetRow(G4int row)
   {fRow = row;};
 
@@ -58,8 +58,8 @@ public:
   {return fPos;};
   G4ThreeVector GetMomentum()
   {return fMomentum;};
-  G4int GetCrystalNumber()
-  {return fCrystalNum;};
+  G4int GetColumn()
+  {return fColumn;};
   G4int GetRow()
   {return fRow;};
 
@@ -69,7 +69,7 @@ private:
   G4double fTotalEnergy;
   G4ThreeVector fPos;
   G4ThreeVector fMomentum;
-  G4int fCrystalNum;
+  G4int fColumn;
   G4int fRow;
 };
 

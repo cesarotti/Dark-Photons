@@ -49,17 +49,17 @@ RunAction::RunAction()
    analysisMan->CreateNtuple("Gamma_Info", "Photon hits");
    analysisMan->CreateNtupleIColumn("numHits"); // 0
    analysisMan->CreateNtupleDColumn("photon1xPos"); // 1
-   analysisMan->CreateNtupleDColumn("photo1yPos"); // 2
+   analysisMan->CreateNtupleDColumn("photon1yPos"); // 2
    analysisMan->CreateNtupleDColumn("totEnergyPhoton1"); // 3
    analysisMan->CreateNtupleDColumn("photon2xPos"); //4
    analysisMan->CreateNtupleDColumn("photon2yPos"); //5
    analysisMan->CreateNtupleDColumn("totEnergyPhoton2"); // 6
    analysisMan->CreateNtupleDColumn("theta1"); //7
    analysisMan->CreateNtupleDColumn("theta2"); //8
-   analysisMan->CreateNtupleIColumn("crystalNum1"); //9
-   analysisMan->CreateNtupleIColumn("cyrstalNum2"); //10
-   analysisMan->CreateNtupleIColumn("ringNum1"); // 11
-   analysisMan->CreateNtupleIColumn("ringNum2"); // 12 
+   analysisMan->CreateNtupleIColumn("column1"); //9
+   analysisMan->CreateNtupleIColumn("column2"); //10
+   analysisMan->CreateNtupleIColumn("row1"); // 11
+   analysisMan->CreateNtupleIColumn("row2"); // 12 
    analysisMan->FinishNtuple();
   
 

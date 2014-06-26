@@ -71,9 +71,15 @@ G4bool CalorimeterSD::ProcessHits(G4Step* aStep,
       newHit->SetTrackID (aStep->GetTrack()->GetTrackID());
       newHit->SetTotalEnergy(aStep->GetTrack()->GetTotalEnergy()); 
       newHit->SetPos (aStep->GetPostStepPoint()->GetPosition());
-      newHit->SetCrystalNumber(aStep->GetPreStepPoint()->GetTouchableHandle()
-			       ->GetReplicaNumber());
-      newHit->SetRow( aStep->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(1));
+      G4int check = aStep->GetPreStepPoint()->GetTouchableHandle()
+	->GetCopyNumber(1);
+      if (check<1)
+	{newHit->SetColumn(-1);}
+      else 
+{newHit->SetColumn(aStep->GetPreStepPoint()
+		   ->GetTouchableHandle()->GetReplicaNumber());}
+
+      newHit->SetRow(check);
 
 
       newHit->SetMomentum(aStep->GetTrack()->GetMomentum());
