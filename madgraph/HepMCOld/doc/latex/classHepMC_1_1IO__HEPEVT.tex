@@ -1,0 +1,222 @@
+\section{Hep\-MC::IO\_\-HEPEVT Class Reference}
+\label{classHepMC_1_1IO__HEPEVT}\index{HepMC::IO_HEPEVT@{HepMC::IO\_\-HEPEVT}}
+HEPEVT IO class.  
+
+
+{\tt \#include $<$IO\_\-HEPEVT.h$>$}
+
+Inheritance diagram for Hep\-MC::IO\_\-HEPEVT::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classHepMC_1_1IO__HEPEVT}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf IO\_\-HEPEVT} ()
+\item 
+virtual {\bf $\sim$IO\_\-HEPEVT} ()
+\item 
+bool {\bf fill\_\-next\_\-event} ({\bf Gen\-Event} $\ast$)
+\begin{CompactList}\small\item\em fill this \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} \item\end{CompactList}\item 
+void {\bf write\_\-event} (const {\bf Gen\-Event} $\ast$)
+\begin{CompactList}\small\item\em write this \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} \item\end{CompactList}\item 
+void {\bf print} (std::ostream \&ostr=std::cout) const
+\begin{CompactList}\small\item\em write output to ostr \item\end{CompactList}\item 
+bool {\bf trust\_\-both\_\-mothers\_\-and\_\-daughters} () const
+\begin{CompactList}\small\item\em default is false \item\end{CompactList}\item 
+bool {\bf trust\_\-mothers\_\-before\_\-daughters} () const
+\begin{CompactList}\small\item\em default is true \item\end{CompactList}\item 
+bool {\bf print\_\-inconsistency\_\-errors} () const
+\begin{CompactList}\small\item\em default is true \item\end{CompactList}\item 
+void {\bf set\_\-trust\_\-mothers\_\-before\_\-daughters} (bool b=1)
+\begin{CompactList}\small\item\em define mother daughter trust rules \item\end{CompactList}\item 
+void {\bf set\_\-trust\_\-both\_\-mothers\_\-and\_\-daughters} (bool b=0)
+\begin{CompactList}\small\item\em define mother daughter trust rules \item\end{CompactList}\item 
+void {\bf set\_\-print\_\-inconsistency\_\-errors} (bool b=1)
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Gen\-Particle} $\ast$ {\bf build\_\-particle} (int index)
+\begin{CompactList}\small\item\em create a \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} \item\end{CompactList}\item 
+void {\bf build\_\-production\_\-vertex} (int i, std::vector$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ \&hepevt\_\-particle, {\bf Gen\-Event} $\ast$evt)
+\begin{CompactList}\small\item\em create a production vertex \item\end{CompactList}\item 
+void {\bf build\_\-end\_\-vertex} (int i, std::vector$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ \&hepevt\_\-particle, {\bf Gen\-Event} $\ast$evt)
+\begin{CompactList}\small\item\em create an end vertex \item\end{CompactList}\item 
+int {\bf find\_\-in\_\-map} (const std::map$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$, int $>$ \&m, {\bf Gen\-Particle} $\ast${\bf p}) const
+\begin{CompactList}\small\item\em find this particle in the particle map \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+HEPEVT IO class. 
+
+IO class for reading the standard HEPEVT common block. \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf example\_\-My\-Pythia.cc}, {\bf example\_\-My\-Pythia\-Only\-To\-Hep\-MC.cc}, {\bf example\_\-My\-Pythia\-Read.cc}, {\bf example\_\-My\-Pythia\-With\-Event\-Selection.cc}, and {\bf example\_\-Pythia\-Particle.cc}.\end{Desc}
+
+
+
+
+Definition at line 40 of file IO\_\-HEPEVT.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!IO_HEPEVT@{IO\_\-HEPEVT}}
+\index{IO_HEPEVT@{IO\_\-HEPEVT}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::IO\_\-HEPEVT::IO\_\-HEPEVT ()}\label{classHepMC_1_1IO__HEPEVT_7dea9c152eb6ab319411970dc1d95c67}
+
+
+
+
+Definition at line 12 of file IO\_\-HEPEVT.cc.\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!~IO_HEPEVT@{$\sim$IO\_\-HEPEVT}}
+\index{~IO_HEPEVT@{$\sim$IO\_\-HEPEVT}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::IO\_\-HEPEVT::$\sim$IO\_\-HEPEVT ()\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1IO__HEPEVT_f40f251c95a978a24309b57e4d3c06d8}
+
+
+
+
+Definition at line 17 of file IO\_\-HEPEVT.cc.
+
+\subsection{Member Function Documentation}
+\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!fill_next_event@{fill\_\-next\_\-event}}
+\index{fill_next_event@{fill\_\-next\_\-event}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HEPEVT::fill\_\-next\_\-event ({\bf Gen\-Event} $\ast$)\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1IO__HEPEVT_e4bcb5527c18d161c11edd19bad49416}
+
+
+fill this \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} 
+
+
+
+Implements {\bf Hep\-MC::IO\_\-Base\-Class} \doxyref{}{p.}{classHepMC_1_1IO__BaseClass_f1dffb95a44d521af510f6431a30f942}.
+
+Definition at line 30 of file IO\_\-HEPEVT.cc.
+
+References Hep\-MC::Gen\-Vertex::add\_\-particle\_\-out(), Hep\-MC::Gen\-Event::add\_\-vertex(), build\_\-end\_\-vertex(), build\_\-particle(), build\_\-production\_\-vertex(), Hep\-MC::HEPEVT\_\-Wrapper::event\_\-number(), Hep\-MC::HEPEVT\_\-Wrapper::number\_\-entries(), Hep\-MC::Gen\-Event::set\_\-beam\_\-particles(), and Hep\-MC::Gen\-Event::set\_\-event\_\-number().\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!write_event@{write\_\-event}}
+\index{write_event@{write\_\-event}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HEPEVT::write\_\-event (const {\bf Gen\-Event} $\ast$)\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1IO__HEPEVT_adbd36a8914a4cc275be26856884da43}
+
+
+write this \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} 
+
+
+
+Implements {\bf Hep\-MC::IO\_\-Base\-Class} \doxyref{}{p.}{classHepMC_1_1IO__BaseClass_7929dfd8412207c7904f29652810c1f4}.
+
+Definition at line 107 of file IO\_\-HEPEVT.cc.
+
+References Hep\-MC::Four\-Vector::e(), Hep\-MC::Gen\-Event::event\_\-number(), find\_\-in\_\-map(), Hep\-MC::HEPEVT\_\-Wrapper::max\_\-number\_\-entries(), p, Hep\-MC::Four\-Vector::px(), Hep\-MC::Four\-Vector::py(), Hep\-MC::Four\-Vector::pz(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-children(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-event\_\-number(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-id(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-mass(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-momentum(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-number\_\-entries(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-parents(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-position(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-status(), v, Hep\-MC::Gen\-Event::vertices\_\-begin(), and Hep\-MC::Gen\-Event::vertices\_\-end().\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!print@{print}}
+\index{print@{print}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HEPEVT::print (std::ostream \& {\em ostr} = {\tt std::cout}) const\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1IO__HEPEVT_5f360aa251e909cc77f1a9f9d45d7abf}
+
+
+write output to ostr 
+
+
+
+Reimplemented from {\bf Hep\-MC::IO\_\-Base\-Class} \doxyref{}{p.}{classHepMC_1_1IO__BaseClass_52a1503f4107fd3d5f4da02feb45751b}.
+
+Definition at line 19 of file IO\_\-HEPEVT.cc.\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!trust_both_mothers_and_daughters@{trust\_\-both\_\-mothers\_\-and\_\-daughters}}
+\index{trust_both_mothers_and_daughters@{trust\_\-both\_\-mothers\_\-and\_\-daughters}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HEPEVT::trust\_\-both\_\-mothers\_\-and\_\-daughters () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HEPEVT_da542868612c376e1fa1adb94deab118}
+
+
+default is false 
+
+
+
+Definition at line 115 of file IO\_\-HEPEVT.h.\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!trust_mothers_before_daughters@{trust\_\-mothers\_\-before\_\-daughters}}
+\index{trust_mothers_before_daughters@{trust\_\-mothers\_\-before\_\-daughters}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HEPEVT::trust\_\-mothers\_\-before\_\-daughters () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HEPEVT_73e69f77a8f127f43d8c445654c78f53}
+
+
+default is true 
+
+
+
+Definition at line 118 of file IO\_\-HEPEVT.h.\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!print_inconsistency_errors@{print\_\-inconsistency\_\-errors}}
+\index{print_inconsistency_errors@{print\_\-inconsistency\_\-errors}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HEPEVT::print\_\-inconsistency\_\-errors () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HEPEVT_12b8af7dadcf207441f6822a288f7d99}
+
+
+default is true 
+
+
+
+Definition at line 121 of file IO\_\-HEPEVT.h.\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!set_trust_mothers_before_daughters@{set\_\-trust\_\-mothers\_\-before\_\-daughters}}
+\index{set_trust_mothers_before_daughters@{set\_\-trust\_\-mothers\_\-before\_\-daughters}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HEPEVT::set\_\-trust\_\-mothers\_\-before\_\-daughters (bool {\em b} = {\tt 1})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HEPEVT_edf281b976c43518477f5a854f466055}
+
+
+define mother daughter trust rules 
+
+
+
+Definition at line 127 of file IO\_\-HEPEVT.h.\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!set_trust_both_mothers_and_daughters@{set\_\-trust\_\-both\_\-mothers\_\-and\_\-daughters}}
+\index{set_trust_both_mothers_and_daughters@{set\_\-trust\_\-both\_\-mothers\_\-and\_\-daughters}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HEPEVT::set\_\-trust\_\-both\_\-mothers\_\-and\_\-daughters (bool {\em b} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HEPEVT_69638656feb93fadd49c5fb49de85169}
+
+
+define mother daughter trust rules 
+
+
+
+Definition at line 124 of file IO\_\-HEPEVT.h.\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!set_print_inconsistency_errors@{set\_\-print\_\-inconsistency\_\-errors}}
+\index{set_print_inconsistency_errors@{set\_\-print\_\-inconsistency\_\-errors}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HEPEVT::set\_\-print\_\-inconsistency\_\-errors (bool {\em b} = {\tt 1})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HEPEVT_45cd7df10900c29cad418546040bdce7}
+
+
+Since HEPEVT has bi-directional pointers, it is possible that the mother/daughter pointers are inconsistent (though physically speaking this should never happen). In practise it happens often. When a conflict occurs (i.e. when mother/daughter pointers are in disagreement, where an empty (0) pointer is not considered a disagreement) an error is printed. These errors can be turned off with: myio\_\-hepevt.set\_\-print\_\-inconsistency\_\-errors(0); but it is STRONGLY recommended that you print the HEPEVT common and understand the inconsistency BEFORE you turn off the errors. The messages are there for a reason [remember, there is no message printed when the information is missing, ... only when is it inconsistent. User beware.] You can inspect the HEPEVT common block for inconsistencies with \doxyref{HEPEVT\_\-Wrapper::check\_\-hepevt\_\-consistency()}{p.}{classHepMC_1_1HEPEVT__Wrapper_b9425bd4b1ba5dbcc21b3716c74350a4}
+
+There is a switch controlling whether the mother pointers or the daughters are to be trusted. For example, in Pythia the mother information is always correctly included, but the daughter information is often left unfilled: in this case we want to trust the mother pointers and not necessarily the daughters. [THIS IS THE DEFAULT]. Unfortunately the reverse happens for the stdhep(2001) translation of Isajet, so we need an option to toggle the choices. 
+
+Definition at line 130 of file IO\_\-HEPEVT.h.\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!build_particle@{build\_\-particle}}
+\index{build_particle@{build\_\-particle}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Particle} $\ast$ Hep\-MC::IO\_\-HEPEVT::build\_\-particle (int {\em index})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HEPEVT_b042bd93c5342be41189f13b270a4d65}
+
+
+create a \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} 
+
+
+
+Builds a particle object corresponding to index in HEPEVT 
+
+Definition at line 319 of file IO\_\-HEPEVT.cc.
+
+References Hep\-MC::HEPEVT\_\-Wrapper::e(), Hep\-MC::HEPEVT\_\-Wrapper::id(), Hep\-MC::HEPEVT\_\-Wrapper::m(), p, Hep\-MC::HEPEVT\_\-Wrapper::px(), Hep\-MC::HEPEVT\_\-Wrapper::py(), Hep\-MC::HEPEVT\_\-Wrapper::pz(), and Hep\-MC::HEPEVT\_\-Wrapper::status().
+
+Referenced by fill\_\-next\_\-event().\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!build_production_vertex@{build\_\-production\_\-vertex}}
+\index{build_production_vertex@{build\_\-production\_\-vertex}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HEPEVT::build\_\-production\_\-vertex (int {\em i}, std::vector$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ \& {\em hepevt\_\-particle}, {\bf Gen\-Event} $\ast$ {\em evt})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HEPEVT_c3fdc9b74869cef1d8be1ade1deae92e}
+
+
+create a production vertex 
+
+
+
+Referenced by fill\_\-next\_\-event().\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!build_end_vertex@{build\_\-end\_\-vertex}}
+\index{build_end_vertex@{build\_\-end\_\-vertex}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HEPEVT::build\_\-end\_\-vertex (int {\em i}, std::vector$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ \& {\em hepevt\_\-particle}, {\bf Gen\-Event} $\ast$ {\em evt})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HEPEVT_cbb0df9903cfabaef93a6df00f9ce917}
+
+
+create an end vertex 
+
+
+
+Referenced by fill\_\-next\_\-event().\index{HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}!find_in_map@{find\_\-in\_\-map}}
+\index{find_in_map@{find\_\-in\_\-map}!HepMC::IO_HEPEVT@{Hep\-MC::IO\_\-HEPEVT}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::IO\_\-HEPEVT::find\_\-in\_\-map (const std::map$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$, int $>$ \& {\em m}, {\bf Gen\-Particle} $\ast$ {\em p}) const\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HEPEVT_a5c410137397079e6df0426eb39d2027}
+
+
+find this particle in the particle map 
+
+
+
+Referenced by write\_\-event().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf IO\_\-HEPEVT.h}\item 
+{\bf IO\_\-HEPEVT.cc}\end{CompactItemize}

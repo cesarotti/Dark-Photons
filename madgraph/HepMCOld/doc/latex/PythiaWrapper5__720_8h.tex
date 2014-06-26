@@ -1,0 +1,575 @@
+\section{Pythia\-Wrapper5\_\-720.h File Reference}
+\label{PythiaWrapper5__720_8h}\index{PythiaWrapper5_720.h@{PythiaWrapper5\_\-720.h}}
+{\tt \#include $<$ctype.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf initpydata}~initpydata\_\-
+\item 
+\#define {\bf lujets}~{\bf lujets\_\-}
+\item 
+\#define {\bf ludat1}~{\bf ludat1\_\-}
+\item 
+\#define {\bf ludat2}~{\bf ludat2\_\-}
+\item 
+\#define {\bf ludat3}~{\bf ludat3\_\-}
+\item 
+\#define {\bf ludatr}~{\bf ludatr\_\-}
+\item 
+\#define {\bf pysubs}~{\bf pysubs\_\-}
+\item 
+\#define {\bf pypars}~{\bf pypars\_\-}
+\item 
+\#define {\bf pyint1}~{\bf pyint1\_\-}
+\item 
+\#define {\bf pyint2}~{\bf pyint2\_\-}
+\item 
+\#define {\bf pyint5}~{\bf pyint5\_\-}
+\item 
+\#define {\bf luhepc}~luhepc\_\-
+\item 
+\#define {\bf pyinit}~pyinit\_\-
+\item 
+\#define {\bf lulist}~lulist\_\-
+\item 
+\#define {\bf pystat}~pystat\_\-
+\item 
+\#define {\bf pyevnt}~pyevnt\_\-
+\item 
+\#define {\bf ludata}~ludata\_\-
+\item 
+\#define {\bf pydata}~pydata\_\-
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf n}\\
+\>int {\bf k} [5][{\bf pyjets\_maxn}]\\
+\>float {\bf p} [5][{\bf pyjets\_maxn}]\\
+\>float {\bf v} [5][{\bf pyjets\_maxn}]\\
+\} {\bf lujets\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf mstu} [200]\\
+\>float {\bf paru} [200]\\
+\>int {\bf mstj} [200]\\
+\>float {\bf parj} [200]\\
+\} {\bf ludat1\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf kchg} [3][500]\\
+\>float {\bf pmas} [4][500]\\
+\>float {\bf parf} [2000]\\
+\>float {\bf vckm} [4][4]\\
+\} {\bf ludat2\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf mdcy} [3][500]\\
+\>int {\bf mdme} [2][2000]\\
+\>float {\bf brat} [2000]\\
+\>int {\bf kfdp} [5][2000]\\
+\} {\bf ludat3\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf mrlu} [6]\\
+\>float {\bf rrlu} [100]\\
+\} {\bf ludatr\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf msel}\\
+\>int {\bf msub} [200]\\
+\>int {\bf kfin} [81][2]\\
+\>float {\bf ckin} [200]\\
+\} {\bf pysubs\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf mstp} [200]\\
+\>float {\bf parp} [200]\\
+\>int {\bf msti} [200]\\
+\>float {\bf pari} [200]\\
+\} {\bf pypars\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf mint} [400]\\
+\>float {\bf vint} [400]\\
+\} {\bf pyint1\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf iset} [200]\\
+\>int {\bf kfpr} [2][200]\\
+\>float {\bf coef} [20][200]\\
+\>int {\bf icol} [2][4][40]\\
+\} {\bf pyint2\_}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bf ngen} [3][201][3]\\
+\>float {\bf xsec} [3][201]\\
+\} {\bf pyint5\_}\\
+
+\end{tabbing}\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!initpydata@{initpydata}}
+\index{initpydata@{initpydata}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define initpydata~initpydata\_\-}\label{PythiaWrapper5__720_8h_8f6480836f44533427a09e5f8f4150ad}
+
+
+
+
+Definition at line 26 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludat1@{ludat1}}
+\index{ludat1@{ludat1}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ludat1~{\bf ludat1\_\-}}\label{PythiaWrapper5__720_8h_9658744dc3952e2fa984162c457e95b4}
+
+
+
+
+Definition at line 47 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludat2@{ludat2}}
+\index{ludat2@{ludat2}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ludat2~{\bf ludat2\_\-}}\label{PythiaWrapper5__720_8h_df81a1c0a01bfa96b3e9e23c33e163f3}
+
+
+
+
+Definition at line 53 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludat3@{ludat3}}
+\index{ludat3@{ludat3}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ludat3~{\bf ludat3\_\-}}\label{PythiaWrapper5__720_8h_a8b13c42ffc5744a3aba1fe5baabe4df}
+
+
+
+
+Definition at line 60 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludata@{ludata}}
+\index{ludata@{ludata}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ludata~ludata\_\-}\label{PythiaWrapper5__720_8h_df505d7fdc62691a470450edfa81be33}
+
+
+
+
+Definition at line 109 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludatr@{ludatr}}
+\index{ludatr@{ludatr}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ludatr~{\bf ludatr\_\-}}\label{PythiaWrapper5__720_8h_a94676e67edfb3cd0424496b4e96a04c}
+
+
+
+
+Definition at line 66 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!luhepc@{luhepc}}
+\index{luhepc@{luhepc}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define luhepc~luhepc\_\-}\label{PythiaWrapper5__720_8h_7ab4e116928cd001fd894bb8f4a4d642}
+
+
+
+
+Definition at line 104 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!lujets@{lujets}}
+\index{lujets@{lujets}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define lujets~{\bf lujets\_\-}}\label{PythiaWrapper5__720_8h_22140d2cbcd02b3657c283774036ab21}
+
+
+
+
+Definition at line 39 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!lulist@{lulist}}
+\index{lulist@{lulist}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define lulist~lulist\_\-}\label{PythiaWrapper5__720_8h_baa428a50bdf208a19d0920e53ff9ec8}
+
+
+
+
+Definition at line 106 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pydata@{pydata}}
+\index{pydata@{pydata}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pydata~pydata\_\-}\label{PythiaWrapper5__720_8h_5d31fe99add6b90594043845321bbf55}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pyevnt@{pyevnt}}
+\index{pyevnt@{pyevnt}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pyevnt~pyevnt\_\-}\label{PythiaWrapper5__720_8h_d5a0f5f9027106755a3e8c992fa8622f}
+
+
+
+
+Definition at line 108 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pyinit@{pyinit}}
+\index{pyinit@{pyinit}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pyinit~pyinit\_\-}\label{PythiaWrapper5__720_8h_c0ceff918a25129e71d14e6bdcc15f83}
+
+
+
+
+Definition at line 105 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pyint1@{pyint1}}
+\index{pyint1@{pyint1}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pyint1~{\bf pyint1\_\-}}\label{PythiaWrapper5__720_8h_d83b4003fc0564d8224db1fc12a71a8d}
+
+
+
+
+Definition at line 86 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pyint2@{pyint2}}
+\index{pyint2@{pyint2}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pyint2~{\bf pyint2\_\-}}\label{PythiaWrapper5__720_8h_02425c70e715c36246b83643ea25d4c4}
+
+
+
+
+Definition at line 93 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pyint5@{pyint5}}
+\index{pyint5@{pyint5}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pyint5~{\bf pyint5\_\-}}\label{PythiaWrapper5__720_8h_eaf2a9dbc5f0cc71eb806a0901b4dc90}
+
+
+
+
+Definition at line 99 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pypars@{pypars}}
+\index{pypars@{pypars}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pypars~{\bf pypars\_\-}}\label{PythiaWrapper5__720_8h_8da7c9220b540db4b5ab2b9dce72eb8c}
+
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-My\-Pythia.cc}, {\bf example\_\-My\-Pythia\-Only\-To\-Hep\-MC.cc}, and {\bf example\_\-My\-Pythia\-With\-Event\-Selection.cc}.\end{Desc}
+
+
+Definition at line 80 of file Pythia\-Wrapper5\_\-720.h.
+
+Referenced by init\-Pythia(), and main().\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pystat@{pystat}}
+\index{pystat@{pystat}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pystat~pystat\_\-}\label{PythiaWrapper5__720_8h_1237254f076fc7dfb0519e6b4d5b0f3e}
+
+
+
+
+Definition at line 107 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pysubs@{pysubs}}
+\index{pysubs@{pysubs}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define pysubs~{\bf pysubs\_\-}}\label{PythiaWrapper5__720_8h_c68bb5af2fc4dac62c64cc8cb6e9f767}
+
+
+
+
+Definition at line 72 of file Pythia\-Wrapper5\_\-720.h.
+
+Referenced by init\-Pythia().
+
+\subsection{Variable Documentation}
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!brat@{brat}}
+\index{brat@{brat}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf brat}[2000]}\label{PythiaWrapper5__720_8h_aa34bc576a44c18edcda75037648976a}
+
+
+
+
+Definition at line 57 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ckin@{ckin}}
+\index{ckin@{ckin}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf ckin}[200]}\label{PythiaWrapper5__720_8h_973d8a9aab8ad847924e1167adc4d4e4}
+
+
+
+
+Definition at line 70 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!coef@{coef}}
+\index{coef@{coef}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf coef}[20][200]}\label{PythiaWrapper5__720_8h_5cb49193b45c4f795e64a3272e828f55}
+
+
+
+
+Definition at line 90 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!icol@{icol}}
+\index{icol@{icol}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf icol}[2][4][40]}\label{PythiaWrapper5__720_8h_480809e7cedee395e1215a812b1d1003}
+
+
+
+
+Definition at line 91 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!iset@{iset}}
+\index{iset@{iset}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf iset}[200]}\label{PythiaWrapper5__720_8h_73e9dec33fbb4245a83b6de0e4120790}
+
+
+
+
+Definition at line 89 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!k@{k}}
+\index{k@{k}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf k}[5][{\bf pyjets\_\-maxn}]}\label{PythiaWrapper5__720_8h_93d2c477252003afeb74ae6ca06fc2ec}
+
+
+
+
+Definition at line 36 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!kchg@{kchg}}
+\index{kchg@{kchg}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf kchg}[3][500]}\label{PythiaWrapper5__720_8h_6ccf6a47da3afabc9fa922d8b3dfb61d}
+
+
+
+
+Definition at line 50 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!kfdp@{kfdp}}
+\index{kfdp@{kfdp}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf kfdp}[5][2000]}\label{PythiaWrapper5__720_8h_011b026bbe10689b290374573fd31e14}
+
+
+
+
+Definition at line 58 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!kfin@{kfin}}
+\index{kfin@{kfin}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf kfin}[81][2]}\label{PythiaWrapper5__720_8h_456aeb577e9c3538f109a4d33b70d79d}
+
+
+
+
+Definition at line 69 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!kfpr@{kfpr}}
+\index{kfpr@{kfpr}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf kfpr}[2][200]}\label{PythiaWrapper5__720_8h_694dc7086c030ac08e8c956c5ae4288a}
+
+
+
+
+Definition at line 89 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludat1_@{ludat1\_\-}}
+\index{ludat1_@{ludat1\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf ludat1\_\-}}\label{PythiaWrapper5__720_8h_3065ccdc8b95d91d5db1a3e16510eb01}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludat2_@{ludat2\_\-}}
+\index{ludat2_@{ludat2\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf ludat2\_\-}}\label{PythiaWrapper5__720_8h_3d000ad1215ec224edebac5b85e3b555}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludat3_@{ludat3\_\-}}
+\index{ludat3_@{ludat3\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf ludat3\_\-}}\label{PythiaWrapper5__720_8h_927276ef3fb88d3dce27b7537b96d421}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ludatr_@{ludatr\_\-}}
+\index{ludatr_@{ludatr\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf ludatr\_\-}}\label{PythiaWrapper5__720_8h_0161de9305af9802d45b641db38b6111}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!lujets_@{lujets\_\-}}
+\index{lujets_@{lujets\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf lujets\_\-}}\label{PythiaWrapper5__720_8h_d125a4b586461942b0d4359c74888e0d}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!mdcy@{mdcy}}
+\index{mdcy@{mdcy}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf mdcy}[3][500]}\label{PythiaWrapper5__720_8h_686748450c8a9b369f6b7d6cb19b6de6}
+
+
+
+
+Definition at line 56 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!mdme@{mdme}}
+\index{mdme@{mdme}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf mdme}[2][2000]}\label{PythiaWrapper5__720_8h_3843e5d82dcb4dce8672c8fd1d65420f}
+
+
+
+
+Definition at line 56 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!mint@{mint}}
+\index{mint@{mint}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf mint}[400]}\label{PythiaWrapper5__720_8h_79d56c63372bdf9b19fbb5fb47fe0c10}
+
+
+
+
+Definition at line 83 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!mrlu@{mrlu}}
+\index{mrlu@{mrlu}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf mrlu}[6]}\label{PythiaWrapper5__720_8h_2724082a920a27295d2fd437f2538814}
+
+
+
+
+Definition at line 63 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!msel@{msel}}
+\index{msel@{msel}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf msel}}\label{PythiaWrapper5__720_8h_88dabd3e5dcfeffa266684c49ed2c4af}
+
+
+
+
+Definition at line 69 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!msti@{msti}}
+\index{msti@{msti}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf msti}[200]}\label{PythiaWrapper5__720_8h_e9eb72ec4bb6e88122395b4f2aa3950c}
+
+
+
+
+Definition at line 77 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!mstj@{mstj}}
+\index{mstj@{mstj}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf mstj}[200]}\label{PythiaWrapper5__720_8h_217d232beaf8b22999723b2394722469}
+
+
+
+
+Definition at line 44 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!mstp@{mstp}}
+\index{mstp@{mstp}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf mstp}[200]}\label{PythiaWrapper5__720_8h_2377ed5e6e420a6ab179a75941583701}
+
+
+
+
+Definition at line 75 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!mstu@{mstu}}
+\index{mstu@{mstu}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf mstu}[200]}\label{PythiaWrapper5__720_8h_54fee093d39e3b7961c31466f751ea2b}
+
+
+
+
+Definition at line 42 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!msub@{msub}}
+\index{msub@{msub}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf msub}[200]}\label{PythiaWrapper5__720_8h_eed1d64e7652af12abc36546bc38b7d6}
+
+
+
+
+Definition at line 69 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!n@{n}}
+\index{n@{n}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf n}}\label{PythiaWrapper5__720_8h_76f11d9a0a47b94f72c2d0e77fb32240}
+
+
+
+
+Definition at line 36 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!ngen@{ngen}}
+\index{ngen@{ngen}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf ngen}[3][201][3]}\label{PythiaWrapper5__720_8h_17f55684cdf140321ab4d91722dfb172}
+
+
+
+
+Definition at line 96 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!p@{p}}
+\index{p@{p}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf p}[5][{\bf pyjets\_\-maxn}]}\label{PythiaWrapper5__720_8h_8e241458f851615b53df90ab6231f85e}
+
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}, {\bf example\_\-Event\-Selection.cc}, {\bf example\_\-My\-Pythia\-With\-Event\-Selection.cc}, and {\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+Definition at line 37 of file Pythia\-Wrapper5\_\-720.h.
+
+Referenced by Hep\-MC::Temp\-Particle\-Map::add\-End\-Particle(), Hep\-MC::already\_\-in\_\-vector(), Hep\-MC::IO\_\-HERWIG::build\_\-end\_\-vertex(), Hep\-MC::IO\_\-HERWIG::build\_\-particle(), Hep\-MC::IO\_\-HEPEVT::build\_\-particle(), Hep\-MC::IO\_\-HERWIG::build\_\-production\_\-vertex(), Hep\-MC::Gen\-Vertex::edge\_\-iterator::edge\_\-iterator(), Hep\-MC::Temp\-Particle\-Map::end\_\-vertex(), Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-HERWIG::find\_\-in\_\-map(), Hep\-MC::Gen\-Event::Gen\-Event(), Is\-Photon(), Is\-WBoson(), main(), Hep\-MC::Particle\-Data\-Table::make\_\-antiparticles\_\-from\_\-particles(), Hep\-MC::Particle\-Data\-Table::merge\_\-table(), Hep\-MC::not\_\-in\_\-vector(), Is\-Final\-State::operator()(), Is\-W\_\-Boson::operator()(), Is\-Photon::operator()(), Is\-Good\-Event\-My\-Pythia::operator()(), Is\-Good\-Event::operator()(), Hep\-MC::Gen\-Vertex::edge\_\-iterator::operator=(), Hep\-MC::IO\_\-Extended\-Ascii::read\_\-particle(), Hep\-MC::IO\_\-Ascii::read\_\-particle(), Hep\-MC::Gen\-Event::remove\_\-barcode(), Hep\-MC::Gen\-Event::set\_\-barcode(), Hep\-MC::Gen\-Event::set\_\-pdf\_\-info(), Hep\-MC::Gen\-Event::valid\_\-beam\_\-particles(), Hep\-MC::IO\_\-HEPEVT::write\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-particle(), and Hep\-MC::IO\_\-Ascii::write\_\-particle().\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!parf@{parf}}
+\index{parf@{parf}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf parf}[2000]}\label{PythiaWrapper5__720_8h_f79c8980b6c7e51c6b3d15d6120ac4e1}
+
+
+
+
+Definition at line 51 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pari@{pari}}
+\index{pari@{pari}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf pari}[200]}\label{PythiaWrapper5__720_8h_328169dbc046c461db069f1240e71f1d}
+
+
+
+
+Definition at line 78 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!parj@{parj}}
+\index{parj@{parj}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf parj}[200]}\label{PythiaWrapper5__720_8h_6e0ef0cead3d333af0c3106b80129071}
+
+
+
+
+Definition at line 45 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!parp@{parp}}
+\index{parp@{parp}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf parp}[200]}\label{PythiaWrapper5__720_8h_4d6681f7abdae18b01839a2976df783b}
+
+
+
+
+Definition at line 76 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!paru@{paru}}
+\index{paru@{paru}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf paru}[200]}\label{PythiaWrapper5__720_8h_2f7780831f95aeb47e96a56470ebc4d7}
+
+
+
+
+Definition at line 43 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pmas@{pmas}}
+\index{pmas@{pmas}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf pmas}[4][500]}\label{PythiaWrapper5__720_8h_0bb18625f28a1b1e5080b6b01544b3e0}
+
+
+
+
+Definition at line 51 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pyint1_@{pyint1\_\-}}
+\index{pyint1_@{pyint1\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf pyint1\_\-}}\label{PythiaWrapper5__720_8h_0a55b810ab2d0845faaa23ca0b1f7951}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pyint2_@{pyint2\_\-}}
+\index{pyint2_@{pyint2\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf pyint2\_\-}}\label{PythiaWrapper5__720_8h_68f92fa9bb831e26858b02a39b858757}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pyint5_@{pyint5\_\-}}
+\index{pyint5_@{pyint5\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf pyint5\_\-}}\label{PythiaWrapper5__720_8h_59968ec8300c03a0c3ddf663fd0f52c0}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pypars_@{pypars\_\-}}
+\index{pypars_@{pypars\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf pypars\_\-}}\label{PythiaWrapper5__720_8h_0df8d45d82a0e4ff4f51a18c264b0857}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!pysubs_@{pysubs\_\-}}
+\index{pysubs_@{pysubs\_\-}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   {\bf pysubs\_\-}}\label{PythiaWrapper5__720_8h_b58ea4587c7b84959c0aa160820645ce}
+
+
+\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!rrlu@{rrlu}}
+\index{rrlu@{rrlu}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf rrlu}[100]}\label{PythiaWrapper5__720_8h_dedc0d7247139de829dcdcb23149248e}
+
+
+
+
+Definition at line 64 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!v@{v}}
+\index{v@{v}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf v}[5][{\bf pyjets\_\-maxn}]}\label{PythiaWrapper5__720_8h_015eddda8d78be6655b61bc37112c89c}
+
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+Definition at line 37 of file Pythia\-Wrapper5\_\-720.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::find\_\-in\_\-map(), Hep\-MC::Gen\-Event::Gen\-Event(), main(), Hep\-MC::IO\_\-Extended\-Ascii::read\_\-vertex(), Hep\-MC::IO\_\-Ascii::read\_\-vertex(), Hep\-MC::Gen\-Event::remove\_\-barcode(), Hep\-MC::Gen\-Event::set\_\-barcode(), SVto\-LV(), Hep\-MC::IO\_\-HEPEVT::write\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-vertex(), and Hep\-MC::IO\_\-Ascii::write\_\-vertex().\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!vckm@{vckm}}
+\index{vckm@{vckm}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf vckm}[4][4]}\label{PythiaWrapper5__720_8h_cee9ddcc64bbb17cc3e19c8ad1394f34}
+
+
+
+
+Definition at line 51 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!vint@{vint}}
+\index{vint@{vint}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf vint}[400]}\label{PythiaWrapper5__720_8h_20a8891ada82dd1f7e1e20a351349223}
+
+
+
+
+Definition at line 84 of file Pythia\-Wrapper5\_\-720.h.\index{PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}!xsec@{xsec}}
+\index{xsec@{xsec}!PythiaWrapper5_720.h@{Pythia\-Wrapper5\_\-720.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}float {\bf xsec}[3][201]}\label{PythiaWrapper5__720_8h_688208897d5edac6507f5f21e04657d6}
+
+
+
+
+Definition at line 97 of file Pythia\-Wrapper5\_\-720.h.

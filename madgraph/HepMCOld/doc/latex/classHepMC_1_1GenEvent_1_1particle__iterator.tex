@@ -1,0 +1,183 @@
+\section{Hep\-MC::Gen\-Event::particle\_\-iterator Class Reference}
+\label{classHepMC_1_1GenEvent_1_1particle__iterator}\index{HepMC::GenEvent::particle_iterator@{HepMC::GenEvent::particle\_\-iterator}}
+non-const particle iterator  
+
+
+{\tt \#include $<$Gen\-Event.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf particle\_\-iterator} (const std::map$<$ int, {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$::iterator \&i)
+\begin{CompactList}\small\item\em iterate over particles \item\end{CompactList}\item 
+{\bf particle\_\-iterator} ()
+\item 
+{\bf particle\_\-iterator} (const {\bf particle\_\-iterator} \&i)
+\begin{CompactList}\small\item\em copy constructor \item\end{CompactList}\item 
+virtual {\bf $\sim$particle\_\-iterator} ()
+\item 
+{\bf particle\_\-iterator} \& {\bf operator=} (const {\bf particle\_\-iterator} \&i)
+\begin{CompactList}\small\item\em make a copy \item\end{CompactList}\item 
+{\bf operator particle\_\-const\_\-iterator} () const
+\begin{CompactList}\small\item\em const particle iterator \item\end{CompactList}\item 
+{\bf Gen\-Particle} $\ast$ {\bf operator $\ast$} (void) const
+\begin{CompactList}\small\item\em return pointer to \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} \item\end{CompactList}\item 
+{\bf particle\_\-iterator} \& {\bf operator++} (void)
+\begin{CompactList}\small\item\em Pre-fix increment. \item\end{CompactList}\item 
+{\bf particle\_\-iterator} {\bf operator++} (int)
+\begin{CompactList}\small\item\em Post-fix increment. \item\end{CompactList}\item 
+bool {\bf operator==} (const {\bf particle\_\-iterator} \&a) const
+\begin{CompactList}\small\item\em equality \item\end{CompactList}\item 
+bool {\bf operator!=} (const {\bf particle\_\-iterator} \&a) const
+\begin{CompactList}\small\item\em inequality \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::map$<$ int, {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$::iterator {\bf m\_\-map\_\-iterator}
+\begin{CompactList}\small\item\em iterator for \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} map \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+non-const particle iterator 
+
+\doxyref{Hep\-MC::Gen\-Event::particle\_\-iterator}{p.}{classHepMC_1_1GenEvent_1_1particle__iterator} is used to iterate over all particles in the event. \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+
+
+Definition at line 426 of file Gen\-Event.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!particle_iterator@{particle\_\-iterator}}
+\index{particle_iterator@{particle\_\-iterator}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Event::particle\_\-iterator::particle\_\-iterator (const std::map$<$ int, {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$::iterator \& {\em i})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_2082fc6d5a2ae0e7659c21544a67c311}
+
+
+iterate over particles 
+
+
+
+Definition at line 431 of file Gen\-Event.h.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!particle_iterator@{particle\_\-iterator}}
+\index{particle_iterator@{particle\_\-iterator}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Event::particle\_\-iterator::particle\_\-iterator ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_9532a263a7663ae2e11295ea7516aaa1}
+
+
+
+
+Definition at line 433 of file Gen\-Event.h.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!particle_iterator@{particle\_\-iterator}}
+\index{particle_iterator@{particle\_\-iterator}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Event::particle\_\-iterator::particle\_\-iterator (const {\bf particle\_\-iterator} \& {\em i})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_6d8b589a8761400ce019ddabe8236caa}
+
+
+copy constructor 
+
+
+
+Definition at line 435 of file Gen\-Event.h.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!~particle_iterator@{$\sim$particle\_\-iterator}}
+\index{~particle_iterator@{$\sim$particle\_\-iterator}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}virtual Hep\-MC::Gen\-Event::particle\_\-iterator::$\sim$particle\_\-iterator ()\hspace{0.3cm}{\tt  [inline, virtual]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_a8888727068d0c68bac2bd278ae9ed06}
+
+
+
+
+Definition at line 436 of file Gen\-Event.h.
+
+\subsection{Member Function Documentation}
+\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!operator=@{operator=}}
+\index{operator=@{operator=}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf particle\_\-iterator}\& Hep\-MC::Gen\-Event::particle\_\-iterator::operator= (const {\bf particle\_\-iterator} \& {\em i})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_f78ff872b8a99ed296395b504e759498}
+
+
+make a copy 
+
+
+
+Definition at line 438 of file Gen\-Event.h.
+
+References m\_\-map\_\-iterator.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!operator particle_const_iterator@{operator particle\_\-const\_\-iterator}}
+\index{operator particle_const_iterator@{operator particle\_\-const\_\-iterator}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Event::particle\_\-iterator::operator {\bf particle\_\-const\_\-iterator} () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_a54bd147b0c0e5af086e5e1232a42694}
+
+
+const particle iterator 
+
+
+
+Definition at line 443 of file Gen\-Event.h.
+
+References m\_\-map\_\-iterator, and Hep\-MC::Gen\-Event::particle\_\-const\_\-iterator.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!operator *@{operator $\ast$}}
+\index{operator *@{operator $\ast$}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Particle}$\ast$ Hep\-MC::Gen\-Event::particle\_\-iterator::operator $\ast$ (void) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_91c53b9cdad6642191e657954b1b037c}
+
+
+return pointer to \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} 
+
+
+
+Definition at line 446 of file Gen\-Event.h.
+
+References m\_\-map\_\-iterator.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf particle\_\-iterator}\& Hep\-MC::Gen\-Event::particle\_\-iterator::operator++ (void)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_e060d99efedab3bd32fe93b843a46d61}
+
+
+Pre-fix increment. 
+
+
+
+Definition at line 449 of file Gen\-Event.h.
+
+References m\_\-map\_\-iterator.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf particle\_\-iterator} Hep\-MC::Gen\-Event::particle\_\-iterator::operator++ (int)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_748f5c025b6b3412d4d7a43d514e45a3}
+
+
+Post-fix increment. 
+
+
+
+Definition at line 452 of file Gen\-Event.h.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::particle\_\-iterator::operator== (const {\bf particle\_\-iterator} \& {\em a}) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_223d0d23dd79672f343c01443118658a}
+
+
+equality 
+
+
+
+Definition at line 455 of file Gen\-Event.h.
+
+References m\_\-map\_\-iterator.\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::particle\_\-iterator::operator!= (const {\bf particle\_\-iterator} \& {\em a}) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_15f09ec5ed075913b9fb0d4e71503d55}
+
+
+inequality 
+
+
+
+Definition at line 458 of file Gen\-Event.h.
+
+References m\_\-map\_\-iterator.
+
+\subsection{Member Data Documentation}
+\index{HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}!m_map_iterator@{m\_\-map\_\-iterator}}
+\index{m_map_iterator@{m\_\-map\_\-iterator}!HepMC::GenEvent::particle_iterator@{Hep\-MC::Gen\-Event::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}std::map$<$int,{\bf Hep\-MC::Gen\-Particle}$\ast$$>$::iterator {\bf Hep\-MC::Gen\-Event::particle\_\-iterator::m\_\-map\_\-iterator}\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenEvent_1_1particle__iterator_0e6791dd08ad27cb90b5f5b002fa568d}
+
+
+iterator for \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} map 
+
+
+
+Definition at line 462 of file Gen\-Event.h.
+
+Referenced by operator $\ast$(), operator particle\_\-const\_\-iterator(), operator!=(), operator++(), operator=(), and operator==().
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf Gen\-Event.h}\end{CompactItemize}

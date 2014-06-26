@@ -1,0 +1,158 @@
+
+<HTML> 
+<HEAD> 
+     
+    <META HTTP-EQUIV="EXPIRES" CONTENT="20" > 
+    <TITLE>Online Event Generation</TITLE>
+    <link rel=stylesheet href="./HTML/mgstyle.css" type="text/css">
+</HEAD>
+<BODY>
+<script type="text/javascript">
+function UrlExists(url) {
+  var http = new XMLHttpRequest();
+  http.open('HEAD', url, false);
+  try{
+     http.send()
+     }
+  catch(err){
+   return 1==2;
+  }
+  return http.status!=404;
+}
+function check_link(url,alt, id){
+    var obj = document.getElementById(id);
+    if ( ! UrlExists(url)){
+       if ( ! UrlExists(alt)){
+         obj.href = url;
+         return 1==1;
+        }
+       obj.href = alt;
+       return 1 == 2;
+    }
+    obj.href = url;
+    return 1==1;
+}
+</script>    
+    <H2 align=center> Results in the sm for e+ e- > a a QED=99 QCD=99 @1
+, e+ e- > a a a QED=99 QCD=99 @2
+ </H2> 
+    <HR>
+    
+    <br>
+    <br>
+    <H2 align="center"> Available Results </H2>
+        <TABLE BORDER=2 align="center">  
+            <TR align="center">
+                <TH>Run</TH> 
+                <TH>Collider</TH> 
+                <TH> Banner </TH>
+                <TH> Cross section (pb) </TH> 
+                <TH> Events  </TH>
+                <TH> Data </TH>  
+                <TH>Output</TH>
+                <TH>Action</TH> 
+            </TR>      
+            
+        <tr>
+        <td rowspan=1>run_01</td> 
+        <td rowspan=1><center> e+ e- <br> 6500 x 6500  GeV </center></td>
+        
+        <td rowspan=1> <a href="./Events/run_01/run_01_tag_1_banner.txt">tag_1</a></td>
+        
+        <td rowspan=1><center><a href="./HTML/run_01/results.html"> 0.00371 <font face=symbol>&#177;</font> 3.6e-06</a>  </center></td>
+        <td rowspan=1><center> 10000<center></td><td> parton madevent </td>
+        <td>  <a  id='run_01_tag_1_parton_LHE' href='./Events/run_01/unweighted_events.lhe.gz' onClick="check_link('./Events/run_01/unweighted_events.lhe.gz','./Events/run_01/unweighted_events.lhe','run_01_tag_1_parton_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_01 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_01 ')"></td>
+        </tr>
+        </tr>
+        
+        <tr>
+        <td rowspan=1>run_02</td> 
+        <td rowspan=1><center> e+ e- <br> 6500 x 6500  GeV </center></td>
+        
+        <td rowspan=1> <a href="./Events/run_02/run_02_tag_1_banner.txt">tag_1</a></td>
+        
+        <td rowspan=1><center><a href="./HTML/run_02/results.html"> 0.003694 <font face=symbol>&#177;</font> 3.4e-06</a>  </center></td>
+        <td rowspan=1><center> 10000<center></td><td> parton madevent </td>
+        <td>  <a  id='run_02_tag_1_parton_LHE' href='./Events/run_02/unweighted_events.lhe.gz' onClick="check_link('./Events/run_02/unweighted_events.lhe.gz','./Events/run_02/unweighted_events.lhe','run_02_tag_1_parton_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_02 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_02 ')"></td>
+        </tr>
+        </tr>
+        
+        <tr>
+        <td rowspan=1>run_03</td> 
+        <td rowspan=1><center> e+ e- <br> 6500 x 6500  GeV </center></td>
+        
+        <td rowspan=1> <a href="./Events/run_03/run_03_tag_1_banner.txt">tag_1</a></td>
+        
+        <td rowspan=1><center><a href="./HTML/run_03/results.html"> 0.003686 <font face=symbol>&#177;</font> 3.9e-06</a>  </center></td>
+        <td rowspan=1><center> 10000<center></td><td> parton madevent </td>
+        <td>  <a  id='run_03_tag_1_parton_LHE' href='./Events/run_03/unweighted_events.lhe.gz' onClick="check_link('./Events/run_03/unweighted_events.lhe.gz','./Events/run_03/unweighted_events.lhe','run_03_tag_1_parton_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_03 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_03 ')"></td>
+        </tr>
+        </tr>
+        
+        <tr>
+        <td rowspan=1>run_04</td> 
+        <td rowspan=1><center> e+ e- <br> 6500 x 6500  GeV </center></td>
+        
+        <td rowspan=1> <a href="./Events/run_04/run_04_tag_1_banner.txt">tag_1</a></td>
+        
+        <td rowspan=1><center><a href="./HTML/run_04/results.html"> 0.003703 <font face=symbol>&#177;</font> 4.1e-06</a>  </center></td>
+        <td rowspan=1><center> 10000<center></td><td> parton madevent </td>
+        <td>  <a  id='run_04_tag_1_parton_LHE' href='./Events/run_04/unweighted_events.lhe.gz' onClick="check_link('./Events/run_04/unweighted_events.lhe.gz','./Events/run_04/unweighted_events.lhe','run_04_tag_1_parton_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_04 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_04 ')"></td>
+        </tr>
+        </tr>
+        
+        <tr>
+        <td rowspan=1>run_05</td> 
+        <td rowspan=1><center> e+ e- <br> 6500 x 6500  GeV </center></td>
+        
+        <td rowspan=1> <a href="./Events/run_05/run_05_tag_1_banner.txt">tag_1</a></td>
+        
+        <td rowspan=1><center><a href="./HTML/run_05/results.html"> 0.003706 <font face=symbol>&#177;</font> 2.9e-06</a>  </center></td>
+        <td rowspan=1><center> 10000<center></td><td> parton madevent </td>
+        <td>  <a  id='run_05_tag_1_parton_LHE' href='./Events/run_05/unweighted_events.lhe.gz' onClick="check_link('./Events/run_05/unweighted_events.lhe.gz','./Events/run_05/unweighted_events.lhe','run_05_tag_1_parton_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_05 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_05 ')"></td>
+        </tr>
+        </tr>
+        
+        <tr>
+        <td rowspan=2>run_06</td> 
+        <td rowspan=2><center> e+ e- <br> 6500 x 6500  GeV </center></td>
+        
+        <td rowspan=2> <a href="./Events/run_06/run_06_tag_1_banner.txt">tag_1</a></td>
+        
+        <td rowspan=2><center><a href="./HTML/run_06/results.html"> 0.003697 <font face=symbol>&#177;</font> 3.5e-06</a>  </center></td>
+        <td rowspan=2><center> 10000<center></td><td> parton madevent </td>
+        <td>  <a  id='run_06_tag_1_parton_LHE' href='./Events/run_06/unweighted_events.lhe.gz' onClick="check_link('./Events/run_06/unweighted_events.lhe.gz','./Events/run_06/unweighted_events.lhe','run_06_tag_1_parton_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_06 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_06 ')"></td>
+        </tr>
+        <td> pythia </td>
+        <td>  <a href="./Events/run_06/tag_1_pythia.log">LOG</a> <a  id='run_06_tag_1_pythia_LHE' href='./Events/run_06/tag_1_pythia_events.lhe.gz' onClick="check_link('./Events/run_06/tag_1_pythia_events.lhe.gz','./Events/run_06/tag_1_pythia_events.lhe','run_06_tag_1_pythia_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_06 pythia --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pgs run_06 or delphes run_06')"></td> 
+        </tr>
+        </tr>
+        
+        <tr>
+        <td rowspan=2>run_07</td> 
+        <td rowspan=2><center> e+ e- <br> 6500 x 6500  GeV </center></td>
+        
+        <td rowspan=2> <a href="./Events/run_07/run_07_tag_1_banner.txt">tag_1</a></td>
+        
+        <td rowspan=2><center><a href="./HTML/run_07/results.html"> 0.003672 <font face=symbol>&#177;</font> 8.8e-06</a>  </center></td>
+        <td rowspan=2><center> 1000<center></td><td> parton madevent </td>
+        <td>  <a  id='run_07_tag_1_parton_LHE' href='./Events/run_07/unweighted_events.lhe.gz' onClick="check_link('./Events/run_07/unweighted_events.lhe.gz','./Events/run_07/unweighted_events.lhe','run_07_tag_1_parton_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_07 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_07 ')"></td>
+        </tr>
+        <td> pythia </td>
+        <td>  <a href="./Events/run_07/tag_1_pythia.log">LOG</a> <a  id='run_07_tag_1_pythia_STDHEP' href='./Events/run_07/tag_1_pythia_events.hep.gz' onClick="check_link('./Events/run_07/tag_1_pythia_events.hep.gz','./Events/run_07/tag_1_pythia_events.hep','run_07_tag_1_pythia_STDHEP')">STDHEP</a> <a  id='run_07_tag_1_pythia_LHE' href='./Events/run_07/tag_1_pythia_events.lhe.gz' onClick="check_link('./Events/run_07/tag_1_pythia_events.lhe.gz','./Events/run_07/tag_1_pythia_events.lhe','run_07_tag_1_pythia_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_07 pythia --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pgs run_07 or delphes run_07')"></td> 
+        </tr>
+        </tr>
+        
+        </TABLE>
+    <H3 align=center><A HREF="./index.html"> Main Page </A></H3>
+</BODY> 
+</HTML> 
