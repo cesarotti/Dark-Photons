@@ -26,7 +26,7 @@ RunAction::RunAction()
   : G4UserRunAction()
 {
   //set printing event number for each event
-  G4RunManager::GetRunManager()->SetPrintProgress(1);
+  G4RunManager::GetRunManager()->SetPrintProgress(10000);
 
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
@@ -96,7 +96,8 @@ void RunAction::BeginOfRunAction(const G4Run*)
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
  
-   analysisMan->OpenFile("qanalysis");
+  analysisMan->OpenFile("qanalysis");
+  
 
 }
 

@@ -48,7 +48,7 @@ G4int hceID =
 G4bool CalorimeterSD::ProcessHits(G4Step* aStep, 
 				  G4TouchableHistory* )
 {
- 
+  return false;
   //Only looks for gammas
   G4int PDGID = aStep -> GetTrack()->GetDefinition()->GetPDGEncoding();
 
@@ -78,9 +78,9 @@ G4bool CalorimeterSD::ProcessHits(G4Step* aStep,
 void CalorimeterSD::EndOfEvent(G4HCofThisEvent*)
 {
 	G4int nofHits = fHitsCollection->entries();
-	G4cout << "------->Hits Collection: in this event they are " << nofHits 
-	       << " hits in the calorimeter" << G4endl;
-	for (G4int i =0; i<nofHits; i++) (*fHitsCollection)[i]->Print();
+	//G4cout << "------->Hits Collection: in this event they are " << nofHits 
+	//       << " hits in the calorimeter" << G4endl;
+	//for (G4int i =0; i<nofHits; i++) (*fHitsCollection)[i]->Print();
 }
 
 

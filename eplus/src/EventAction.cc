@@ -50,12 +50,10 @@ EventAction::~EventAction()
 //Reset your variables
 void EventAction::BeginOfEventAction(const G4Event* /* run*/)
 {
-  G4cout << "Being of Event Action" << G4endl;
+  //G4cout << "Being of Event Action" << G4endl;
+  fOneHit=0;
   StorePhoton(0,0,0,0);
   StorePositron(0,0,0,0);
-
-
-
 }
 
 //!!!
@@ -63,14 +61,14 @@ void EventAction::BeginOfEventAction(const G4Event* /* run*/)
 //Add verbosity
 void EventAction::EndOfEventAction(const G4Event* event)
 {
-  G4cout << "End of Event Action" << G4endl;
+  //G4cout << "End of Event Action" << G4endl;
   
-  G4HCofThisEvent* hce = event->GetHCofThisEvent(); //hit collection array allows for several kinds of hits
+  //G4HCofThisEvent* hce = event->GetHCofThisEvent(); //hit collection array allows for several kinds of hits
 
   //analysis manager
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
 
-   if ((fPhotonE!=0) && (fPositronE!=0)) {
+   if ((fPhotonE!=0) && (fPositronE!=0))  {
     
     // fill ntuple
     analysisMan->FillNtupleDColumn(0, fPhotonE/MeV);

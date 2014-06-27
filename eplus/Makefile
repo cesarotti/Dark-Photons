@@ -251,6 +251,30 @@ src/AlwaysTwoGammaModel.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.s
 .PHONY : src/AlwaysTwoGammaModel.cc.s
 
+src/AngleBiasBrem.o: src/AngleBiasBrem.cc.o
+.PHONY : src/AngleBiasBrem.o
+
+# target to build an object file
+src/AngleBiasBrem.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasBrem.cc.o
+.PHONY : src/AngleBiasBrem.cc.o
+
+src/AngleBiasBrem.i: src/AngleBiasBrem.cc.i
+.PHONY : src/AngleBiasBrem.i
+
+# target to preprocess a source file
+src/AngleBiasBrem.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasBrem.cc.i
+.PHONY : src/AngleBiasBrem.cc.i
+
+src/AngleBiasBrem.s: src/AngleBiasBrem.cc.s
+.PHONY : src/AngleBiasBrem.s
+
+# target to generate assembly for a file
+src/AngleBiasBrem.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasBrem.cc.s
+.PHONY : src/AngleBiasBrem.cc.s
+
 src/CalorHit.o: src/CalorHit.cc.o
 .PHONY : src/CalorHit.o
 
@@ -370,6 +394,78 @@ src/EventAction.s: src/EventAction.cc.s
 src/EventAction.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/EventAction.cc.s
 .PHONY : src/EventAction.cc.s
+
+src/NewBremsstrahlung.o: src/NewBremsstrahlung.cc.o
+.PHONY : src/NewBremsstrahlung.o
+
+# target to build an object file
+src/NewBremsstrahlung.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o
+.PHONY : src/NewBremsstrahlung.cc.o
+
+src/NewBremsstrahlung.i: src/NewBremsstrahlung.cc.i
+.PHONY : src/NewBremsstrahlung.i
+
+# target to preprocess a source file
+src/NewBremsstrahlung.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.i
+.PHONY : src/NewBremsstrahlung.cc.i
+
+src/NewBremsstrahlung.s: src/NewBremsstrahlung.cc.s
+.PHONY : src/NewBremsstrahlung.s
+
+# target to generate assembly for a file
+src/NewBremsstrahlung.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.s
+.PHONY : src/NewBremsstrahlung.cc.s
+
+src/NewBremsstrahlungRelModel.o: src/NewBremsstrahlungRelModel.cc.o
+.PHONY : src/NewBremsstrahlungRelModel.o
+
+# target to build an object file
+src/NewBremsstrahlungRelModel.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o
+.PHONY : src/NewBremsstrahlungRelModel.cc.o
+
+src/NewBremsstrahlungRelModel.i: src/NewBremsstrahlungRelModel.cc.i
+.PHONY : src/NewBremsstrahlungRelModel.i
+
+# target to preprocess a source file
+src/NewBremsstrahlungRelModel.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.i
+.PHONY : src/NewBremsstrahlungRelModel.cc.i
+
+src/NewBremsstrahlungRelModel.s: src/NewBremsstrahlungRelModel.cc.s
+.PHONY : src/NewBremsstrahlungRelModel.s
+
+# target to generate assembly for a file
+src/NewBremsstrahlungRelModel.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.s
+.PHONY : src/NewBremsstrahlungRelModel.cc.s
+
+src/NewEnergyLossProcess.o: src/NewEnergyLossProcess.cc.o
+.PHONY : src/NewEnergyLossProcess.o
+
+# target to build an object file
+src/NewEnergyLossProcess.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewEnergyLossProcess.cc.o
+.PHONY : src/NewEnergyLossProcess.cc.o
+
+src/NewEnergyLossProcess.i: src/NewEnergyLossProcess.cc.i
+.PHONY : src/NewEnergyLossProcess.i
+
+# target to preprocess a source file
+src/NewEnergyLossProcess.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewEnergyLossProcess.cc.i
+.PHONY : src/NewEnergyLossProcess.cc.i
+
+src/NewEnergyLossProcess.s: src/NewEnergyLossProcess.cc.s
+.PHONY : src/NewEnergyLossProcess.s
+
+# target to generate assembly for a file
+src/NewEnergyLossProcess.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewEnergyLossProcess.cc.s
+.PHONY : src/NewEnergyLossProcess.cc.s
 
 src/PositronPhysicsList1.o: src/PositronPhysicsList1.cc.o
 .PHONY : src/PositronPhysicsList1.o
@@ -492,6 +588,9 @@ help:
 	@echo "... src/AlwaysTwoGammaModel.o"
 	@echo "... src/AlwaysTwoGammaModel.i"
 	@echo "... src/AlwaysTwoGammaModel.s"
+	@echo "... src/AngleBiasBrem.o"
+	@echo "... src/AngleBiasBrem.i"
+	@echo "... src/AngleBiasBrem.s"
 	@echo "... src/CalorHit.o"
 	@echo "... src/CalorHit.i"
 	@echo "... src/CalorHit.s"
@@ -507,6 +606,15 @@ help:
 	@echo "... src/EventAction.o"
 	@echo "... src/EventAction.i"
 	@echo "... src/EventAction.s"
+	@echo "... src/NewBremsstrahlung.o"
+	@echo "... src/NewBremsstrahlung.i"
+	@echo "... src/NewBremsstrahlung.s"
+	@echo "... src/NewBremsstrahlungRelModel.o"
+	@echo "... src/NewBremsstrahlungRelModel.i"
+	@echo "... src/NewBremsstrahlungRelModel.s"
+	@echo "... src/NewEnergyLossProcess.o"
+	@echo "... src/NewEnergyLossProcess.i"
+	@echo "... src/NewEnergyLossProcess.s"
 	@echo "... src/PositronPhysicsList1.o"
 	@echo "... src/PositronPhysicsList1.i"
 	@echo "... src/PositronPhysicsList1.s"

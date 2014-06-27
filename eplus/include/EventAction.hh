@@ -25,8 +25,10 @@ public:
   
   void StorePhoton(G4double px, G4double py, G4double pz, G4double E);
   void StorePositron(G4double px, G4double py, G4double pz, G4double E);
+  void MarkMultiBrem();
 
   private:
+  	G4int fOneHit;
   	G4double fPhotonPx;
   	G4double fPhotonPy;
   	G4double fPhotonPz;
@@ -50,6 +52,10 @@ inline void EventAction::StorePositron(G4double px, G4double py, G4double pz, G4
 	fPositronPy=py;
 	fPositronPz=pz;
 	fPositronE=E;
+}
+
+inline void EventAction::MarkMultiBrem(){
+	fOneHit++;
 }
 
 
