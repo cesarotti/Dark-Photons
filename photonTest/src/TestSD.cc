@@ -61,11 +61,9 @@ G4bool TestSD::ProcessHits(G4Step* step,
   if (edep==0.) return true;
 
   G4int copyNo = step->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(1);
-  G4int replicaNo = step->GetPreStepPoint()->GetTouchableHandle()->GetReplicaNumber(); 
+  G4int replicaNo = step->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(); 
 
-  if (copyNo<1) return true;
-
-  TestHit* hit = (*fHitsCollection)[(copyNo-1)*30+replicaNo]; 
+  TestHit* hit = (*fHitsCollection)[copyNo*30+replicaNo]; 
 
   if(!(hit->GetLogV()))
     {

@@ -13,7 +13,7 @@
  *
  * BeginOfEventAction
  * {Reset the variables you want to keep track of}
- *
+*
  * EndOfEventAction
  * {fill all of the data storage methods with the analysis manager, 
  * i.e. histograms or ntuples. Also include whatever verbose arguments
@@ -111,7 +111,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 	{
 	  numHit++;
 	  energyDep+= eDep;
-	  if (eDep>1.*MeV)
+	  if (eDep>0.)
 	    {
 	      analysisMan->FillNtupleIColumn(0, 2, hit->GetRow());
 	      analysisMan->FillNtupleIColumn(0, 3, hit->GetColumn());

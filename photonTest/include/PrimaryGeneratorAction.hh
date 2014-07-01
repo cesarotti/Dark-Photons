@@ -21,6 +21,8 @@ public:
   PrimaryGeneratorAction();
   virtual ~PrimaryGeneratorAction();
 
+  G4bool GetAngle() {return angle;}
+
   virtual void GeneratePrimaries(G4Event* );
 
   G4ParticleGun* GetParticleGun() {return fParticleGun;}
@@ -30,6 +32,7 @@ public:
 
 private :
   G4ParticleGun* fParticleGun; //G4 particle gun
+  G4bool angle;
 };
 
 

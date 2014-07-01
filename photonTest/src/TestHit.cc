@@ -39,8 +39,8 @@ TestHit::TestHit(G4int z)
     fEnergyDep(0.), 
     fPos(G4ThreeVector()),
     fLogV(0),
-    fRow((int)(z/30)+1),
-    fCol((int)(z%30))
+    fRow(z/30),
+    fCol(z%30)
 {}
 
 //Create a hit that exactly mirrors another hit

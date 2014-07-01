@@ -187,7 +187,11 @@ G4VPhysicalVolume* worldPV
 
  fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(1.0,1.0, 1.0));
 
- G4ThreeVector posCal = G4ThreeVector(0,.612*m+ (copyNum-15)*5.0*cm, 0);
+ G4double xCent = 2.5*cm;
+ G4double yCent = (copyNum-14)*5.0*cm; 
+ G4double zCent = 0;
+
+ G4ThreeVector posCal = G4ThreeVector(xCent, yCent, zCent);
 
  new G4PVPlacement(0, 
 		   posCal, 
@@ -195,19 +199,34 @@ G4VPhysicalVolume* worldPV
 		   "Calorimeter_MV",
 		   worldLV, 
 		   false, 
-		   copyNum+1, 
+		   copyNum, 
 		   fCheckOverlaps);
-
+ for (G4int l = 0; l<30; l++)
+   {
 G4Box* crystalS = 
   new G4Box("crystal", crystalFace/2, crystalFace/2, crystalLength/2);
 
 G4LogicalVolume* crystalLV = 
   new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV", 0,0,0);
 
-new G4PVReplica("crystalRep", crystalLV, fLogicCalor[copyNum], 
-		 kXAxis,size, 5.0*cm);
+ new G4PVPlacement(0,
+		   G4ThreeVector((l-14.5)*5*cm, 0, 0), 
+				 crystalLV, 
+				 "CrystalMV", 
+				 fLogicCalor[copyNum], 
+				 false, 
+				 l, 
+				 fCheckOverlaps);
 
- crystalLV->SetVisAttributes(G4Colour(1.0, 1.0, 1.0));
+      if (l==14) 
+	{crystalLV->SetVisAttributes(G4Colour(1.0,0.,0.)); }
+  
+
+      else if (copyNum==16) {crystalLV->SetVisAttributes(G4Colour(1.0, 0.,0.));}
+
+ 
+ else crystalLV->SetVisAttributes(G4Colour(1.0, 1.0, 1.0));
+		   }
 
    }
 

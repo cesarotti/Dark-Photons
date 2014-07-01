@@ -27,7 +27,8 @@
 #include "Randomize.hh"
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
- : G4VUserPrimaryGeneratorAction()
+  : G4VUserPrimaryGeneratorAction(),
+    angle(0)
 {
   G4cout << "Primaries started" << G4endl;
   G4int nofParticles = 1;
@@ -39,7 +40,14 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
     = G4ParticleTable::GetParticleTable()->FindParticle("gamma");
 
   fParticleGun->SetParticleDefinition(particleDefinition);
-  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,.0612,1.));
+
+  angle = false;
+
+  if (angle)
+    {fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,.0612,1.));}
+  else 
+    {fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));}
+
   fParticleGun->SetParticleEnergy(350*MeV);
   G4cout << "Primaries finished" << G4endl;
 }

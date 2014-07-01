@@ -28,9 +28,11 @@
 #include "Randomize.hh"
 
 //Visualization
+
 #ifdef G4VIS_USE
 #include "G4VisExecutive.hh"
 #endif
+
 
 //user interactive
 #ifdef G4UI_USE
@@ -73,13 +75,16 @@ int main(int argc, char** argv)
   //Initialize G4 kernel
 
   runManager->Initialize();
-
+  
   //Visualization
+  
 #ifdef G4VIS_USE
   G4VisManager* visManager = new G4VisExecutive; 
   visManager->Initialize();
 #endif
-
+  
+ 
+  
   //Interface manager
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
   //!!!!
@@ -99,12 +104,14 @@ int main(int argc, char** argv)
 	G4UIExecutive* ui = new G4UIExecutive(argc, argv);
 
 	//checks if visualization is used
+	
 #ifdef G4VIS_USE
 	UImanager->ApplyCommand("/control/execute init_vis.mac");
+	
 
-#else
+  #else
 	UImanager->ApplyCommand("/control/execute init.mac");
-#endif
+  #endif
 	if (ui->IsGUI())
 	  UImanager->ApplyCommand("/control/execute gui.mac");
           ui->SessionStart();
@@ -118,9 +125,11 @@ int main(int argc, char** argv)
    *along with the deletion of the run manager
    *at the termination of the run.
    */
-    //#ifdef G4VIS_USE
-    //  delete visManager;
-    //#endif
+   
+   #ifdef G4VIS_USE
+     delete visManager;
+     #endif
+   
 
   delete runManager;
 
