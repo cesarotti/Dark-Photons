@@ -71,14 +71,14 @@
 #ifndef NewBremsstrahlung_h
 #define NewBremsstrahlung_h 1
 
-#include "NewEnergyLossProcess.hh"
+#include "G4VEnergyLossProcess.hh"
 #include "G4DynamicParticle.hh"
 #include "G4Electron.hh"
 #include "G4Positron.hh"
 
 class G4Material;
 
-class NewBremsstrahlung : public NewEnergyLossProcess
+class NewBremsstrahlung : public G4VEnergyLossProcess
 {
 
 public:

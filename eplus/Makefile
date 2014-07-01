@@ -443,30 +443,6 @@ src/NewBremsstrahlungRelModel.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.s
 .PHONY : src/NewBremsstrahlungRelModel.cc.s
 
-src/NewEnergyLossProcess.o: src/NewEnergyLossProcess.cc.o
-.PHONY : src/NewEnergyLossProcess.o
-
-# target to build an object file
-src/NewEnergyLossProcess.cc.o:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewEnergyLossProcess.cc.o
-.PHONY : src/NewEnergyLossProcess.cc.o
-
-src/NewEnergyLossProcess.i: src/NewEnergyLossProcess.cc.i
-.PHONY : src/NewEnergyLossProcess.i
-
-# target to preprocess a source file
-src/NewEnergyLossProcess.cc.i:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewEnergyLossProcess.cc.i
-.PHONY : src/NewEnergyLossProcess.cc.i
-
-src/NewEnergyLossProcess.s: src/NewEnergyLossProcess.cc.s
-.PHONY : src/NewEnergyLossProcess.s
-
-# target to generate assembly for a file
-src/NewEnergyLossProcess.cc.s:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewEnergyLossProcess.cc.s
-.PHONY : src/NewEnergyLossProcess.cc.s
-
 src/PositronPhysicsList1.o: src/PositronPhysicsList1.cc.o
 .PHONY : src/PositronPhysicsList1.o
 
@@ -612,9 +588,6 @@ help:
 	@echo "... src/NewBremsstrahlungRelModel.o"
 	@echo "... src/NewBremsstrahlungRelModel.i"
 	@echo "... src/NewBremsstrahlungRelModel.s"
-	@echo "... src/NewEnergyLossProcess.o"
-	@echo "... src/NewEnergyLossProcess.i"
-	@echo "... src/NewEnergyLossProcess.s"
 	@echo "... src/PositronPhysicsList1.o"
 	@echo "... src/PositronPhysicsList1.i"
 	@echo "... src/PositronPhysicsList1.s"

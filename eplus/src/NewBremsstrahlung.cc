@@ -90,7 +90,7 @@
 using namespace std;
  
 NewBremsstrahlung::NewBremsstrahlung(const G4String& name):
-  NewEnergyLossProcess(name), 
+  G4VEnergyLossProcess(name), 
   isInitialised(false)
 {
   SetProcessSubType(fBremsstrahlung);

@@ -510,8 +510,9 @@ void NewBremsstrahlungRelModel::SampleSecondaries(
   G4double xmin = G4Log(cut*cut + densityCorr);
   G4double xmax = G4Log(emax*emax  + densityCorr);
   G4double gammaEnergy, f, x; 
-  G4double thetaLowLimit=3,thetaUpLimit=4;
-  G4double EnergyLowLimit=1*MeV;
+  G4double thetaLowLimit=5.20577e-3,thetaUpLimit=180;
+  G4double EnergyLowLimit=1*MeV, EnergyHighLimit=1000*MeV;
+
 
   /*do {
     x = G4Exp(xmin + G4UniformRand()*(xmax - xmin)) - densityCorr;
@@ -544,19 +545,28 @@ void NewBremsstrahlungRelModel::SampleSecondaries(
 					      couple->GetMaterial());*/
 
   //Generate Gamma energy
-  gammaEnergy = pow(1/(1-G4UniformRand()),1/0.13)*EnergyLowLimit;
-  G4double theta = pow(g*(pow(thetaUpLimit,-2.01)-pow(thetaLowLimit,-2.01))+pow(thetaLowLimit,-2.01),-1/2.01)*twopi/360;
+  gammaEnergy = pow(G4UniformRand()*(pow(EnergyHighLimit,-0.13)-pow(EnergyLowLimit,-0.13))+pow(EnergyLowLimit,-0.13),-1/0.13);
+  //G4cout << "Gamma Energy = " << gammaEnergy << G4endl;
+  G4double theta = pow(G4UniformRand()*(pow(thetaUpLimit,-2.01)-pow(thetaLowLimit,-2.01))+pow(thetaLowLimit,-2.01),-1/2.01)*twopi/360;
   G4double phi = twopi*G4UniformRand(); 
+  //G4cout << "Theta = " << theta << G4endl;
+  //G4cout << "Phi = " << phi << G4endl;
+
   G4ThreeVector gammaDirection = fGammaDirection;
   fGammaDirection.setX(std::sin(theta)*std::cos(phi));
   fGammaDirection.setY(std::sin(theta)*std::sin(phi));
   fGammaDirection.setZ(std::cos(theta));
+  fGammaDirection.rotateUz(dp->GetMomentumDirection());
+
+
+  //G4cout << "Gamma Direction = " << fGammaDirection << G4endl;
+
 
   // create G4DynamicParticle object for the Gamma
   G4DynamicParticle* gamma = new G4DynamicParticle(theGamma,gammaDirection,
 						   gammaEnergy);
   vdp->push_back(gamma);
-  
+
   G4double totMomentum = sqrt(kineticEnergy*(totalEnergy + electron_mass_c2));
   G4ThreeVector direction = (totMomentum*dp->GetMomentumDirection()
 			     - gammaEnergy*gammaDirection).unit();
@@ -566,6 +576,7 @@ void NewBremsstrahlungRelModel::SampleSecondaries(
 
   // stop tracking and create new secondary instead of primary
   if(gammaEnergy > SecondaryThreshold()) {
+
     fParticleChange->ProposeTrackStatus(fStopAndKill);
     fParticleChange->SetProposedKineticEnergy(0.0);
     G4DynamicParticle* el = 
@@ -575,8 +586,10 @@ void NewBremsstrahlungRelModel::SampleSecondaries(
 
     // continue tracking
   } else {
+
     fParticleChange->SetProposedMomentumDirection(direction);
     fParticleChange->SetProposedKineticEnergy(finalE);
+
   }
 }
 
