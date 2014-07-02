@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/local1/project/Dark-Photons/madgraph/hepmc/HepMC/WeightContainer.h
+iostream
+-
+vector
+-
+string
+-
+map
+-
+
+/home/local1/project/Dark-Photons/madgraph/hepmc/test/testWeights.cc
+assert.h
+-
+iostream
+-
+string
+-
+vector
+-
+HepMC/WeightContainer.h
+/home/local1/project/Dark-Photons/madgraph/hepmc/test/HepMC/WeightContainer.h
+stdexcept
+-
+

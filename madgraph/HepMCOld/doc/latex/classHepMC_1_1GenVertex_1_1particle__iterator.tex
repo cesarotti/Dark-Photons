@@ -1,0 +1,168 @@
+\section{Hep\-MC::Gen\-Vertex::particle\_\-iterator Class Reference}
+\label{classHepMC_1_1GenVertex_1_1particle__iterator}\index{HepMC::GenVertex::particle_iterator@{HepMC::GenVertex::particle\_\-iterator}}
+particle iterator  
+
+
+{\tt \#include $<$Gen\-Vertex.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf particle\_\-iterator} ()
+\item 
+{\bf particle\_\-iterator} ({\bf Gen\-Vertex} \&vertex\_\-root, {\bf Iterator\-Range} range)
+\begin{CompactList}\small\item\em used to set limits on the iteration \item\end{CompactList}\item 
+{\bf particle\_\-iterator} (const {\bf particle\_\-iterator} \&)
+\begin{CompactList}\small\item\em copy \item\end{CompactList}\item 
+virtual {\bf $\sim$particle\_\-iterator} ()
+\item 
+{\bf particle\_\-iterator} \& {\bf operator=} (const {\bf particle\_\-iterator} \&)
+\begin{CompactList}\small\item\em make a copy \item\end{CompactList}\item 
+{\bf Gen\-Particle} $\ast$ {\bf operator $\ast$} (void) const
+\begin{CompactList}\small\item\em return a pointer to a particle \item\end{CompactList}\item 
+{\bf particle\_\-iterator} \& {\bf operator++} (void)
+\begin{CompactList}\small\item\em Pre-fix increment. \item\end{CompactList}\item 
+{\bf particle\_\-iterator} {\bf operator++} (int)
+\begin{CompactList}\small\item\em Post-fix increment. \item\end{CompactList}\item 
+bool {\bf operator==} (const {\bf particle\_\-iterator} \&) const
+\begin{CompactList}\small\item\em equality \item\end{CompactList}\item 
+bool {\bf operator!=} (const {\bf particle\_\-iterator} \&) const
+\begin{CompactList}\small\item\em inequality \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Gen\-Particle} $\ast$ {\bf advance\_\-to\_\-first\_\-} ()
+\begin{CompactList}\small\item\em \char`\"{}first\char`\"{} particle \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+particle iterator 
+
+Iterates over all particles connected via a graph. by iterating through all vertices in the m\_\-range. For each vertex it returns orphaned parent particles (i.e. parents without production vertices) then children ... in this way each particle is associated to exactly one vertex and so it is returned exactly once. Is made friend so that it can access protected edge iterator \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+
+
+Definition at line 305 of file Gen\-Vertex.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!particle_iterator@{particle\_\-iterator}}
+\index{particle_iterator@{particle\_\-iterator}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::particle\_\-iterator::particle\_\-iterator ()}\label{classHepMC_1_1GenVertex_1_1particle__iterator_7c5a60d06fa9b718b70161570ee38b92}
+
+
+
+
+Definition at line 815 of file Gen\-Vertex.cc.\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!particle_iterator@{particle\_\-iterator}}
+\index{particle_iterator@{particle\_\-iterator}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::particle\_\-iterator::particle\_\-iterator ({\bf Gen\-Vertex} \& {\em vertex\_\-root}, {\bf Iterator\-Range} {\em range})}\label{classHepMC_1_1GenVertex_1_1particle__iterator_f30f9f77a3bb4e72fb59e81341062460}
+
+
+used to set limits on the iteration 
+
+
+
+Definition at line 817 of file Gen\-Vertex.cc.
+
+References advance\_\-to\_\-first\_\-(), Hep\-MC::family, and Hep\-MC::Gen\-Vertex::vertex\_\-iterator::range().\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!particle_iterator@{particle\_\-iterator}}
+\index{particle_iterator@{particle\_\-iterator}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::particle\_\-iterator::particle\_\-iterator (const {\bf particle\_\-iterator} \&)}\label{classHepMC_1_1GenVertex_1_1particle__iterator_1a4878d06d0f9356d9fd0e4f240baeeb}
+
+
+copy 
+
+
+
+Definition at line 831 of file Gen\-Vertex.cc.\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!~particle_iterator@{$\sim$particle\_\-iterator}}
+\index{~particle_iterator@{$\sim$particle\_\-iterator}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::particle\_\-iterator::$\sim$particle\_\-iterator ()\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1GenVertex_1_1particle__iterator_d3f9cdfcbb1c69c8eab15f80c0840dc8}
+
+
+
+
+Definition at line 836 of file Gen\-Vertex.cc.
+
+\subsection{Member Function Documentation}
+\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!operator=@{operator=}}
+\index{operator=@{operator=}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particle\_\-iterator} \& Hep\-MC::Gen\-Vertex::particle\_\-iterator::operator= (const {\bf particle\_\-iterator} \&)}\label{classHepMC_1_1GenVertex_1_1particle__iterator_8341961f15362bdd765d88217eb5c58d}
+
+
+make a copy 
+
+
+
+Definition at line 839 of file Gen\-Vertex.cc.
+
+References m\_\-edge, and m\_\-vertex\_\-iterator.\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!operator *@{operator $\ast$}}
+\index{operator *@{operator $\ast$}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Particle} $\ast$ Hep\-MC::Gen\-Vertex::particle\_\-iterator::operator $\ast$ (void) const}\label{classHepMC_1_1GenVertex_1_1particle__iterator_5dbe03830cc9e018aedd0e9c3b0b220a}
+
+
+return a pointer to a particle 
+
+
+
+Definition at line 846 of file Gen\-Vertex.cc.\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particle\_\-iterator} \& Hep\-MC::Gen\-Vertex::particle\_\-iterator::operator++ (void)}\label{classHepMC_1_1GenVertex_1_1particle__iterator_fdbae6accd220313f2fb349aee188c49}
+
+
+Pre-fix increment. 
+
+
+
+Definition at line 851 of file Gen\-Vertex.cc.
+
+References advance\_\-to\_\-first\_\-(), and Hep\-MC::Gen\-Vertex::vertex\_\-iterator::range().\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particle\_\-iterator} Hep\-MC::Gen\-Vertex::particle\_\-iterator::operator++ (int)}\label{classHepMC_1_1GenVertex_1_1particle__iterator_24dddc010d733718ac9cd1c5f84403b2}
+
+
+Post-fix increment. 
+
+
+
+Definition at line 870 of file Gen\-Vertex.cc.\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Vertex::particle\_\-iterator::operator== (const {\bf particle\_\-iterator} \&) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_1_1particle__iterator_364021ecb360e739605c548bbd35f335}
+
+
+equality 
+
+
+
+Definition at line 478 of file Gen\-Vertex.h.\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Vertex::particle\_\-iterator::operator!= (const {\bf particle\_\-iterator} \&) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_1_1particle__iterator_3bf3fe5154ebc106c5fb3faa4eee4a06}
+
+
+inequality 
+
+
+
+Definition at line 483 of file Gen\-Vertex.h.\index{HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}!advance_to_first_@{advance\_\-to\_\-first\_\-}}
+\index{advance_to_first_@{advance\_\-to\_\-first\_\-}!HepMC::GenVertex::particle_iterator@{Hep\-MC::Gen\-Vertex::particle\_\-iterator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Particle} $\ast$ Hep\-MC::Gen\-Vertex::particle\_\-iterator::advance\_\-to\_\-first\_\- ()\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenVertex_1_1particle__iterator_9795742185a5a683ca647aedd52cd5eb}
+
+
+\char`\"{}first\char`\"{} particle 
+
+
+
+if the current edge is not a suitable return value ( because it is a parent of the vertex root that itself belongs to a different vertex ) it advances to the first suitable return value 
+
+Definition at line 877 of file Gen\-Vertex.cc.
+
+References Hep\-MC::Gen\-Vertex::edge\_\-iterator::is\_\-parent(), Hep\-MC::Gen\-Vertex::vertex\_\-iterator::range(), and Hep\-MC::relatives.
+
+Referenced by operator++(), and particle\_\-iterator().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf Gen\-Vertex.h}\item 
+{\bf Gen\-Vertex.cc}\end{CompactItemize}

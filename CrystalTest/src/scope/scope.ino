@@ -38,8 +38,8 @@ void ADC_Handler()      // move DMA pointers to next buffer
   int f=ADC->ADC_ISR;
   if (f&ADC_ISR_ENDRX){
     bufn=(bufn+1)&(NSLOT-1); // cycle through the four buffers
-    ADC->ADC_RNPR=(uint32_t)buf[bufn];
-    ADC->ADC_RNCR=NBUFFER;
+    ADC->ADC_RNPR=(uint32_t)buf[bufn]; // pointer to where to write to
+    ADC->ADC_RNCR=NBUFFER; // how many addresses
   } 
 }
 
@@ -66,6 +66,7 @@ void setup(){
   Serial.print(" test, compiled on ");
   Serial.println( __DATE__);
 #endif
+  // turn on the ADC
   pmc_enable_periph_clk(ID_ADC);
   // change frequency in 3rd argument
   adc_init(ADC, SystemCoreClock, ADC_FREQ_MAX, ADC_STARTUP_FAST);
@@ -75,21 +76,22 @@ void setup(){
   Serial.println(adc_get_actual_adc_clock(ADC, SystemCoreClock));
   Serial.print("SystemCoreClock is (in Hz) ");
   Serial.println(SystemCoreClock);
-
+  // ch 44.7 of the SAM3X manual for these registers
   ADC->ADC_MR |=ADC_MR_FREERUN_ON; // free running
 
   ADC->ADC_CHER=ADC_CHER_CH7;  // enable channel 7
 
   NVIC_EnableIRQ(ADC_IRQn);
-  ADC->ADC_IDR=~(ADC_IDR_ENDRX);
-  ADC->ADC_IER=ADC_IER_ENDRX; // ENDRX
-  ADC->ADC_RPR=(uint32_t)buf[0];   // DMA buffer
-  ADC->ADC_RCR=NBUFFER;
-  ADC->ADC_RNPR=(uint32_t)buf[1]; // next DMA buffer
+  ADC->ADC_IDR=~(ADC_IDR_ENDRX); // turn off the disable to ADC_IDR
+  ADC->ADC_IER=ADC_IER_ENDRX; // ENDRX - ADC Interrupt Enable Register
+  ADC->ADC_RPR=(uint32_t)buf[0];   // current DMA buffer address
+  ADC->ADC_RCR=NBUFFER; // how many at that location
+  ADC->ADC_RNPR=(uint32_t)buf[1]; // next DMA buffer address
   ADC->ADC_RNCR=NBUFFER;
   bufn=obufn=1;
-  ADC->ADC_PTCR=1;
-  ADC->ADC_CR=2;
+  ADC->ADC_PTCR=1; //  ADC DMA Transfer control Register - RXTCEN
+                   // Receiver Transfer enable (PERIPH_PTCR in docs)
+  ADC->ADC_CR=2; // START ADC Conversions
 
   // print out value of the MR and CR registers
   p("ADC MR = 0x%08lx\n", ADC->ADC_MR);

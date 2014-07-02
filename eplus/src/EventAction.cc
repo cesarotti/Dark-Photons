@@ -108,7 +108,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
       G4double totEnergy = newHit->GetTotalEnergy();
       analysisMan->FillNtupleDColumn(0, 3+(i*3), totEnergy);
       analysisMan->FillNtupleDColumn(0, 7+(i%2), CalcTheta(position.x(), position.y()));
-      analysisMan->FillNtupleIColumn(0, 9+i, newHit->GetCrystalNumber());
+      analysisMan->FillNtupleIColumn(0, 9+i, newHit->GetColumn());
       analysisMan->FillNtupleIColumn(0, 10+i, newHit->GetRow());
 }
 

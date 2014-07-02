@@ -1,0 +1,1 @@
+photonTest is the new simulation to begin getting information as to how many crystals will be affected by a photon at about 350 MeV hitting the calorimeter. Meant to keep track of energy deposition per crystal.

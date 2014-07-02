@@ -1,0 +1,130 @@
+
+<head>
+    <title>Process results</title>
+    <script type="text/javascript" src="../sortable.js"></script>
+    <link rel=stylesheet href="../mgstyle.css" type="text/css">
+</head>
+<body>
+<script type="text/javascript">
+function UrlExists(url) {
+  var http = new XMLHttpRequest();
+  http.open('HEAD', url, false);
+  try{
+     http.send()
+     }
+  catch(err){
+   return 1==2;
+  }
+  return http.status!=404;
+}
+function check_link(url,alt, id){
+    var obj = document.getElementById(id);
+    if ( ! UrlExists(url)){
+        if ( ! UrlExists(alt)){
+         obj.href = alt;
+         return true;
+        }
+       obj.href = alt;
+       return false;
+    }
+    obj.href = url;
+    return 1==1;
+}
+</script>
+  
+
+ <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>s= 0.0036968 &#177 3.47e-06 (pb)</b><br><br>
+<table class="sortable" id='tablesort'>
+<tr><th>Graph</th>
+    <th> Cross-Section</th>
+    <th>Error</th>
+    <th>Events (K)</th>
+    <th>Unwgt</th>
+    <th>Luminosity</th>
+</tr>
+
+<tr><td align=right><a href=../../SubProcesses/P2_ll_aaa/diagrams.html>P2_ll_aaa</a></td>
+    <td align=right><a id="#P2_ll_aaa" href=#P2_ll_aaa onClick="check_link('#P2_ll_aaa','#P2_ll_aaa','#P2_ll_aaa')"> 0.0003882 </a> </td>
+    <td align=right>  3.29e-06</td>
+    <td align=right>  60002.0</td>
+    <td align=right>  1841.0</td>
+    <td align=right>  0</td>
+</tr>
+
+<tr><td align=right><a href=../../SubProcesses/P1_ll_aa/diagrams.html>P1_ll_aa</a></td>
+    <td align=right><a id="#P1_ll_aa" href=#P1_ll_aa onClick="check_link('#P1_ll_aa','#P1_ll_aa','#P1_ll_aa')"> 0.003309 </a> </td>
+    <td align=right>  1.08e-06</td>
+    <td align=right>  330011.0</td>
+    <td align=right>  17502.0</td>
+    <td align=right>  0</td>
+</tr>
+
+<tr><td align=right>P2 sum</td>
+    <td align=right><a id="./results.html" href=./results.html onClick="check_link('./results.html','','./results.html')"> 0.00038819 </a> </td>
+    <td align=right>  </td>
+    <td align=right>  </td>
+    <td align=right>  </td>
+    <td align=right>  </td>
+</tr>
+
+<tr><td align=right>P1 sum</td>
+    <td align=right><a id="./results.html" href=./results.html onClick="check_link('./results.html','','./results.html')"> 0.0033086 </a> </td>
+    <td align=right>  </td>
+    <td align=right>  </td>
+    <td align=right>  </td>
+    <td align=right>  </td>
+</tr>
+
+</table>
+</center>
+<br><br><br>
+ <dl>  
+<dt><a  name=P2_ll_aaa href=../../SubProcesses/P2_ll_aaa/diagrams.html>P2_ll_aaa</a></dt><dd>
+ <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>s= 0.00038819 &#177 3.29e-06 (pb)</b><br><br>
+<table class="sortable" id='tablesort'>
+<tr><th>Graph</th>
+    <th> Cross-Section</th>
+    <th>Error</th>
+    <th>Events (K)</th>
+    <th>Unwgt</th>
+    <th>Luminosity</th>
+</tr>
+
+<tr><td align=right>G1</td>
+    <td align=right><a id="../../SubProcesses/P2_ll_aaa/G1/run_06_log.txt" href=../../SubProcesses/P2_ll_aaa/G1/run_06_log.txt onClick="check_link('../../SubProcesses/P2_ll_aaa/G1/run_06_log.txt','../../SubProcesses/P2_ll_aaa/G1/log.txt','../../SubProcesses/P2_ll_aaa/G1/run_06_log.txt')"> 0.0003882 </a> </td>
+    <td align=right>  3.29e-06</td>
+    <td align=right>  60002.0</td>
+    <td align=right>  1841.0</td>
+    <td align=right>  4.75e+06</td>
+</tr>
+
+</table>
+</center>
+<br><br><br>
+  
+<dt><a  name=P1_ll_aa href=../../SubProcesses/P1_ll_aa/diagrams.html>P1_ll_aa</a></dt><dd>
+ <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>s= 0.0033086 &#177 1.08e-06 (pb)</b><br><br>
+<table class="sortable" id='tablesort'>
+<tr><th>Graph</th>
+    <th> Cross-Section</th>
+    <th>Error</th>
+    <th>Events (K)</th>
+    <th>Unwgt</th>
+    <th>Luminosity</th>
+</tr>
+
+<tr><td align=right>G1</td>
+    <td align=right><a id="../../SubProcesses/P1_ll_aa/G1/run_06_log.txt" href=../../SubProcesses/P1_ll_aa/G1/run_06_log.txt onClick="check_link('../../SubProcesses/P1_ll_aa/G1/run_06_log.txt','../../SubProcesses/P1_ll_aa/G1/log.txt','../../SubProcesses/P1_ll_aa/G1/run_06_log.txt')"> 0.003309 </a> </td>
+    <td align=right>  1.08e-06</td>
+    <td align=right>  330011.0</td>
+    <td align=right>  17502.0</td>
+    <td align=right>  5.29e+06</td>
+</tr>
+
+</table>
+</center>
+<br><br><br>
+ </dl></body>

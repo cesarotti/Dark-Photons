@@ -1,0 +1,328 @@
+\section{Hep\-MC::IO\_\-HERWIG Class Reference}
+\label{classHepMC_1_1IO__HERWIG}\index{HepMC::IO_HERWIG@{HepMC::IO\_\-HERWIG}}
+\doxyref{IO\_\-HERWIG}{p.}{classHepMC_1_1IO__HERWIG} is used to get Herwig information.  
+
+
+{\tt \#include $<$IO\_\-HERWIG.h$>$}
+
+Inheritance diagram for Hep\-MC::IO\_\-HERWIG::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classHepMC_1_1IO__HERWIG}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf IO\_\-HERWIG} ()
+\item 
+virtual {\bf $\sim$IO\_\-HERWIG} ()
+\item 
+bool {\bf fill\_\-next\_\-event} ({\bf Gen\-Event} $\ast$)
+\begin{CompactList}\small\item\em get the next event \item\end{CompactList}\item 
+void {\bf print} (std::ostream \&ostr=std::cout) const
+\begin{CompactList}\small\item\em write to ostr \item\end{CompactList}\item 
+double {\bf interfaces\_\-to\_\-version\_\-number} () const
+\begin{CompactList}\small\item\em this information is dubious \item\end{CompactList}\item 
+bool {\bf print\_\-inconsistency\_\-errors} () const
+\begin{CompactList}\small\item\em default is true \item\end{CompactList}\item 
+void {\bf set\_\-print\_\-inconsistency\_\-errors} (bool b=1)
+\begin{CompactList}\small\item\em decide whether or not to print inconsistency errors \item\end{CompactList}\item 
+bool {\bf no\_\-gaps\_\-in\_\-barcodes} () const
+\begin{CompactList}\small\item\em ask how to deal with extra non-physical pseudo particles \item\end{CompactList}\item 
+void {\bf set\_\-no\_\-gaps\_\-in\_\-barcodes} (bool a)
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+bool {\bf trust\_\-both\_\-mothers\_\-and\_\-daughters} () const
+\begin{CompactList}\small\item\em default is true \item\end{CompactList}\item 
+bool {\bf trust\_\-mothers\_\-before\_\-daughters} () const
+\begin{CompactList}\small\item\em default is false \item\end{CompactList}\item 
+void {\bf set\_\-trust\_\-mothers\_\-before\_\-daughters} (bool b=1)
+\begin{CompactList}\small\item\em define mother daughter trust rules \item\end{CompactList}\item 
+void {\bf set\_\-trust\_\-both\_\-mothers\_\-and\_\-daughters} (bool b=0)
+\begin{CompactList}\small\item\em define mother daughter trust rules \item\end{CompactList}\item 
+{\bf Gen\-Particle} $\ast$ {\bf build\_\-particle} (int index)
+\begin{CompactList}\small\item\em make a particle \item\end{CompactList}\item 
+void {\bf build\_\-production\_\-vertex} (int i, std::vector$<$ {\bf Gen\-Particle} $\ast$ $>$ \&hepevt\_\-particle, {\bf Gen\-Event} $\ast$evt)
+\begin{CompactList}\small\item\em make a production vertex \item\end{CompactList}\item 
+void {\bf build\_\-end\_\-vertex} (int i, std::vector$<$ {\bf Gen\-Particle} $\ast$ $>$ \&hepevt\_\-particle, {\bf Gen\-Event} $\ast$evt)
+\begin{CompactList}\small\item\em make a decay vertex \item\end{CompactList}\item 
+int {\bf find\_\-in\_\-map} (const std::map$<$ {\bf Gen\-Particle} $\ast$, int $>$ \&m, {\bf Gen\-Particle} $\ast${\bf p}) const
+\begin{CompactList}\small\item\em find this particle in the map \item\end{CompactList}\item 
+void {\bf repair\_\-hepevt} () const
+\begin{CompactList}\small\item\em make the HERWIG HEPEVT common block look like the standard \item\end{CompactList}\item 
+void {\bf remove\_\-gaps\_\-in\_\-hepevt} () const
+\begin{CompactList}\small\item\em deal with artifacts of repairing HEPEVT \item\end{CompactList}\item 
+void {\bf zero\_\-hepevt\_\-entry} (int i) const
+\begin{CompactList}\small\item\em zero out a HEPEVT pseudo particle \item\end{CompactList}\item 
+int {\bf translate\_\-herwig\_\-to\_\-pdg\_\-id} (int i) const
+\begin{CompactList}\small\item\em translate particle ID \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{IO\_\-HERWIG}{p.}{classHepMC_1_1IO__HERWIG} is used to get Herwig information. 
+
+IO class for reading the HEPEVT common block from the Herwig monte carlo program. \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf example\_\-My\-Herwig.cc}.\end{Desc}
+
+
+
+
+Definition at line 57 of file IO\_\-HERWIG.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!IO_HERWIG@{IO\_\-HERWIG}}
+\index{IO_HERWIG@{IO\_\-HERWIG}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::IO\_\-HERWIG::IO\_\-HERWIG ()}\label{classHepMC_1_1IO__HERWIG_b301cc044feaf12ebbd0f3e3d2bd170a}
+
+
+
+
+Definition at line 12 of file IO\_\-HERWIG.cc.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!~IO_HERWIG@{$\sim$IO\_\-HERWIG}}
+\index{~IO_HERWIG@{$\sim$IO\_\-HERWIG}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::IO\_\-HERWIG::$\sim$IO\_\-HERWIG ()\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1IO__HERWIG_99bfa883ae364b1154c8cc7dc7d311a0}
+
+
+
+
+Definition at line 81 of file IO\_\-HERWIG.cc.
+
+\subsection{Member Function Documentation}
+\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!fill_next_event@{fill\_\-next\_\-event}}
+\index{fill_next_event@{fill\_\-next\_\-event}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HERWIG::fill\_\-next\_\-event ({\bf Gen\-Event} $\ast$)\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1IO__HERWIG_7a49968897062f0e977053bcdf176e17}
+
+
+get the next event 
+
+
+
+read one event from the Herwig HEPEVT common block and fill \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} return T/F =success/failure
+
+sufficient to do one or the other. 
+
+Implements {\bf Hep\-MC::IO\_\-Base\-Class} \doxyref{}{p.}{classHepMC_1_1IO__BaseClass_f1dffb95a44d521af510f6431a30f942}.
+
+Definition at line 94 of file IO\_\-HERWIG.cc.
+
+References Hep\-MC::Gen\-Vertex::add\_\-particle\_\-in(), Hep\-MC::Gen\-Vertex::add\_\-particle\_\-out(), Hep\-MC::Gen\-Event::add\_\-vertex(), build\_\-end\_\-vertex(), build\_\-particle(), build\_\-production\_\-vertex(), Hep\-MC::HEPEVT\_\-Wrapper::event\_\-number(), Hep\-MC::HEPEVT\_\-Wrapper::number\_\-entries(), repair\_\-hepevt(), Hep\-MC::Gen\-Event::set\_\-beam\_\-particles(), Hep\-MC::Gen\-Event::set\_\-event\_\-number(), Hep\-MC::Gen\-Event::set\_\-signal\_\-process\_\-vertex(), and Hep\-MC::HEPEVT\_\-Wrapper::status().\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!print@{print}}
+\index{print@{print}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::print (std::ostream \& {\em ostr} = {\tt std::cout}) const\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1IO__HERWIG_ab6853a2888f6e2f628039b9079fe120}
+
+
+write to ostr 
+
+
+
+Reimplemented from {\bf Hep\-MC::IO\_\-Base\-Class} \doxyref{}{p.}{classHepMC_1_1IO__BaseClass_52a1503f4107fd3d5f4da02feb45751b}.
+
+Definition at line 83 of file IO\_\-HERWIG.cc.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!interfaces_to_version_number@{interfaces\_\-to\_\-version\_\-number}}
+\index{interfaces_to_version_number@{interfaces\_\-to\_\-version\_\-number}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Hep\-MC::IO\_\-HERWIG::interfaces\_\-to\_\-version\_\-number () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HERWIG_a527cb458b5c699b51f68a22bb72cf08}
+
+
+this information is dubious 
+
+
+
+Definition at line 66 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!print_inconsistency_errors@{print\_\-inconsistency\_\-errors}}
+\index{print_inconsistency_errors@{print\_\-inconsistency\_\-errors}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HERWIG::print\_\-inconsistency\_\-errors () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HERWIG_2c9a32518c8520046758ca9c96c7a909}
+
+
+default is true 
+
+
+
+Definition at line 149 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!set_print_inconsistency_errors@{set\_\-print\_\-inconsistency\_\-errors}}
+\index{set_print_inconsistency_errors@{set\_\-print\_\-inconsistency\_\-errors}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::set\_\-print\_\-inconsistency\_\-errors (bool {\em b} = {\tt 1})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HERWIG_d11799a2ca5e3597057b31e278dca4ef}
+
+
+decide whether or not to print inconsistency errors 
+
+
+
+Definition at line 158 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!no_gaps_in_barcodes@{no\_\-gaps\_\-in\_\-barcodes}}
+\index{no_gaps_in_barcodes@{no\_\-gaps\_\-in\_\-barcodes}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HERWIG::no\_\-gaps\_\-in\_\-barcodes () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HERWIG_7d8d7242a83f0185b53817793cbc1186}
+
+
+ask how to deal with extra non-physical pseudo particles 
+
+
+
+Definition at line 75 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!set_no_gaps_in_barcodes@{set\_\-no\_\-gaps\_\-in\_\-barcodes}}
+\index{set_no_gaps_in_barcodes@{set\_\-no\_\-gaps\_\-in\_\-barcodes}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::set\_\-no\_\-gaps\_\-in\_\-barcodes (bool {\em a})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1IO__HERWIG_0f796aa2819af640479f914524549697}
+
+
+The HERWIG HEPEVT common block has some EXTRA non-physical ENTRIES (such as CMS frame, HARD subprocess, and CONE). These are removed by \doxyref{IO\_\-HERWIG}{p.}{classHepMC_1_1IO__HERWIG}. Thus the \doxyref{Hep\-MC}{p.}{namespaceHepMC} event will APPEAR to have fewer particles in it that herwig did. There is a switch m\_\-no\_\-gaps\_\-in\_\-barcodes. For true - then the extra particles are removed from HEPEVT, with the result that the \doxyref{Hep\-MC}{p.}{namespaceHepMC} barcodes will be sequential, with no gaps. false - the barcodes will correspond directly to the HEPEVT index, but there will be gaps ... ie some barcodes will be unassigned. this switch requested by I Hinchliffe, October 31, 2002 
+
+Definition at line 88 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!trust_both_mothers_and_daughters@{trust\_\-both\_\-mothers\_\-and\_\-daughters}}
+\index{trust_both_mothers_and_daughters@{trust\_\-both\_\-mothers\_\-and\_\-daughters}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HERWIG::trust\_\-both\_\-mothers\_\-and\_\-daughters () const\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1IO__HERWIG_d9e2a90df8aca3e22d82e27314834745}
+
+
+default is true 
+
+
+
+Definition at line 143 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!trust_mothers_before_daughters@{trust\_\-mothers\_\-before\_\-daughters}}
+\index{trust_mothers_before_daughters@{trust\_\-mothers\_\-before\_\-daughters}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::IO\_\-HERWIG::trust\_\-mothers\_\-before\_\-daughters () const\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1IO__HERWIG_fb49848889fa6fb602c98f573c565f64}
+
+
+default is false 
+
+
+
+Definition at line 146 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!set_trust_mothers_before_daughters@{set\_\-trust\_\-mothers\_\-before\_\-daughters}}
+\index{set_trust_mothers_before_daughters@{set\_\-trust\_\-mothers\_\-before\_\-daughters}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::set\_\-trust\_\-mothers\_\-before\_\-daughters (bool {\em b} = {\tt 1})\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1IO__HERWIG_909da8fafb3bf468e8547d7d0fac7f67}
+
+
+define mother daughter trust rules 
+
+
+
+Definition at line 155 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!set_trust_both_mothers_and_daughters@{set\_\-trust\_\-both\_\-mothers\_\-and\_\-daughters}}
+\index{set_trust_both_mothers_and_daughters@{set\_\-trust\_\-both\_\-mothers\_\-and\_\-daughters}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::set\_\-trust\_\-both\_\-mothers\_\-and\_\-daughters (bool {\em b} = {\tt 0})\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1IO__HERWIG_169a866ff551c5d2f62d48dbff537dec}
+
+
+define mother daughter trust rules 
+
+
+
+Definition at line 152 of file IO\_\-HERWIG.h.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!build_particle@{build\_\-particle}}
+\index{build_particle@{build\_\-particle}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Particle} $\ast$ Hep\-MC::IO\_\-HERWIG::build\_\-particle (int {\em index})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HERWIG_2afff99e4948621126d1211272b3fb02}
+
+
+make a particle 
+
+
+
+Builds a particle object corresponding to index in HEPEVT 
+
+Definition at line 342 of file IO\_\-HERWIG.cc.
+
+References Hep\-MC::HEPEVT\_\-Wrapper::e(), Hep\-MC::HEPEVT\_\-Wrapper::id(), Hep\-MC::HEPEVT\_\-Wrapper::m(), p, Hep\-MC::HEPEVT\_\-Wrapper::px(), Hep\-MC::HEPEVT\_\-Wrapper::py(), Hep\-MC::HEPEVT\_\-Wrapper::pz(), and Hep\-MC::HEPEVT\_\-Wrapper::status().
+
+Referenced by fill\_\-next\_\-event().\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!build_production_vertex@{build\_\-production\_\-vertex}}
+\index{build_production_vertex@{build\_\-production\_\-vertex}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::build\_\-production\_\-vertex (int {\em i}, std::vector$<$ {\bf Gen\-Particle} $\ast$ $>$ \& {\em hepevt\_\-particle}, {\bf Gen\-Event} $\ast$ {\em evt})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HERWIG_6de881de5bbbf579695522af451814a7}
+
+
+make a production vertex 
+
+
+
+for particle in HEPEVT with index i, build a production vertex if appropriate, and add that vertex to the event 
+
+Definition at line 201 of file IO\_\-HERWIG.cc.
+
+References Hep\-MC::Gen\-Vertex::add\_\-particle\_\-in(), Hep\-MC::Gen\-Vertex::add\_\-particle\_\-out(), Hep\-MC::Gen\-Event::add\_\-vertex(), Hep\-MC::HEPEVT\_\-Wrapper::event\_\-number(), Hep\-MC::HEPEVT\_\-Wrapper::first\_\-parent(), Hep\-MC::HEPEVT\_\-Wrapper::last\_\-parent(), Hep\-MC::HEPEVT\_\-Wrapper::number\_\-parents(), p, Hep\-MC::Gen\-Vertex::position(), Hep\-MC::Gen\-Vertex::print(), Hep\-MC::Gen\-Vertex::set\_\-position(), Hep\-MC::HEPEVT\_\-Wrapper::t(), Hep\-MC::HEPEVT\_\-Wrapper::x(), Hep\-MC::HEPEVT\_\-Wrapper::y(), and Hep\-MC::HEPEVT\_\-Wrapper::z().
+
+Referenced by build\_\-end\_\-vertex(), and fill\_\-next\_\-event().\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!build_end_vertex@{build\_\-end\_\-vertex}}
+\index{build_end_vertex@{build\_\-end\_\-vertex}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::build\_\-end\_\-vertex (int {\em i}, std::vector$<$ {\bf Gen\-Particle} $\ast$ $>$ \& {\em hepevt\_\-particle}, {\bf Gen\-Event} $\ast$ {\em evt})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HERWIG_8077ede98c4040631f28424c6624a50b}
+
+
+make a decay vertex 
+
+
+
+for particle in HEPEVT with index i, build an end vertex if appropriate, and add that vertex to the event 
+
+Definition at line 274 of file IO\_\-HERWIG.cc.
+
+References Hep\-MC::Gen\-Vertex::add\_\-particle\_\-in(), Hep\-MC::Gen\-Vertex::add\_\-particle\_\-out(), Hep\-MC::Gen\-Event::add\_\-vertex(), build\_\-production\_\-vertex(), Hep\-MC::HEPEVT\_\-Wrapper::event\_\-number(), Hep\-MC::HEPEVT\_\-Wrapper::first\_\-child(), Hep\-MC::HEPEVT\_\-Wrapper::last\_\-child(), Hep\-MC::HEPEVT\_\-Wrapper::number\_\-children(), p, Hep\-MC::Gen\-Vertex::position(), Hep\-MC::Gen\-Vertex::set\_\-position(), Hep\-MC::HEPEVT\_\-Wrapper::t(), Hep\-MC::HEPEVT\_\-Wrapper::x(), Hep\-MC::HEPEVT\_\-Wrapper::y(), and Hep\-MC::HEPEVT\_\-Wrapper::z().
+
+Referenced by fill\_\-next\_\-event().\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!find_in_map@{find\_\-in\_\-map}}
+\index{find_in_map@{find\_\-in\_\-map}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::IO\_\-HERWIG::find\_\-in\_\-map (const std::map$<$ {\bf Gen\-Particle} $\ast$, int $>$ \& {\em m}, {\bf Gen\-Particle} $\ast$ {\em p}) const\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HERWIG_7606a11af5e487c4340e8908729769f9}
+
+
+find this particle in the map 
+
+
+
+Definition at line 357 of file IO\_\-HERWIG.cc.
+
+References p.\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!repair_hepevt@{repair\_\-hepevt}}
+\index{repair_hepevt@{repair\_\-hepevt}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::repair\_\-hepevt () const\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HERWIG_40fc149a9760dc7b03b08402f16b7929}
+
+
+make the HERWIG HEPEVT common block look like the standard 
+
+
+
+This routine takes the HEPEVT common block as used in HERWIG, and converts it into the HEPEVT common block in the standard format
+
+This means it:\begin{itemize}
+\item removes the color structure, which herwig overloads into the mother/daughter fields\item zeros extra entries for hard subprocess, etc.\end{itemize}
+
+
+Special HERWIG status codes 101,102 colliding beam particles 103 beam-beam collision CMS vector 120 hard subprocess CMS vector 121,122 hard subprocess colliding partons 123-129 hard subprocess outgoing particles 141-149 (ID=94) mirror image of hard subrpocess particles 100 (ID=0 cone)
+
+Special HERWIG particle id's 91 clusters 94 jets 0 others with no pdg code 
+
+Definition at line 364 of file IO\_\-HERWIG.cc.
+
+References Hep\-MC::HEPEVT\_\-Wrapper::first\_\-child(), Hep\-MC::HEPEVT\_\-Wrapper::first\_\-parent(), Hep\-MC::HEPEVT\_\-Wrapper::id(), Hep\-MC::HEPEVT\_\-Wrapper::last\_\-child(), Hep\-MC::HEPEVT\_\-Wrapper::last\_\-parent(), Hep\-MC::HEPEVT\_\-Wrapper::number\_\-entries(), remove\_\-gaps\_\-in\_\-hepevt(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-children(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-id(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-parents(), Hep\-MC::HEPEVT\_\-Wrapper::status(), translate\_\-herwig\_\-to\_\-pdg\_\-id(), and zero\_\-hepevt\_\-entry().
+
+Referenced by fill\_\-next\_\-event().\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!remove_gaps_in_hepevt@{remove\_\-gaps\_\-in\_\-hepevt}}
+\index{remove_gaps_in_hepevt@{remove\_\-gaps\_\-in\_\-hepevt}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::remove\_\-gaps\_\-in\_\-hepevt () const\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HERWIG_98257a567a2d6e719e15eb56b6b9bef9}
+
+
+deal with artifacts of repairing HEPEVT 
+
+
+
+in this scenario, we do not allow there to be zero-ed entries in the HEPEVT common block, and so be reshuffle the common block, removing the zeero-ed entries as we go and making sure we keep the mother/daughter relationships appropriate 
+
+Definition at line 637 of file IO\_\-HERWIG.cc.
+
+References Hep\-MC::HEPEVT\_\-Wrapper::e(), Hep\-MC::HEPEVT\_\-Wrapper::first\_\-child(), Hep\-MC::HEPEVT\_\-Wrapper::first\_\-parent(), Hep\-MC::HEPEVT\_\-Wrapper::id(), Hep\-MC::HEPEVT\_\-Wrapper::last\_\-child(), Hep\-MC::HEPEVT\_\-Wrapper::last\_\-parent(), Hep\-MC::HEPEVT\_\-Wrapper::m(), Hep\-MC::HEPEVT\_\-Wrapper::number\_\-entries(), Hep\-MC::HEPEVT\_\-Wrapper::px(), Hep\-MC::HEPEVT\_\-Wrapper::py(), Hep\-MC::HEPEVT\_\-Wrapper::pz(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-children(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-id(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-mass(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-momentum(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-number\_\-entries(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-parents(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-position(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-status(), Hep\-MC::HEPEVT\_\-Wrapper::status(), Hep\-MC::HEPEVT\_\-Wrapper::t(), Hep\-MC::HEPEVT\_\-Wrapper::x(), Hep\-MC::HEPEVT\_\-Wrapper::y(), and Hep\-MC::HEPEVT\_\-Wrapper::z().
+
+Referenced by repair\_\-hepevt().\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!zero_hepevt_entry@{zero\_\-hepevt\_\-entry}}
+\index{zero_hepevt_entry@{zero\_\-hepevt\_\-entry}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::IO\_\-HERWIG::zero\_\-hepevt\_\-entry (int {\em i}) const\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HERWIG_1f83a4b4c3b5da6e1ab672117e9dea13}
+
+
+zero out a HEPEVT pseudo particle 
+
+
+
+Definition at line 697 of file IO\_\-HERWIG.cc.
+
+References Hep\-MC::HEPEVT\_\-Wrapper::max\_\-number\_\-entries(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-children(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-id(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-mass(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-momentum(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-parents(), Hep\-MC::HEPEVT\_\-Wrapper::set\_\-position(), and Hep\-MC::HEPEVT\_\-Wrapper::set\_\-status().
+
+Referenced by repair\_\-hepevt().\index{HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}!translate_herwig_to_pdg_id@{translate\_\-herwig\_\-to\_\-pdg\_\-id}}
+\index{translate_herwig_to_pdg_id@{translate\_\-herwig\_\-to\_\-pdg\_\-id}!HepMC::IO_HERWIG@{Hep\-MC::IO\_\-HERWIG}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::IO\_\-HERWIG::translate\_\-herwig\_\-to\_\-pdg\_\-id (int {\em i}) const\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1IO__HERWIG_05ba9f2697ec5543f26e0d64986da860}
+
+
+translate particle ID 
+
+
+
+This routine is copied from Lynn Garren's stdhep 5.01. see {\tt http:///cepa.fnal.gov/psm/stdhep/} 
+
+Definition at line 708 of file IO\_\-HERWIG.cc.
+
+Referenced by repair\_\-hepevt().
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf IO\_\-HERWIG.h}\item 
+{\bf IO\_\-HERWIG.cc}\end{CompactItemize}

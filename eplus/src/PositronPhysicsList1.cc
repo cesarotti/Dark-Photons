@@ -119,6 +119,7 @@ void PositronPhysicsList1::ConstructHadronic()
   G4ElectroVDNuclearModel* pnmodel = new G4ElectroVDNuclearModel();
   pnproc->RegisterMe(pnmodel);
 
+<<<<<<< HEAD
   // set biasing
   pnproc->BiasCrossSectionByFactor(1000.);
 
@@ -127,6 +128,8 @@ void PositronPhysicsList1::ConstructHadronic()
 }
 // ###################################### BRIAN SHIN ####################################
 
+=======
+>>>>>>> origin/master
 void PositronPhysicsList1::SetCuts()
 {
   SetCutValue(defaultCutValue, "gamma");
