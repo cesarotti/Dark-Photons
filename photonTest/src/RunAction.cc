@@ -34,8 +34,9 @@ RunAction::RunAction()
   analysisMan->CreateNtuple("CalorimeterData", "Energy_In_Crystals"); 
   analysisMan->CreateNtupleIColumn("numHits"); //0
   analysisMan->CreateNtupleDColumn("Energy_Dep"); //1
-  analysisMan->CreateNtupleIColumn("Row"); //2
-  analysisMan->CreateNtupleIColumn("Column"); //3
+  analysisMan->CreateNtupleIColumn("CellID"); // 2
+  analysisMan->CreateNtupleIColumn("Row"); //3
+  analysisMan->CreateNtupleIColumn("Column"); //4
   analysisMan->FinishNtuple();
 }
 

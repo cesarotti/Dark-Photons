@@ -27,8 +27,9 @@ TestHit::TestHit()
     fEnergyDep(0.),
     fPos(G4ThreeVector()), 
     fLogV(0), 
-    fRow(0),
-    fCol(0)
+    fCellID(-1),
+    fRow(-1),
+    fCol(-1)
 {}
 
 TestHit::~TestHit()
@@ -38,20 +39,26 @@ TestHit::TestHit(G4int z)
   : G4VHit(), 
     fEnergyDep(0.), 
     fPos(G4ThreeVector()),
-    fLogV(0),
-    fRow(z/30),
-    fCol(z%30)
-{}
+    fLogV(0), 
+    fCellID(z),
+    fRow(-1),
+    fCol(-1)
+{
+  fRow = z/30;
+  fCol = z%30;
+}
 
-//Create a hit that exactly mirrors another hit
+//Create a hit from another hit
 TestHit::TestHit(const TestHit& hit)
   : G4VHit()
 { 
   fEnergyDep = hit.fEnergyDep;
   fPos = hit.fPos;
   fLogV = hit.fLogV;
+  fCellID = hit.fCellID;
   fRow = hit.fRow;
   fCol = hit.fCol;
+  
 }
 
 const TestHit& TestHit::operator=(const TestHit& hit)
@@ -59,6 +66,7 @@ const TestHit& TestHit::operator=(const TestHit& hit)
   fEnergyDep = hit.fEnergyDep;
   fPos = hit.fPos;
   fLogV = hit.fLogV;
+  fCellID = hit.fCellID;
   fRow = hit.fRow;
   fCol = hit.fCol;
 

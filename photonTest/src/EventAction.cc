@@ -111,18 +111,19 @@ void EventAction::EndOfEventAction(const G4Event* event)
 	{
 	  numHit++;
 	  energyDep+= eDep;
-	  if (eDep>0.)
+	  if (eDep>0.5*MeV)
 	    {
-	      analysisMan->FillNtupleIColumn(0, 2, hit->GetRow());
-	      analysisMan->FillNtupleIColumn(0, 3, hit->GetColumn());
-	    }
+	      analysisMan->FillNtupleIColumn(2, hit->GetCellID());
+	      analysisMan->FillNtupleIColumn(3, hit->GetRow());
+	      analysisMan->FillNtupleIColumn(4, hit->GetCol());
 	}
 
     }
-  analysisMan->FillNtupleIColumn(0, 0, numHit);
-  analysisMan->FillNtupleDColumn(0, 1, energyDep);
+  analysisMan->FillNtupleIColumn(0, numHit);
+  analysisMan->FillNtupleDColumn(1, energyDep);
 
   analysisMan->AddNtupleRow();
+    }
 
 }
 

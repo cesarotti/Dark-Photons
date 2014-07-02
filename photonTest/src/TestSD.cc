@@ -17,7 +17,9 @@
 #include "G4SystemOfUnits.hh"
 #include "G4Colour.hh"
 #include "G4LogicalVolume.hh"
+#include "G4VisAttributes.hh"
 #include "G4VPhysicalVolume.hh"
+#include "G4TouchableHistory.hh"
 
 TestSD::TestSD(const G4String& name,
 			   const G4String& hitsCollectionName)
@@ -60,15 +62,17 @@ G4bool TestSD::ProcessHits(G4Step* step,
   G4double edep = step->GetTotalEnergyDeposit();
   if (edep==0.) return true;
 
-  G4int copyNo = step->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(1);
-  G4int replicaNo = step->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(); 
+  G4TouchableHistory* touchable 
+    = (G4TouchableHistory*)(step->GetPreStepPoint()->GetTouchable());
+  G4VPhysicalVolume* physical = touchable->GetVolume();
+  G4int copyNo = physical->GetCopyNo();
 
-  TestHit* hit = (*fHitsCollection)[copyNo*30+replicaNo]; 
+
+  TestHit* hit = (*fHitsCollection)[copyNo]; 
 
   if(!(hit->GetLogV()))
     {
-      hit->SetLogV(step->GetPreStepPoint()->GetTouchable()->GetVolume()
-		   ->GetLogicalVolume());
+      hit->SetLogV(physical->GetLogicalVolume());
     }
 
   hit->AddEdep(edep);
