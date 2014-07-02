@@ -84,7 +84,7 @@ void PositronPhysicsList1::ConstructProcess()
 {
   AddTransportation();
   ConstructEM();
-  ConstructHadronic();
+  // ConstructHadronic(); // uncomment to turn on inelastic collisions
 
 }
 
@@ -119,7 +119,6 @@ void PositronPhysicsList1::ConstructHadronic()
   G4ElectroVDNuclearModel* pnmodel = new G4ElectroVDNuclearModel();
   pnproc->RegisterMe(pnmodel);
 
-<<<<<<< HEAD
   // set biasing
   pnproc->BiasCrossSectionByFactor(1000.);
 
@@ -128,8 +127,6 @@ void PositronPhysicsList1::ConstructHadronic()
 }
 // ###################################### BRIAN SHIN ####################################
 
-=======
->>>>>>> origin/master
 void PositronPhysicsList1::SetCuts()
 {
   SetCutValue(defaultCutValue, "gamma");
