@@ -51,7 +51,7 @@ public:
 
   //Get methods
   G4int GetTrack()
- {return fTrackID;};
+  {return fTrackID;};
   G4double GetTotalEnergy()
   {return fTotalEnergy;};
   G4ThreeVector GetPos()

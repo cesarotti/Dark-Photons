@@ -31,6 +31,12 @@
 #include "G4eplusAnnihilation.hh"
 
 // ####################################### BRIAN SHIN ####################################
+#include "G4PionZero.hh"
+#include "G4Decay.hh"
+#include "G4DecayTable.hh"
+#include "G4PhaseSpaceDecayChannel.hh"
+#include "G4DalitzDecayChannel.hh"
+
 #include "G4PositronNuclearProcess.hh"
 #include "G4ElectroVDNuclearModel.hh"
 
@@ -85,6 +91,7 @@ void PositronPhysicsList1::ConstructProcess()
   AddTransportation();
   //ConstructEM(); // commented out to isolate positron-nuclear process
   ConstructHadronic();
+  ConstructDecay();
 
 }
 
@@ -120,10 +127,34 @@ void PositronPhysicsList1::ConstructHadronic()
   pnproc->RegisterMe(pnmodel);
 
   // set biasing
-  pnproc->BiasCrossSectionByFactor(1000.);
+  pnproc->BiasCrossSectionByFactor(10000000.);
 
   // add process to process manager
   pman->AddDiscreteProcess(pnproc);
+}
+
+void PositronPhysicsList1::ConstructDecay() {
+  G4PionZero* pionZero = G4PionZero::PionZeroDefinition();
+  G4ProcessManager* pman = pionZero->GetProcessManager();
+
+  G4Decay* decayProc = new G4Decay();
+
+  pman->AddProcess(decayProc);
+  pman->SetProcessOrdering(decayProc, idxPostStep);
+  pman->SetProcessOrdering(decayProc, idxAtRest);
+
+  G4DecayTable* table = pionZero->GetDecayTable();
+
+  // create a decay channel
+  G4VDecayChannel* mode;
+
+  // pi0 -> gamma + gamma
+  mode = new G4PhaseSpaceDecayChannel("pi0",0.988,2,"gamma","gamma");
+  table->Insert(mode);
+
+  // pi0 -> gamma + e+ + e-
+  mode = new G4DalitzDecayChannel("pi0",0.012,"e-","e+");
+  table->Insert(mode);
 }
 // ###################################### BRIAN SHIN ####################################
 

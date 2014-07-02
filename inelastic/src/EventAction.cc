@@ -39,6 +39,7 @@
 #include "G4SDManager.hh"
 
 #include "CalorHit.hh"
+#include "TargetHit.hh"
 
 
 EventAction::EventAction()
@@ -89,6 +90,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
   G4SDManager* fSDM = G4SDManager::GetSDMpointer();
 
+/*
   //get ID for the calorimeter's hit collection
   G4int collectionID = fSDM->GetCollectionID("CalorimeterHitsCollection");
 
@@ -115,8 +117,21 @@ void EventAction::EndOfEventAction(const G4Event* event)
   analysisMan->AddNtupleRow();
 
   analysisMan->FillH1(0, numHits, 1.0);
-  
+  */
 
+  G4int collectionID = fSDM->GetCollectionID("TargetHitsCollection");
+
+  TargetHitsCollection* hitColl = static_cast<TargetHitsCollection*>(hce->GetHC(collectionID));
+
+  for (G4int i=0; i < hitColl->entries(); i++) {
+    TargetHit* newHit = (*hitColl)[i];
+    analysisMan->FillNtupleIColumn(0, 0, newHit->GetPDGID());
+    analysisMan->FillNtupleDColumn(0, 1, newHit->GetTotalEnergy());
+    G4ThreeVector momentum = newHit->GetMomentum();
+    analysisMan->FillNtupleDColumn(0, 2, std::acos(momentum.z() / momentum.mag()) *180/pi);
+  }
+
+  analysisMan->AddNtupleRow();
 
 
 

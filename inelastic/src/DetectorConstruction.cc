@@ -3,6 +3,7 @@
  * !!!History:
  *    CJC 6.15.14 created
  *    CJC 6.18.14 changed calorimeter into tube
+ *    BYS 6.26.14 added target sensitive detector
  *
  * file: DetectorConstruction.cc
  */
@@ -10,6 +11,7 @@
 #include "DetectorConstruction.hh"
 #include "DetectorMessenger.hh"
 #include "CalorimeterSD.hh"
+#include "TargetSD.hh"
 
 #include "G4Material.hh"
 #include "G4NistManager.hh"
@@ -221,6 +223,36 @@ G4Box* targetS =
    fTargetMaterial->GetName() << G4endl;
 
 
+
+// ##############################################################################
+// ############## Brian Shin ####################################################
+// ##############################################################################
+//
+// put detector behind the target
+//
+
+  G4Tubs* TargetDetectorS = new G4Tubs("TargetDetectorS", // name
+                                       0*m,               // inner radius
+                                       1*m,               // outer radius
+                                       5*cm,              // depth
+                                       0*rad,             // starting angle
+                                       2*pi*rad);         // ending angle
+
+  fLogicTargetDetector = new G4LogicalVolume(TargetDetectorS, Air, "TargetDetectorLV", 0, 0, 0);
+
+  new G4PVPlacement(0,
+                    G4ThreeVector(0*cm, 0*cm, 20*cm + targetPos),
+                    fLogicTargetDetector,
+                    "TargetDetector",
+                    worldLV,
+                    false,
+                    0,
+                    fCheckOverlaps);
+
+// ##############################################################################
+// ############## Brian Shin ####################################################
+// ##############################################################################
+
  //!!!
  //Calorimeter 
 
@@ -248,6 +280,7 @@ new G4PVPlacement(0,
 		   0, 
 		   fCheckOverlaps);
 */
+
 
  double arc = 2*pi*rad;
  double calorSeg = (calorOuterRad-calorInnerRad)/10.;
@@ -330,6 +363,22 @@ void DetectorConstruction::ConstructSDandField()
   SetSensitiveDetector("CrystalLV", calorimeterSD, true); //sets SD to all logical volumes with the name CrystalLV
 
   G4cout << "SD Construction.....Complete!" << G4endl;
+
+  // ##############################################################################
+  // ############## Brian Shin ####################################################
+  // ##############################################################################
+  //
+  // sensitive detector behind the target
+
+  TargetSD* targetSD = new TargetSD("TargetDetectorSD", "TargetHitsCollection");
+
+  SetSensitiveDetector("TargetDetectorLV", targetSD, true);
+
+  G4cout << "BRIAN: my sensitive detector is complete!" << G4endl;
+
+  // ##############################################################################
+  // ############## Brian Shin ####################################################
+  // ##############################################################################
 }
 
 void DetectorConstruction::SetTargetMaterial(G4String materialName)

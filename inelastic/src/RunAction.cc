@@ -32,7 +32,7 @@ RunAction::RunAction()
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
   G4cout << "Using" << analysisMan->GetType() << G4endl;
   analysisMan->SetVerboseLevel(2);
-
+/*
   //Creating directories
    analysisMan->SetNtupleDirectoryName("ntuples");
 
@@ -62,7 +62,15 @@ RunAction::RunAction()
    analysisMan->CreateNtupleIColumn("ringNum2"); // 12 
    analysisMan->FinishNtuple();
   
+*/
 
+   //analysisMan->SetNtupleDirectoryName("ntuples");
+
+   analysisMan->CreateNtuple("Hits_Info", "Particle ID and Energy and Theta");
+   analysisMan->CreateNtupleIColumn("PDGID");     // 0
+   analysisMan->CreateNtupleDColumn("Energy");    // 1
+   analysisMan->CreateNtupleDColumn("theta");     // 2
+   analysisMan->FinishNtuple();
 }
 
 
@@ -83,7 +91,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
  
-   analysisMan->OpenFile("TwoGamma");
+   analysisMan->OpenFile("InelasticHitsData");
 
 }
 

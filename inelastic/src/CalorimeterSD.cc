@@ -38,14 +38,14 @@ void CalorimeterSD::Initialize(G4HCofThisEvent* hce)
 {
   //Create hits collection
 
-fHitsCollection = 
-  new CalorimeterHitsCollection(SensitiveDetectorName, collectionName[0]);
+  fHitsCollection = 
+    new CalorimeterHitsCollection(SensitiveDetectorName, collectionName[0]);
 
-//Add collection in hit collection of the event
+  //Add collection in hit collection of the event
 
-G4int hceID = 
-  G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]); 
- hce -> AddHitsCollection( hceID, fHitsCollection);
+  G4int hceID = 
+    G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]); 
+  hce -> AddHitsCollection( hceID, fHitsCollection);
 
 }
 

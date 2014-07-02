@@ -20,6 +20,7 @@ private:
 
   void ConstructEM();
   void ConstructHadronic();
+  void ConstructDecay();
 
 };
 
