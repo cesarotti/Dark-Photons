@@ -1,0 +1,733 @@
+\section{Hep\-MC::Gen\-Vertex Class Reference}
+\label{classHepMC_1_1GenVertex}\index{HepMC::GenVertex@{HepMC::GenVertex}}
+\doxyref{Gen\-Vertex}{p.}{classHepMC_1_1GenVertex} contains information about decay vertices.  
+
+
+{\tt \#include $<$Gen\-Vertex.h$>$}
+
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef std::vector$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$::const\_\-iterator {\bf particles\_\-in\_\-const\_\-iterator}
+\begin{CompactList}\small\item\em const iterator for incoming particles \item\end{CompactList}\item 
+typedef std::vector$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$::const\_\-iterator {\bf particles\_\-out\_\-const\_\-iterator}
+\begin{CompactList}\small\item\em const iterator for outgoing particles \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Gen\-Vertex} (const {\bf Four\-Vector} \&position={\bf Four\-Vector}(0, 0, 0, 0), int id=0, const {\bf Weight\-Container} \&weights=std::vector$<$ double $>$())
+\begin{CompactList}\small\item\em default constructor \item\end{CompactList}\item 
+{\bf Gen\-Vertex} (const {\bf Gen\-Vertex} \&invertex)
+\begin{CompactList}\small\item\em shallow copy \item\end{CompactList}\item 
+virtual {\bf $\sim$Gen\-Vertex} ()
+\item 
+void {\bf swap} ({\bf Gen\-Vertex} \&other)
+\begin{CompactList}\small\item\em swap \item\end{CompactList}\item 
+{\bf Gen\-Vertex} \& {\bf operator=} (const {\bf Gen\-Vertex} \&invertex)
+\begin{CompactList}\small\item\em shallow \item\end{CompactList}\item 
+bool {\bf operator==} (const {\bf Gen\-Vertex} \&a) const
+\begin{CompactList}\small\item\em equality \item\end{CompactList}\item 
+bool {\bf operator!=} (const {\bf Gen\-Vertex} \&a) const
+\begin{CompactList}\small\item\em inequality \item\end{CompactList}\item 
+void {\bf print} (std::ostream \&ostr=std::cout) const
+\begin{CompactList}\small\item\em print vertex information \item\end{CompactList}\item 
+double {\bf check\_\-momentum\_\-conservation} () const
+\begin{CompactList}\small\item\em $|$Sum (mom\_\-in-mom\_\-out)$|$ \item\end{CompactList}\item 
+void {\bf add\_\-particle\_\-in} ({\bf Gen\-Particle} $\ast$inparticle)
+\begin{CompactList}\small\item\em add incoming particle \item\end{CompactList}\item 
+void {\bf add\_\-particle\_\-out} ({\bf Gen\-Particle} $\ast$outparticle)
+\begin{CompactList}\small\item\em add outgoing particle \item\end{CompactList}\item 
+{\bf Gen\-Particle} $\ast$ {\bf remove\_\-particle} ({\bf Gen\-Particle} $\ast$particle)
+\begin{CompactList}\small\item\em remove a particle \item\end{CompactList}\item 
+{\bf operator Hep\-MC::Four\-Vector} () const
+\begin{CompactList}\small\item\em conversion operator \item\end{CompactList}\item 
+{\bf operator Hep\-MC::Three\-Vector} () const
+\begin{CompactList}\small\item\em conversion operator \item\end{CompactList}\item 
+{\bf Gen\-Event} $\ast$ {\bf parent\_\-event} () const
+\begin{CompactList}\small\item\em pointer to the event that owns this vertex \item\end{CompactList}\item 
+{\bf Three\-Vector} {\bf point3d} () const
+\begin{CompactList}\small\item\em vertex position \item\end{CompactList}\item 
+{\bf Four\-Vector} {\bf position} () const
+\begin{CompactList}\small\item\em vertex position and time \item\end{CompactList}\item 
+void {\bf set\_\-position} (const {\bf Four\-Vector} \&position={\bf Four\-Vector}(0, 0, 0, 0))
+\begin{CompactList}\small\item\em set vertex position and time \item\end{CompactList}\item 
+int {\bf id} () const
+\begin{CompactList}\small\item\em vertex ID \item\end{CompactList}\item 
+void {\bf set\_\-id} (int id)
+\begin{CompactList}\small\item\em set vertex ID \item\end{CompactList}\item 
+int {\bf barcode} () const
+\begin{CompactList}\small\item\em unique identifier \item\end{CompactList}\item 
+bool {\bf suggest\_\-barcode} (int the\_\-bar\_\-code)
+\begin{CompactList}\small\item\em In general there is no reason to \char`\"{}suggest\_\-barcode\char`\"{}. \item\end{CompactList}\item 
+{\bf Weight\-Container} \& {\bf weights} ()
+\begin{CompactList}\small\item\em direct access to the weights container is allowed. \item\end{CompactList}\item 
+const {\bf Weight\-Container} \& {\bf weights} () const
+\begin{CompactList}\small\item\em const direct access to the weights container \item\end{CompactList}\item 
+{\bf particles\_\-in\_\-const\_\-iterator} {\bf particles\_\-in\_\-const\_\-begin} () const
+\begin{CompactList}\small\item\em begin iteration of incoming particles \item\end{CompactList}\item 
+{\bf particles\_\-in\_\-const\_\-iterator} {\bf particles\_\-in\_\-const\_\-end} () const
+\begin{CompactList}\small\item\em end iteration of incoming particles \item\end{CompactList}\item 
+{\bf particles\_\-out\_\-const\_\-iterator} {\bf particles\_\-out\_\-const\_\-begin} () const
+\begin{CompactList}\small\item\em begin iteration of outgoing particles \item\end{CompactList}\item 
+{\bf particles\_\-out\_\-const\_\-iterator} {\bf particles\_\-out\_\-const\_\-end} () const
+\begin{CompactList}\small\item\em end iteration of outgoing particles \item\end{CompactList}\item 
+int {\bf particles\_\-in\_\-size} () const
+\begin{CompactList}\small\item\em number of incoming particles \item\end{CompactList}\item 
+int {\bf particles\_\-out\_\-size} () const
+\begin{CompactList}\small\item\em number of outgoing particles \item\end{CompactList}\item 
+{\bf vertex\_\-iterator} {\bf vertices\_\-begin} ({\bf Iterator\-Range} range=relatives)
+\begin{CompactList}\small\item\em begin vertex range \item\end{CompactList}\item 
+{\bf vertex\_\-iterator} {\bf vertices\_\-end} ({\bf Iterator\-Range})
+\begin{CompactList}\small\item\em end vertex range \item\end{CompactList}\item 
+{\bf particle\_\-iterator} {\bf particles\_\-begin} ({\bf Iterator\-Range} range=relatives)
+\begin{CompactList}\small\item\em begin particle range \item\end{CompactList}\item 
+{\bf particle\_\-iterator} {\bf particles\_\-end} ({\bf Iterator\-Range})
+\begin{CompactList}\small\item\em end particle range \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void {\bf set\_\-parent\_\-event\_\-} ({\bf Gen\-Event} $\ast$evt)
+\begin{CompactList}\small\item\em set parent event \item\end{CompactList}\item 
+void {\bf set\_\-barcode\_\-} (int the\_\-bar\_\-code)
+\begin{CompactList}\small\item\em set identifier \item\end{CompactList}\item 
+int {\bf edges\_\-size} ({\bf Iterator\-Range} range=family) const
+\begin{CompactList}\small\item\em size \item\end{CompactList}\item 
+{\bf edge\_\-iterator} {\bf edges\_\-begin} ({\bf Iterator\-Range} range=family) const
+\begin{CompactList}\small\item\em begin range \item\end{CompactList}\item 
+{\bf edge\_\-iterator} {\bf edges\_\-end} ({\bf Iterator\-Range}) const
+\begin{CompactList}\small\item\em end range \item\end{CompactList}\item 
+void {\bf delete\_\-adopted\_\-particles} ()
+\begin{CompactList}\small\item\em for internal use only \item\end{CompactList}\item 
+void {\bf remove\_\-particle\_\-in} ({\bf Gen\-Particle} $\ast$)
+\begin{CompactList}\small\item\em for internal use only - remove particle from incoming list \item\end{CompactList}\item 
+void {\bf remove\_\-particle\_\-out} ({\bf Gen\-Particle} $\ast$)
+\begin{CompactList}\small\item\em for internal use only - remove particle from outgoing list \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{CompactItemize}
+\item 
+static unsigned int {\bf counter} ()
+\begin{CompactList}\small\item\em temporary for debugging \item\end{CompactList}\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+class {\bf Gen\-Event}
+\item 
+class {\bf edge\_\-iterator}
+\item 
+class {\bf vertex\_\-iterator}
+\item 
+class {\bf particle\_\-iterator}
+\item 
+std::ostream \& {\bf operator$<$$<$} (std::ostream \&, const {\bf Gen\-Vertex} \&)
+\begin{CompactList}\small\item\em print vertex information \item\end{CompactList}\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class {\bf edge\_\-iterator}
+\begin{CompactList}\small\item\em edge iterator \item\end{CompactList}\item 
+class {\bf particle\_\-iterator}
+\begin{CompactList}\small\item\em particle iterator \item\end{CompactList}\item 
+class {\bf vertex\_\-iterator}
+\begin{CompactList}\small\item\em vertex iterator \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Gen\-Vertex}{p.}{classHepMC_1_1GenVertex} contains information about decay vertices. 
+
+\doxyref{Hep\-MC::Gen\-Vertex}{p.}{classHepMC_1_1GenVertex} contains the position in space and time of a decay. It also contains lists of incoming and outgoing particles. \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+
+
+Definition at line 47 of file Gen\-Vertex.h.
+
+\subsection{Member Typedef Documentation}
+\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_in_const_iterator@{particles\_\-in\_\-const\_\-iterator}}
+\index{particles_in_const_iterator@{particles\_\-in\_\-const\_\-iterator}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef std::vector$<${\bf Hep\-MC::Gen\-Particle}$\ast$$>$::const\_\-iterator {\bf Hep\-MC::Gen\-Vertex::particles\_\-in\_\-const\_\-iterator}}\label{classHepMC_1_1GenVertex_2e35fbfa65f78e23ffa12416586e184f}
+
+
+const iterator for incoming particles 
+
+
+
+Definition at line 130 of file Gen\-Vertex.h.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_out_const_iterator@{particles\_\-out\_\-const\_\-iterator}}
+\index{particles_out_const_iterator@{particles\_\-out\_\-const\_\-iterator}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef std::vector$<${\bf Hep\-MC::Gen\-Particle}$\ast$$>$::const\_\-iterator {\bf Hep\-MC::Gen\-Vertex::particles\_\-out\_\-const\_\-iterator}}\label{classHepMC_1_1GenVertex_e7e6a5345877a846d81292f95b6e1c66}
+
+
+const iterator for outgoing particles 
+
+
+
+Definition at line 133 of file Gen\-Vertex.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!GenVertex@{GenVertex}}
+\index{GenVertex@{GenVertex}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::Gen\-Vertex (const {\bf Four\-Vector} \& {\em position} = {\tt {\bf Four\-Vector}(0,~0,~0,~0)}, int {\em id} = {\tt 0}, const {\bf Weight\-Container} \& {\em weights} = {\tt std::vector$<$~double~$>$()})}\label{classHepMC_1_1GenVertex_46d11fb413ff0e5e9c1a49a1e1a544b3}
+
+
+default constructor 
+
+
+
+Definition at line 14 of file Gen\-Vertex.cc.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!GenVertex@{GenVertex}}
+\index{GenVertex@{GenVertex}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::Gen\-Vertex (const {\bf Gen\-Vertex} \& {\em invertex})}\label{classHepMC_1_1GenVertex_2b8b2c2f3f1cc483e804f9e89685ea99}
+
+
+shallow copy 
+
+
+
+Shallow copy: does not copy the FULL list of particle pointers. Creates a copy of - invertex\begin{itemize}
+\item outgoing particles of invertex, but sets the decay vertex of these particles to NULL\item all incoming particles which do not have a creation vertex. (i.e. it creates copies of all particles which it owns) (note - impossible to copy the FULL list of particle pointers while having the vertex and particles in/out point-back to one another -- unless you copy the entire tree -- which we don't want to do) \end{itemize}
+
+
+Definition at line 22 of file Gen\-Vertex.cc.
+
+References add\_\-particle\_\-in(), add\_\-particle\_\-out(), barcode(), particles\_\-in\_\-const\_\-begin(), particles\_\-in\_\-const\_\-end(), particles\_\-out\_\-const\_\-begin(), particles\_\-out\_\-const\_\-end(), and suggest\_\-barcode().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!~GenVertex@{$\sim$GenVertex}}
+\index{~GenVertex@{$\sim$GenVertex}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::$\sim$Gen\-Vertex ()\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1GenVertex_1e0f77dfb4fa3ec4f48bc631048f07d2}
+
+
+
+
+Definition at line 62 of file Gen\-Vertex.cc.
+
+References delete\_\-adopted\_\-particles(), parent\_\-event(), and Hep\-MC::Gen\-Event::remove\_\-barcode().
+
+\subsection{Member Function Documentation}
+\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!swap@{swap}}
+\index{swap@{swap}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::swap ({\bf Gen\-Vertex} \& {\em other})}\label{classHepMC_1_1GenVertex_90f8186f8d6745a884c7997b2ef086c9}
+
+
+swap 
+
+
+
+Definition at line 70 of file Gen\-Vertex.cc.
+
+References m\_\-barcode, m\_\-event, m\_\-id, m\_\-particles\_\-in, m\_\-particles\_\-out, m\_\-position, m\_\-weights, Hep\-MC::Weight\-Container::swap(), and Hep\-MC::Four\-Vector::swap().
+
+Referenced by operator=().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!operator=@{operator=}}
+\index{operator=@{operator=}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex} \& Hep\-MC::Gen\-Vertex::operator= (const {\bf Gen\-Vertex} \& {\em invertex})}\label{classHepMC_1_1GenVertex_e21c15d4609993733a25f96e82897a59}
+
+
+shallow 
+
+
+
+Shallow: does not copy the FULL list of particle pointers. Creates a copy of - invertex\begin{itemize}
+\item outgoing particles of invertex, but sets the decay vertex of these particles to NULL\item all incoming particles which do not have a creation vertex.\item it does not alter $\ast$this's m\_\-event (!) (i.e. it creates copies of all particles which it owns) (note - impossible to copy the FULL list of particle pointers while having the vertex and particles in/out point-back to one another -- unless you copy the entire tree -- which we don't want to do) \end{itemize}
+
+
+Definition at line 81 of file Gen\-Vertex.cc.
+
+References swap().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!operator==@{operator==}}
+\index{operator==@{operator==}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Vertex::operator== (const {\bf Gen\-Vertex} \& {\em a}) const}\label{classHepMC_1_1GenVertex_5e83f5a50c0d514d9990a8d8b4aff810}
+
+
+equality 
+
+
+
+Returns true if the positions and the particles in the lists of a and this are identical. Does not compare barcodes. Note that it is impossible for two vertices to point to the same particle's address, so we need to do more than just compare the particle pointers 
+
+Definition at line 102 of file Gen\-Vertex.cc.
+
+References particles\_\-in\_\-const\_\-begin(), particles\_\-in\_\-const\_\-end(), particles\_\-in\_\-size(), particles\_\-out\_\-const\_\-begin(), particles\_\-out\_\-const\_\-end(), particles\_\-out\_\-size(), and position().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Vertex::operator!= (const {\bf Gen\-Vertex} \& {\em a}) const}\label{classHepMC_1_1GenVertex_da667ea2640b27474c89c66ac51e1b6b}
+
+
+inequality 
+
+
+
+Definition at line 139 of file Gen\-Vertex.cc.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!print@{print}}
+\index{print@{print}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::print (std::ostream \& {\em ostr} = {\tt std::cout}) const}\label{classHepMC_1_1GenVertex_6056715d054c2f22c33e5de4f35367a4}
+
+
+print vertex information 
+
+
+
+Definition at line 144 of file Gen\-Vertex.cc.
+
+References barcode(), Hep\-MC::Weight\-Container::end(), id(), particles\_\-in\_\-const\_\-begin(), particles\_\-in\_\-const\_\-end(), particles\_\-out\_\-const\_\-begin(), particles\_\-out\_\-const\_\-end(), position(), Hep\-MC::Weight\-Container::size(), Hep\-MC::Four\-Vector::t(), weights(), Hep\-MC::Four\-Vector::x(), Hep\-MC::Four\-Vector::y(), and Hep\-MC::Four\-Vector::z().
+
+Referenced by Hep\-MC::IO\_\-HERWIG::build\_\-production\_\-vertex().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!check_momentum_conservation@{check\_\-momentum\_\-conservation}}
+\index{check_momentum_conservation@{check\_\-momentum\_\-conservation}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Hep\-MC::Gen\-Vertex::check\_\-momentum\_\-conservation () const}\label{classHepMC_1_1GenVertex_b91dee95f6e017a4c1c8f9f9d7c3cb76}
+
+
+$|$Sum (mom\_\-in-mom\_\-out)$|$ 
+
+
+
+finds the difference between the total momentum out and the total momentum in vectors, and returns the magnitude of this vector i.e. returns $|$ \{p\_\-in\} - \{p\_\-out\} $|$ 
+
+Definition at line 252 of file Gen\-Vertex.cc.
+
+References particles\_\-in\_\-const\_\-begin(), particles\_\-in\_\-const\_\-end(), particles\_\-out\_\-const\_\-begin(), and particles\_\-out\_\-const\_\-end().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!add_particle_in@{add\_\-particle\_\-in}}
+\index{add_particle_in@{add\_\-particle\_\-in}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::add\_\-particle\_\-in ({\bf Gen\-Particle} $\ast$ {\em inparticle})}\label{classHepMC_1_1GenVertex_62a329fbb235284e70c24e1bf7ba49e8}
+
+
+add incoming particle 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+Definition at line 272 of file Gen\-Vertex.cc.
+
+References Hep\-MC::Gen\-Particle::end\_\-vertex(), remove\_\-particle\_\-in(), and Hep\-MC::Gen\-Particle::set\_\-end\_\-vertex\_\-().
+
+Referenced by Hep\-MC::IO\_\-HERWIG::build\_\-end\_\-vertex(), Hep\-MC::IO\_\-HERWIG::build\_\-production\_\-vertex(), Hep\-MC::IO\_\-HERWIG::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), Gen\-Vertex(), and main().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!add_particle_out@{add\_\-particle\_\-out}}
+\index{add_particle_out@{add\_\-particle\_\-out}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::add\_\-particle\_\-out ({\bf Gen\-Particle} $\ast$ {\em outparticle})}\label{classHepMC_1_1GenVertex_eba71fdc7561e80fbbea2f60ac9358e7}
+
+
+add outgoing particle 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+Definition at line 283 of file Gen\-Vertex.cc.
+
+References Hep\-MC::Gen\-Particle::production\_\-vertex(), remove\_\-particle\_\-out(), and Hep\-MC::Gen\-Particle::set\_\-production\_\-vertex\_\-().
+
+Referenced by Hep\-MC::IO\_\-HERWIG::build\_\-end\_\-vertex(), Hep\-MC::IO\_\-HERWIG::build\_\-production\_\-vertex(), Hep\-MC::IO\_\-HERWIG::fill\_\-next\_\-event(), Hep\-MC::IO\_\-HEPEVT::fill\_\-next\_\-event(), Gen\-Vertex(), and main().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!remove_particle@{remove\_\-particle}}
+\index{remove_particle@{remove\_\-particle}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Particle} $\ast$ Hep\-MC::Gen\-Vertex::remove\_\-particle ({\bf Gen\-Particle} $\ast$ {\em particle})}\label{classHepMC_1_1GenVertex_212c6b38f5e924285e207ae1295007b9}
+
+
+remove a particle 
+
+remove\_\-particle finds $\ast$particle in the in and/or out list and removes it from these lists ... it DOES NOT DELETE THE PARTICLE or its relations. You could delete the particle too as follows: delete vtx-$>$remove\_\-particle( particle ); 
+
+this finds $\ast$particle in the in and/or out list and removes it from these lists ... it DOES NOT DELETE THE PARTICLE or its relations. you could delete the particle too as follows: delete vtx-$>$remove\_\-particle( particle ); or if the particle has an end vertex, you could: delete vtx-$>$remove\_\-particle( particle )-$>$end\_\-vertex(); which would delete the particle's end vertex, and thus would also delete the particle, since the particle would be owned by the end vertex. 
+
+Definition at line 294 of file Gen\-Vertex.cc.
+
+References Hep\-MC::Gen\-Particle::end\_\-vertex(), Hep\-MC::Gen\-Particle::production\_\-vertex(), remove\_\-particle\_\-in(), remove\_\-particle\_\-out(), Hep\-MC::Gen\-Particle::set\_\-end\_\-vertex\_\-(), and Hep\-MC::Gen\-Particle::set\_\-production\_\-vertex\_\-().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!operator HepMC::FourVector@{operator HepMC::FourVector}}
+\index{operator HepMC::FourVector@{operator HepMC::FourVector}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::operator {\bf Hep\-MC::Four\-Vector} () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_79363346162eebf411601f97f354725d}
+
+
+conversion operator 
+
+
+
+Definition at line 365 of file Gen\-Vertex.h.
+
+References position().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!operator HepMC::ThreeVector@{operator HepMC::ThreeVector}}
+\index{operator HepMC::ThreeVector@{operator HepMC::ThreeVector}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Vertex::operator {\bf Hep\-MC::Three\-Vector} () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_f6bcf17cc9c5c24b610f459a2d6a4fb8}
+
+
+conversion operator 
+
+
+
+Definition at line 367 of file Gen\-Vertex.h.
+
+References point3d().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!parent_event@{parent\_\-event}}
+\index{parent_event@{parent\_\-event}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Event} $\ast$ Hep\-MC::Gen\-Vertex::parent\_\-event () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_166e6d45b051f1cabcf607d93cbec0a1}
+
+
+pointer to the event that owns this vertex 
+
+
+
+Definition at line 371 of file Gen\-Vertex.h.
+
+Referenced by Hep\-MC::Gen\-Event::add\_\-vertex(), Hep\-MC::Gen\-Particle::parent\_\-event(), Hep\-MC::Gen\-Event::remove\_\-vertex(), suggest\_\-barcode(), and $\sim$Gen\-Vertex().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!point3d@{point3d}}
+\index{point3d@{point3d}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Three\-Vector} Hep\-MC::Gen\-Vertex::point3d () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_b2a58c45a501d2aadbca2520df7301f6}
+
+
+vertex position 
+
+
+
+Definition at line 373 of file Gen\-Vertex.h.
+
+References Hep\-MC::Four\-Vector::x(), Hep\-MC::Four\-Vector::y(), and Hep\-MC::Four\-Vector::z().
+
+Referenced by operator Hep\-MC::Three\-Vector().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!position@{position}}
+\index{position@{position}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Four\-Vector} Hep\-MC::Gen\-Vertex::position () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_26d71cbe0c175febcc008edf18df004e}
+
+
+vertex position and time 
+
+
+
+Definition at line 369 of file Gen\-Vertex.h.
+
+Referenced by Hep\-MC::IO\_\-HERWIG::build\_\-end\_\-vertex(), Hep\-MC::IO\_\-HERWIG::build\_\-production\_\-vertex(), operator Hep\-MC::Four\-Vector(), Hep\-MC::operator$<$$<$(), operator==(), print(), and set\_\-position().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!set_position@{set\_\-position}}
+\index{set_position@{set\_\-position}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::set\_\-position (const {\bf Four\-Vector} \& {\em position} = {\tt {\bf Four\-Vector}(0,~0,~0,~0)})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_d3aab63f14a28dd66b294f13a5767762}
+
+
+set vertex position and time 
+
+
+
+Definition at line 387 of file Gen\-Vertex.h.
+
+References position().
+
+Referenced by Hep\-MC::IO\_\-HERWIG::build\_\-end\_\-vertex(), and Hep\-MC::IO\_\-HERWIG::build\_\-production\_\-vertex().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!id@{id}}
+\index{id@{id}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Vertex::id () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_5ff1f18a5be422ebf023cf4e46a10a5d}
+
+
+vertex ID 
+
+we don't define what you use the id for -- but we imagine, for example it might code the meaning of the \doxyref{weights()}{p.}{classHepMC_1_1GenVertex_8538e27b17b8ee6d57e458d473ffca24} 
+
+Definition at line 377 of file Gen\-Vertex.h.
+
+Referenced by print().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!set_id@{set\_\-id}}
+\index{set_id@{set\_\-id}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::set\_\-id (int {\em id})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_6a23538a9188f5d9ef13eeedc943bf64}
+
+
+set vertex ID 
+
+
+
+Definition at line 391 of file Gen\-Vertex.h.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!barcode@{barcode}}
+\index{barcode@{barcode}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Vertex::barcode () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_8f35affbf9e3bd00ed7a5ecbc0f5fb53}
+
+
+unique identifier 
+
+The barcode is the vertex's reference number, every vertex in the event has a unique barcode. Vertex barcodes are negative numbers, particle barcodes are positive numbers. 
+
+Definition at line 379 of file Gen\-Vertex.h.
+
+Referenced by Hep\-MC::Gen\-Event::add\_\-vertex(), Gen\-Vertex(), Hep\-MC::operator$<$$<$(), print(), Hep\-MC::Gen\-Particle::print(), Hep\-MC::Gen\-Event::print(), Hep\-MC::Gen\-Event::remove\_\-vertex(), set\_\-parent\_\-event\_\-(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!suggest_barcode@{suggest\_\-barcode}}
+\index{suggest_barcode@{suggest\_\-barcode}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Vertex::suggest\_\-barcode (int {\em the\_\-bar\_\-code})}\label{classHepMC_1_1GenVertex_4a7c4b813633257318e9d8e5df720022}
+
+
+In general there is no reason to \char`\"{}suggest\_\-barcode\char`\"{}. 
+
+
+
+allows a barcode to be suggested for this vertex. In general it is better to let the event pick the barcode for you, which is automatic. Returns TRUE if the suggested barcode has been accepted (i.e. the suggested barcode has not already been used in the event, and so it was used). Returns FALSE if the suggested barcode was rejected, or if the vertex is not yet part of an event, such that it is not yet possible to know if the suggested barcode will be accepted). 
+
+Definition at line 362 of file Gen\-Vertex.cc.
+
+References parent\_\-event(), Hep\-MC::Gen\-Event::set\_\-barcode(), and set\_\-barcode\_\-().
+
+Referenced by Gen\-Vertex().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!weights@{weights}}
+\index{weights@{weights}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Weight\-Container} \& Hep\-MC::Gen\-Vertex::weights ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_8538e27b17b8ee6d57e458d473ffca24}
+
+
+direct access to the weights container is allowed. 
+
+
+
+Definition at line 382 of file Gen\-Vertex.h.
+
+Referenced by print().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!weights@{weights}}
+\index{weights@{weights}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const {\bf Weight\-Container} \& Hep\-MC::Gen\-Vertex::weights () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_36691f429635677636f1d07578bd1311}
+
+
+const direct access to the weights container 
+
+
+
+Definition at line 384 of file Gen\-Vertex.h.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_in_const_begin@{particles\_\-in\_\-const\_\-begin}}
+\index{particles_in_const_begin@{particles\_\-in\_\-const\_\-begin}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particles\_\-in\_\-const\_\-iterator} Hep\-MC::Gen\-Vertex::particles\_\-in\_\-const\_\-begin () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_78174e2e63c33a6d2d692eaa95a17c96}
+
+
+begin iteration of incoming particles 
+
+
+
+Definition at line 398 of file Gen\-Vertex.h.
+
+Referenced by check\_\-momentum\_\-conservation(), Gen\-Vertex(), operator==(), print(), and set\_\-parent\_\-event\_\-().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_in_const_end@{particles\_\-in\_\-const\_\-end}}
+\index{particles_in_const_end@{particles\_\-in\_\-const\_\-end}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particles\_\-in\_\-const\_\-iterator} Hep\-MC::Gen\-Vertex::particles\_\-in\_\-const\_\-end () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_6b119e549c11967b78092284f5df1049}
+
+
+end iteration of incoming particles 
+
+
+
+Definition at line 403 of file Gen\-Vertex.h.
+
+Referenced by check\_\-momentum\_\-conservation(), Gen\-Vertex(), operator==(), print(), and set\_\-parent\_\-event\_\-().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_out_const_begin@{particles\_\-out\_\-const\_\-begin}}
+\index{particles_out_const_begin@{particles\_\-out\_\-const\_\-begin}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particles\_\-out\_\-const\_\-iterator} Hep\-MC::Gen\-Vertex::particles\_\-out\_\-const\_\-begin () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_bc0e5428f131614bec06749450859950}
+
+
+begin iteration of outgoing particles 
+
+
+
+Definition at line 408 of file Gen\-Vertex.h.
+
+Referenced by check\_\-momentum\_\-conservation(), Gen\-Vertex(), operator==(), print(), and set\_\-parent\_\-event\_\-().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_out_const_end@{particles\_\-out\_\-const\_\-end}}
+\index{particles_out_const_end@{particles\_\-out\_\-const\_\-end}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particles\_\-out\_\-const\_\-iterator} Hep\-MC::Gen\-Vertex::particles\_\-out\_\-const\_\-end () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_ede4224d99108654c2b1f0ad2338c16b}
+
+
+end iteration of outgoing particles 
+
+
+
+Definition at line 413 of file Gen\-Vertex.h.
+
+Referenced by check\_\-momentum\_\-conservation(), Gen\-Vertex(), operator==(), print(), and set\_\-parent\_\-event\_\-().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_in_size@{particles\_\-in\_\-size}}
+\index{particles_in_size@{particles\_\-in\_\-size}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Vertex::particles\_\-in\_\-size () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_b83aaf9a58ebf71e74fa7268d6da800f}
+
+
+number of incoming particles 
+
+
+
+Definition at line 417 of file Gen\-Vertex.h.
+
+Referenced by operator==().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_out_size@{particles\_\-out\_\-size}}
+\index{particles_out_size@{particles\_\-out\_\-size}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Vertex::particles\_\-out\_\-size () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_81ca013e478dd9eebd876b90036d5f8c}
+
+
+number of outgoing particles 
+
+
+
+Definition at line 421 of file Gen\-Vertex.h.
+
+Referenced by operator==().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!counter@{counter}}
+\index{counter@{counter}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}unsigned int Hep\-MC::Gen\-Vertex::counter ()\hspace{0.3cm}{\tt  [static, protected]}}\label{classHepMC_1_1GenVertex_105ebb0a8012ebe900f1f5b173cfa90d}
+
+
+temporary for debugging 
+
+
+
+Definition at line 421 of file Gen\-Vertex.cc.
+
+Referenced by Hep\-MC::Gen\-Event::clear(), Hep\-MC::Gen\-Event::delete\_\-all\_\-vertices(), and Hep\-MC::Gen\-Event::print().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!set_parent_event_@{set\_\-parent\_\-event\_\-}}
+\index{set_parent_event_@{set\_\-parent\_\-event\_\-}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::set\_\-parent\_\-event\_\- ({\bf Gen\-Event} $\ast$ {\em evt})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenVertex_70076beb6b1ac29693ba1f3a3296582f}
+
+
+set parent event 
+
+only the \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} (friend) is allowed to set the parent\_\-event, and barcode. It is done automatically anytime you add a vertex to an event 
+
+Definition at line 387 of file Gen\-Vertex.cc.
+
+References barcode(), particles\_\-in\_\-const\_\-begin(), particles\_\-in\_\-const\_\-end(), particles\_\-out\_\-const\_\-begin(), particles\_\-out\_\-const\_\-end(), Hep\-MC::Gen\-Event::remove\_\-barcode(), and Hep\-MC::Gen\-Event::set\_\-barcode().
+
+Referenced by Hep\-MC::Gen\-Event::add\_\-vertex(), and Hep\-MC::Gen\-Event::remove\_\-vertex().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!set_barcode_@{set\_\-barcode\_\-}}
+\index{set_barcode_@{set\_\-barcode\_\-}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::set\_\-barcode\_\- (int {\em the\_\-bar\_\-code})\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1GenVertex_6e614efa2fa1e94b7a2bf5a128141138}
+
+
+set identifier 
+
+
+
+Definition at line 380 of file Gen\-Vertex.h.
+
+Referenced by suggest\_\-barcode().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!edges_size@{edges\_\-size}}
+\index{edges_size@{edges\_\-size}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Vertex::edges\_\-size ({\bf Iterator\-Range} {\em range} = {\tt family}) const\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenVertex_6466deb7b92e4437ff4a901300bc73a6}
+
+
+size 
+
+
+
+Definition at line 572 of file Gen\-Vertex.cc.
+
+References Hep\-MC::children, Hep\-MC::family, and Hep\-MC::parents.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!edges_begin@{edges\_\-begin}}
+\index{edges_begin@{edges\_\-begin}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::edge\_\-iterator} Hep\-MC::Gen\-Vertex::edges\_\-begin ({\bf Iterator\-Range} {\em range} = {\tt family}) const\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1GenVertex_684c8bdf89e9399972a6b59d0b0be4f3}
+
+
+begin range 
+
+
+
+Definition at line 439 of file Gen\-Vertex.h.
+
+Referenced by Hep\-MC::Gen\-Vertex::vertex\_\-iterator::vertex\_\-iterator().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!edges_end@{edges\_\-end}}
+\index{edges_end@{edges\_\-end}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::edge\_\-iterator} Hep\-MC::Gen\-Vertex::edges\_\-end ({\bf Iterator\-Range}) const\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1GenVertex_0e0582242d8261ae719516afcb8d58a0}
+
+
+end range 
+
+
+
+Definition at line 444 of file Gen\-Vertex.h.
+
+Referenced by Hep\-MC::Gen\-Vertex::vertex\_\-iterator::operator++(), and Hep\-MC::Gen\-Vertex::vertex\_\-iterator::vertex\_\-iterator().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!vertices_begin@{vertices\_\-begin}}
+\index{vertices_begin@{vertices\_\-begin}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::vertex\_\-iterator} Hep\-MC::Gen\-Vertex::vertices\_\-begin ({\bf Iterator\-Range} {\em range} = {\tt relatives})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_3a80f000e5954503e8ec79afbcef2f35}
+
+
+begin vertex range 
+
+
+
+Definition at line 467 of file Gen\-Vertex.h.
+
+References vertex\_\-iterator.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!vertices_end@{vertices\_\-end}}
+\index{vertices_end@{vertices\_\-end}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::vertex\_\-iterator} Hep\-MC::Gen\-Vertex::vertices\_\-end ({\bf Iterator\-Range})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_e6241920a9bc1aec35f81f7a0d351655}
+
+
+end vertex range 
+
+
+
+Definition at line 473 of file Gen\-Vertex.h.
+
+References vertex\_\-iterator.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_begin@{particles\_\-begin}}
+\index{particles_begin@{particles\_\-begin}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particle\_\-iterator} Hep\-MC::Gen\-Vertex::particles\_\-begin ({\bf Iterator\-Range} {\em range} = {\tt relatives})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_604c0ab66236e97b9490c674829861e2}
+
+
+begin particle range 
+
+
+
+Definition at line 488 of file Gen\-Vertex.h.
+
+References particle\_\-iterator.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particles_end@{particles\_\-end}}
+\index{particles_end@{particles\_\-end}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex::particle\_\-iterator} Hep\-MC::Gen\-Vertex::particles\_\-end ({\bf Iterator\-Range})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenVertex_d3d0ef16d80eed6ae518b06086716c1d}
+
+
+end particle range 
+
+
+
+Definition at line 493 of file Gen\-Vertex.h.
+
+References particle\_\-iterator.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!delete_adopted_particles@{delete\_\-adopted\_\-particles}}
+\index{delete_adopted_particles@{delete\_\-adopted\_\-particles}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::delete\_\-adopted\_\-particles ()\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenVertex_2cb256ec82025530b241c9be73429239}
+
+
+for internal use only 
+
+
+
+deletes all particles which this vertex owns to be used by the vertex destructor and operator= 
+
+Definition at line 328 of file Gen\-Vertex.cc.
+
+Referenced by $\sim$Gen\-Vertex().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!remove_particle_in@{remove\_\-particle\_\-in}}
+\index{remove_particle_in@{remove\_\-particle\_\-in}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::remove\_\-particle\_\-in ({\bf Gen\-Particle} $\ast$)\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenVertex_fe2129b7d97d47195d54b4e57b781d8c}
+
+
+for internal use only - remove particle from incoming list 
+
+
+
+this finds $\ast$particle in m\_\-particles\_\-in and removes it from that list 
+
+Definition at line 316 of file Gen\-Vertex.cc.
+
+References Hep\-MC::already\_\-in\_\-vector().
+
+Referenced by add\_\-particle\_\-in(), and remove\_\-particle().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!remove_particle_out@{remove\_\-particle\_\-out}}
+\index{remove_particle_out@{remove\_\-particle\_\-out}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Vertex::remove\_\-particle\_\-out ({\bf Gen\-Particle} $\ast$)\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenVertex_47712412bb58b0af37ac00ba2fba82ba}
+
+
+for internal use only - remove particle from outgoing list 
+
+
+
+this finds $\ast$particle in m\_\-particles\_\-out and removes it from that list 
+
+Definition at line 322 of file Gen\-Vertex.cc.
+
+References Hep\-MC::already\_\-in\_\-vector().
+
+Referenced by add\_\-particle\_\-out(), and remove\_\-particle().
+
+\subsection{Friends And Related Function Documentation}
+\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!GenEvent@{GenEvent}}
+\index{GenEvent@{GenEvent}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Gen\-Event}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenVertex_e38359739d5837a91be256b5d963d80e}
+
+
+
+
+Definition at line 51 of file Gen\-Vertex.h.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!edge_iterator@{edge\_\-iterator}}
+\index{edge_iterator@{edge\_\-iterator}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf edge\_\-iterator}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenVertex_6fcafde38dd589f0e28aa1d0725b9117}
+
+
+
+
+Definition at line 205 of file Gen\-Vertex.h.\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!vertex_iterator@{vertex\_\-iterator}}
+\index{vertex_iterator@{vertex\_\-iterator}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf vertex\_\-iterator}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenVertex_30e9f8bbd2dee02e3ca50f9e3338e773}
+
+
+
+
+Definition at line 284 of file Gen\-Vertex.h.
+
+Referenced by vertices\_\-begin(), and vertices\_\-end().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!particle_iterator@{particle\_\-iterator}}
+\index{particle_iterator@{particle\_\-iterator}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf particle\_\-iterator}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenVertex_4598abcb3bd99bf0dc03bad3c8744ea5}
+
+
+
+
+Definition at line 332 of file Gen\-Vertex.h.
+
+Referenced by particles\_\-begin(), and particles\_\-end().\index{HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}!operator<<@{operator$<$$<$}}
+\index{operator<<@{operator$<$$<$}!HepMC::GenVertex@{Hep\-MC::Gen\-Vertex}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}std::ostream\& operator$<$$<$ (std::ostream \& {\em ostr}, const {\bf Gen\-Vertex} \& {\em vtx})\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenVertex_c8733007ea5ce97a0ba3d568a587bc5d}
+
+
+print vertex information 
+
+
+
+Definition at line 429 of file Gen\-Vertex.cc.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf Gen\-Vertex.h}\item 
+{\bf Gen\-Vertex.cc}\end{CompactItemize}

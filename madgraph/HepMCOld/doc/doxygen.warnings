@@ -1,0 +1,64 @@
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/test/IsGoodEvent.h:9: Warning: class IsGoodEvent already has a detailed description found in file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/examples/example_EventSelection.cc at line 17. Skipping the one found here.
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/test/testHepMCIteration.h:24: Warning: class IsFinalState already has a detailed description found in file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/examples/example_UsingIterators.cc at line 45. Skipping the one found here.
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/test/testHepMCIteration.h:24: Warning: class IsFinalState already has a brief description found in file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/examples/example_UsingIterators.cc at line 43
+         skipping the one found here.
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/fio/IO_HEPEVT.cc:188: Warning: no matching class member found for
+  void HepMC::IO_HEPEVT::build_production_vertex(int i, std::vector< HepMC::GenParticle * > &hepevt_particle, GenEvent *evt)
+Possible candidates:
+  void HepMC::IO_HEPEVT::build_production_vertex(int i, std::vector< HepMC::GenParticle * > &hepevt_particle, GenEvent *evt)
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/fio/IO_HEPEVT.cc:252: Warning: no matching class member found for
+  void HepMC::IO_HEPEVT::build_end_vertex(int i, std::vector< HepMC::GenParticle * > &hepevt_particle, GenEvent *evt)
+Possible candidates:
+  void HepMC::IO_HEPEVT::build_end_vertex(int i, std::vector< HepMC::GenParticle * > &hepevt_particle, GenEvent *evt)
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/fio/IO_HEPEVT.cc:335: Warning: no uniquely matching class member found for
+  int HepMC::IO_HEPEVT::find_in_map(const std::map< HepMC::GenParticle *, int > &m, GenParticle *p) const
+Possible candidates:
+  int HepMC::IO_HEPEVT::find_in_map(const std::map< HepMC::GenParticle *, int > &m, GenParticle *p) const at line 95 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/IO_HEPEVT.h
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/Flow.cc:62: Warning: no matching class member found for
+  void HepMC::Flow::connected_partners(std::vector< HepMC::GenParticle * > *output, int code, int code_index, int num_indices) const
+Possible candidates:
+  std::vector< HepMC::GenParticle * > HepMC::Flow::connected_partners(int code, int code_index=1, int num_indices=2) const
+  void HepMC::Flow::connected_partners(std::vector< HepMC::GenParticle * > *output, int code, int code_index, int num_indices) const
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/Flow.cc:128: Warning: no matching class member found for
+  void HepMC::Flow::dangling_connected_partners(std::vector< HepMC::GenParticle * > *output, std::vector< GenParticle * > *visited_particles, int code, int code_index, int num_indices) const
+Possible candidates:
+  std::vector< HepMC::GenParticle * > HepMC::Flow::dangling_connected_partners(int code, int code_index=1, int num_indices=2) const
+  void HepMC::Flow::dangling_connected_partners(std::vector< HepMC::GenParticle * > *output, std::vector< HepMC::GenParticle * > *visited_particles, int code, int code_index, int num_indices) const
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/GenEvent.cc:38: Warning: no uniquely matching class member found for
+  HepMC::GenEvent::GenEvent(int signal_process_id, int event_number, HepMC::GenVertex *signal_vertex, const HepMC::WeightContainer &weights, const std::vector< long int > &random_states)
+Possible candidates:
+  HepMC::GenEvent::GenEvent(int signal_process_id=0, int event_number=0, GenVertex *signal_vertex=0, const WeightContainer &weights=std::vector< double >(), const std::vector< long > &randomstates=std::vector< long >()) at line 150 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenEvent.h
+  HepMC::GenEvent::GenEvent(int signal_process_id, int event_number, GenVertex *signal_vertex, const WeightContainer &weights, const std::vector< long > &randomstates, const HeavyIon &ion, const PdfInfo &pdf) at line 155 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenEvent.h
+  HepMC::GenEvent::GenEvent(const GenEvent &inevent) at line 156 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenEvent.h
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/GenEvent.cc:67: Warning: no uniquely matching class member found for
+  HepMC::GenEvent::GenEvent(int signal_process_id, int event_number, HepMC::GenVertex *signal_vertex, const HepMC::WeightContainer &weights, const std::vector< long int > &random_states, const HeavyIon &ion, const PdfInfo &pdf)
+Possible candidates:
+  HepMC::GenEvent::GenEvent(int signal_process_id=0, int event_number=0, GenVertex *signal_vertex=0, const WeightContainer &weights=std::vector< double >(), const std::vector< long > &randomstates=std::vector< long >()) at line 150 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenEvent.h
+  HepMC::GenEvent::GenEvent(int signal_process_id, int event_number, GenVertex *signal_vertex, const WeightContainer &weights, const std::vector< long > &randomstates, const HeavyIon &ion, const PdfInfo &pdf) at line 155 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenEvent.h
+  HepMC::GenEvent::GenEvent(const GenEvent &inevent) at line 156 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenEvent.h
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/GenEvent.cc:510: Warning: no matching class member found for
+  bool HepMC::GenEvent::set_beam_particles(const std::pair< HepMC::GenParticle *, HepMC::GenParticle * > &bp)
+Possible candidates:
+  bool HepMC::GenEvent::set_beam_particles(GenParticle *, GenParticle *)
+  bool HepMC::GenEvent::set_beam_particles(std::pair< HepMC::GenParticle *, HepMC::GenParticle * > const &)
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/GenVertex.cc:610: Warning: no uniquely matching class member found for
+  HepMC::GenVertex::vertex_iterator::vertex_iterator(HepMC::GenVertex &vtx_root, HepMC::IteratorRange range, const std::set< HepMC::GenVertex * > &visited_vertices)
+Possible candidates:
+  HepMC::GenVertex::vertex_iterator::vertex_iterator() at line 238 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenVertex.h
+  HepMC::GenVertex::vertex_iterator::vertex_iterator(GenVertex &vtx_root, IteratorRange range) at line 240 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenVertex.h
+  HepMC::GenVertex::vertex_iterator::vertex_iterator(GenVertex &vtx_root, IteratorRange range, std::set< const HepMC::GenVertex * > &visited_vertices) at line 243 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenVertex.h
+  HepMC::GenVertex::vertex_iterator::vertex_iterator(const vertex_iterator &v_iter) at line 245 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/GenVertex.h
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/GenVertex.cc:737: Warning: no matching class member found for
+  void HepMC::GenVertex::vertex_iterator::copy_with_own_set(const HepMC::GenVertex::vertex_iterator &v_iter, const std::set< HepMC::GenVertex * > &visited_vertices)
+Possible candidates:
+  void HepMC::GenVertex::vertex_iterator::copy_with_own_set(const vertex_iterator &v_iter, std::set< const HepMC::GenVertex * > &visited_vertices)
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/IO_ExtendedAscii.cc:354: Warning: no matching class member found for
+  void HepMC::IO_ExtendedAscii::write_beam_particles(std::pair< HepMC::GenParticle *, HepMC::GenParticle * > pr)
+Possible candidates:
+  void HepMC::IO_ExtendedAscii::write_beam_particles(std::pair< HepMC::GenParticle *, HepMC::GenParticle * >)
+/home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/src/IO_ExtendedAscii.cc:707: Warning: no uniquely matching class member found for
+  int HepMC::IO_ExtendedAscii::find_in_map(const std::map< HepMC::GenVertex *, int > &m, GenVertex *v) const
+Possible candidates:
+  int HepMC::IO_ExtendedAscii::find_in_map(const std::map< HepMC::GenVertex *, int > &m, GenVertex *v) const at line 123 of file /home/cepa01/garren/lcg/hepmc/HepMC-2.01.08/HepMC/IO_ExtendedAscii.h
+<unknown>:1: Warning: Found unknown command `\vec'
+<unknown>:1: Warning: Found unknown command `\vec'

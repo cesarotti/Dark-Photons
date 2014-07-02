@@ -1,0 +1,161 @@
+\section{example\_\-Using\-Iterators.cc}
+
+
+\begin{DocInclude}\begin{verbatim}1 
+2 // Matt.Dobbs@Cern.CH, Feb 2000
+3 // This example shows low to use the particle and vertex iterators
+5 // To Compile: go to the HepMC directory and type:
+6 // gmake examples/example_UsingIterators.exe
+7 //
+8 
+9 #include "HepMC/IO_Ascii.h"
+10 #include "HepMC/GenEvent.h"
+11 #include <math.h>
+12 #include <algorithm>
+13 #include <list>
+14 
+16 
+20 class IsPhoton {
+21 public:
+23     bool operator()( const HepMC::GenParticle* p ) { 
+24         if ( p->pdg_id() == 22 
+25              && p->momentum().perp() > 10. ) return 1;
+26         return 0;
+27     }
+28 };
+29 
+31 
+34 class IsW_Boson {
+35 public:
+37     bool operator()( const HepMC::GenParticle* p ) { 
+38         if ( abs(p->pdg_id()) == 24 ) return 1;
+39         return 0;
+40     }
+41 };
+42 
+44 
+47 class IsFinalState {
+48 public:
+50     bool operator()( const HepMC::GenParticle* p ) { 
+51         if ( !p->end_vertex() && p->status()==1 ) return 1;
+52         return 0;
+53     }
+54 };
+55 
+56 int main() {
+57     { // begin scope of ascii_in
+58         // an event has been prepared in advance for this example, read it
+59         // into memory using the IO_Ascii input strategy
+60         HepMC::IO_Ascii ascii_in("example_UsingIterators.txt",std::ios::in);
+61         if ( ascii_in.rdstate() == std::ios::failbit ) {
+62             std::cerr << "ERROR input file example_UsingIterators.txt is needed "
+63                       << "and does not exist. "
+64                       << "\n Look for it in HepMC/examples, Exit." << std::endl;
+65             return 1;
+66         }
+67 
+68         HepMC::GenEvent* evt = ascii_in.read_next_event();
+69 
+70         // if you wish to have a look at the event, then use evt->print();
+71 
+72         // use GenEvent::vertex_iterator to fill a list of all 
+73         // vertices in the event
+74         std::list<HepMC::GenVertex*> allvertices;
+75         for ( HepMC::GenEvent::vertex_iterator v = evt->vertices_begin();
+76               v != evt->vertices_end(); ++v ) {
+77             allvertices.push_back(*v);
+78         }
+79 
+80         // we could do the same thing with the STL algorithm copy
+81         std::list<HepMC::GenVertex*> allvertices2;
+82         copy( evt->vertices_begin(), evt->vertices_end(), 
+83               back_inserter(allvertices2) );
+84 
+85         // fill a list of all final state particles in the event, by requiring
+86         // that each particle satisfyies the IsFinalState predicate
+87         IsFinalState isfinal;
+88         std::list<HepMC::GenParticle*> finalstateparticles;
+89         for ( HepMC::GenEvent::particle_iterator p = evt->particles_begin();
+90               p != evt->particles_end(); ++p ) {
+91             if ( isfinal(*p) ) finalstateparticles.push_back(*p);
+92         }
+93 
+94         // an STL-like algorithm called HepMC::copy_if is provided in the
+95         // GenEvent.h header to do this sort of operation more easily,
+96         // you could get the identical results as above by using:
+97         std::list<HepMC::GenParticle*> finalstateparticles2;
+98         HepMC::copy_if( evt->particles_begin(), evt->particles_end(), 
+99                         back_inserter(finalstateparticles2), IsFinalState() );
+100 
+101         // lets print all photons in the event that satisfy the IsPhoton criteria
+102         IsPhoton isphoton;
+103         for ( HepMC::GenEvent::particle_iterator p = evt->particles_begin();
+104               p != evt->particles_end(); ++p ) {
+105             if ( isphoton(*p) ) (*p)->print();
+106         }
+107 
+108         // the GenVertex::particle_iterator and GenVertex::vertex_iterator
+109         // are slightly different from the GenEvent:: versions, in that
+110         // the iterator starts at the given vertex, and walks through the attached 
+111         // vertex returning particles/vertices.
+112         // Thus only particles/vertices which are in the same graph as the given
+113         // vertex will be returned. A range is specified with these iterators,
+114         // the choices are:
+115         //    parents, children, family, ancestors, descendants, relatives 
+116         // here are some examples.
+117 
+118         // use GenEvent::particle_iterator to find all W's in the event,
+119         // then 
+120         // (1) for each W user the GenVertex::particle_iterator with a range of
+121         //     parents to return and print the immediate mothers of these W's.
+122         // (2) for each W user the GenVertex::particle_iterator with a range of
+123         //     descendants to return and print all descendants of these W's.
+124         IsW_Boson isw;
+125         for ( HepMC::GenEvent::particle_iterator p = evt->particles_begin();
+126               p != evt->particles_end(); ++p ) {
+127             if ( isw(*p) ) {
+128                 std::cout << "A W boson has been found: " << std::endl;
+129                 (*p)->print();
+130                 // return all parents
+131                 // we do this by pointing to the production vertex of the W 
+132                 // particle and asking for all particle parents of that vertex
+133                 std::cout << "\t Its parents are: " << std::endl;
+134                 if ( (*p)->production_vertex() ) {
+135                     for ( HepMC::GenVertex::particle_iterator mother 
+136                               = (*p)->production_vertex()->
+137                               particles_begin(HepMC::parents);
+138                           mother != (*p)->production_vertex()->
+139                               particles_end(HepMC::parents); 
+140                           ++mother ) {
+141                         std::cout << "\t";
+142                         (*mother)->print();
+143                     }
+144                 }
+145                 // return all descendants
+146                 // we do this by pointing to the end vertex of the W 
+147                 // particle and asking for all particle descendants of that vertex
+148                 std::cout << "\t\t Its descendants are: " << std::endl;
+149                 if ( (*p)->end_vertex() ) {
+150                     for ( HepMC::GenVertex::particle_iterator des 
+151                               =(*p)->end_vertex()->
+152                               particles_begin(HepMC::descendants);
+153                           des != (*p)->end_vertex()->
+154                               particles_end(HepMC::descendants);
+155                           ++des ) {
+156                         std::cout << "\t\t";
+157                         (*des)->print();
+158                     }
+159                 }
+160             }
+161         }
+162         // cleanup
+163         delete evt;
+164         // in analogy to the above, similar use can be made of the
+165         // HepMC::GenVertex::vertex_iterator, which also accepts a range.
+166     } // end scope of ascii_in
+167 
+168     return 0;
+169 }
+\end{verbatim}
+\end{DocInclude}
+ 

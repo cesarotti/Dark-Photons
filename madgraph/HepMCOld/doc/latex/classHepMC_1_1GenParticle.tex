@@ -1,0 +1,541 @@
+\section{Hep\-MC::Gen\-Particle Class Reference}
+\label{classHepMC_1_1GenParticle}\index{HepMC::GenParticle@{HepMC::GenParticle}}
+The \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} class contains information about generated particles.  
+
+
+{\tt \#include $<$Gen\-Particle.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Gen\-Particle} (void)
+\begin{CompactList}\small\item\em default constructor \item\end{CompactList}\item 
+{\bf Gen\-Particle} (const {\bf Four\-Vector} \&momentum, int pdg\_\-id, int status=0, const {\bf Flow} \&itsflow={\bf Flow}(), const {\bf Polarization} \&polar={\bf Polarization}(0, 0))
+\begin{CompactList}\small\item\em constructor requires momentum and particle ID \item\end{CompactList}\item 
+{\bf Gen\-Particle} (const {\bf Gen\-Particle} \&inparticle)
+\begin{CompactList}\small\item\em shallow copy. \item\end{CompactList}\item 
+virtual {\bf $\sim$Gen\-Particle} ()
+\item 
+void {\bf swap} ({\bf Gen\-Particle} \&other)
+\begin{CompactList}\small\item\em swap \item\end{CompactList}\item 
+{\bf Gen\-Particle} \& {\bf operator=} (const {\bf Gen\-Particle} \&inparticle)
+\item 
+bool {\bf operator==} (const {\bf Gen\-Particle} \&) const 
+\begin{CompactList}\small\item\em check for equality \item\end{CompactList}\item 
+bool {\bf operator!=} (const {\bf Gen\-Particle} \&) const 
+\begin{CompactList}\small\item\em check for inequality \item\end{CompactList}\item 
+void {\bf print} (std::ostream \&ostr=std::cout) const
+\begin{CompactList}\small\item\em dump this particle's full info to ostr \item\end{CompactList}\item 
+{\bf operator Hep\-MC::Four\-Vector} () const
+\begin{CompactList}\small\item\em conversion operator \item\end{CompactList}\item 
+{\bf Four\-Vector} {\bf momentum} () const
+\begin{CompactList}\small\item\em standard 4 momentum \item\end{CompactList}\item 
+int {\bf pdg\_\-id} () const
+\begin{CompactList}\small\item\em particle ID \item\end{CompactList}\item 
+int {\bf status} () const
+\begin{CompactList}\small\item\em HEPEVT decay status. \item\end{CompactList}\item 
+{\bf Flow} {\bf flow} () const
+\begin{CompactList}\small\item\em particle flow \item\end{CompactList}\item 
+int {\bf flow} (int code\_\-index) const
+\begin{CompactList}\small\item\em particle flow index \item\end{CompactList}\item 
+{\bf Polarization} {\bf polarization} () const
+\begin{CompactList}\small\item\em polarization information \item\end{CompactList}\item 
+{\bf Gen\-Vertex} $\ast$ {\bf production\_\-vertex} () const
+\begin{CompactList}\small\item\em pointer to the production vertex \item\end{CompactList}\item 
+{\bf Gen\-Vertex} $\ast$ {\bf end\_\-vertex} () const
+\begin{CompactList}\small\item\em pointer to the decay vertex \item\end{CompactList}\item 
+{\bf Gen\-Event} $\ast$ {\bf parent\_\-event} () const
+\begin{CompactList}\small\item\em pointer to the event that owns this particle \item\end{CompactList}\item 
+double {\bf generated\_\-mass} () const
+\begin{CompactList}\small\item\em mass as generated \item\end{CompactList}\item 
+double {\bf generated\-Mass} () const
+\begin{CompactList}\small\item\em \doxyref{generated\-Mass()}{p.}{classHepMC_1_1GenParticle_8025c3c6e409c711b3bb87c102a53c2d} is included for backwards compatibility with \doxyref{CLHEP}{p.}{namespaceCLHEP} \doxyref{Hep\-MC}{p.}{namespaceHepMC} \item\end{CompactList}\item 
+int {\bf barcode} () const
+\begin{CompactList}\small\item\em particle barcode \item\end{CompactList}\item 
+hepmc\_\-uint64\_\-t {\bf serialnumber} () const
+\begin{CompactList}\small\item\em used by Gen\-Particle\-Comparison \item\end{CompactList}\item 
+bool {\bf suggest\_\-barcode} (int the\_\-bar\_\-code)
+\begin{CompactList}\small\item\em In general there is no reason to \char`\"{}suggest\_\-barcode\char`\"{}. \item\end{CompactList}\item 
+void {\bf set\_\-momentum} (const {\bf Four\-Vector} \&vec4)
+\begin{CompactList}\small\item\em set standard 4 momentum \item\end{CompactList}\item 
+void {\bf set\_\-pdg\_\-id} (int id)
+\begin{CompactList}\small\item\em set particle ID \item\end{CompactList}\item 
+void {\bf set\_\-status} (int status=0)
+\begin{CompactList}\small\item\em set decay status \item\end{CompactList}\item 
+void {\bf set\_\-flow} (const {\bf Flow} \&f)
+\begin{CompactList}\small\item\em set particle flow \item\end{CompactList}\item 
+void {\bf set\_\-flow} (int code\_\-index, int code=0)
+\item 
+void {\bf set\_\-polarization} (const {\bf Polarization} \&pol={\bf Polarization}(0, 0))
+\begin{CompactList}\small\item\em set polarization \item\end{CompactList}\item 
+void {\bf set\_\-generated\_\-mass} (const double \&m)
+\begin{CompactList}\small\item\em define the actual generated mass \item\end{CompactList}\item 
+void {\bf set\-Generated\-Mass} (const double \&m)
+\begin{CompactList}\small\item\em \doxyref{set\-Generated\-Mass()}{p.}{classHepMC_1_1GenParticle_5de2f4bfd606187b3523873da6f0f197} is included for backwards compatibility with \doxyref{CLHEP}{p.}{namespaceCLHEP} \doxyref{Hep\-MC}{p.}{namespaceHepMC} \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void {\bf set\_\-production\_\-vertex\_\-} ({\bf Gen\-Vertex} $\ast$productionvertex=0)
+\begin{CompactList}\small\item\em set production vertex \item\end{CompactList}\item 
+void {\bf set\_\-end\_\-vertex\_\-} ({\bf Gen\-Vertex} $\ast$decayvertex=0)
+\begin{CompactList}\small\item\em set decay vertex \item\end{CompactList}\item 
+void {\bf set\_\-barcode\_\-} (int the\_\-bar\_\-code)
+\begin{CompactList}\small\item\em for use by \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} only \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{CompactItemize}
+\item 
+static unsigned int {\bf counter} ()
+\begin{CompactList}\small\item\em temporary for debugging \item\end{CompactList}\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+class {\bf Gen\-Vertex}
+\item 
+class {\bf Gen\-Event}
+\item 
+std::ostream \& {\bf operator$<$$<$} (std::ostream \&, const {\bf Gen\-Particle} \&)
+\begin{CompactList}\small\item\em print particle \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} class contains information about generated particles. 
+
+\doxyref{Hep\-MC::Gen\-Particle}{p.}{classHepMC_1_1GenParticle} contains momentum, generated mass, particle ID, decay status, flow, polarization, pointers to production and decay vertices and a unique barcode identfier. \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}, and {\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+
+
+Definition at line 55 of file Gen\-Particle.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!GenParticle@{GenParticle}}
+\index{GenParticle@{GenParticle}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Particle::Gen\-Particle (void)}\label{classHepMC_1_1GenParticle_322620e7005bc5afca1e3173645fb7c8}
+
+
+default constructor 
+
+
+
+Definition at line 14 of file Gen\-Particle.cc.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!GenParticle@{GenParticle}}
+\index{GenParticle@{GenParticle}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Particle::Gen\-Particle (const {\bf Four\-Vector} \& {\em momentum}, int {\em pdg\_\-id}, int {\em status} = {\tt 0}, const {\bf Flow} \& {\em itsflow} = {\tt {\bf Flow}()}, const {\bf Polarization} \& {\em polar} = {\tt {\bf Polarization}(0,~0)})}\label{classHepMC_1_1GenParticle_3572cad11cf32276213e030d2efd9982}
+
+
+constructor requires momentum and particle ID 
+
+
+
+Definition at line 23 of file Gen\-Particle.cc.
+
+References set\_\-flow().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!GenParticle@{GenParticle}}
+\index{GenParticle@{GenParticle}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Particle::Gen\-Particle (const {\bf Gen\-Particle} \& {\em inparticle})}\label{classHepMC_1_1GenParticle_cc472db0629a431faa47d76dc1934e69}
+
+
+shallow copy. 
+
+
+
+Shallow copy: does not copy the vertex pointers (note - impossible to copy vertex pointers which having the vertex and particles in/out point-back to one another -- unless you copy the entire tree -- which we don't want to do) 
+
+Definition at line 38 of file Gen\-Particle.cc.
+
+References barcode(), set\_\-end\_\-vertex\_\-(), set\_\-production\_\-vertex\_\-(), and suggest\_\-barcode().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!~GenParticle@{$\sim$GenParticle}}
+\index{~GenParticle@{$\sim$GenParticle}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Particle::$\sim$Gen\-Particle ()\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1GenParticle_4a257fe2bf9a8ed54dcb7871775b0c09}
+
+
+
+
+Definition at line 60 of file Gen\-Particle.cc.
+
+References parent\_\-event(), and Hep\-MC::Gen\-Event::remove\_\-barcode().
+
+\subsection{Member Function Documentation}
+\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!swap@{swap}}
+\index{swap@{swap}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::swap ({\bf Gen\-Particle} \& {\em other})}\label{classHepMC_1_1GenParticle_86ea07eef445e6f13f228d5a7310383c}
+
+
+swap 
+
+
+
+Definition at line 65 of file Gen\-Particle.cc.
+
+References m\_\-barcode, m\_\-end\_\-vertex, m\_\-flow, m\_\-generated\_\-mass, m\_\-momentum, m\_\-pdg\_\-id, m\_\-polarization, m\_\-production\_\-vertex, m\_\-serialnumber, m\_\-status, Hep\-MC::Polarization::swap(), Hep\-MC::Flow::swap(), and Hep\-MC::Four\-Vector::swap().
+
+Referenced by operator=().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!operator=@{operator=}}
+\index{operator=@{operator=}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Particle} \& Hep\-MC::Gen\-Particle::operator= (const {\bf Gen\-Particle} \& {\em inparticle})}\label{classHepMC_1_1GenParticle_726aa6602727a95a39e65cb9144e0dc9}
+
+
+shallow. 
+
+Shallow: does not copy the vertex pointers (note - impossible to copy vertex pointers which having the vertex and particles in/out point-back to one another -- unless you copy the entire tree -- which we don't want to do) 
+
+Definition at line 80 of file Gen\-Particle.cc.
+
+References swap().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!operator==@{operator==}}
+\index{operator==@{operator==}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Particle::operator== (const {\bf Gen\-Particle} \&) const}\label{classHepMC_1_1GenParticle_b75a0cb48297485e564901a99c77dfcf}
+
+
+check for equality 
+
+
+
+consistent with the definition of the copy constructor as a shallow constructor,.. this operator does not test the vertex pointers. Does not compare barcodes. 
+
+Definition at line 92 of file Gen\-Particle.cc.
+
+References generated\_\-mass(), m\_\-flow, momentum(), pdg\_\-id(), polarization(), and status().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Particle::operator!= (const {\bf Gen\-Particle} \&) const}\label{classHepMC_1_1GenParticle_269bc79dadb39d8da5e0d7daa663ca86}
+
+
+check for inequality 
+
+
+
+Definition at line 105 of file Gen\-Particle.cc.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!print@{print}}
+\index{print@{print}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::print (std::ostream \& {\em ostr} = {\tt std::cout}) const}\label{classHepMC_1_1GenParticle_b0756592cacbbedf057f152982fc9ce8}
+
+
+dump this particle's full info to ostr 
+
+
+
+Dump this particle's full info to ostr, where by default particle.print(); will dump to cout. 
+
+Definition at line 109 of file Gen\-Particle.cc.
+
+References Hep\-MC::Gen\-Vertex::barcode(), barcode(), Hep\-MC::Four\-Vector::e(), end\_\-vertex(), momentum(), pdg\_\-id(), polarization(), production\_\-vertex(), Hep\-MC::Four\-Vector::px(), Hep\-MC::Four\-Vector::py(), Hep\-MC::Four\-Vector::pz(), and status().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!operator HepMC::FourVector@{operator HepMC::FourVector}}
+\index{operator HepMC::FourVector@{operator HepMC::FourVector}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Particle::operator {\bf Hep\-MC::Four\-Vector} () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_71b2cd0d5a59c71cd8546a6567dbadb2}
+
+
+conversion operator 
+
+
+
+Definition at line 175 of file Gen\-Particle.h.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!momentum@{momentum}}
+\index{momentum@{momentum}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Four\-Vector} Hep\-MC::Gen\-Particle::momentum () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_30c479bb05df669b6cda2f1304ef93e4}
+
+
+standard 4 momentum 
+
+
+
+Definition at line 178 of file Gen\-Particle.h.
+
+Referenced by Hep\-MC::operator$<$$<$(), operator==(), and print().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!pdg_id@{pdg\_\-id}}
+\index{pdg_id@{pdg\_\-id}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Particle::pdg\_\-id () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_81edf44c3133480917856be48a96cd66}
+
+
+particle ID 
+
+
+
+Definition at line 181 of file Gen\-Particle.h.
+
+Referenced by Hep\-MC::operator$<$$<$(), operator==(), and print().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!status@{status}}
+\index{status@{status}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Particle::status () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_a31b7a1882395b905d89dafb78d103b6}
+
+
+HEPEVT decay status. 
+
+
+
+Definition at line 183 of file Gen\-Particle.h.
+
+Referenced by Hep\-MC::operator$<$$<$(), operator==(), and print().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!flow@{flow}}
+\index{flow@{flow}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Flow} Hep\-MC::Gen\-Particle::flow () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_85f2c0a835e75a0c3f9412016db7fe3c}
+
+
+particle flow 
+
+
+
+Definition at line 190 of file Gen\-Particle.h.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!flow@{flow}}
+\index{flow@{flow}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Particle::flow (int {\em code\_\-index}) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_8b9c5e0782466399a495baf58aa64382}
+
+
+particle flow index 
+
+
+
+Definition at line 192 of file Gen\-Particle.h.
+
+References Hep\-MC::Flow::icode().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!polarization@{polarization}}
+\index{polarization@{polarization}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Polarization} Hep\-MC::Gen\-Particle::polarization () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_9fc6f32f0255a89ea40edf28732228c0}
+
+
+polarization information 
+
+
+
+Definition at line 195 of file Gen\-Particle.h.
+
+Referenced by operator==(), and print().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!production_vertex@{production\_\-vertex}}
+\index{production_vertex@{production\_\-vertex}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex} $\ast$ Hep\-MC::Gen\-Particle::production\_\-vertex () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_c4ff8209f2528b3150c8b489fa4d991a}
+
+
+pointer to the production vertex 
+
+
+
+Definition at line 185 of file Gen\-Particle.h.
+
+Referenced by Hep\-MC::Gen\-Vertex::add\_\-particle\_\-out(), parent\_\-event(), print(), and Hep\-MC::Gen\-Vertex::remove\_\-particle().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!end_vertex@{end\_\-vertex}}
+\index{end_vertex@{end\_\-vertex}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex} $\ast$ Hep\-MC::Gen\-Particle::end\_\-vertex () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_23a0feadeb701ccc0fe992cd02a8fe8e}
+
+
+pointer to the decay vertex 
+
+
+
+Definition at line 188 of file Gen\-Particle.h.
+
+Referenced by Hep\-MC::Gen\-Vertex::add\_\-particle\_\-in(), Hep\-MC::operator$<$$<$(), parent\_\-event(), print(), and Hep\-MC::Gen\-Vertex::remove\_\-particle().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!parent_event@{parent\_\-event}}
+\index{parent_event@{parent\_\-event}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Event} $\ast$ Hep\-MC::Gen\-Particle::parent\_\-event () const}\label{classHepMC_1_1GenParticle_e1c0803fa8246a997ab556b5a42d27ec}
+
+
+pointer to the event that owns this particle 
+
+
+
+Definition at line 126 of file Gen\-Particle.cc.
+
+References end\_\-vertex(), Hep\-MC::Gen\-Vertex::parent\_\-event(), and production\_\-vertex().
+
+Referenced by set\_\-end\_\-vertex\_\-(), set\_\-production\_\-vertex\_\-(), suggest\_\-barcode(), and $\sim$Gen\-Particle().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!generated_mass@{generated\_\-mass}}
+\index{generated_mass@{generated\_\-mass}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Hep\-MC::Gen\-Particle::generated\_\-mass () const}\label{classHepMC_1_1GenParticle_ee263084bedde9254371924deb8bba61}
+
+
+mass as generated 
+
+Because of precision issues, the generated mass is not always the same as the mass calculated from the momentum 4 vector. If the generated mass has been set, then \doxyref{generated\_\-mass()}{p.}{classHepMC_1_1GenParticle_ee263084bedde9254371924deb8bba61} returns that value. If the generated mass has not been set, then \doxyref{generated\_\-mass()}{p.}{classHepMC_1_1GenParticle_ee263084bedde9254371924deb8bba61} returns the mass calculated from the momentum 4 vector. 
+
+Definition at line 239 of file Gen\-Particle.cc.
+
+Referenced by generated\-Mass(), and operator==().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!generatedMass@{generatedMass}}
+\index{generatedMass@{generatedMass}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Hep\-MC::Gen\-Particle::generated\-Mass () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_8025c3c6e409c711b3bb87c102a53c2d}
+
+
+\doxyref{generated\-Mass()}{p.}{classHepMC_1_1GenParticle_8025c3c6e409c711b3bb87c102a53c2d} is included for backwards compatibility with \doxyref{CLHEP}{p.}{namespaceCLHEP} \doxyref{Hep\-MC}{p.}{namespaceHepMC} 
+
+
+
+Definition at line 116 of file Gen\-Particle.h.
+
+References generated\_\-mass().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!barcode@{barcode}}
+\index{barcode@{barcode}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Particle::barcode () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_5fc2f7b9c19c5adbec24efc10067c546}
+
+
+particle barcode 
+
+The barcode is the particle's reference number, every vertex in the event has a unique barcode. Particle barcodes are positive numbers, vertex barcodes are negative numbers. 
+
+Definition at line 219 of file Gen\-Particle.h.
+
+Referenced by Gen\-Particle(), Hep\-MC::operator$<$$<$(), print(), set\_\-end\_\-vertex\_\-(), and set\_\-production\_\-vertex\_\-().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!serialnumber@{serialnumber}}
+\index{serialnumber@{serialnumber}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}hepmc\_\-uint64\_\-t Hep\-MC::Gen\-Particle::serialnumber () const}\label{classHepMC_1_1GenParticle_9fa512a5bc641b92ecc0fb636daa26d9}
+
+
+used by Gen\-Particle\-Comparison 
+
+
+
+Definition at line 187 of file Gen\-Particle.cc.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!suggest_barcode@{suggest\_\-barcode}}
+\index{suggest_barcode@{suggest\_\-barcode}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Particle::suggest\_\-barcode (int {\em the\_\-bar\_\-code})}\label{classHepMC_1_1GenParticle_9b5552a166c23063a9b1682bb7577496}
+
+
+In general there is no reason to \char`\"{}suggest\_\-barcode\char`\"{}. 
+
+
+
+allows a barcode to be suggested for this particle. In general it is better to let the event pick the barcode for you, which is automatic. Returns TRUE if the suggested barcode has been accepted (i.e. the suggested barcode has not already been used in the event, and so it was used). Returns FALSE if the suggested barcode was rejected, or if the particle is not yet part of an event, such that it is not yet possible to know if the suggested barcode will be accepted). 
+
+Definition at line 156 of file Gen\-Particle.cc.
+
+References parent\_\-event(), Hep\-MC::Gen\-Event::set\_\-barcode(), and set\_\-barcode\_\-().
+
+Referenced by Gen\-Particle().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_momentum@{set\_\-momentum}}
+\index{set_momentum@{set\_\-momentum}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-momentum (const {\bf Four\-Vector} \& {\em vec4})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_a815771df2abf0c6d362690ed1b6bad7}
+
+
+set standard 4 momentum 
+
+
+
+Definition at line 198 of file Gen\-Particle.h.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_pdg_id@{set\_\-pdg\_\-id}}
+\index{set_pdg_id@{set\_\-pdg\_\-id}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-pdg\_\-id (int {\em id})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_2544d0a8f91cd0e637e3d9de9f537553}
+
+
+set particle ID 
+
+
+
+Definition at line 201 of file Gen\-Particle.h.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_status@{set\_\-status}}
+\index{set_status@{set\_\-status}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-status (int {\em status} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_caa10e32bcd4fb62f8a6c41a5802a1fa}
+
+
+set decay status 
+
+
+
+Definition at line 203 of file Gen\-Particle.h.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_flow@{set\_\-flow}}
+\index{set_flow@{set\_\-flow}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-flow (const {\bf Flow} \& {\em f})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_122511a81a4f32e14c41e5710cd7b990}
+
+
+set particle flow 
+
+
+
+Definition at line 205 of file Gen\-Particle.h.
+
+Referenced by Gen\-Particle().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_flow@{set\_\-flow}}
+\index{set_flow@{set\_\-flow}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-flow (int {\em code\_\-index}, int {\em code} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_a5cbbcfcad9280da5b824da7923d26b4}
+
+
+set particle flow index 
+
+Definition at line 207 of file Gen\-Particle.h.
+
+References Hep\-MC::Flow::set\_\-icode(), and Hep\-MC::Flow::set\_\-unique\_\-icode().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_polarization@{set\_\-polarization}}
+\index{set_polarization@{set\_\-polarization}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-polarization (const {\bf Polarization} \& {\em pol} = {\tt {\bf Polarization}(0,~0)})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_ba96b9698b46e4ee9cbe659bed928afc}
+
+
+set polarization 
+
+
+
+Definition at line 216 of file Gen\-Particle.h.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_generated_mass@{set\_\-generated\_\-mass}}
+\index{set_generated_mass@{set\_\-generated\_\-mass}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-generated\_\-mass (const double \& {\em m})}\label{classHepMC_1_1GenParticle_81c0cd342de965ad59d9cc0cbd8afa29}
+
+
+define the actual generated mass 
+
+If you do not call \doxyref{set\_\-generated\_\-mass()}{p.}{classHepMC_1_1GenParticle_81c0cd342de965ad59d9cc0cbd8afa29}, then \doxyref{generated\_\-mass()}{p.}{classHepMC_1_1GenParticle_ee263084bedde9254371924deb8bba61} will simply return the mass calculated from \doxyref{momentum()}{p.}{classHepMC_1_1GenParticle_30c479bb05df669b6cda2f1304ef93e4} 
+
+Definition at line 243 of file Gen\-Particle.cc.
+
+Referenced by set\-Generated\-Mass().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!setGeneratedMass@{setGeneratedMass}}
+\index{setGeneratedMass@{setGeneratedMass}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\-Generated\-Mass (const double \& {\em m})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenParticle_5de2f4bfd606187b3523873da6f0f197}
+
+
+\doxyref{set\-Generated\-Mass()}{p.}{classHepMC_1_1GenParticle_5de2f4bfd606187b3523873da6f0f197} is included for backwards compatibility with \doxyref{CLHEP}{p.}{namespaceCLHEP} \doxyref{Hep\-MC}{p.}{namespaceHepMC} 
+
+
+
+Definition at line 142 of file Gen\-Particle.h.
+
+References set\_\-generated\_\-mass().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!counter@{counter}}
+\index{counter@{counter}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}unsigned int Hep\-MC::Gen\-Particle::counter ()\hspace{0.3cm}{\tt  [static, protected]}}\label{classHepMC_1_1GenParticle_3d9391d4669c579ce99ad9bde8992fbe}
+
+
+temporary for debugging 
+
+
+
+Definition at line 184 of file Gen\-Particle.cc.
+
+Referenced by Hep\-MC::Gen\-Event::clear(), Hep\-MC::Gen\-Event::delete\_\-all\_\-vertices(), and Hep\-MC::Gen\-Event::print().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_production_vertex_@{set\_\-production\_\-vertex\_\-}}
+\index{set_production_vertex_@{set\_\-production\_\-vertex\_\-}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-production\_\-vertex\_\- ({\bf Gen\-Vertex} $\ast$ {\em productionvertex} = {\tt 0})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenParticle_4706f11b418dc7a9cec65c83a71bac53}
+
+
+set production vertex 
+
+
+
+Definition at line 132 of file Gen\-Particle.cc.
+
+References barcode(), parent\_\-event(), and Hep\-MC::Gen\-Event::remove\_\-barcode().
+
+Referenced by Hep\-MC::Gen\-Vertex::add\_\-particle\_\-out(), Gen\-Particle(), and Hep\-MC::Gen\-Vertex::remove\_\-particle().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_end_vertex_@{set\_\-end\_\-vertex\_\-}}
+\index{set_end_vertex_@{set\_\-end\_\-vertex\_\-}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-end\_\-vertex\_\- ({\bf Gen\-Vertex} $\ast$ {\em decayvertex} = {\tt 0})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenParticle_f96a32a284976342a6b0721636a33966}
+
+
+set decay vertex 
+
+
+
+Definition at line 145 of file Gen\-Particle.cc.
+
+References barcode(), parent\_\-event(), and Hep\-MC::Gen\-Event::remove\_\-barcode().
+
+Referenced by Hep\-MC::Gen\-Vertex::add\_\-particle\_\-in(), Gen\-Particle(), and Hep\-MC::Gen\-Vertex::remove\_\-particle().\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!set_barcode_@{set\_\-barcode\_\-}}
+\index{set_barcode_@{set\_\-barcode\_\-}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Particle::set\_\-barcode\_\- (int {\em the\_\-bar\_\-code})\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1GenParticle_cc2e0e7ca90a9e8c6af00fedff24ecc7}
+
+
+for use by \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} only 
+
+
+
+Definition at line 221 of file Gen\-Particle.h.
+
+Referenced by suggest\_\-barcode().
+
+\subsection{Friends And Related Function Documentation}
+\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!GenVertex@{GenVertex}}
+\index{GenVertex@{GenVertex}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Gen\-Vertex}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenParticle_79e1f60c84635d80d7e15cbab25260bd}
+
+
+
+
+Definition at line 57 of file Gen\-Particle.h.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!GenEvent@{GenEvent}}
+\index{GenEvent@{GenEvent}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Gen\-Event}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenParticle_e38359739d5837a91be256b5d963d80e}
+
+
+
+
+Definition at line 58 of file Gen\-Particle.h.\index{HepMC::GenParticle@{Hep\-MC::Gen\-Particle}!operator<<@{operator$<$$<$}}
+\index{operator<<@{operator$<$$<$}!HepMC::GenParticle@{Hep\-MC::Gen\-Particle}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}std::ostream\& operator$<$$<$ (std::ostream \& {\em ostr}, const {\bf Gen\-Particle} \& {\em part})\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenParticle_7ab5a70227c4a35fb85a73a4afde0f4d}
+
+
+print particle 
+
+
+
+Definition at line 195 of file Gen\-Particle.cc.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf Gen\-Particle.h}\item 
+{\bf Gen\-Particle.cc}\end{CompactItemize}

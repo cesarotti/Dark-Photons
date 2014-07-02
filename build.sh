@@ -20,7 +20,7 @@ fi
 cd project-build/$1
 cmake -DGEANT4_BUILD_MULTITHREADED=ON -DGeant4_DIR=/usr/local/geant4.10.00.p01/lib64/Geant4-10.0.0 ../../$1
 make clean
-make
+make -j`grep -c ^processor /proc/cpuinfo`
 cd ../../$1
 OUTPUT=$(basename $(find -maxdepth 1 -iname "*.cc") .cc)
 cd ../project-build/$1

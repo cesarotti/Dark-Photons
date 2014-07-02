@@ -1,0 +1,147 @@
+\section{example\_\-Build\-Event\-From\-Scratch.cc}
+
+
+\begin{DocInclude}\begin{verbatim}1 
+2 // Matt.Dobbs@Cern.CH, Feb 2000
+3 // Example of building an event and a particle data table from scratch
+4 // This is meant to be of use for persons implementing HepMC inside a MC 
+5 // event generator
+7 // To Compile: go to the HepMC directory and type:
+8 // gmake examples/example_BuildEventFromScratch.exe
+9 //
+10 
+11 #include <iostream>
+12 
+13 #include "VectorConversion.h"
+14 #include "HepMC/GenEvent.h"
+15 #include "HepMC/ParticleDataTable.h"
+16 #include "CLHEP/Vector/LorentzVector.h"
+17 
+18 // in this example we use the HepMC namespace, so that we do not have to 
+19 // precede all HepMC classes with HepMC::
+20 
+21 // This example also shows how to use the CLHEP Lorentz vector with HepMC2
+22 
+23 using namespace HepMC;
+24 using namespace CLHEP;
+25 
+26 int main() {
+27     //
+28     // In this example we will place the following event into HepMC "by hand"
+29     //
+30     //     name status pdg_id  parent Px       Py    Pz       Energy      Mass
+31     //  1  !p+!    3   2212    0,0    0.000    0.000 7000.000 7000.000    0.938
+32     //  2  !p+!    3   2212    0,0    0.000    0.000-7000.000 7000.000    0.938
+33     //=========================================================================
+34     //  3  !d!     3      1    1,1    0.750   -1.569   32.191   32.238    0.000
+35     //  4  !u~!    3     -2    2,2   -3.047  -19.000  -54.629   57.920    0.000
+36     //  5  !W-!    3    -24    1,2    1.517   -20.68  -20.605   85.925   80.799
+37     //  6  !gamma! 1     22    1,2   -3.813    0.113   -1.833    4.233    0.000
+38     //  7  !d!     1      1    5,5   -2.445   28.816    6.082   29.552    0.010
+39     //  8  !u~!    1     -2    5,5    3.962  -49.498  -26.687   56.373    0.006
+40 
+41     // first we construct a ParticleDataTable with all the particles we need
+42     ParticleDataTable pdt("my particle data table");
+43     // create a particle data entry for the proton and add it to pdt at the
+44     // same time
+45     pdt.insert( new ParticleData( "p+", 2212,   +1, 0.938,  -1, .5 ) );
+46     pdt.insert( new ParticleData( "d",  1,  -2./3., 0,      -1, .5 ) );
+47     pdt.insert( new ParticleData( "u~", -2, -1./3., 0,      -1, .5 ) );
+48     pdt.insert( new ParticleData( "W-", -24,    -1, 80.396,
+49                                   clifetime_from_width(2.06), 1 )    );
+50     pdt.insert( new ParticleData( "gamma", 22,   0, 0,      -1, 1  ) );
+51 
+52     // print out the GenParticle Data to the screen
+53     pdt.print();
+54 
+55     // now we build the graph, which will look like
+56     //                       p7
+57     // p1                   /
+58     //   \v1__p3      p5---v4
+59     //         \_v3_/       \ 
+60     //         /    \        p8
+61     //    v2__p4     \ 
+62     //   /            p6
+63     // p2
+64     //
+65 
+66     // First create the event container, with Signal Process 20, event number 1
+67     //
+68     // Note that the HepLorentzVectors will be automatically converted to 
+69     // HepMC::FourVector within GenParticle and GenVertex
+70     GenEvent* evt = new GenEvent( 20, 1 );
+71     //
+72     // create vertex 1 and vertex 2, together with their inparticles
+73     GenVertex* v1 = new GenVertex();
+74     evt->add_vertex( v1 );
+75     v1->add_particle_in( new GenParticle( HepLorentzVector(0,0,7000,7000),
+76                                        2212, 3 ) );
+77     GenVertex* v2 = new GenVertex();
+78     evt->add_vertex( v2 );
+79     v2->add_particle_in( new GenParticle( HepLorentzVector(0,0,-7000,7000),
+80                                        2212, 3 ) );
+81     //
+82     // create the outgoing particles of v1 and v2
+83     GenParticle* p3 = 
+84         new GenParticle( HepLorentzVector(.750,-1.569,32.191,32.238), 1, 3 );
+85     v1->add_particle_out( p3 );
+86     GenParticle* p4 = 
+87         new GenParticle( HepLorentzVector(-3.047,-19.,-54.629,57.920), -2, 3 );
+88     v2->add_particle_out( p4 );
+89     //
+90     // create v3
+91     GenVertex* v3 = new GenVertex();
+92     evt->add_vertex( v3 );
+93     v3->add_particle_in( p3 );
+94     v3->add_particle_in( p4 );
+95     v3->add_particle_out( 
+96         new GenParticle( HepLorentzVector(-3.813,0.113,-1.833,4.233 ), 22, 1 )
+97         );
+98     GenParticle* p5 = 
+99         new GenParticle( HepLorentzVector(1.517,-20.68,-20.605,85.925), -24,3);
+100     v3->add_particle_out( p5 );
+101     //
+102     // create v4
+103     GenVertex* v4 = new GenVertex(HepLorentzVector(0.12,-0.3,0.05,0.004));
+104     evt->add_vertex( v4 );
+105     v4->add_particle_in( p5 );
+106     v4->add_particle_out( 
+107         new GenParticle( HepLorentzVector(-2.445,28.816,6.082,29.552), 1,1 )
+108         );
+109     v4->add_particle_out( 
+110         new GenParticle( HepLorentzVector(3.962,-49.498,-26.687,56.373), -2,1 )
+111         );
+112     //    
+113     // tell the event which vertex is the signal process vertex
+114     evt->set_signal_process_vertex( v3 );
+115     // the event is complete, we now print it out to the screen
+116     evt->print();
+117     
+118     // example conversion back to Lorentz vector
+119     // add all outgoing momenta
+120     std::cout << std::endl;
+121     std::cout << " Add output momenta " << std::endl;
+122     HepLorentzVector sum;
+123     for ( GenEvent::particle_const_iterator p = evt->particles_begin(); 
+124               p != evt->particles_end(); ++p ){
+125         if( (*p)->status() == 1 ) {
+126             sum += SVtoLV( (*p)->momentum() );
+127             (*p)->print();
+128         }
+129     }
+130     std::cout << "Vector Sum: " << sum << std::endl;
+131 
+132     // now clean-up by deleteing all objects from memory
+133     //
+134     // deleting the event deletes all contained vertices, and all particles
+135     // contained in those vertices
+136     delete evt;
+137 
+138     // delete all particle data objects in the particle data table pdt
+139     pdt.delete_all();
+140 
+141     return 0;
+142 }
+\end{verbatim}
+\end{DocInclude}
+ 

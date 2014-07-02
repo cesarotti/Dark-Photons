@@ -1,0 +1,81 @@
+\section{example\_\-Pythia\-Particle.cc}
+
+
+\begin{DocInclude}\begin{verbatim}1 
+2 // garren@fnal.gov, July 2006
+3 // example of generating events with Pythia
+4 // using HepMC/PythiaWrapper.h 
+5 // Events are read into the HepMC event record from the FORTRAN HEPEVT 
+6 // common block using the IO_HEPEVT strategy and then output to file in
+7 // ascii format using the IO_AsciiParticles strategy.
+8 //
+9 // This is identical to example_MyPythia.cc except that it uses IO_AsciiParticles.
+11 // To Compile: go to the examples directory and type:
+12 // gmake example_PythiaParticle.exe
+13 //
+14 // In this example the precision and number of entries for the HEPEVT 
+15 // fortran common block are explicitly defined to correspond to those 
+16 // used in the Pythia version of the HEPEVT common block. 
+17 //
+18 // If you get funny output from HEPEVT in your own code, probably you have
+19 // set these values incorrectly!
+20 //
+21 
+22 #include <iostream>
+23 #include "HepMC/PythiaWrapper.h"
+24 #include "HepMC/IO_HEPEVT.h"
+25 #include "HepMC/IO_AsciiParticles.h"
+26 #include "HepMC/GenEvent.h"
+27 #include "PythiaHelper.h"
+28     
+29 int main() { 
+30     //
+31     //........................................HEPEVT
+32     // Pythia 6.1 uses HEPEVT with 4000 entries and 8-byte floating point
+33     //  numbers. We need to explicitly pass this information to the 
+34     //  HEPEVT_Wrapper.
+35     //
+36     HepMC::HEPEVT_Wrapper::set_max_number_entries(4000);
+37     HepMC::HEPEVT_Wrapper::set_sizeof_real(8);
+38     //
+39     //........................................PYTHIA INITIALIZATIONS
+40     initPythia();
+41 
+42     //........................................HepMC INITIALIZATIONS
+43     //
+44     // Instantiate an IO strategy for reading from HEPEVT.
+45     HepMC::IO_HEPEVT hepevtio;
+46     //
+47     { // begin scope of ascii_io
+48         // Instantiate an IO strategy to write the data to file 
+49         HepMC::IO_AsciiParticles ascii_io("example_PythiaParticle.dat",std::ios::out);
+50         //
+51         //........................................EVENT LOOP
+52         for ( int i = 1; i <= 100; i++ ) {
+53             if ( i%50==1 ) std::cout << "Processing Event Number " 
+54                                      << i << std::endl;
+55             call_pyevnt();      // generate one event with Pythia
+56             // pythia pyhepc routine converts common PYJETS in common HEPEVT
+57             call_pyhepc( 1 );
+58             HepMC::GenEvent* evt = hepevtio.read_next_event();
+59             // add some information to the event
+60             evt->set_event_number(i);
+61             evt->set_signal_process_id(20);
+62             // write the event out to the ascii file
+63             ascii_io << evt;
+64             // we also need to delete the created event from memory
+65             delete evt;
+66         }
+67         //........................................TERMINATION
+68         // write out some information from Pythia to the screen
+69         call_pystat( 1 );    
+70     } // end scope of ascii_io
+71 
+72     return 0;
+73 }
+74 
+75 
+76  
+\end{verbatim}
+\end{DocInclude}
+ 

@@ -1,0 +1,933 @@
+\section{Hep\-MC::Gen\-Event Class Reference}
+\label{classHepMC_1_1GenEvent}\index{HepMC::GenEvent@{HepMC::GenEvent}}
+The \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} class is the core of \doxyref{Hep\-MC}{p.}{namespaceHepMC}.  
+
+
+{\tt \#include $<$Gen\-Event.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Gen\-Event} (int signal\_\-process\_\-id=0, int event\_\-number=0, {\bf Gen\-Vertex} $\ast$signal\_\-vertex=0, const {\bf Weight\-Container} \&weights=std::vector$<$ double $>$(), const std::vector$<$ long $>$ \&randomstates=std::vector$<$ long $>$())
+\begin{CompactList}\small\item\em default constructor creates null pointers to \doxyref{Heavy\-Ion}{p.}{classHepMC_1_1HeavyIon} and \doxyref{Pdf\-Info}{p.}{classHepMC_1_1PdfInfo} \item\end{CompactList}\item 
+{\bf Gen\-Event} (int signal\_\-process\_\-id, int event\_\-number, {\bf Gen\-Vertex} $\ast$signal\_\-vertex, const {\bf Weight\-Container} \&weights, const std::vector$<$ long $>$ \&randomstates, const {\bf Heavy\-Ion} \&ion, const {\bf Pdf\-Info} \&pdf)
+\begin{CompactList}\small\item\em explicit constructor that takes \doxyref{Heavy\-Ion}{p.}{classHepMC_1_1HeavyIon} and \doxyref{Pdf\-Info}{p.}{classHepMC_1_1PdfInfo} \item\end{CompactList}\item 
+{\bf Gen\-Event} (const {\bf Gen\-Event} \&inevent)
+\begin{CompactList}\small\item\em deep copy \item\end{CompactList}\item 
+{\bf Gen\-Event} \& {\bf operator=} (const {\bf Gen\-Event} \&inevent)
+\begin{CompactList}\small\item\em make a deep copy \item\end{CompactList}\item 
+virtual {\bf $\sim$Gen\-Event} ()
+\begin{CompactList}\small\item\em deletes all vertices/particles in this evt \item\end{CompactList}\item 
+void {\bf swap} ({\bf Gen\-Event} \&other)
+\begin{CompactList}\small\item\em swap \item\end{CompactList}\item 
+void {\bf print} (std::ostream \&ostr=std::cout) const
+\begin{CompactList}\small\item\em dumps to ostr \item\end{CompactList}\item 
+void {\bf print\_\-version} (std::ostream \&ostr=std::cout) const
+\begin{CompactList}\small\item\em dumps release version to ostr \item\end{CompactList}\item 
+{\bf Gen\-Particle} $\ast$ {\bf barcode\_\-to\_\-particle} (int bar\-Code) const 
+\begin{CompactList}\small\item\em assign a barcode to a particle \item\end{CompactList}\item 
+{\bf Gen\-Vertex} $\ast$ {\bf barcode\_\-to\_\-vertex} (int bar\-Code) const 
+\begin{CompactList}\small\item\em assign a barcode to a vertex \item\end{CompactList}\item 
+int {\bf signal\_\-process\_\-id} () const
+\begin{CompactList}\small\item\em unique signal process id \item\end{CompactList}\item 
+int {\bf event\_\-number} () const
+\begin{CompactList}\small\item\em event number \item\end{CompactList}\item 
+int {\bf mpi} () const
+\begin{CompactList}\small\item\em number of multi parton interactions \item\end{CompactList}\item 
+double {\bf event\_\-scale} () const
+\begin{CompactList}\small\item\em energy scale, see hep-ph/0109068 \item\end{CompactList}\item 
+double {\bf alpha\-QCD} () const
+\begin{CompactList}\small\item\em QCD coupling, see hep-ph/0109068. \item\end{CompactList}\item 
+double {\bf alpha\-QED} () const
+\item 
+{\bf Gen\-Vertex} $\ast$ {\bf signal\_\-process\_\-vertex} () const
+\begin{CompactList}\small\item\em pointer to the vertex containing the signal process \item\end{CompactList}\item 
+bool {\bf valid\_\-beam\_\-particles} () const
+\begin{CompactList}\small\item\em test to see if we have two valid beam particles \item\end{CompactList}\item 
+std::pair$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$, {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ {\bf beam\_\-particles} () const
+\begin{CompactList}\small\item\em pair of pointers to the two incoming beam particles \item\end{CompactList}\item 
+{\bf Weight\-Container} \& {\bf weights} ()
+\begin{CompactList}\small\item\em direct access to \doxyref{Weight\-Container}{p.}{classHepMC_1_1WeightContainer} \item\end{CompactList}\item 
+const {\bf Weight\-Container} \& {\bf weights} () const
+\begin{CompactList}\small\item\em direct access to \doxyref{Weight\-Container}{p.}{classHepMC_1_1WeightContainer} \item\end{CompactList}\item 
+{\bf Heavy\-Ion} $\ast$const {\bf heavy\_\-ion} () const
+\begin{CompactList}\small\item\em access the \doxyref{Heavy\-Ion}{p.}{classHepMC_1_1HeavyIon} container if it exists \item\end{CompactList}\item 
+{\bf Heavy\-Ion} $\ast$ {\bf heavy\_\-ion} ()
+\item 
+{\bf Pdf\-Info} $\ast$const {\bf pdf\_\-info} () const
+\begin{CompactList}\small\item\em access the \doxyref{Pdf\-Info}{p.}{classHepMC_1_1PdfInfo} container if it exists \item\end{CompactList}\item 
+{\bf Pdf\-Info} $\ast$ {\bf pdf\_\-info} ()
+\item 
+std::vector$<$ long $>$ {\bf random\_\-states} () const
+\begin{CompactList}\small\item\em vector of integers containing information about the random state \item\end{CompactList}\item 
+void {\bf set\_\-signal\_\-process\_\-id} (int id)
+\begin{CompactList}\small\item\em set unique signal process id \item\end{CompactList}\item 
+void {\bf set\_\-event\_\-number} (int eventno)
+\begin{CompactList}\small\item\em set event number \item\end{CompactList}\item 
+void {\bf set\_\-mpi} (int)
+\begin{CompactList}\small\item\em Use this to set the number of multi parton interactions in each event. \item\end{CompactList}\item 
+void {\bf set\_\-event\_\-scale} (double scale)
+\begin{CompactList}\small\item\em set energy scale \item\end{CompactList}\item 
+void {\bf set\_\-alpha\-QCD} (double a)
+\begin{CompactList}\small\item\em set QCD coupling \item\end{CompactList}\item 
+void {\bf set\_\-alpha\-QED} (double a)
+\begin{CompactList}\small\item\em set QED coupling \item\end{CompactList}\item 
+void {\bf set\_\-signal\_\-process\_\-vertex} ({\bf Gen\-Vertex} $\ast$)
+\begin{CompactList}\small\item\em set pointer to the vertex containing the signal process \item\end{CompactList}\item 
+bool {\bf set\_\-beam\_\-particles} ({\bf Gen\-Particle} $\ast$, {\bf Gen\-Particle} $\ast$)
+\begin{CompactList}\small\item\em set incoming beam particles \item\end{CompactList}\item 
+bool {\bf set\_\-beam\_\-particles} (std::pair$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$, {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ const \&)
+\begin{CompactList}\small\item\em use a pair of Gen\-Particle$\ast$'s to set incoming beam particles \item\end{CompactList}\item 
+void {\bf set\_\-random\_\-states} (const std::vector$<$ long $>$ \&randomstates)
+\begin{CompactList}\small\item\em provide random state information \item\end{CompactList}\item 
+void {\bf set\_\-heavy\_\-ion} (const {\bf Heavy\-Ion} \&ion)
+\begin{CompactList}\small\item\em provide a pointer to the \doxyref{Heavy\-Ion}{p.}{classHepMC_1_1HeavyIon} container \item\end{CompactList}\item 
+void {\bf set\_\-pdf\_\-info} (const {\bf Pdf\-Info} \&{\bf p})
+\begin{CompactList}\small\item\em provide a pointer to the \doxyref{Pdf\-Info}{p.}{classHepMC_1_1PdfInfo} container \item\end{CompactList}\item 
+int {\bf particles\_\-size} () const
+\begin{CompactList}\small\item\em how many particle barcodes exist? \item\end{CompactList}\item 
+bool {\bf particles\_\-empty} () const
+\begin{CompactList}\small\item\em return true if there are no particle barcodes \item\end{CompactList}\item 
+int {\bf vertices\_\-size} () const
+\begin{CompactList}\small\item\em how many vertex barcodes exist? \item\end{CompactList}\item 
+bool {\bf vertices\_\-empty} () const
+\begin{CompactList}\small\item\em return true if there are no vertex barcodes \item\end{CompactList}\item 
+bool {\bf add\_\-vertex} ({\bf Gen\-Vertex} $\ast$vtx)
+\begin{CompactList}\small\item\em adds to evt and adopts \item\end{CompactList}\item 
+bool {\bf remove\_\-vertex} ({\bf Gen\-Vertex} $\ast$vtx)
+\begin{CompactList}\small\item\em erases vtx from evt \item\end{CompactList}\item 
+void {\bf clear} ()
+\begin{CompactList}\small\item\em empties the entire event \item\end{CompactList}\item 
+{\bf vertex\_\-const\_\-iterator} {\bf vertices\_\-begin} () const
+\begin{CompactList}\small\item\em begin vertex iteration \item\end{CompactList}\item 
+{\bf vertex\_\-const\_\-iterator} {\bf vertices\_\-end} () const
+\begin{CompactList}\small\item\em end vertex iteration \item\end{CompactList}\item 
+{\bf vertex\_\-iterator} {\bf vertices\_\-begin} ()
+\begin{CompactList}\small\item\em begin vertex iteration \item\end{CompactList}\item 
+{\bf vertex\_\-iterator} {\bf vertices\_\-end} ()
+\begin{CompactList}\small\item\em end vertex iteration \item\end{CompactList}\item 
+{\bf particle\_\-const\_\-iterator} {\bf particles\_\-begin} () const
+\begin{CompactList}\small\item\em begin particle iteration \item\end{CompactList}\item 
+{\bf particle\_\-const\_\-iterator} {\bf particles\_\-end} () const
+\begin{CompactList}\small\item\em end particle iteration \item\end{CompactList}\item 
+{\bf particle\_\-iterator} {\bf particles\_\-begin} ()
+\begin{CompactList}\small\item\em begin particle iteration \item\end{CompactList}\item 
+{\bf particle\_\-iterator} {\bf particles\_\-end} ()
+\begin{CompactList}\small\item\em end particle iteration \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+bool {\bf set\_\-barcode} ({\bf Gen\-Particle} $\ast${\bf p}, int suggested\_\-barcode=0)
+\begin{CompactList}\small\item\em set the barcode - intended for use by \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} \item\end{CompactList}\item 
+bool {\bf set\_\-barcode} ({\bf Gen\-Vertex} $\ast${\bf v}, int suggested\_\-barcode=0)
+\begin{CompactList}\small\item\em set the barcode - intended for use by \doxyref{Gen\-Vertex}{p.}{classHepMC_1_1GenVertex} \item\end{CompactList}\item 
+void {\bf remove\_\-barcode} ({\bf Gen\-Particle} $\ast${\bf p})
+\begin{CompactList}\small\item\em intended for use by \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} \item\end{CompactList}\item 
+void {\bf remove\_\-barcode} ({\bf Gen\-Vertex} $\ast${\bf v})
+\begin{CompactList}\small\item\em intended for use by \doxyref{Gen\-Vertex}{p.}{classHepMC_1_1GenVertex} \item\end{CompactList}\item 
+void {\bf delete\_\-all\_\-vertices} ()
+\begin{CompactList}\small\item\em delete all vertices owned by this event \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{CompactItemize}
+\item 
+static unsigned int {\bf counter} ()
+\begin{CompactList}\small\item\em num \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} objects in memory \item\end{CompactList}\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+class {\bf Gen\-Particle}
+\item 
+class {\bf Gen\-Vertex}
+\item 
+class {\bf vertex\_\-const\_\-iterator}
+\item 
+class {\bf vertex\_\-iterator}
+\item 
+class {\bf particle\_\-const\_\-iterator}
+\item 
+class {\bf particle\_\-iterator}
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class {\bf particle\_\-const\_\-iterator}
+\begin{CompactList}\small\item\em const particle iterator \item\end{CompactList}\item 
+class {\bf particle\_\-iterator}
+\begin{CompactList}\small\item\em non-const particle iterator \item\end{CompactList}\item 
+class {\bf vertex\_\-const\_\-iterator}
+\begin{CompactList}\small\item\em const vertex iterator \item\end{CompactList}\item 
+class {\bf vertex\_\-iterator}
+\begin{CompactList}\small\item\em non-const vertex iterator \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} class is the core of \doxyref{Hep\-MC}{p.}{namespaceHepMC}. 
+
+\doxyref{Hep\-MC::Gen\-Event}{p.}{classHepMC_1_1GenEvent} contains information about generated particles. \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} is structured as a set of vertices which contain the particles. \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}, {\bf example\_\-Event\-Selection.cc}, {\bf example\_\-My\-Herwig.cc}, {\bf example\_\-My\-Pythia.cc}, {\bf example\_\-My\-Pythia\-Only\-To\-Hep\-MC.cc}, {\bf example\_\-My\-Pythia\-Read.cc}, {\bf example\_\-My\-Pythia\-With\-Event\-Selection.cc}, {\bf example\_\-Pythia\-Particle.cc}, and {\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+
+
+Definition at line 142 of file Gen\-Event.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!GenEvent@{GenEvent}}
+\index{GenEvent@{GenEvent}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Event::Gen\-Event (int {\em signal\_\-process\_\-id} = {\tt 0}, int {\em event\_\-number} = {\tt 0}, {\bf Gen\-Vertex} $\ast$ {\em signal\_\-vertex} = {\tt 0}, const {\bf Weight\-Container} \& {\em weights} = {\tt std::vector$<$~double~$>$()}, const std::vector$<$ long $>$ \& {\em randomstates} = {\tt std::vector$<$~long~$>$()})}\label{classHepMC_1_1GenEvent_ebd5782f77f42f9ffbfdeb5c417ee673}
+
+
+default constructor creates null pointers to \doxyref{Heavy\-Ion}{p.}{classHepMC_1_1HeavyIon} and \doxyref{Pdf\-Info}{p.}{classHepMC_1_1PdfInfo} 
+
+\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!GenEvent@{GenEvent}}
+\index{GenEvent@{GenEvent}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Event::Gen\-Event (int {\em signal\_\-process\_\-id}, int {\em event\_\-number}, {\bf Gen\-Vertex} $\ast$ {\em signal\_\-vertex}, const {\bf Weight\-Container} \& {\em weights}, const std::vector$<$ long $>$ \& {\em randomstates}, const {\bf Heavy\-Ion} \& {\em ion}, const {\bf Pdf\-Info} \& {\em pdf})}\label{classHepMC_1_1GenEvent_6b29b8129dbb06b8c50e943d4ad18ae7}
+
+
+explicit constructor that takes \doxyref{Heavy\-Ion}{p.}{classHepMC_1_1HeavyIon} and \doxyref{Pdf\-Info}{p.}{classHepMC_1_1PdfInfo} 
+
+\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!GenEvent@{GenEvent}}
+\index{GenEvent@{GenEvent}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Event::Gen\-Event (const {\bf Gen\-Event} \& {\em inevent})}\label{classHepMC_1_1GenEvent_a17a3163db7b0db600442272464a6ce4}
+
+
+deep copy 
+
+
+
+deep copy
+
+deep - makes a copy of all vertices! 
+
+Definition at line 75 of file Gen\-Event.cc.
+
+References add\_\-vertex(), alpha\-QCD(), alpha\-QED(), beam\_\-particles(), event\_\-number(), event\_\-scale(), Gen\-Particle, Gen\-Vertex, mpi(), p, particles\_\-begin(), particles\_\-end(), random\_\-states(), set\_\-alpha\-QCD(), set\_\-alpha\-QED(), set\_\-beam\_\-particles(), set\_\-event\_\-number(), set\_\-event\_\-scale(), set\_\-mpi(), set\_\-random\_\-states(), set\_\-signal\_\-process\_\-id(), set\_\-signal\_\-process\_\-vertex(), signal\_\-process\_\-id(), signal\_\-process\_\-vertex(), v, vertices\_\-begin(), vertices\_\-end(), and weights().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!~GenEvent@{$\sim$GenEvent}}
+\index{~GenEvent@{$\sim$GenEvent}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Gen\-Event::$\sim$Gen\-Event ()\hspace{0.3cm}{\tt  [virtual]}}\label{classHepMC_1_1GenEvent_1b09f8e6675759528ee3f368025273f5}
+
+
+deletes all vertices/particles in this evt 
+
+
+
+Deep destructor. deletes all vertices/particles in this evt 
+
+Definition at line 170 of file Gen\-Event.cc.
+
+References delete\_\-all\_\-vertices().
+
+\subsection{Member Function Documentation}
+\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!operator=@{operator=}}
+\index{operator=@{operator=}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Event} \& Hep\-MC::Gen\-Event::operator= (const {\bf Gen\-Event} \& {\em inevent})}\label{classHepMC_1_1GenEvent_9561e98806be56dc5e73ae51b3fd695c}
+
+
+make a deep copy 
+
+
+
+best practices implementation 
+
+Definition at line 181 of file Gen\-Event.cc.
+
+References swap().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!swap@{swap}}
+\index{swap@{swap}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::swap ({\bf Gen\-Event} \& {\em other})}\label{classHepMC_1_1GenEvent_b91e22dac83e6d886491816a8d993545}
+
+
+swap 
+
+
+
+Definition at line 150 of file Gen\-Event.cc.
+
+References m\_\-alpha\-QCD, m\_\-alpha\-QED, m\_\-beam\_\-particle\_\-1, m\_\-beam\_\-particle\_\-2, m\_\-event\_\-number, m\_\-event\_\-scale, m\_\-heavy\_\-ion, m\_\-mpi, m\_\-particle\_\-barcodes, m\_\-pdf\_\-info, m\_\-random\_\-states, m\_\-signal\_\-process\_\-id, m\_\-signal\_\-process\_\-vertex, m\_\-vertex\_\-barcodes, m\_\-weights, and Hep\-MC::Weight\-Container::swap().
+
+Referenced by operator=().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!print@{print}}
+\index{print@{print}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::print (std::ostream \& {\em ostr} = {\tt std::cout}) const}\label{classHepMC_1_1GenEvent_ecccd1342eded80eac36738e121aa58c}
+
+
+dumps to ostr 
+
+
+
+dumps the content of this event to ostr to dump to cout use: event.print(); if you want to write this event to file outfile.txt you could use: std::ofstream outfile(\char`\"{}outfile.txt\char`\"{}); event.print( outfile ); \begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}, and {\bf example\_\-My\-Herwig.cc}.\end{Desc}
+
+
+Definition at line 189 of file Gen\-Event.cc.
+
+References alpha\-QCD(), alpha\-QED(), Hep\-MC::Gen\-Vertex::barcode(), beam\_\-particles(), Hep\-MC::Gen\-Particle::counter(), Hep\-MC::Gen\-Vertex::counter(), counter(), Hep\-MC::Weight\-Container::end(), event\_\-number(), event\_\-scale(), particles\_\-size(), signal\_\-process\_\-id(), signal\_\-process\_\-vertex(), Hep\-MC::Weight\-Container::size(), vertices\_\-end(), vertices\_\-size(), and weights().
+
+Referenced by main().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!print_version@{print\_\-version}}
+\index{print_version@{print\_\-version}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::print\_\-version (std::ostream \& {\em ostr} = {\tt std::cout}) const}\label{classHepMC_1_1GenEvent_c1421c5af8fcddb4095ea8b0afb68eba}
+
+
+dumps release version to ostr 
+
+
+
+Definition at line 244 of file Gen\-Event.cc.
+
+References Hep\-MC::write\-Version().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!barcode_to_particle@{barcode\_\-to\_\-particle}}
+\index{barcode_to_particle@{barcode\_\-to\_\-particle}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Particle} $\ast$ Hep\-MC::Gen\-Event::barcode\_\-to\_\-particle (int {\em bar\-Code}) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_7c50f73b9d11da504dcbd8bf9475eedd}
+
+
+assign a barcode to a particle 
+
+Each vertex or particle has a barcode, which is just an integer which uniquely identifies it inside the event (i.e. there is a one to one mapping between particle memory addresses and particle barcodes... and the same applied for vertices).
+
+The value of a barcode has NO MEANING and NO ORDER! For the user's convenience, when an event is read in via an IO\_\-method from an indexed list (like the HEPEVT common block), then the index will become the barcode for that particle.
+
+Particle barcodes are always positive integers. The barcodes are chosen and set automatically when a vertex or particle comes under the ownership of an event (i.e. it is contained in an event). 
+
+Definition at line 618 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!barcode_to_vertex@{barcode\_\-to\_\-vertex}}
+\index{barcode_to_vertex@{barcode\_\-to\_\-vertex}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex} $\ast$ Hep\-MC::Gen\-Event::barcode\_\-to\_\-vertex (int {\em bar\-Code}) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_9e4e9fedc4a24f4706b26c4e59d7c814}
+
+
+assign a barcode to a vertex 
+
+Each vertex or particle has a barcode, which is just an integer which uniquely identifies it inside the event (i.e. there is a one to one mapping between particle memory addresses and particle barcodes... and the same applied for vertices).
+
+The value of a barcode has NO MEANING and NO ORDER! For the user's convenience, when an event is read in via an IO\_\-method from an indexed list (like the HEPEVT common block), then the index will become the barcode for that particle.
+
+Vertex barcodes are always negative integers. The barcodes are chosen and set automatically when a vertex or particle comes under the ownership of an event (i.e. it is contained in an event). 
+
+Definition at line 638 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), and Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!signal_process_id@{signal\_\-process\_\-id}}
+\index{signal_process_id@{signal\_\-process\_\-id}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Event::signal\_\-process\_\-id () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_78279e392dff2c2c471782531f3d9892}
+
+
+unique signal process id 
+
+The integer ID that uniquely specifies this signal process, i.e. MSUB in Pythia. It is necessary to package this with each event rather than with the run because many processes may be generated within one run. 
+
+Definition at line 522 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), print(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!event_number@{event\_\-number}}
+\index{event_number@{event\_\-number}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Event::event\_\-number () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_f288e7a4cdeb1e4feb0f8ef1c59b24af}
+
+
+event number 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Event\-Selection.cc}, and {\bf example\_\-My\-Pythia\-Read.cc}.\end{Desc}
+
+
+Definition at line 525 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), main(), print(), Hep\-MC::IO\_\-HEPEVT::write\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!mpi@{mpi}}
+\index{mpi@{mpi}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Event::mpi () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_2849e856b5fa415e4a40b0f69f8ff175}
+
+
+number of multi parton interactions 
+
+Returns the number of multi parton interactions in the event. This number is -1 if it is not set. 
+
+Definition at line 529 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), and Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!event_scale@{event\_\-scale}}
+\index{event_scale@{event\_\-scale}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Hep\-MC::Gen\-Event::event\_\-scale () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_dc50003fa5882060e15367af393b72cf}
+
+
+energy scale, see hep-ph/0109068 
+
+
+
+Definition at line 531 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), print(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!alphaQCD@{alphaQCD}}
+\index{alphaQCD@{alphaQCD}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Hep\-MC::Gen\-Event::alpha\-QCD () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_6b58ada08199748d004c946a21142330}
+
+
+QCD coupling, see hep-ph/0109068. 
+
+
+
+Definition at line 533 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), print(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!alphaQED@{alphaQED}}
+\index{alphaQED@{alphaQED}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Hep\-MC::Gen\-Event::alpha\-QED () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_8dfff09cf3eec2c2e9fc416b24138bc2}
+
+
+QED coupling, see hep-ph/0109068 
+
+Definition at line 535 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), print(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!signal_process_vertex@{signal\_\-process\_\-vertex}}
+\index{signal_process_vertex@{signal\_\-process\_\-vertex}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Gen\-Vertex} $\ast$ Hep\-MC::Gen\-Event::signal\_\-process\_\-vertex () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_80d2394d34be19132b18a2c0c4edd8cf}
+
+
+pointer to the vertex containing the signal process 
+
+
+
+returns a (mutable) pointer to the signal process vertex 
+
+Definition at line 537 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), print(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!valid_beam_particles@{valid\_\-beam\_\-particles}}
+\index{valid_beam_particles@{valid\_\-beam\_\-particles}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::valid\_\-beam\_\-particles () const}\label{classHepMC_1_1GenEvent_47396f14262903d2a27faf323dfd2798}
+
+
+test to see if we have two valid beam particles 
+
+
+
+Definition at line 483 of file Gen\-Event.cc.
+
+References p, particles\_\-begin(), and particles\_\-end().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!beam_particles@{beam\_\-particles}}
+\index{beam_particles@{beam\_\-particles}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}std::pair$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$, {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ Hep\-MC::Gen\-Event::beam\_\-particles () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_eebe9840d64ec5e75efa81dbb500d7a0}
+
+
+pair of pointers to the two incoming beam particles 
+
+
+
+Definition at line 659 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), print(), and Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!weights@{weights}}
+\index{weights@{weights}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Weight\-Container} \& Hep\-MC::Gen\-Event::weights ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_3d91498964d094e3dfb8f8322315879a}
+
+
+direct access to \doxyref{Weight\-Container}{p.}{classHepMC_1_1WeightContainer} 
+
+direct access to the weights container is allowed. Thus you can use myevt.weights()[2]; to access element 2 of the weights. or use myevt.weights().push\_\-back( mywgt ); to add an element. and you can set the weights with myevt.weights() = myvector; 
+
+Definition at line 542 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), Gen\-Event(), print(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!weights@{weights}}
+\index{weights@{weights}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const {\bf Weight\-Container} \& Hep\-MC::Gen\-Event::weights () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_7d6325917b1491a634e0da3916628fcf}
+
+
+direct access to \doxyref{Weight\-Container}{p.}{classHepMC_1_1WeightContainer} 
+
+
+
+Definition at line 544 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!heavy_ion@{heavy\_\-ion}}
+\index{heavy_ion@{heavy\_\-ion}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Heavy\-Ion} $\ast$const Hep\-MC::Gen\-Event::heavy\_\-ion () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_db39152b2b5dbfb5c8e578e36539a59d}
+
+
+access the \doxyref{Heavy\-Ion}{p.}{classHepMC_1_1HeavyIon} container if it exists 
+
+
+
+Definition at line 547 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!heavy_ion@{heavy\_\-ion}}
+\index{heavy_ion@{heavy\_\-ion}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Heavy\-Ion} $\ast$ Hep\-MC::Gen\-Event::heavy\_\-ion ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_5daa2111f4a086d82fd4fd85919d38e3}
+
+
+
+
+Definition at line 550 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!pdf_info@{pdf\_\-info}}
+\index{pdf_info@{pdf\_\-info}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Pdf\-Info} $\ast$const Hep\-MC::Gen\-Event::pdf\_\-info () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_29b9727645ff157c7d15bce4e3af3299}
+
+
+access the \doxyref{Pdf\-Info}{p.}{classHepMC_1_1PdfInfo} container if it exists 
+
+
+
+Definition at line 553 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!pdf_info@{pdf\_\-info}}
+\index{pdf_info@{pdf\_\-info}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Pdf\-Info} $\ast$ Hep\-MC::Gen\-Event::pdf\_\-info ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_c9582446de76fbe0b044c1fb11e46d70}
+
+
+
+
+Definition at line 556 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!random_states@{random\_\-states}}
+\index{random_states@{random\_\-states}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ long $>$ Hep\-MC::Gen\-Event::random\_\-states () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_a1aed0748ead0b274d757fd181eaceeb}
+
+
+vector of integers containing information about the random state 
+
+Vector of integers which specify the random number generator's state for this event. It is left to the generator to make use of this. We envision a vector of Rndm\-States\-Tags to be included with a run class which would specify the meaning of the random\_\-states. 
+
+Definition at line 564 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_signal_process_id@{set\_\-signal\_\-process\_\-id}}
+\index{set_signal_process_id@{set\_\-signal\_\-process\_\-id}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-signal\_\-process\_\-id (int {\em id})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_5699139ca3c227ee2dd6d09fb9d79f79}
+
+
+set unique signal process id 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-My\-Herwig.cc}, {\bf example\_\-My\-Pythia.cc}, {\bf example\_\-My\-Pythia\-Read.cc}, and {\bf example\_\-Pythia\-Particle.cc}.\end{Desc}
+
+
+Definition at line 567 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), Gen\-Event(), and main().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_event_number@{set\_\-event\_\-number}}
+\index{set_event_number@{set\_\-event\_\-number}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-event\_\-number (int {\em eventno})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_84278cf4e4ce807d60f99d9288c1ad8e}
+
+
+set event number 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-My\-Herwig.cc}, {\bf example\_\-My\-Pythia.cc}, {\bf example\_\-My\-Pythia\-Read.cc}, and {\bf example\_\-Pythia\-Particle.cc}.\end{Desc}
+
+
+Definition at line 570 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-HERWIG::fill\_\-next\_\-event(), Hep\-MC::IO\_\-HEPEVT::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), Gen\-Event(), and main().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_mpi@{set\_\-mpi}}
+\index{set_mpi@{set\_\-mpi}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-mpi (int)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_af54674d701fa836b7ebe257e84b14a1}
+
+
+Use this to set the number of multi parton interactions in each event. 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-My\-Pythia.cc}, {\bf example\_\-My\-Pythia\-Only\-To\-Hep\-MC.cc}, and {\bf example\_\-My\-Pythia\-With\-Event\-Selection.cc}.\end{Desc}
+
+
+Definition at line 574 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Gen\-Event(), and main().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_event_scale@{set\_\-event\_\-scale}}
+\index{set_event_scale@{set\_\-event\_\-scale}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-event\_\-scale (double {\em scale})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_c9082a49ea03a2ae3a83b629a86ec25d}
+
+
+set energy scale 
+
+
+
+Definition at line 578 of file Gen\-Event.h.
+
+Referenced by Gen\-Event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_alphaQCD@{set\_\-alphaQCD}}
+\index{set_alphaQCD@{set\_\-alphaQCD}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-alpha\-QCD (double {\em a})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_cf096038dfa2c33530b68f369efb0f3e}
+
+
+set QCD coupling 
+
+
+
+Definition at line 580 of file Gen\-Event.h.
+
+Referenced by Gen\-Event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_alphaQED@{set\_\-alphaQED}}
+\index{set_alphaQED@{set\_\-alphaQED}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-alpha\-QED (double {\em a})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_cd4b2177ad350927e80b7f7cb9239d40}
+
+
+set QED coupling 
+
+
+
+Definition at line 582 of file Gen\-Event.h.
+
+Referenced by Gen\-Event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_signal_process_vertex@{set\_\-signal\_\-process\_\-vertex}}
+\index{set_signal_process_vertex@{set\_\-signal\_\-process\_\-vertex}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-signal\_\-process\_\-vertex ({\bf Gen\-Vertex} $\ast$)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_32f00631c76556295ab3963062436abb}
+
+
+set pointer to the vertex containing the signal process 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+Definition at line 584 of file Gen\-Event.h.
+
+References add\_\-vertex().
+
+Referenced by Hep\-MC::IO\_\-HERWIG::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), Gen\-Event(), and main().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_beam_particles@{set\_\-beam\_\-particles}}
+\index{set_beam_particles@{set\_\-beam\_\-particles}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::set\_\-beam\_\-particles ({\bf Gen\-Particle} $\ast$ {\em bp1}, {\bf Gen\-Particle} $\ast$ {\em bp2})}\label{classHepMC_1_1GenEvent_fc5841ea5b2f05df61a36579c428769e}
+
+
+set incoming beam particles 
+
+construct the beam particle information using pointers to \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} returns false if either Gen\-Particle$\ast$ is null 
+
+Definition at line 501 of file Gen\-Event.cc.
+
+Referenced by Hep\-MC::IO\_\-HERWIG::fill\_\-next\_\-event(), Hep\-MC::IO\_\-HEPEVT::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), and Gen\-Event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_beam_particles@{set\_\-beam\_\-particles}}
+\index{set_beam_particles@{set\_\-beam\_\-particles}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::set\_\-beam\_\-particles (std::pair$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$, {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ const \&)}\label{classHepMC_1_1GenEvent_4ebf23578dd890a77853843ac6194b3b}
+
+
+use a pair of Gen\-Particle$\ast$'s to set incoming beam particles 
+
+\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_random_states@{set\_\-random\_\-states}}
+\index{set_random_states@{set\_\-random\_\-states}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-random\_\-states (const std::vector$<$ long $>$ \& {\em randomstates})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_78e1df76d398dfef881792667ecfb4a8}
+
+
+provide random state information 
+
+
+
+Definition at line 595 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), and Gen\-Event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_heavy_ion@{set\_\-heavy\_\-ion}}
+\index{set_heavy_ion@{set\_\-heavy\_\-ion}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-heavy\_\-ion (const {\bf Heavy\-Ion} \& {\em ion})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_eec27a7cc704eaee3f7f144995bac8ed}
+
+
+provide a pointer to the \doxyref{Heavy\-Ion}{p.}{classHepMC_1_1HeavyIon} container 
+
+
+
+Definition at line 589 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_pdf_info@{set\_\-pdf\_\-info}}
+\index{set_pdf_info@{set\_\-pdf\_\-info}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::set\_\-pdf\_\-info (const {\bf Pdf\-Info} \& {\em p})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_bc227f62111199f331ae260769587980}
+
+
+provide a pointer to the \doxyref{Pdf\-Info}{p.}{classHepMC_1_1PdfInfo} container 
+
+
+
+Definition at line 592 of file Gen\-Event.h.
+
+References p.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!particles_size@{particles\_\-size}}
+\index{particles_size@{particles\_\-size}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Event::particles\_\-size () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_07fdd081468ee568dc16f3f8c6efae8b}
+
+
+how many particle barcodes exist? 
+
+
+
+Definition at line 645 of file Gen\-Event.h.
+
+Referenced by print(), and Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!particles_empty@{particles\_\-empty}}
+\index{particles_empty@{particles\_\-empty}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::particles\_\-empty () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_4a648356ef2ed3033fe84253062c267e}
+
+
+return true if there are no particle barcodes 
+
+
+
+Definition at line 648 of file Gen\-Event.h.
+
+Referenced by delete\_\-all\_\-vertices().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!vertices_size@{vertices\_\-size}}
+\index{vertices_size@{vertices\_\-size}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Gen\-Event::vertices\_\-size () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_459a1460e96d03f6922bf843b24bd7d1}
+
+
+how many vertex barcodes exist? 
+
+
+
+Definition at line 651 of file Gen\-Event.h.
+
+Referenced by print(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!vertices_empty@{vertices\_\-empty}}
+\index{vertices_empty@{vertices\_\-empty}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::vertices\_\-empty () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_29fa7807390935e773464fb6e286ad23}
+
+
+return true if there are no vertex barcodes 
+
+
+
+Definition at line 654 of file Gen\-Event.h.
+
+Referenced by delete\_\-all\_\-vertices().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!add_vertex@{add\_\-vertex}}
+\index{add_vertex@{add\_\-vertex}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::add\_\-vertex ({\bf Gen\-Vertex} $\ast$ {\em vtx})}\label{classHepMC_1_1GenEvent_351fd8c688bb1791877a56a956c8b005}
+
+
+adds to evt and adopts 
+
+
+
+returns true if successful - generally will only return false if the inserted vertex is already included in the event. \begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+Definition at line 250 of file Gen\-Event.cc.
+
+References Hep\-MC::Gen\-Vertex::barcode(), Hep\-MC::Gen\-Vertex::parent\_\-event(), remove\_\-vertex(), and Hep\-MC::Gen\-Vertex::set\_\-parent\_\-event\_\-().
+
+Referenced by Hep\-MC::IO\_\-HERWIG::build\_\-end\_\-vertex(), Hep\-MC::IO\_\-HERWIG::build\_\-production\_\-vertex(), Hep\-MC::IO\_\-HERWIG::fill\_\-next\_\-event(), Hep\-MC::IO\_\-HEPEVT::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event(), Gen\-Event(), main(), and set\_\-signal\_\-process\_\-vertex().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!remove_vertex@{remove\_\-vertex}}
+\index{remove_vertex@{remove\_\-vertex}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::remove\_\-vertex ({\bf Gen\-Vertex} $\ast$ {\em vtx})}\label{classHepMC_1_1GenEvent_ae6950d2bd7eeb37fae439928162e147}
+
+
+erases vtx from evt 
+
+
+
+this removes vtx from the event but does NOT delete it. returns True if an entry vtx existed in the table and was erased 
+
+Definition at line 273 of file Gen\-Event.cc.
+
+References Hep\-MC::Gen\-Vertex::barcode(), Hep\-MC::Gen\-Vertex::parent\_\-event(), and Hep\-MC::Gen\-Vertex::set\_\-parent\_\-event\_\-().
+
+Referenced by add\_\-vertex().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!clear@{clear}}
+\index{clear@{clear}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::clear ()}\label{classHepMC_1_1GenEvent_ac75163864b7577171003c37f836041d}
+
+
+empties the entire event 
+
+
+
+remove all information from the event deletes all vertices/particles in this evt 
+
+Definition at line 281 of file Gen\-Event.cc.
+
+References Hep\-MC::Gen\-Particle::counter(), Hep\-MC::Gen\-Vertex::counter(), and delete\_\-all\_\-vertices().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!vertices_begin@{vertices\_\-begin}}
+\index{vertices_begin@{vertices\_\-begin}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf vertex\_\-const\_\-iterator} Hep\-MC::Gen\-Event::vertices\_\-begin () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_f4cea6163a1a320ac732318ca89cd5bc}
+
+
+begin vertex iteration 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+Definition at line 294 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), main(), Hep\-MC::IO\_\-HEPEVT::write\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!vertices_end@{vertices\_\-end}}
+\index{vertices_end@{vertices\_\-end}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf vertex\_\-const\_\-iterator} Hep\-MC::Gen\-Event::vertices\_\-end () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_a6fd4a90d8eb096f95215ad5c18d6a7c}
+
+
+end vertex iteration 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+Definition at line 298 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), main(), print(), Hep\-MC::IO\_\-HEPEVT::write\_\-event(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-event(), and Hep\-MC::IO\_\-Ascii::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!vertices_begin@{vertices\_\-begin}}
+\index{vertices_begin@{vertices\_\-begin}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf vertex\_\-iterator} Hep\-MC::Gen\-Event::vertices\_\-begin ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_b71faf23b1c0517ed8f56e053f5cb88c}
+
+
+begin vertex iteration 
+
+
+
+Definition at line 351 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!vertices_end@{vertices\_\-end}}
+\index{vertices_end@{vertices\_\-end}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf vertex\_\-iterator} Hep\-MC::Gen\-Event::vertices\_\-end ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_922099752cb4d99d9230f9fd48feeaae}
+
+
+end vertex iteration 
+
+
+
+Definition at line 355 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!particles_begin@{particles\_\-begin}}
+\index{particles_begin@{particles\_\-begin}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf particle\_\-const\_\-iterator} Hep\-MC::Gen\-Event::particles\_\-begin () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_a7e3c5e99982b837a5dddac952467919}
+
+
+begin particle iteration 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}, {\bf example\_\-Event\-Selection.cc}, {\bf example\_\-My\-Pythia\-With\-Event\-Selection.cc}, and {\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+Definition at line 413 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), main(), Is\-Good\-Event\-My\-Pythia::operator()(), Is\-Good\-Event::operator()(), valid\_\-beam\_\-particles(), and Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!particles_end@{particles\_\-end}}
+\index{particles_end@{particles\_\-end}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf particle\_\-const\_\-iterator} Hep\-MC::Gen\-Event::particles\_\-end () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_facd3ef23718acc13770f2dc467836e9}
+
+
+end particle iteration 
+
+\begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}, {\bf example\_\-Event\-Selection.cc}, {\bf example\_\-My\-Pythia\-With\-Event\-Selection.cc}, and {\bf example\_\-Using\-Iterators.cc}.\end{Desc}
+
+
+Definition at line 417 of file Gen\-Event.h.
+
+Referenced by Gen\-Event(), main(), Is\-Good\-Event\-My\-Pythia::operator()(), Is\-Good\-Event::operator()(), valid\_\-beam\_\-particles(), and Hep\-MC::IO\_\-Ascii\-Particles::write\_\-event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!particles_begin@{particles\_\-begin}}
+\index{particles_begin@{particles\_\-begin}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf particle\_\-iterator} Hep\-MC::Gen\-Event::particles\_\-begin ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_37646bf8f35efdcad9e9cb99d4afcf52}
+
+
+begin particle iteration 
+
+
+
+Definition at line 466 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!particles_end@{particles\_\-end}}
+\index{particles_end@{particles\_\-end}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf particle\_\-iterator} Hep\-MC::Gen\-Event::particles\_\-end ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1GenEvent_c6cf8b9ca58304512b91432e35f15d78}
+
+
+end particle iteration 
+
+
+
+Definition at line 470 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_barcode@{set\_\-barcode}}
+\index{set_barcode@{set\_\-barcode}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::set\_\-barcode ({\bf Gen\-Particle} $\ast$ {\em p}, int {\em suggested\_\-barcode} = {\tt 0})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenEvent_a91f815859d75cb9976f49d32a9b39c8}
+
+
+set the barcode - intended for use by \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} 
+
+
+
+Definition at line 345 of file Gen\-Event.cc.
+
+References p.
+
+Referenced by Hep\-MC::Gen\-Vertex::set\_\-parent\_\-event\_\-(), Hep\-MC::Gen\-Vertex::suggest\_\-barcode(), and Hep\-MC::Gen\-Particle::suggest\_\-barcode().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!set_barcode@{set\_\-barcode}}
+\index{set_barcode@{set\_\-barcode}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Gen\-Event::set\_\-barcode ({\bf Gen\-Vertex} $\ast$ {\em v}, int {\em suggested\_\-barcode} = {\tt 0})\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenEvent_8fcbdfaf9ac5028bc96d532a303daf2e}
+
+
+set the barcode - intended for use by \doxyref{Gen\-Vertex}{p.}{classHepMC_1_1GenVertex} 
+
+
+
+Definition at line 416 of file Gen\-Event.cc.
+
+References v.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!remove_barcode@{remove\_\-barcode}}
+\index{remove_barcode@{remove\_\-barcode}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::remove\_\-barcode ({\bf Gen\-Particle} $\ast$ {\em p})\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1GenEvent_03f0ec9f9e2adc00f5212b574c63ba0d}
+
+
+intended for use by \doxyref{Gen\-Particle}{p.}{classHepMC_1_1GenParticle} 
+
+
+
+Definition at line 599 of file Gen\-Event.h.
+
+References p.
+
+Referenced by Hep\-MC::Gen\-Particle::set\_\-end\_\-vertex\_\-(), Hep\-MC::Gen\-Vertex::set\_\-parent\_\-event\_\-(), Hep\-MC::Gen\-Particle::set\_\-production\_\-vertex\_\-(), Hep\-MC::Gen\-Particle::$\sim$Gen\-Particle(), and Hep\-MC::Gen\-Vertex::$\sim$Gen\-Vertex().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!remove_barcode@{remove\_\-barcode}}
+\index{remove_barcode@{remove\_\-barcode}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::remove\_\-barcode ({\bf Gen\-Vertex} $\ast$ {\em v})\hspace{0.3cm}{\tt  [inline, protected]}}\label{classHepMC_1_1GenEvent_8c69f0787ecec8000c5ab7ecdc59c5ee}
+
+
+intended for use by \doxyref{Gen\-Vertex}{p.}{classHepMC_1_1GenVertex} 
+
+
+
+Definition at line 602 of file Gen\-Event.h.
+
+References v.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!counter@{counter}}
+\index{counter@{counter}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}unsigned int Hep\-MC::Gen\-Event::counter ()\hspace{0.3cm}{\tt  [static, protected]}}\label{classHepMC_1_1GenEvent_98bedfb7c39dac5304deafd0ddcbac2c}
+
+
+num \doxyref{Gen\-Event}{p.}{classHepMC_1_1GenEvent} objects in memory 
+
+
+
+Definition at line 517 of file Gen\-Event.cc.
+
+Referenced by print().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!delete_all_vertices@{delete\_\-all\_\-vertices}}
+\index{delete_all_vertices@{delete\_\-all\_\-vertices}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Gen\-Event::delete\_\-all\_\-vertices ()\hspace{0.3cm}{\tt  [protected]}}\label{classHepMC_1_1GenEvent_e1d8afe655620e48f5f2c77775eed5d6}
+
+
+delete all vertices owned by this event 
+
+
+
+deletes all vertices in the vertex container (i.e. all vertices owned by this event) The vertices are the \char`\"{}owners\char`\"{} of the particles, so as we delete the vertices, the vertex desctructors are automatically deleting their particles. 
+
+Definition at line 314 of file Gen\-Event.cc.
+
+References Hep\-MC::Gen\-Particle::counter(), Hep\-MC::Gen\-Vertex::counter(), particles\_\-empty(), and vertices\_\-empty().
+
+Referenced by clear(), and $\sim$Gen\-Event().
+
+\subsection{Friends And Related Function Documentation}
+\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!GenParticle@{GenParticle}}
+\index{GenParticle@{GenParticle}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Gen\-Particle}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenEvent_da4e3c3672a6ef84e4980c5a80dc9d3f}
+
+
+
+
+Definition at line 143 of file Gen\-Event.h.
+
+Referenced by Gen\-Event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!GenVertex@{GenVertex}}
+\index{GenVertex@{GenVertex}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Gen\-Vertex}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenEvent_79e1f60c84635d80d7e15cbab25260bd}
+
+
+
+
+Definition at line 144 of file Gen\-Event.h.
+
+Referenced by Gen\-Event().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!vertex_const_iterator@{vertex\_\-const\_\-iterator}}
+\index{vertex_const_iterator@{vertex\_\-const\_\-iterator}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf vertex\_\-const\_\-iterator}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenEvent_33f0903519618dd786fd1229b351c234}
+
+
+
+
+Definition at line 292 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::Gen\-Event::vertex\_\-iterator::operator vertex\_\-const\_\-iterator().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!vertex_iterator@{vertex\_\-iterator}}
+\index{vertex_iterator@{vertex\_\-iterator}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf vertex\_\-iterator}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenEvent_30e9f8bbd2dee02e3ca50f9e3338e773}
+
+
+
+
+Definition at line 349 of file Gen\-Event.h.\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!particle_const_iterator@{particle\_\-const\_\-iterator}}
+\index{particle_const_iterator@{particle\_\-const\_\-iterator}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf particle\_\-const\_\-iterator}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenEvent_f6f25d4c7638ede71cc0e724a668a790}
+
+
+
+
+Definition at line 411 of file Gen\-Event.h.
+
+Referenced by Hep\-MC::Gen\-Event::particle\_\-iterator::operator particle\_\-const\_\-iterator().\index{HepMC::GenEvent@{Hep\-MC::Gen\-Event}!particle_iterator@{particle\_\-iterator}}
+\index{particle_iterator@{particle\_\-iterator}!HepMC::GenEvent@{Hep\-MC::Gen\-Event}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf particle\_\-iterator}\hspace{0.3cm}{\tt  [friend]}}\label{classHepMC_1_1GenEvent_4598abcb3bd99bf0dc03bad3c8744ea5}
+
+
+
+
+Definition at line 464 of file Gen\-Event.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf Gen\-Event.h}\item 
+{\bf Gen\-Event.cc}\end{CompactItemize}

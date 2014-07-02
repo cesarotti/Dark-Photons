@@ -1,0 +1,392 @@
+\section{Hep\-MC::Particle\-Data\-Table Class Reference}
+\label{classHepMC_1_1ParticleDataTable}\index{HepMC::ParticleDataTable@{HepMC::ParticleDataTable}}
+an example \doxyref{Particle\-Data\-Table}{p.}{classHepMC_1_1ParticleDataTable} class  
+
+
+{\tt \#include $<$Particle\-Data\-Table.h$>$}
+
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef std::map$<$ int, {\bf Hep\-MC::Particle\-Data} $\ast$ $>$::{\bf iterator} {\bf iterator}
+\begin{CompactList}\small\item\em iterator for \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} map \item\end{CompactList}\item 
+typedef std::map$<$ int, {\bf Hep\-MC::Particle\-Data} $\ast$ $>$::{\bf const\_\-iterator} {\bf const\_\-iterator}
+\begin{CompactList}\small\item\em const iterator for \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} map \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Particle\-Data\-Table} (std::string description=std::string())
+\begin{CompactList}\small\item\em constructor with optional description \item\end{CompactList}\item 
+{\bf Particle\-Data\-Table} (const char description)
+\begin{CompactList}\small\item\em constructor with description \item\end{CompactList}\item 
+{\bf Particle\-Data\-Table} (const {\bf Particle\-Data\-Table} \&)
+\begin{CompactList}\small\item\em copy constructor \item\end{CompactList}\item 
+virtual {\bf $\sim$Particle\-Data\-Table} ()
+\begin{CompactList}\small\item\em Shallow: does not delete \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} entries. \item\end{CompactList}\item 
+{\bf Particle\-Data\-Table} \& {\bf operator=} (const {\bf Particle\-Data\-Table} \&)
+\begin{CompactList}\small\item\em shallow: does not copy the entries, only makes new pointers \item\end{CompactList}\item 
+void {\bf make\_\-antiparticles\_\-from\_\-particles} ()
+\begin{CompactList}\small\item\em make corresponding anti-particles for all particles in table \item\end{CompactList}\item 
+int {\bf merge\_\-table} (const {\bf Particle\-Data\-Table} \&)
+\begin{CompactList}\small\item\em merge two tables \item\end{CompactList}\item 
+void {\bf print} (std::ostream \&ostr=std::cout) const
+\begin{CompactList}\small\item\em write the table to ostr \item\end{CompactList}\item 
+void {\bf delete\_\-all} ()
+\begin{CompactList}\small\item\em delete all \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} instances in this table \item\end{CompactList}\item 
+void {\bf clear} ()
+\begin{CompactList}\small\item\em clears table without deleting \item\end{CompactList}\item 
+{\bf Particle\-Data} $\ast$ {\bf operator[$\,$]} (int id) const
+\begin{CompactList}\small\item\em return pointer to requested \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} \item\end{CompactList}\item 
+{\bf Particle\-Data} $\ast$ {\bf find} (int id) const
+\begin{CompactList}\small\item\em return pointer to requested \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} \item\end{CompactList}\item 
+int {\bf size} () const
+\begin{CompactList}\small\item\em size of table \item\end{CompactList}\item 
+bool {\bf empty} () const
+\begin{CompactList}\small\item\em true if the table is empty \item\end{CompactList}\item 
+bool {\bf insert} ({\bf Particle\-Data} $\ast$)
+\begin{CompactList}\small\item\em true if successful \item\end{CompactList}\item 
+bool {\bf erase} ({\bf Particle\-Data} $\ast$)
+\begin{CompactList}\small\item\em removes from table - does not delete \item\end{CompactList}\item 
+bool {\bf erase} (int id)
+\begin{CompactList}\small\item\em removes from table - does not delete \item\end{CompactList}\item 
+{\bf iterator} {\bf begin} ()
+\begin{CompactList}\small\item\em begin iteration \item\end{CompactList}\item 
+{\bf iterator} {\bf end} ()
+\begin{CompactList}\small\item\em end iteration \item\end{CompactList}\item 
+{\bf const\_\-iterator} {\bf begin} () const
+\begin{CompactList}\small\item\em begin const iteration \item\end{CompactList}\item 
+{\bf const\_\-iterator} {\bf end} () const
+\begin{CompactList}\small\item\em end const iteration \item\end{CompactList}\item 
+std::string {\bf description} () const
+\begin{CompactList}\small\item\em table description \item\end{CompactList}\item 
+void {\bf set\_\-description} (std::string)
+\begin{CompactList}\small\item\em set table description \item\end{CompactList}\item 
+void {\bf set\_\-description} (const char)
+\begin{CompactList}\small\item\em set table description \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+an example \doxyref{Particle\-Data\-Table}{p.}{classHepMC_1_1ParticleDataTable} class 
+
+Example container for \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} instances. Basically just an interface to STL map. \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+
+
+Definition at line 35 of file Particle\-Data\-Table.h.
+
+\subsection{Member Typedef Documentation}
+\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!iterator@{iterator}}
+\index{iterator@{iterator}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef std::map$<$int,{\bf Hep\-MC::Particle\-Data}$\ast$$>$::{\bf iterator} {\bf Hep\-MC::Particle\-Data\-Table::iterator}}\label{classHepMC_1_1ParticleDataTable_e904f761b0b993580c1c75cae558c20e}
+
+
+iterator for \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} map 
+
+
+
+Definition at line 75 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!const_iterator@{const\_\-iterator}}
+\index{const_iterator@{const\_\-iterator}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef std::map$<$int,{\bf Hep\-MC::Particle\-Data}$\ast$$>$::{\bf const\_\-iterator} {\bf Hep\-MC::Particle\-Data\-Table::const\_\-iterator}}\label{classHepMC_1_1ParticleDataTable_1c59c3e2f009db4c4cf429adc2d69b59}
+
+
+const iterator for \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} map 
+
+
+
+Definition at line 77 of file Particle\-Data\-Table.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!ParticleDataTable@{ParticleDataTable}}
+\index{ParticleDataTable@{ParticleDataTable}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Particle\-Data\-Table::Particle\-Data\-Table (std::string {\em description} = {\tt std::string()})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_6402cb5eddf5bc36d88aba52bb300824}
+
+
+constructor with optional description 
+
+
+
+Definition at line 107 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!ParticleDataTable@{ParticleDataTable}}
+\index{ParticleDataTable@{ParticleDataTable}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Particle\-Data\-Table::Particle\-Data\-Table (const char {\em description})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_600ae90077553ce14e0384ce889ee0f1}
+
+
+constructor with description 
+
+
+
+Definition at line 110 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!ParticleDataTable@{ParticleDataTable}}
+\index{ParticleDataTable@{ParticleDataTable}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Particle\-Data\-Table::Particle\-Data\-Table (const {\bf Particle\-Data\-Table} \&)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_e9b498b4f733cc9ca4e60dfdef87d954}
+
+
+copy constructor 
+
+
+
+Definition at line 114 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!~ParticleDataTable@{$\sim$ParticleDataTable}}
+\index{~ParticleDataTable@{$\sim$ParticleDataTable}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Particle\-Data\-Table::$\sim$Particle\-Data\-Table ()\hspace{0.3cm}{\tt  [inline, virtual]}}\label{classHepMC_1_1ParticleDataTable_c784721079006bd40246622c565f272f}
+
+
+Shallow: does not delete \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} entries. 
+
+
+
+Definition at line 118 of file Particle\-Data\-Table.h.
+
+\subsection{Member Function Documentation}
+\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!operator=@{operator=}}
+\index{operator=@{operator=}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Data\-Table} \& Hep\-MC::Particle\-Data\-Table::operator= (const {\bf Particle\-Data\-Table} \&)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_5bbcb44c2b192bf32a9fd1ff192dbb94}
+
+
+shallow: does not copy the entries, only makes new pointers 
+
+
+
+Definition at line 120 of file Particle\-Data\-Table.h.
+
+References m\_\-data\_\-table, and m\_\-description.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!make_antiparticles_from_particles@{make\_\-antiparticles\_\-from\_\-particles}}
+\index{make_antiparticles_from_particles@{make\_\-antiparticles\_\-from\_\-particles}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Particle\-Data\-Table::make\_\-antiparticles\_\-from\_\-particles ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_c4cafb3bab917617eaad779fd5f5f9ee}
+
+
+make corresponding anti-particles for all particles in table 
+
+
+
+make corresponding anti-particles for all particles in table 
+
+Definition at line 128 of file Particle\-Data\-Table.h.
+
+References begin(), end(), insert(), merge\_\-table(), and p.
+
+Referenced by main().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!merge_table@{merge\_\-table}}
+\index{merge_table@{merge\_\-table}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Particle\-Data\-Table::merge\_\-table (const {\bf Particle\-Data\-Table} \&)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_eb5f63ad033e482d7ab984e6bdd5979f}
+
+
+merge two tables 
+
+
+
+merges pdt into this table each entry from pdt is inserted only if this table does not already have an entry matching the Particle\-Data's id returns the number of new entries inserted into this table. 
+
+Definition at line 243 of file Particle\-Data\-Table.h.
+
+References begin(), end(), insert(), and p.
+
+Referenced by make\_\-antiparticles\_\-from\_\-particles().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!print@{print}}
+\index{print@{print}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Particle\-Data\-Table::print (std::ostream \& {\em ostr} = {\tt std::cout}) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_0e2f7cd5eb787f433ad1de20ce46f923}
+
+
+write the table to ostr 
+
+
+
+prints a summary of all particle Data currently in memory \begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+Definition at line 145 of file Particle\-Data\-Table.h.
+
+References size().
+
+Referenced by main().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!delete_all@{delete\_\-all}}
+\index{delete_all@{delete\_\-all}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Particle\-Data\-Table::delete\_\-all ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_61ffb431d1ca139646259f88d079bede}
+
+
+delete all \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} instances in this table 
+
+
+
+deletes all \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} instances in this table \begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+Definition at line 234 of file Particle\-Data\-Table.h.
+
+References clear().
+
+Referenced by main().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!clear@{clear}}
+\index{clear@{clear}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Particle\-Data\-Table::clear ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_05e4545836d99c00808998afb5299b53}
+
+
+clears table without deleting 
+
+
+
+Definition at line 241 of file Particle\-Data\-Table.h.
+
+Referenced by delete\_\-all().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Data} $\ast$ Hep\-MC::Particle\-Data\-Table::operator[$\,$] (int {\em id}) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_77e15c880bc3d813fe3f4b04c4d3c876}
+
+
+return pointer to requested \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} 
+
+
+
+Definition at line 173 of file Particle\-Data\-Table.h.
+
+References find().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!find@{find}}
+\index{find@{find}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Data} $\ast$ Hep\-MC::Particle\-Data\-Table::find (int {\em id}) const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_e24db5d7d52a52c8d95b5d066d9d4f42}
+
+
+return pointer to requested \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} 
+
+
+
+finds a \doxyref{Particle\-Data}{p.}{classHepMC_1_1ParticleData} pointer corresponding to id IF it exists in the table. If not returns NULL 
+
+Definition at line 165 of file Particle\-Data\-Table.h.
+
+Referenced by Hep\-MC::IO\_\-PDG\_\-Particle\-Data\-Table::add\_\-quarks\_\-to\_\-table(), operator[$\,$](), and Hep\-MC::IO\_\-PDG\_\-Particle\-Data\-Table::read\_\-entry().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!size@{size}}
+\index{size@{size}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Particle\-Data\-Table::size () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_181b0f2938c52db55da0019c13ef0cd7}
+
+
+size of table 
+
+
+
+Definition at line 177 of file Particle\-Data\-Table.h.
+
+Referenced by print().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!empty@{empty}}
+\index{empty@{empty}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Particle\-Data\-Table::empty () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_bc729da94a788ed6d86e78d317097796}
+
+
+true if the table is empty 
+
+
+
+Definition at line 181 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!insert@{insert}}
+\index{insert@{insert}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Particle\-Data\-Table::insert ({\bf Particle\-Data} $\ast$)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_5c8c13c1a408fb5cd5f84dc5877857e4}
+
+
+true if successful 
+
+
+
+inserts pdata in the table IFF pdata's id has not already been used. It does NOT replace entries with the same id. True if successful. If you wish to overwrite another entry, first use \doxyref{erase()}{p.}{classHepMC_1_1ParticleDataTable_05d8a067d26ee3328a872cf2dc1f6fa6} \begin{Desc}
+\item[Examples: ]\par
+{\bf example\_\-Build\-Event\-From\-Scratch.cc}.\end{Desc}
+
+
+Definition at line 185 of file Particle\-Data\-Table.h.
+
+References Hep\-MC::Particle\-Data::pdg\_\-id().
+
+Referenced by Hep\-MC::IO\_\-PDG\_\-Particle\-Data\-Table::add\_\-quarks\_\-to\_\-table(), main(), make\_\-antiparticles\_\-from\_\-particles(), merge\_\-table(), Hep\-MC::IO\_\-PDG\_\-Particle\-Data\-Table::read\_\-entry(), Hep\-MC::IO\_\-Extended\-Ascii::read\_\-particle\_\-data(), and Hep\-MC::IO\_\-Ascii::read\_\-particle\_\-data().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!erase@{erase}}
+\index{erase@{erase}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Particle\-Data\-Table::erase ({\bf Particle\-Data} $\ast$)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_05d8a067d26ee3328a872cf2dc1f6fa6}
+
+
+removes from table - does not delete 
+
+
+
+removes from table does not delete returns True is an entry pdata existed in the table and was erased 
+
+Definition at line 193 of file Particle\-Data\-Table.h.
+
+References Hep\-MC::Particle\-Data::pdg\_\-id().
+
+Referenced by Hep\-MC::IO\_\-PDG\_\-Particle\-Data\-Table::add\_\-quarks\_\-to\_\-table().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!erase@{erase}}
+\index{erase@{erase}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Hep\-MC::Particle\-Data\-Table::erase (int {\em id})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_37dabedcd069ef1bcaa7393fc3fb918e}
+
+
+removes from table - does not delete 
+
+
+
+removes from table does not delete returns True is an entry pdata existed in the table and was erased 
+
+Definition at line 200 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!begin@{begin}}
+\index{begin@{begin}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Data\-Table::iterator} Hep\-MC::Particle\-Data\-Table::begin ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_da40766f1de7b6225dd27c00ace1bfb1}
+
+
+begin iteration 
+
+
+
+Definition at line 206 of file Particle\-Data\-Table.h.
+
+Referenced by make\_\-antiparticles\_\-from\_\-particles(), merge\_\-table(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-particle\_\-data\_\-table(), and Hep\-MC::IO\_\-Ascii::write\_\-particle\_\-data\_\-table().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!end@{end}}
+\index{end@{end}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Data\-Table::iterator} Hep\-MC::Particle\-Data\-Table::end ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_8b3633643fd36bf18fc37bbcce01b6f7}
+
+
+end iteration 
+
+
+
+Definition at line 210 of file Particle\-Data\-Table.h.
+
+Referenced by make\_\-antiparticles\_\-from\_\-particles(), merge\_\-table(), Hep\-MC::IO\_\-Extended\-Ascii::write\_\-particle\_\-data\_\-table(), and Hep\-MC::IO\_\-Ascii::write\_\-particle\_\-data\_\-table().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!begin@{begin}}
+\index{begin@{begin}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Data\-Table::const\_\-iterator} Hep\-MC::Particle\-Data\-Table::begin () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_0dc730506ff38f4a4a75f38d59c59395}
+
+
+begin const iteration 
+
+
+
+Definition at line 214 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!end@{end}}
+\index{end@{end}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Data\-Table::const\_\-iterator} Hep\-MC::Particle\-Data\-Table::end () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_229ea72dcfeea733966fbb392a6cf88e}
+
+
+end const iteration 
+
+
+
+Definition at line 218 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!description@{description}}
+\index{description@{description}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}std::string Hep\-MC::Particle\-Data\-Table::description () const\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_1d490a563046081a55c724be25462729}
+
+
+table description 
+
+
+
+Definition at line 222 of file Particle\-Data\-Table.h.\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!set_description@{set\_\-description}}
+\index{set_description@{set\_\-description}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Particle\-Data\-Table::set\_\-description (std::string)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_93af8534ff8295908524a0d42872415c}
+
+
+set table description 
+
+
+
+Definition at line 226 of file Particle\-Data\-Table.h.
+
+Referenced by Hep\-MC::IO\_\-PDG\_\-Particle\-Data\-Table::fill\_\-particle\_\-data\_\-table(), Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-particle\_\-data\_\-table(), and Hep\-MC::IO\_\-Ascii::fill\_\-particle\_\-data\_\-table().\index{HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}!set_description@{set\_\-description}}
+\index{set_description@{set\_\-description}!HepMC::ParticleDataTable@{Hep\-MC::Particle\-Data\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Particle\-Data\-Table::set\_\-description (const  {\em char})\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1ParticleDataTable_443d40d5b74cbd7a0ab9dc0f3e175e3d}
+
+
+set table description 
+
+
+
+Definition at line 230 of file Particle\-Data\-Table.h.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf Particle\-Data\-Table.h}\end{CompactItemize}

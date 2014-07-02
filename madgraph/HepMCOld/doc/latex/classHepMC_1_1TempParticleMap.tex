@@ -1,0 +1,158 @@
+\section{Hep\-MC::Temp\-Particle\-Map Class Reference}
+\label{classHepMC_1_1TempParticleMap}\index{HepMC::TempParticleMap@{HepMC::TempParticleMap}}
+\doxyref{Temp\-Particle\-Map}{p.}{classHepMC_1_1TempParticleMap} is a temporary Gen\-Particle$\ast$ container used during input.  
+
+
+{\tt \#include $<$Temp\-Particle\-Map.h$>$}
+
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef std::map$<$ {\bf Hep\-MC::Gen\-Particle} $\ast$, int $>$ {\bf Temp\-Map}
+\item 
+typedef std::map$<$ int, {\bf Hep\-MC::Gen\-Particle} $\ast$ $>$ {\bf Temp\-Order\-Map}
+\item 
+typedef Temp\-Map::iterator {\bf Temp\-Map\-Iterator}
+\item 
+typedef Temp\-Order\-Map::iterator {\bf order\-Iterator}
+\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Temp\-Particle\-Map} ()
+\item 
+{\bf $\sim$Temp\-Particle\-Map} ()
+\item 
+{\bf Temp\-Map\-Iterator} {\bf begin} ()
+\item 
+{\bf Temp\-Map\-Iterator} {\bf end} ()
+\item 
+{\bf order\-Iterator} {\bf order\_\-begin} ()
+\item 
+{\bf order\-Iterator} {\bf order\_\-end} ()
+\item 
+int {\bf end\_\-vertex} ({\bf Gen\-Particle} $\ast$)
+\item 
+void {\bf add\-End\-Particle} ({\bf Gen\-Particle} $\ast$, int \&)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Temp\-Particle\-Map}{p.}{classHepMC_1_1TempParticleMap} is a temporary Gen\-Particle$\ast$ container used during input. 
+
+Used by IO classes for recoverable particle ordering. Map Gen\-Particle$\ast$ against both outgoing vertex and particle order. 
+
+
+
+Definition at line 24 of file Temp\-Particle\-Map.h.
+
+\subsection{Member Typedef Documentation}
+\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!TempMap@{TempMap}}
+\index{TempMap@{TempMap}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef std::map$<${\bf Hep\-MC::Gen\-Particle}$\ast$,int$>$ {\bf Hep\-MC::Temp\-Particle\-Map::Temp\-Map}}\label{classHepMC_1_1TempParticleMap_339fdca6ebe316f9a7e169989cd534e6}
+
+
+
+
+Definition at line 26 of file Temp\-Particle\-Map.h.\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!TempOrderMap@{TempOrderMap}}
+\index{TempOrderMap@{TempOrderMap}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef std::map$<$int,{\bf Hep\-MC::Gen\-Particle}$\ast$$>$ {\bf Hep\-MC::Temp\-Particle\-Map::Temp\-Order\-Map}}\label{classHepMC_1_1TempParticleMap_b4069593e1a0fc2986279f83dcd34200}
+
+
+
+
+Definition at line 27 of file Temp\-Particle\-Map.h.\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!TempMapIterator@{TempMapIterator}}
+\index{TempMapIterator@{TempMapIterator}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef Temp\-Map::iterator {\bf Hep\-MC::Temp\-Particle\-Map::Temp\-Map\-Iterator}}\label{classHepMC_1_1TempParticleMap_e8a1da8fc3a5e6095b9c55e6020a1c3c}
+
+
+
+
+Definition at line 28 of file Temp\-Particle\-Map.h.\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!orderIterator@{orderIterator}}
+\index{orderIterator@{orderIterator}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef Temp\-Order\-Map::iterator {\bf Hep\-MC::Temp\-Particle\-Map::order\-Iterator}}\label{classHepMC_1_1TempParticleMap_261038423a93869a8949c7d70fb5cea0}
+
+
+
+
+Definition at line 29 of file Temp\-Particle\-Map.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!TempParticleMap@{TempParticleMap}}
+\index{TempParticleMap@{TempParticleMap}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Temp\-Particle\-Map::Temp\-Particle\-Map ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1TempParticleMap_b8f13ed580acc17c74cfdca5c444954e}
+
+
+
+
+Definition at line 31 of file Temp\-Particle\-Map.h.\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!~TempParticleMap@{$\sim$TempParticleMap}}
+\index{~TempParticleMap@{$\sim$TempParticleMap}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Hep\-MC::Temp\-Particle\-Map::$\sim$Temp\-Particle\-Map ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1TempParticleMap_3db352faf8c20b5f338f0cd831813080}
+
+
+
+
+Definition at line 34 of file Temp\-Particle\-Map.h.
+
+\subsection{Member Function Documentation}
+\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!begin@{begin}}
+\index{begin@{begin}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Temp\-Map\-Iterator} Hep\-MC::Temp\-Particle\-Map::begin ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1TempParticleMap_b97c576f7f7460da375c799c8226443b}
+
+
+
+
+Definition at line 36 of file Temp\-Particle\-Map.h.\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!end@{end}}
+\index{end@{end}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf Temp\-Map\-Iterator} Hep\-MC::Temp\-Particle\-Map::end ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1TempParticleMap_8d205dc3a7d444e9179931b8eccbeece}
+
+
+
+
+Definition at line 37 of file Temp\-Particle\-Map.h.
+
+Referenced by end\_\-vertex().\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!order_begin@{order\_\-begin}}
+\index{order_begin@{order\_\-begin}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf order\-Iterator} Hep\-MC::Temp\-Particle\-Map::order\_\-begin ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1TempParticleMap_2be6619f864394d2c73a8ee9a8dcaaa3}
+
+
+
+
+Definition at line 38 of file Temp\-Particle\-Map.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), and Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event().\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!order_end@{order\_\-end}}
+\index{order_end@{order\_\-end}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}{\bf order\-Iterator} Hep\-MC::Temp\-Particle\-Map::order\_\-end ()\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1TempParticleMap_71f4469112e109f72962ccd01f3a321f}
+
+
+
+
+Definition at line 39 of file Temp\-Particle\-Map.h.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), and Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event().\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!end_vertex@{end\_\-vertex}}
+\index{end_vertex@{end\_\-vertex}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Hep\-MC::Temp\-Particle\-Map::end\_\-vertex ({\bf Gen\-Particle} $\ast$)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1TempParticleMap_344fe1bb85ed67d4172abd9fc40d3f59}
+
+
+
+
+Definition at line 51 of file Temp\-Particle\-Map.h.
+
+References end(), and p.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::fill\_\-next\_\-event(), and Hep\-MC::IO\_\-Ascii::fill\_\-next\_\-event().\index{HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}!addEndParticle@{addEndParticle}}
+\index{addEndParticle@{addEndParticle}!HepMC::TempParticleMap@{Hep\-MC::Temp\-Particle\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Hep\-MC::Temp\-Particle\-Map::add\-End\-Particle ({\bf Gen\-Particle} $\ast$, int \&)\hspace{0.3cm}{\tt  [inline]}}\label{classHepMC_1_1TempParticleMap_2c5d3853049c9219915a92b6d61a6367}
+
+
+
+
+Definition at line 59 of file Temp\-Particle\-Map.h.
+
+References p.
+
+Referenced by Hep\-MC::IO\_\-Extended\-Ascii::read\_\-particle(), and Hep\-MC::IO\_\-Ascii::read\_\-particle().
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf Temp\-Particle\-Map.h}\end{CompactItemize}

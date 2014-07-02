@@ -1,0 +1,91 @@
+\section{example\_\-My\-Pythia\-With\-Event\-Selection.cc}
+
+
+\begin{DocInclude}\begin{verbatim}1 
+2 // Matt.Dobbs@Cern.CH, December 1999
+3 // November 2000, updated to use Pythia 6.1
+4 // example of generating events with Pythia
+5 // using HepMC/PythiaWrapper.h 
+6 // Events are read into the HepMC event record from the FORTRAN HEPEVT 
+7 // common block using the IO_HEPEVT strategy and then a very simple event
+8 // selection is performed.
+10 // To Compile: go to the HepMC directory and type:
+11 // gmake examples/example_MyPythiaWithEventSelection.exe
+12 //
+13 // See comments in examples/example_MyPythia.cxx regarding the HEPEVT wrapper.
+14 //
+15 
+16 #include <iostream>
+17 #include "HepMC/PythiaWrapper.h"
+18 #include "HepMC/IO_HEPEVT.h"
+19 #include "HepMC/GenEvent.h"
+20 #include "PythiaHelper.h"
+21 
+22 
+24 
+28 class IsGoodEventMyPythia {
+29 public:
+31     bool operator()( const HepMC::GenEvent* evt ) { 
+32         for ( HepMC::GenEvent::particle_const_iterator p 
+33                   = evt->particles_begin(); p != evt->particles_end(); ++p ){
+34             if ( (*p)->pdg_id() == 22 && (*p)->momentum().perp() > 25. ) {
+35                 //std::cout << "Event " << evt->event_number()
+36                 //     << " is a good event." << std::endl;
+37                 //(*p)->print();
+38                 return 1;
+39             }
+40         }
+41         return 0;
+42     }
+43 };
+44     
+45 int main() { 
+46     //
+47     //........................................HEPEVT
+48     // Pythia 6.1 uses HEPEVT with 4000 entries and 8-byte floating point
+49     //  numbers. We need to explicitly pass this information to the 
+50     //  HEPEVT_Wrapper.
+51     //
+52     HepMC::HEPEVT_Wrapper::set_max_number_entries(4000);
+53     HepMC::HEPEVT_Wrapper::set_sizeof_real(8);
+54     //  
+55     //........................................PYTHIA INITIALIZATIONS
+56     initPythia();
+57     //
+58     //........................................HepMC INITIALIZATIONS
+59     // Instantiate an IO strategy for reading from HEPEVT.
+60     HepMC::IO_HEPEVT hepevtio;
+61     // declare an instance of the event selection predicate
+62     IsGoodEventMyPythia is_good_event;
+63     //........................................EVENT LOOP
+64     int icount=0;
+65     int num_good_events=0;
+66     for ( int i = 1; i <= 100; i++ ) {
+67         icount++;
+68         if ( i%50==1 ) std::cout << "Processing Event Number " 
+69                                  << i << std::endl;
+70         call_pyevnt(); // generate one event with Pythia
+71         // pythia pyhepc routine convert common PYJETS in common HEPEVT
+72         call_pyhepc( 1 );
+73         HepMC::GenEvent* evt = hepevtio.read_next_event();
+74         // set number of multi parton interactions
+75         evt->set_mpi( pypars.msti[31-1] );
+76         // do event selection
+77         if ( is_good_event(evt) ) ++num_good_events;
+78         // we also need to delete the created event from memory
+79         delete evt;
+80     }
+81     //........................................TERMINATION
+82     // write out some information from Pythia to the screen
+83     call_pystat( 1 );    
+84     //........................................PRINT RESULTS
+85     std::cout << num_good_events << " out of " << icount 
+86               << " processed events passed the cuts. Finished." << std::endl;
+87     return 0;
+88 }
+89 
+90 
+91  
+\end{verbatim}
+\end{DocInclude}
+ 

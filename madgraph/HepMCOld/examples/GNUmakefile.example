@@ -1,0 +1,220 @@
+################################################################################ Makefile for building a HepMC shared library with the gcc compiler
+# Matt.Dobbs@CERN.CH  1.2000
+#
+# This makefiles also works to compile the example programs.
+# I.E.: syntax for compiling the example_MyPythia.cc example:
+#       gmake example_MyPythia.exe
+# or simply   gmake all     to compile all examples.
+#
+################################################################################ Define directory paths 
+#    You may have to change GENSERdir and/or other variables
+#
+  HepMCdir             = /usr/local
+  HepMClib             = $(HepMCdir)/lib/libHepMC.a
+  HepMCfiolib          = $(HepMCdir)/lib/libHepMCfio.a
+  GENSERdir            =  
+  CLHEPdir             =  
+  Pythia_LIB	= -L$(GENSERdir)/lib -lpythia6_403 -lpythia6_403_dumm -lpythia6_403_pdfdumm
+  Herwig_LIB	= -L$(GENSERdir)/lib -lherwig6_510 -lherwig6_510_dumm -lherwig6_510_pdfdumm
+
+################################################################################ Compiler options
+#
+  CXX           = g++
+  INCLUDES 	= -I$(HepMCdir)/include -I$(CLHEPdir)/include
+  CXXFLAGS      =  -O -ansi -pedantic -Wall -D_GNU_SOURCE -g -O2 $(INCLUDES)
+ifeq "$(CXX)" "g++"
+   F77           = g77
+   FLAGS 	= $(DFLG) -fno-second-underscore $(INCDIR)
+else
+  F77           = f77
+  FLAGS 	= $(DFLG) $(INCDIR)
+endif
+  CLHEP_LIB     = -L$(CLHEPdir)/lib -lCLHEP
+  initpydata_OBJ= initpydata.o
+  pythia_OBJ    = initPythia.o initpydata.o
+  LINK_LIBS     = 
+  SRCS	        = example_BuildEventFromScratch.cc	\
+		  example_EventSelection.cc	\
+		  example_MyHerwig.cc	\
+		  example_MyPythia.cc	\
+		  example_MyPythiaOnlyToHepMC.cc	\
+		  example_MyPythiaWithEventSelection.cc	\
+		  example_PythiaParticle.cc	\
+		  example_ReadPDGtable.cc	\
+		  example_UsingIterators.cc	\
+		  initPythia.cc		\
+		  initpydata.f
+  HDRS          = $(HepMCdir)/include/HepMC/*.h *.h
+  EXAMPLES	= example_BuildEventFromScratch.exe	\
+		  example_EventSelection.exe	\
+		  example_MyHerwig.exe	\
+		  example_MyPythia.exe	\
+		  example_MyPythiaRead.exe	\
+		  example_MyPythiaOnlyToHepMC.exe	\
+		  example_MyPythiaWithEventSelection.exe	\
+		  example_PythiaParticle.exe	\
+		  example_ReadPDGtable.exe	\
+		  example_UsingIterators.exe
+
+################################################################################ 
+
+PLATFORM=$(shell uname)
+ifeq "$(PLATFORM)" "IRIX"
+    IRIX6 = $(findstring 6,$(shell uname -r))
+    ifeq "$(IRIX6)" "6"
+	PLATFORM=IRIX64
+    endif
+endif
+
+ifeq "$(PLATFORM)" "HP-UX"
+    LINK_LIBS        += -lg2c -lftn -lf
+endif
+ifeq "$(PLATFORM)" "IRIX"
+    LINK_LIBS     += -lg2c -lftn
+endif
+ifeq "$(PLATFORM)" "IRIX64"
+    LINK_LIBS     += -lg2c -lftn
+endif
+ifeq "$(PLATFORM)" "Linux"
+    LINK_LIBS     += -lg2c 
+endif
+ifeq "$(PLATFORM)" "OSF1"
+    LINK_LIBS += -lfor -lUfor
+endif
+ifeq "$(PLATFORM)" "SunOS"
+    LINK_LIBS     += -lg2c 
+endif
+
+################################################################################ HP-UX Options and Fixes
+# see http://consult.cern.ch/qa/2534 for hint at HP-UX solution
+#
+PLATFORM=$(shell uname)
+ifeq "$(PLATFORM)" "HP-UX"
+  LINK_LIBS        = $(LINK_LIBS) -lf
+endif
+
+################################################################################ definition of the compiler options
+#	-I location of directory containing include files
+#	-L location of directory containing libraries
+#       -lname include the library from -L location called libname.a
+#	   -lg2c is the library containing info on converting fortran to C
+#          -lf   is the library containing the intrinsic for HPUX only.
+#	-shared make a shared library as output
+#	-fPIC produce position independent code
+#        necessary on some platforms (including HPUX) for -shared
+# 	-fpic ^^ same(?)
+#	-O optimizes
+#	-g produces output for the debugger
+#       -pg produces output for gprof profiler
+#       note: if you want to see all warnings and ensure ansi standard 
+#             compatibility, use:
+#             -pipe -ansi -pedantic -fnonnull-objects \
+#             -W -Wall -Wwrite-strings -Wpointer-arith -Wnested-externs \
+#             -Woverloaded-virtual -Wbad-function-cast -fnonnull-objects
+#       The proper order for cernlib libraries is:
+#       -lpawlib -lgraflib -lgrafX11 -lmathlib -lkernlib -lpacklib -ljetset74
+#
+# makefile syntax:
+#        for target thedir/target.suf from source anotherdir/source.suf2
+#        ${*D}  = thedir
+#        ${*F}  = target
+#        $*     = thedir/target
+#        $@     = thedir/target.suf
+#        $<     = anotherdir/source.suf2
+#  
+
+###############################################################################
+#
+.SUFFIXES:      .o .cxx .f .exe
+all:	$(EXAMPLES)
+
+example_BuildEventFromScratch.exe: example_BuildEventFromScratch.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) example_BuildEventFromScratch.o \
+		$(HepMClib) \
+		$(CLHEP_LIB) \
+	        $(LINK_LIBS) -o $@
+
+example_EventSelection.exe: example_EventSelection.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) example_EventSelection.o \
+		$(HepMClib) \
+	        $(LINK_LIBS) -o $@
+
+example_MyHerwig.exe: example_MyHerwig.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) example_MyHerwig.o \
+		$(HepMClib) $(HepMCfiolib) \
+	        $(Herwig_LIB) $(LINK_LIBS) -o $@
+
+example_MyPythia.exe: $(initpydata_OBJ) $(pythia_OBJ) example_MyPythia.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) $(pythia_OBJ) example_MyPythia.o \
+		$(HepMClib) $(HepMCfiolib) \
+	        $(Pythia_LIB) $(LINK_LIBS) -o $@
+
+example_MyPythiaRead.exe: $(initpydata_OBJ) $(pythia_OBJ) example_MyPythiaRead.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) $(pythia_OBJ) example_MyPythiaRead.o \
+		$(HepMClib) $(HepMCfiolib) \
+	        $(Pythia_LIB) $(LINK_LIBS) -o $@
+
+example_MyPythiaOnlyToHepMC.exe: $(initpydata_OBJ) $(pythia_OBJ) example_MyPythiaOnlyToHepMC.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) $(pythia_OBJ) example_MyPythiaOnlyToHepMC.o \
+		$(HepMClib) $(HepMCfiolib) \
+	        $(Pythia_LIB) $(LINK_LIBS) -o $@
+
+example_MyPythiaWithEventSelection.exe: $(initpydata_OBJ) $(pythia_OBJ) example_MyPythiaWithEventSelection.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) $(pythia_OBJ) example_MyPythiaWithEventSelection.o \
+		$(HepMClib) $(HepMCfiolib) \
+	        $(Pythia_LIB) $(LINK_LIBS) -o $@
+
+example_PythiaParticle.exe: $(initpydata_OBJ) $(pythia_OBJ) example_PythiaParticle.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) $(pythia_OBJ) example_PythiaParticle.o \
+		$(HepMClib) $(HepMCfiolib) \
+	        $(Pythia_LIB) \
+		$(LINK_LIBS) -o $@
+
+example_ReadPDGtable.exe: example_ReadPDGtable.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) example_ReadPDGtable.o \
+		$(HepMClib) \
+	        $(LINK_LIBS) -o $@
+
+example_UsingIterators.exe: example_UsingIterators.o
+	@echo "Building $@ ..."
+	$(CXX) $(FLAGS) example_UsingIterators.o \
+		$(HepMClib) \
+	        $(LINK_LIBS) -o $@
+
+###############################################################################
+# instructions for building a .o file from a .cxx file
+#
+.cc.o:         $(HDRS) $<
+	@echo "Compiling $< with $(CXX) ..."
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+
+###############################################################################
+# instructions for building a .o file from a .f file
+#
+.f.o:           $<
+	@echo "Compiling $< with $(F77) ..."
+	@$(F77) $(FLAGS) -c $< -o $@
+
+###############################################################################
+# gmake clean       removes all garbage from HepMC directories.
+#
+clean:
+	rm -f *.o
+
+###############################################################################
+# gmake distclean       removes all compiled libraries, executables, +garbage
+#                       to prepare the package for distribution
+distclean: 
+	$(MAKE) clean --no-print-directory
+	rm -f *.exe
+	rm -f *.dat
+

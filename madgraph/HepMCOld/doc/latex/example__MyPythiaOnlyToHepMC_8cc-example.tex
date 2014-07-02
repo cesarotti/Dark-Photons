@@ -1,0 +1,70 @@
+\section{example\_\-My\-Pythia\-Only\-To\-Hep\-MC.cc}
+
+
+\begin{DocInclude}\begin{verbatim}1 
+2 // Matt.Dobbs@Cern.CH, December 1999
+3 // November 2000, updated to use Pythia 6.1
+4 // example of generating events with Pythia 
+5 // using HepMC/PythiaWrapper.h 
+6 // Events are read into the HepMC event record from the FORTRAN HEPEVT 
+7 // common block using the IO_HEPEVT strategy -- nothing is done with them.
+8 // This program is just used to find the total time required to transfer
+9 // from HEPEVT into the HepMC event record.
+11 // To Compile: go to the HepMC directory and type:
+12 // gmake examples/example_MyPythiaOnlyTo HepMC.exe
+13 //
+14 // See comments in examples/example_MyPythia.cxx regarding the HEPEVT wrapper.
+15 //
+16 
+17 #include <iostream>
+18 #include "HepMC/PythiaWrapper.h"
+19 #include "HepMC/IO_HEPEVT.h"
+20 #include "HepMC/GenEvent.h"
+21 #include "PythiaHelper.h"
+22 
+23 int main() {    
+24     //
+25     //........................................HEPEVT
+26     // Pythia 6.1 uses HEPEVT with 4000 entries and 8-byte floating point
+27     //  numbers. We need to explicitly pass this information to the 
+28     //  HEPEVT_Wrapper.
+29     //
+30     HepMC::HEPEVT_Wrapper::set_max_number_entries(4000);
+31     HepMC::HEPEVT_Wrapper::set_sizeof_real(8);
+32     //  
+33     //........................................PYTHIA INITIALIZATIONS
+34     initPythia();
+35     //
+36     //........................................HepMC INITIALIZATIONS
+37     //
+38     // Instantiate an IO strategy for reading from HEPEVT.
+39     HepMC::IO_HEPEVT hepevtio;
+40     //
+41     //........................................EVENT LOOP
+42     for ( int i = 1; i <= 100; i++ ) {
+43         if ( i%50==1 ) std::cout << "Processing Event Number " 
+44                                  << i << std::endl;
+45         call_pyevnt();      // generate one event with Pythia
+46         // pythia pyhepc routine convert common PYJETS in common HEPEVT
+47         call_pyhepc( 1 );
+48         HepMC::GenEvent* evt = hepevtio.read_next_event();
+49         // set number of multi parton interactions
+50         evt->set_mpi( pypars.msti[31-1] );
+51         //
+52         //.......................USER WOULD PROCESS EVENT HERE
+53         //
+54         // we also need to delete the created event from memory
+55         delete evt;
+56     }
+57     //........................................TERMINATION
+58     // write out some information from Pythia to the screen
+59     call_pystat( 1 );    
+60 
+61     return 0;
+62 }
+63 
+64 
+65  
+\end{verbatim}
+\end{DocInclude}
+ 
