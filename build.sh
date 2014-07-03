@@ -18,7 +18,7 @@ if [ ! -d "project-build/$1" ]; then
 fi
 
 cd project-build/$1
-cmake -DGEANT4_BUILD_MULTITHREADED=ON -DGeant4_DIR=/usr/local/geant4.10.00.p01/lib64/Geant4-10.0.0 ../../$1
+cmake -DGEANT4_BUILD_MULTITHREADED=ON -DGeant4_DIR=/usr/local/geant4.10.00.p01/lib64/Geant4-10.0.0 -DHEPMC_INCLUDE_DIR=../../madgraph/hepmcbuild/include/ -DHEPMC_LIBRARIES=../../madgraph/hepmcbuild/lib/libHepMC.so ../../$1
 make clean
 make -j`grep -c ^processor /proc/cpuinfo`
 cd ../../$1
