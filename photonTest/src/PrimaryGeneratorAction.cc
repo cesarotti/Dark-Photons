@@ -41,7 +41,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
 
   fParticleGun->SetParticleDefinition(particleDefinition);
 
-  angle = false;
+  angle = true;
 
   if (angle)
     {fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,.0612,1.));}

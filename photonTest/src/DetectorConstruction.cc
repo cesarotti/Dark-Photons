@@ -36,6 +36,9 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
+#include "G4PVParameterised.hh"
+#include "CellParameterisation.hh"
+
 
 
 //G4ThreadLocal
@@ -43,7 +46,6 @@
 
 DetectorConstruction::DetectorConstruction()
   : G4VUserDetectorConstruction(),
-fLogicCalor(NULL), //logical volume for calorimeter
   fCalorMaterial(NULL), //material of calorimeter
     fWorldMaterial(NULL),
   fStepLimit(NULL), 
@@ -51,7 +53,6 @@ fLogicCalor(NULL), //logical volume for calorimeter
     //  fCenterToFront(0.)
 {
  fMessenger = new DetectorMessenger(this);
- fLogicCalor = new G4LogicalVolume*[30];
 }
 
 DetectorConstruction::~DetectorConstruction()
@@ -114,7 +115,8 @@ void DetectorConstruction::DefineMaterials()
   CsI->AddElement(ele_Cs, 1);
   CsI->AddElement(ele_I, 1); 
 
-  fCalorMaterial = CsI;
+  nistManager->FindOrBuildMaterial("G4_CESIUM_IODIDE");
+
 
   //Print Materials
   G4cout << *(G4Material::GetMaterialTable()) << G4endl;
@@ -127,15 +129,17 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 
   G4Material* Air = G4Material::GetMaterial("G4_AIR");
 
+  G4Material* csI = G4Material::GetMaterial("G4_CESIUM_IODIDE");
+
+  fCalorMaterial = csI;
+
   //Sizes and lengths
 
   G4int size = 30; 
 
   G4double crystalLength = 2.54*12.0*cm; 
-  G4double calorLength = crystalLength;
   G4double crystalFace = 5.0*cm;
 
-  G4double calorPos = 10*m; //position of calorimeter
 
   G4double worldLength = 20*m+12*2.54*cm;
 
@@ -173,72 +177,37 @@ G4VPhysicalVolume* worldPV
 
  //Calorimeter 
 
- G4double hFace = size*5.0*cm;
+G4VSolid* calorimeterS = 
+  new G4Box("calorimeterS", crystalFace*size/2, crystalFace*size/2, 
+	    crystalLength/2);
 
- for (int copyNum =0; copyNum<size; copyNum++)
-   {
- G4Box* detector = 
-   new G4Box("horizontal array", hFace/2, crystalFace/2, calorLength/2);
-
- fLogicCalor[copyNum] = new G4LogicalVolume(detector,
-					Air, 
-					"CalorimeterLV", 
-					0,0,0);
-
- fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(1.0,1.0, 1.0));
-
- G4double xCent = 2.5*cm;
- G4double yCent = (copyNum-14)*5.0*cm; 
- G4double zCent = 0;
-
- G4ThreeVector posCal = G4ThreeVector(xCent, yCent, zCent);
+G4LogicalVolume* calorimeterLV = 
+  new G4LogicalVolume(calorimeterS, Air, "CalorimeterLV");
 
  new G4PVPlacement(0, 
-		   posCal, 
-		   fLogicCalor[copyNum], 
-		   "Calorimeter_MV",
+		   G4ThreeVector(2.5*cm, 2.5*cm + .612*m, 0.), 
+		   calorimeterLV, 
+		   "CalorimeterMV", 
 		   worldLV, 
-		   false, 
-		   copyNum, 
+		   false,
+		   0, 
 		   fCheckOverlaps);
- for (G4int l = 0; l<30; l++)
-   {
-G4Box* crystalS = 
-  new G4Box("crystal", crystalFace/2, crystalFace/2, crystalLength/2);
+
+G4VSolid* crystalS = 
+  new G4Box("crystalS", crystalFace/2, crystalFace/2, crystalLength/2);
 
 G4LogicalVolume* crystalLV = 
-  new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV", 0,0,0);
-
- new G4PVPlacement(0,
-		   G4ThreeVector((l-14.5)*5*cm, 0, 0), 
-				 crystalLV, 
-				 "CrystalMV", 
-				 fLogicCalor[copyNum], 
-				 false, 
-				 l, 
-				 fCheckOverlaps);
-
-      if (l==14) 
-	{crystalLV->SetVisAttributes(G4Colour(1.0,0.,0.)); }
-  
-
-      else if (copyNum==16) {crystalLV->SetVisAttributes(G4Colour(1.0, 0.,0.));}
-
- 
- else crystalLV->SetVisAttributes(G4Colour(1.0, 1.0, 1.0));
-		   }
-
-   }
+  new G4LogicalVolume(crystalS, 
+		      fCalorMaterial,
+		      "CrystalLV");
 
 
- //Visualization
+ G4VPVParameterisation* crysParam = new CellParameterisation();
 
- // G4VisAttributes* pink = new G4VisAttributes(G4Colour(1.0, 0.4, 0.8));
- G4VisAttributes* color  = new G4VisAttributes(G4Colour(0.9, 0.7, 0.2));
+ new G4PVParameterised("CrystalPV", crystalLV, 
+		       calorimeterLV, 
+		       kXAxis, 900, crysParam);
 
- worldLV ->SetVisAttributes(new G4VisAttributes(G4Colour(1.0,1.0,1.0)));
-
- color->SetVisibility(true);
 
 
  G4double maxStep = 1.0*cm;
@@ -264,29 +233,6 @@ void DetectorConstruction::ConstructSDandField()
   
 
   G4cout << "SD Construction.....Complete!" << G4endl;
-}
-
-
-void DetectorConstruction::SetCalorMaterial(G4String materialName)
-{
-  G4NistManager* nistMan = G4NistManager::Instance();
-
-G4Material* pttoMaterial = 
-  nistMan->FindOrBuildMaterial(materialName);
-
- if(fCalorMaterial != pttoMaterial) {
-   if ( pttoMaterial) {
-     fCalorMaterial = pttoMaterial; 
-     for (G4int copyNum=0; copyNum<10; copyNum++){
-     if (fLogicCalor[copyNum]) fLogicCalor[copyNum]->SetMaterial(fCalorMaterial);
-     G4cout << "\n-----> The calorimeter is made of " << materialName << G4endl;
-     }
-   }
-   else {
-     G4cout << "\n --> Warning from SetCalorMaterial: " << 
-       materialName << " not found" << G4endl;
-   }
- }
 }
 
 

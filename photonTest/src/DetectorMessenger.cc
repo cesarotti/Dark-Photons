@@ -49,9 +49,6 @@ DetectorMessenger::~DetectorMessenger()
 void DetectorMessenger::SetNewValue(G4UIcommand* command,G4String newValue)
 {
 
-  if( command == fCalMatCmd )
-   { fDetectorConstruction->SetCalorMaterial(newValue);}
-
   if( command == fStepMaxCmd ) {
     fDetectorConstruction
       ->SetMaxStep(fStepMaxCmd->GetNewDoubleValue(newValue));
