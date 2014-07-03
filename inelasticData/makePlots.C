@@ -85,9 +85,9 @@ void makePlots() {
 
     // Initialize histograms
     int nEnergyBins = 50;
-    int nThetaBins = 60;
+    int nThetaBins = 24;
     int nEnergyMax = 6000;
-    int nThetaMax = 180;
+    int nThetaMax = 8;
 
     // electron
     TH1F* heplusEnergy = new TH1F("heplusEnergy", "positron energy distribution", nEnergyBins, 0, nEnergyMax);
@@ -122,7 +122,7 @@ void makePlots() {
     for (Int_t i=0;i<nentries;i++) {
         Hits_Info->GetEntry(i);
 
-        if (true) { // we're only interested in theta < 6 degrees
+        if (theta < 6) { // we're only interested in theta < 6 degrees
 
             if (pID == -11) { // positron
                 heplusEnergy->Fill(energy);
