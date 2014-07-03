@@ -18,7 +18,7 @@
 #*     run as ./bin/mg5  filename                           *
 #*                                                          *
 #************************************************************
-import model sm
+import model sm-lepton_masses
 # Define multiparticle labels
 #define p = g u c d s u~ c~ d~ s~
 #define j = g u c d s u~ c~ d~ s~
@@ -36,7 +36,7 @@ generate e+ e- > a e+ e- QED=99 QCD=99 @1
 #add process p p > t t~ @3
 # Output processes to MadEvent directory
 output pythia8 ../../pythia8185
-output ../../e+e-2ge+e-
+output ../../e+e-2ge+e-withmass
 
 # This will create a directory PROC_$MODELNAME_$X
 # If you want to specify the path/name of the directory use
