@@ -54,6 +54,7 @@ void EventAction::BeginOfEventAction(const G4Event* /* run*/)
   fOneHit=0;
   StorePhoton(0,0,0,0);
   StorePositron(0,0,0,0);
+  StorePositronPos(0,0,0);
 }
 
 //!!!
@@ -68,7 +69,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
   //analysis manager
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
 
-   if ((fPhotonE!=0) && (fPositronE!=0))  {
+   //if ((fPhotonE!=0) && (fPositronE!=0))  {
     
     // fill ntuple
     analysisMan->FillNtupleDColumn(0, fPhotonE/MeV);
@@ -81,8 +82,12 @@ void EventAction::EndOfEventAction(const G4Event* event)
     analysisMan->FillNtupleDColumn(6, fPositronPy/MeV);
     analysisMan->FillNtupleDColumn(7, fPositronPz/MeV);
 
+    analysisMan->FillNtupleDColumn(8, fPositronPosx/m);
+    analysisMan->FillNtupleDColumn(9, fPositronPosy/m);
+    analysisMan->FillNtupleDColumn(10, fPositronPosz/m);
+
     analysisMan->AddNtupleRow();  
-  }
+  //}
   /*
   G4SDManager* fSDM = G4SDManager::GetSDMpointer();
 

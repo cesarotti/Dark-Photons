@@ -107,12 +107,23 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   
   if (( prevolume == fDetConstruction->GetTargetPV() ) && ( postvolume != fDetConstruction->GetTargetPV()) && (code == -11)) {
   //if ((processName=="eBrem") && (code == -11)) {
-    G4StepPoint* p=step->GetPreStepPoint();
+    G4StepPoint* p=step->GetPostStepPoint();
     G4double px=p->GetMomentum().x();
     G4double py=p->GetMomentum().y();
     G4double pz=p->GetMomentum().z();
     G4double E=p->GetTotalEnergy();
     fEventAction->StorePositron(px,py,pz,E);
+    //G4cout << "Positron caught" << G4endl;
+    //step->GetTrack()->SetTrackStatus(fStopAndKill);
+  }
+
+  if (( prevolume == fDetConstruction->GetVetoPV() ) && ( postvolume != fDetConstruction->GetVetoPV()) && (code == -11)) {
+  //if ((processName=="eBrem") && (code == -11)) {
+    G4StepPoint* p=step->GetPostStepPoint();
+    G4double x=p->GetPosition().x();
+    G4double y=p->GetPosition().y();
+    G4double z=p->GetPosition().z();
+    fEventAction->StorePositronPos(x,y,z);
     //G4cout << "Positron caught" << G4endl;
     //step->GetTrack()->SetTrackStatus(fStopAndKill);
   }

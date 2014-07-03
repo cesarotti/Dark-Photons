@@ -22,6 +22,8 @@
 #include "G4SDManager.hh"
 #include "G4GeometryTolerance.hh"
 #include "G4GeometryManager.hh"
+#include "G4GlobalMagFieldMessenger.hh"
+
 
 #include "G4PhysicalVolumeStore.hh"
 #include "G4LogicalVolumeStore.hh"
@@ -34,7 +36,9 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
-
+#include "G4UniformMagField.hh"
+#include "G4FieldManager.hh"
+#include "G4TransportationManager.hh"
 
 //G4ThreadLocal
 //G4GlobalMagFieldMessenger* DetectorConstruction::fMagFieldMessenger = 0;
@@ -153,6 +157,13 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 
   G4double worldLength = 1.2*(calorDist+crystalLength+targetLength-targetPos);
 
+  G4double fieldLength = 3.2*m;
+  G4double fieldFace = 0.8* worldLength;
+  G4double fieldPos = targetPos + targetLength + .5*fieldLength;
+
+  G4double vetoLength = 0.1*m;
+  G4double vetoFace = 0.8 * worldLength;
+  G4double vetoPos = -targetPos;
 
   G4GeometryManager::GetInstance()->SetWorldMaximumExtent(worldLength);
 
@@ -187,10 +198,47 @@ G4VPhysicalVolume* worldPV
 		      fCheckOverlaps); // true
 
 //!!!
+
+//Volume with Magnetic field
+G4ThreeVector positionField = G4ThreeVector(0, 0, fieldPos);
+
+G4Box* fieldS = 
+  new G4Box("fieldBox", fieldFace/2, fieldFace/2, fieldLength/2);
+
+fLogicField = 
+  new G4LogicalVolume(fieldS, fWorldMaterial, "Field", 0, 0, 0);
+
+fPhysicalField = new G4PVPlacement(0,
+    positionField,
+    fLogicField,
+    "Field",
+    worldLV,
+    false,
+    0,
+    fCheckOverlaps);
+
+
+//Veto
+G4ThreeVector positionVeto = G4ThreeVector(0, 0, vetoPos);
+
+G4Box* VetoS = 
+  new G4Box("VetoBox", vetoFace/2, vetoFace/2, vetoLength/2);
+
+fLogicVeto = 
+  new G4LogicalVolume(VetoS, fWorldMaterial, "Veto", 0, 0, 0);
+
+fPhysicalVeto = new G4PVPlacement(0,
+    positionVeto,
+    fLogicVeto,
+    "Veto",
+    worldLV,
+    false,
+    0,
+    fCheckOverlaps);
+
 //Target
 
-
- G4ThreeVector positionTarget = G4ThreeVector(0, 0, targetPos); 
+G4ThreeVector positionTarget = G4ThreeVector(0, 0, targetPos); 
 
 G4Box* targetS = 
   new G4Box("target", targetFace/2, targetFace/2, targetLength);
@@ -213,7 +261,7 @@ G4Box* targetS =
 
  //!!!
  //Calorimeter 
-
+/*
  G4ThreeVector posCal = G4ThreeVector(0,0, calorPos); 
 
  //Calorimeter Solid as a tube
@@ -232,11 +280,11 @@ new G4PVPlacement(0,
 		   posCal, 
 		   fLogicCalor, 
 		   "Calorimeter", 
-		   worldLV, 
+		   fLogicField, 
 		   false, 
 		   0, 
 		   fCheckOverlaps);
-
+*/
 
  //Visualization
 
@@ -248,7 +296,7 @@ new G4PVPlacement(0,
  color->SetVisibility(true);
 
  fLogicTarget ->SetVisAttributes(pink);
- fLogicCalor ->SetVisAttributes(color);
+ //fLogicCalor ->SetVisAttributes(color);
 
  //Setting user Limits
 
@@ -265,13 +313,29 @@ void DetectorConstruction::ConstructSDandField()
 {
   //!!!
   //Create a sensitive detector and put it with logical volumes
+  /*
   G4String calorimeterSDname = "CalorimeterSD";
   CalorimeterSD* calorimeterSD =
     new CalorimeterSD(calorimeterSDname, "CalorimeterHitsCollection");
 
   SetSensitiveDetector("Calorimeter", calorimeterSD, true);
 
-  G4cout << "SD Construction.....Complete!" << G4endl;
+  G4cout << "SD Construction.....Complete!" << G4endl;*/
+
+  G4ThreeVector fieldValue = G4ThreeVector(0.5*tesla, 0*tesla ,0*tesla);
+  G4UniformMagField* magField
+      = new G4UniformMagField(fieldValue);
+  
+  G4FieldManager* fieldMgr
+    = new G4FieldManager();
+  fLogicField->SetFieldManager(fieldMgr, true);
+
+  fieldMgr->SetDetectorField(magField);
+  fieldMgr->CreateChordFinder(magField);
+
+
+  //fMagFieldMessenger = new G4GlobalMagFieldMessenger(fieldValue);
+  //fMagFieldMessenger->SetVerboseLevel(1);
 }
 
 void DetectorConstruction::SetTargetMaterial(G4String materialName)

@@ -19,10 +19,12 @@
 #include "G4LogicalVolume.hh"
 #include "G4Box.hh"
 #include "G4Event.hh"
-#include "G4ParticleGun.hh"
+#include "G4SingleParticleSource.hh"
 #include "G4ParticleTable.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4SystemOfUnits.hh"
+#include "G4SPSPosDistribution.hh"
+#include "G4SPSAngDistribution.hh"
 
 #include "Randomize.hh"
 
@@ -30,8 +32,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction()
 {
   G4cout << "Primaries started" << G4endl;
-  G4int nofParticles = 1;
-  fParticleGun = new G4ParticleGun(nofParticles);
+  fParticleSource = new G4SingleParticleSource();
 
   // default particle kinematic
 
@@ -40,17 +41,46 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
     //Positron beam
     = G4ParticleTable::GetParticleTable()->FindParticle("e+");
 
-  fParticleGun->SetParticleDefinition(particleDefinition);
-  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
+  fParticleSource->SetParticleDefinition(particleDefinition);
+
+  fParticleSource->GetPosDist()->SetCentreCoords(G4ThreeVector(0,0,-8*m));
+  fParticleSource->GetPosDist()->SetPosRot1(G4ThreeVector(1,0,0));
+  fParticleSource->GetPosDist()->SetPosRot2(G4ThreeVector(0,1,0));
+
+  fParticleSource->GetPosDist()->SetPosDisType("Beam");
+  fParticleSource->GetPosDist()->SetPosDisShape("Circle");
+
+  fParticleSource->GetPosDist()->SetRadius(1e-6*mm);
+  fParticleSource->GetPosDist()->SetBeamSigmaInR(1*mm);
+   
+  fParticleSource->GetAngDist()->SetAngDistType("beam1d");
+  fParticleSource->GetAngDist()->DefineAngRefAxes("angref1", G4ThreeVector(-1,0,0));
+  fParticleSource->GetAngDist()->DefineAngRefAxes("angref2", G4ThreeVector(0,1,0));
+  //fParticleSource->GetAngDist()->SetMaxTheta(1e-6*radian);
+  fParticleSource->GetAngDist()->SetBeamSigmaInAngR(1e-3*radian);
    //!!!
    //Energy Set to 5 GeV
-  fParticleGun->SetParticleEnergy(5.0*GeV);
+  
+  //fParticleSource->GetAngDist()->SetAngDistType("planar");
+  //fParticleSource->GetAngDist()->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
+
+  //fParticleSource->GetEneDist()->SetMonoEnergy(5*GeV);
+  
+  fParticleSource->GetEneDist()->SetEnergyDisType("Lin");
+  G4double max=5*GeV;
+  G4double range=50*MeV;
+  fParticleSource->GetEneDist()->SetEmax(max);
+  fParticleSource->GetEneDist()->SetEmin(max-range);
+  fParticleSource->GetEneDist()->SetGradient(0);
+  fParticleSource->GetEneDist()->SetInterCept(1);
+
+
   G4cout << "Primaries finished" << G4endl;
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
-  delete fParticleGun;
+  delete fParticleSource;
 }
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
@@ -75,8 +105,8 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     G4cerr << "The gun will be place in the center." << G4endl;
   }
 
-  fParticleGun->SetParticlePosition(G4ThreeVector(0., 0., -worldZHalfLength));
+  fParticleSource->SetParticlePosition(G4ThreeVector(0., 0., -worldZHalfLength));
 
-  fParticleGun->GeneratePrimaryVertex(anEvent);
+  fParticleSource->GeneratePrimaryVertex(anEvent);
  
 }

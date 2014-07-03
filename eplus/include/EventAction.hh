@@ -25,6 +25,7 @@ public:
   
   void StorePhoton(G4double px, G4double py, G4double pz, G4double E);
   void StorePositron(G4double px, G4double py, G4double pz, G4double E);
+  void StorePositronPos(G4double x, G4double y, G4double z);
   void MarkMultiBrem();
 
   private:
@@ -37,6 +38,9 @@ public:
   	G4double fPositronPy;
   	G4double fPositronPz;
   	G4double fPositronE;  	
+    G4double fPositronPosx;
+    G4double fPositronPosy;
+    G4double fPositronPosz;
 
 };
 
@@ -52,6 +56,12 @@ inline void EventAction::StorePositron(G4double px, G4double py, G4double pz, G4
 	fPositronPy=py;
 	fPositronPz=pz;
 	fPositronE=E;
+}
+
+inline void EventAction::StorePositronPos(G4double x, G4double y, G4double z){
+  fPositronPosx=x;
+  fPositronPosy=y;
+  fPositronPosz=z;
 }
 
 inline void EventAction::MarkMultiBrem(){

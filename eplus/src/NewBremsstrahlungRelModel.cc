@@ -510,7 +510,7 @@ void NewBremsstrahlungRelModel::SampleSecondaries(
   G4double xmin = G4Log(cut*cut + densityCorr);
   G4double xmax = G4Log(emax*emax  + densityCorr);
   G4double gammaEnergy, f, x; 
-  G4double thetaLowLimit=5.20577e-3,thetaUpLimit=180;
+  G4double thetaLowLimit=3,thetaUpLimit=4;
   G4double EnergyLowLimit=1*MeV, EnergyHighLimit=1000*MeV;
 
 

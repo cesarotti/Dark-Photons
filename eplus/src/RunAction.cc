@@ -75,6 +75,11 @@ RunAction::RunAction()
    analysisMan->CreateNtupleDColumn("positron_x_Momentum"); // 5
    analysisMan->CreateNtupleDColumn("positron_y_Momentum"); // 6
    analysisMan->CreateNtupleDColumn("positron_z_Momentum"); // 7
+
+   analysisMan->CreateNtupleDColumn("positron_x_Position"); // 8
+   analysisMan->CreateNtupleDColumn("positron_y_Position"); // 9
+   analysisMan->CreateNtupleDColumn("positron_z_Position"); // 10
+
    analysisMan->FinishNtuple();
 }
 

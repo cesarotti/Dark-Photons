@@ -46,6 +46,8 @@ public:
   void SetCheckOverlaps(G4bool );
 
   const G4VPhysicalVolume* GetTargetPV() const;
+  const G4VPhysicalVolume* GetVetoPV() const;
+
 
 private:
   //methods
@@ -53,11 +55,14 @@ private:
   G4VPhysicalVolume* DefineVolumes(); //defines geometry
 
   //data members
-
+  G4LogicalVolume* fLogicField; //pointer to logical field volumn
   G4LogicalVolume* fLogicCalor; //pointer to calorimeter
   G4LogicalVolume* fLogicTarget; //pointer to logical target
+  G4LogicalVolume* fLogicVeto; //pointer to logical target
 
   G4VPhysicalVolume* fPhysicalTarget;
+  G4VPhysicalVolume* fPhysicalField;
+  G4VPhysicalVolume* fPhysicalVeto;
 
   G4Material* fTargetMaterial; // pointer to target material
   G4Material* fCalorMaterial; // pointer to calorimeter material
@@ -72,12 +77,14 @@ private:
   static G4ThreadLocal G4GlobalMagFieldMessenger* fMagFieldMessenger;
 
 
-
 };
 
 inline const G4VPhysicalVolume* DetectorConstruction::GetTargetPV() const { 
   return fPhysicalTarget; 
 }
 
+inline const G4VPhysicalVolume* DetectorConstruction::GetVetoPV() const { 
+  return fPhysicalVeto; 
+}
 
 #endif
