@@ -127,7 +127,7 @@ void PositronPhysicsList1::ConstructHadronic()
   pnproc->RegisterMe(pnmodel);
 
   // set biasing
-  pnproc->BiasCrossSectionByFactor(10000000.);
+  pnproc->BiasCrossSectionByFactor(10000.);
 
   // add process to process manager
   pman->AddDiscreteProcess(pnproc);

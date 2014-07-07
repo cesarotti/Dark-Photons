@@ -200,54 +200,6 @@ src/ActionInitialization.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.s
 .PHONY : src/ActionInitialization.cc.s
 
-src/AlwaysTwoGamma.o: src/AlwaysTwoGamma.cc.o
-.PHONY : src/AlwaysTwoGamma.o
-
-# target to build an object file
-src/AlwaysTwoGamma.cc.o:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.o
-.PHONY : src/AlwaysTwoGamma.cc.o
-
-src/AlwaysTwoGamma.i: src/AlwaysTwoGamma.cc.i
-.PHONY : src/AlwaysTwoGamma.i
-
-# target to preprocess a source file
-src/AlwaysTwoGamma.cc.i:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.i
-.PHONY : src/AlwaysTwoGamma.cc.i
-
-src/AlwaysTwoGamma.s: src/AlwaysTwoGamma.cc.s
-.PHONY : src/AlwaysTwoGamma.s
-
-# target to generate assembly for a file
-src/AlwaysTwoGamma.cc.s:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.s
-.PHONY : src/AlwaysTwoGamma.cc.s
-
-src/AlwaysTwoGammaModel.o: src/AlwaysTwoGammaModel.cc.o
-.PHONY : src/AlwaysTwoGammaModel.o
-
-# target to build an object file
-src/AlwaysTwoGammaModel.cc.o:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o
-.PHONY : src/AlwaysTwoGammaModel.cc.o
-
-src/AlwaysTwoGammaModel.i: src/AlwaysTwoGammaModel.cc.i
-.PHONY : src/AlwaysTwoGammaModel.i
-
-# target to preprocess a source file
-src/AlwaysTwoGammaModel.cc.i:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.i
-.PHONY : src/AlwaysTwoGammaModel.cc.i
-
-src/AlwaysTwoGammaModel.s: src/AlwaysTwoGammaModel.cc.s
-.PHONY : src/AlwaysTwoGammaModel.s
-
-# target to generate assembly for a file
-src/AlwaysTwoGammaModel.cc.s:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.s
-.PHONY : src/AlwaysTwoGammaModel.cc.s
-
 src/CalorHit.o: src/CalorHit.cc.o
 .PHONY : src/CalorHit.o
 
@@ -459,12 +411,6 @@ help:
 	@echo "... src/ActionInitialization.o"
 	@echo "... src/ActionInitialization.i"
 	@echo "... src/ActionInitialization.s"
-	@echo "... src/AlwaysTwoGamma.o"
-	@echo "... src/AlwaysTwoGamma.i"
-	@echo "... src/AlwaysTwoGamma.s"
-	@echo "... src/AlwaysTwoGammaModel.o"
-	@echo "... src/AlwaysTwoGammaModel.i"
-	@echo "... src/AlwaysTwoGammaModel.s"
 	@echo "... src/CalorHit.o"
 	@echo "... src/CalorHit.i"
 	@echo "... src/CalorHit.s"
