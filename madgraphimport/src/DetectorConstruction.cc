@@ -202,7 +202,7 @@ G4VPhysicalVolume* worldPV
 //Target
 
 
- G4ThreeVector positionTarget = G4ThreeVector(0, 0, targetPos); 
+ //G4ThreeVector positionTarget = G4ThreeVector(0, 0, targetPos); 
 
 G4Box* targetS = 
   new G4Box("target", targetFace/2, targetFace/2, targetLength);
@@ -210,7 +210,7 @@ G4Box* targetS =
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
 
- new G4PVPlacement(0, // no rotation
+ /*new G4PVPlacement(0, // no rotation
 		   positionTarget, // at (x,y,z)
 		   fLogicTarget, // logical volume
 		   "Target", //name
@@ -221,7 +221,7 @@ G4Box* targetS =
 
  G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
-
+*/
 
  //!!!
  //Calorimeter 
