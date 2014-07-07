@@ -37,6 +37,8 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
+#include "math.h"
+
 
 
 //G4ThreadLocal
@@ -158,8 +160,8 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double calorDist = 10*m + .5*targetLength;
   G4double calorPos = calorDist + targetPos; //position of calorimeter
 
-  G4double calorOuterRad = 87.0*cm; //outer radius of calorimeter
-  G4double calorInnerRad = 35.0*cm; //inner radius of calorimeter
+  G4double calorOuterRad = calorSpacing*tan(10 * pi /180); //outer radius of calorimeter
+  G4double calorInnerRad = calorSpacing*tan(5 * pi / 180); //inner radius of calorimeter
 
   G4double worldLength = 1.2*(calorDist+crystalLength+targetLength-targetPos);
 
@@ -232,101 +234,102 @@ G4Box* targetS =
 //
 
   G4Tubs* TargetDetectorS = new G4Tubs("TargetDetectorS", // name
-                                       0*m,               // inner radius
-                                       1*m,               // outer radius
-                                       5*cm,              // depth
+                                       calorInnerRad,     // inner radius
+                                       calorOuterRad,     // outer radius
+                                       20*cm,              // depth
                                        0*rad,             // starting angle
                                        2*pi*rad);         // ending angle
 
   fLogicTargetDetector = new G4LogicalVolume(TargetDetectorS, Air, "TargetDetectorLV", 0, 0, 0);
 
   new G4PVPlacement(0,
-                    G4ThreeVector(0*cm, 0*cm, 20*cm + targetPos),
+                    G4ThreeVector(0*cm, 0*cm, targetPos + calorSpacing),
                     fLogicTargetDetector,
                     "TargetDetector",
                     worldLV,
                     false,
                     0,
                     fCheckOverlaps);
+  
 
 // ##############################################################################
 // ############## Brian Shin ####################################################
 // ##############################################################################
 
- //!!!
- //Calorimeter 
+//  //!!!
+//  //Calorimeter 
 
  
- G4ThreeVector posCal = G4ThreeVector(0,0, calorPos); 
-/*
- //Calorimeter Solid as a tube
-G4Tubs* calorimeterS = 
-  new G4Tubs("calorimeter",
-	     calorInnerRad,
-	     calorOuterRad,
-	     calorLength/2, 
-	     0.,
-	     2*pi);
-fLogicCalor = 
-  new G4LogicalVolume(calorimeterS, fCalorMaterial, "Calorimeter", 0,0,0);
+//  G4ThreeVector posCal = G4ThreeVector(0,0, calorPos); 
+// /*
+//  //Calorimeter Solid as a tube
+// G4Tubs* calorimeterS = 
+//   new G4Tubs("calorimeter",
+// 	     calorInnerRad,
+// 	     calorOuterRad,
+// 	     calorLength/2, 
+// 	     0.,
+// 	     2*pi);
+// fLogicCalor = 
+//   new G4LogicalVolume(calorimeterS, fCalorMaterial, "Calorimeter", 0,0,0);
 
 
-new G4PVPlacement(0, 
-		   posCal, 
-		   fLogicCalor, 
-		   "Calorimeter", 
-		   worldLV, 
-		   false, 
-		   0, 
-		   fCheckOverlaps);
-*/
+// new G4PVPlacement(0, 
+// 		   posCal, 
+// 		   fLogicCalor, 
+// 		   "Calorimeter", 
+// 		   worldLV, 
+// 		   false, 
+// 		   0, 
+// 		   fCheckOverlaps);
+// */
 
 
- double arc = 2*pi*rad;
- double calorSeg = (calorOuterRad-calorInnerRad)/10.;
+//  double arc = 2*pi*rad;
+//  double calorSeg = (calorOuterRad-calorInnerRad)/10.;
 
- for (int copyNum=1; copyNum<11; copyNum++) //ten rings, start at 1
-{
-  double newRad = calorInnerRad+((copyNum-1)*calorSeg);
-  int angleDiv = 60; //int( pi*2*newRad/50.); //finds best number of slices
+//  for (int copyNum=1; copyNum<11; copyNum++) //ten rings, start at 1
+// {
+//   double newRad = calorInnerRad+((copyNum-1)*calorSeg);
+//   int angleDiv = 60; //int( pi*2*newRad/50.); //finds best number of slices
 
-  G4Tubs* calorimeterS = new G4Tubs("calorimeter", 
-				    newRad, 
-				    newRad+calorSeg, 
-				    calorLength/2, 
-				    0.,
-				    arc);
+//   G4Tubs* calorimeterS = new G4Tubs("calorimeter", 
+// 				    newRad, 
+// 				    newRad+calorSeg, 
+// 				    calorLength/2, 
+// 				    0.,
+// 				    arc);
 
-  fLogicCalor[copyNum] = new G4LogicalVolume(calorimeterS, 
-					     Air, 
-					     "CalorimeterLV", 
-					     0, 0, 0);
+//   fLogicCalor[copyNum] = new G4LogicalVolume(calorimeterS, 
+// 					     Air, 
+// 					     "CalorimeterLV", 
+// 					     0, 0, 0);
 
-  fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(0.1*(copyNum-1),1.0-(copyNum-1)*.1, 1.0)); 
-  // G4VPhysicalVolume* calorPV = 
-  new G4PVPlacement(0, 
-		    posCal, 
-		    fLogicCalor[copyNum],
-		    "Calorimeter_MV", 
-		    worldLV, 
-		    false, 
-		    copyNum, 
-		    fCheckOverlaps);
+//   fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(0.1*(copyNum-1),1.0-(copyNum-1)*.1, 1.0)); 
+//   // G4VPhysicalVolume* calorPV = 
+//   new G4PVPlacement(0, 
+// 		    posCal, 
+// 		    fLogicCalor[copyNum],
+// 		    "Calorimeter_MV", 
+// 		    worldLV, 
+// 		    false, 
+// 		    copyNum, 
+// 		    fCheckOverlaps);
 
-G4Tubs* crystalS = 
-  new G4Tubs("crystal",
-	     newRad, newRad+calorSeg, calorLength/2, 
-	     0., arc/angleDiv);
+// G4Tubs* crystalS = 
+//   new G4Tubs("crystal",
+// 	     newRad, newRad+calorSeg, calorLength/2, 
+// 	     0., arc/angleDiv);
 
-G4LogicalVolume* crystalLV = 
-  new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV", 0,0,0);
+// G4LogicalVolume* crystalLV = 
+//   new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV", 0,0,0);
 
-//G4VPhysicalVolume* crystalRep = 
-  new G4PVReplica("crystalRep", crystalLV, fLogicCalor[copyNum],
-		kPhi, angleDiv, arc/angleDiv);
+// //G4VPhysicalVolume* crystalRep = 
+//   new G4PVReplica("crystalRep", crystalLV, fLogicCalor[copyNum],
+// 		kPhi, angleDiv, arc/angleDiv);
 
 
- }
+//  }
 
 
  //Visualization
@@ -354,15 +357,15 @@ G4LogicalVolume* crystalLV =
 
 void DetectorConstruction::ConstructSDandField()
 {
-  //!!!
-  //Create a sensitive detector and put it with logical volumes
-  G4String calorimeterSDname = "CalorimeterSD";
-  CalorimeterSD* calorimeterSD =
-    new CalorimeterSD(calorimeterSDname, "CalorimeterHitsCollection");
+  // //!!!
+  // //Create a sensitive detector and put it with logical volumes
+  // G4String calorimeterSDname = "CalorimeterSD";
+  // CalorimeterSD* calorimeterSD =
+  //   new CalorimeterSD(calorimeterSDname, "CalorimeterHitsCollection");
 
-  SetSensitiveDetector("CrystalLV", calorimeterSD, true); //sets SD to all logical volumes with the name CrystalLV
+  // SetSensitiveDetector("CrystalLV", calorimeterSD, true); //sets SD to all logical volumes with the name CrystalLV
 
-  G4cout << "SD Construction.....Complete!" << G4endl;
+  // G4cout << "SD Construction.....Complete!" << G4endl;
 
   // ##############################################################################
   // ############## Brian Shin ####################################################
