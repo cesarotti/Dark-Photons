@@ -36,10 +36,6 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
-#include "CellParameterisation.hh"
-#include "SplitParameterisation.hh"
-#include "G4PVParameterised.hh"
-
 
 
 //G4ThreadLocal
@@ -230,75 +226,138 @@ G4Box* targetS =
  //!!!
  //Calorimeter 
 
- G4int size = 36;
- G4double yShift = (11/2+8)*5.0*cm;
+ G4double hFace = 35*5.0*cm;
 
-G4VSolid* calorimeterS = 
-  new G4Box("calorimeterS", crystalFace*size/2, 11*size/2,
-	    crystalLength/2);
+ for (int copyNum =0; copyNum<10; copyNum++)
+   {
+ G4Box* horizontal = 
+   new G4Box("horizontal array", hFace/2, crystalFace/2, calorLength/2);
 
-G4LogicalVolume* calorimeter1LV = 
-  new G4LogicalVolume(calorimeterS, Air, "Calorimeter1LV");
+ fLogicCalor[copyNum] = new G4LogicalVolume(horizontal,
+					Air, 
+					"CalorimeterLV", 
+					0,0,0);
 
- new G4PVPlacement(0, 
-		   G4ThreeVector(2.5*cm,yShift+ 2.5*cm, 0.),
-		   calorimeter1LV, 
-		   "Calorimeter1MV", 
-		   worldLV, 
-		   false, 
-		   0, 
-		   fCheckOverlaps);
+ fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(0.5, 0.0, 1.0));
 
-
-G4LogicalVolume* calorimeter2LV = 
-  new G4LogicalVolume(calorimeterS, Air, "Calorimeter2LV");
+ G4ThreeVector posCal = G4ThreeVector(0, ((copyNum-17)*5.0*cm), calorPos);
 
  new G4PVPlacement(0, 
-		   G4ThreeVector(2.5*cm,(-1)*yShift+ 7.5*cm, 0.),
-		   calorimeter2LV, 
-		   "Calorimeter2MV", 
+		   posCal, 
+		   fLogicCalor[copyNum], 
+		   "Calorimeter_MV",
 		   worldLV, 
 		   false, 
-		   0, 
+		   copyNum+1, 
 		   fCheckOverlaps);
 
-G4VSolid* crystalS = 
-  new G4Box("crystalS", crystalFace/2, crystalFace/2, crystalLength/2);
+G4Box* crystalS = 
+  new G4Box("crystal", crystalFace/2, crystalFace/2, crystalLength/2);
 
 G4LogicalVolume* crystalLV = 
-  new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV");
+  new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV", 0,0,0);
 
- G4VPVParameterisation* crysParam1 = new CellParameterisation(1);
+new G4PVReplica("crystalRep", crystalLV, fLogicCalor[copyNum], 
+		 kXAxis,35, 5.0*cm);
 
- new G4PVParameterised("CrystalPV", crystalLV, calorimeter1LV, 
-		       kXAxis, 396, crysParam1);
+ crystalLV->SetVisAttributes(G4Colour(0.5, 0., 1.0));
 
- G4VPVParameterisation* crysParam2 = new CellParameterisation(-1);
+   }
 
- new G4PVParameterised("CrystalPV", crystalLV, calorimeter2LV, 
-			kXAxis, 396, crysParam2);
+ for (int copyNum=25; copyNum<35; copyNum++) {
+ G4Box* horizontal = 
+   new G4Box("horizontal array", hFace/2, crystalFace/2, calorLength/2);
 
-G4VSolid* calorimeterM = 
-  new G4Box("calorimeterM", crystalFace*size/2, crystalFace*14/2,
-	    crystalLength/2);
+ fLogicCalor[copyNum] = new G4LogicalVolume(horizontal,
+					Air, 
+					"CalorimeterLV", 
+					0,0,0);
 
-G4LogicalVolume* calorimeterMLV = 
-  new G4LogicalVolume(calorimeterM, Air, "CalorimeterMLV");
+ fLogicCalor[copyNum] ->SetVisAttributes(G4Colour(0.5, 0., 1.0));
 
-  new G4PVPlacement (0, 
-		     G4ThreeVector(2.5*cm, 2.5*cm, 0.),
-		     calorimeterMLV,
-		     "CalorimeterMMV", 
-		     worldLV, 
-		     false,
-		     0, 
-		     fCheckOverlaps);
+ G4ThreeVector posCal = G4ThreeVector(0, ((copyNum-17)*5.0*cm), calorPos);
 
- G4VPVParameterisation* crysParam3 = new SplitParameterisation(1);
+ new G4PVPlacement(0, 
+		   posCal, 
+		   fLogicCalor[copyNum], 
+		   "Calorimeter_MV",
+		   worldLV, 
+		   false, 
+		   copyNum+1, 
+		   fCheckOverlaps);
 
- new G4PVParameterised("CrystalPV", crystalLV, calorimeterMLV, 
-		   kXAxis, 308, crysParam3); 
+G4Box* crystalS = 
+  new G4Box("crystal", crystalFace/2, crystalFace/2, crystalLength/2);
 
+G4LogicalVolume* crystalLV = 
+  new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV", 0,0,0);
+
+new G4PVReplica("crystalRep", crystalLV, fLogicCalor[copyNum], 
+		 kXAxis,35, 5.0*cm);
+
+//if (copyNum==25)
+// crystalLV->SetVisAttributes(G4Colour(1.0, 0., 0.));
+//else
+ crystalLV->SetVisAttributes(G4Colour(0.5, 0., 1.0));
+
+ }
+
+ for (int copyNum=10; copyNum<25; copyNum++)
+   {
+     G4Box* sideArray = new G4Box("array", hFace/2, 
+				  crystalFace/2, crystalLength/2);
+
+     fLogicCalor[copyNum] = new G4LogicalVolume(sideArray,
+						fWorldMaterial, 
+						"ArrayLV", 
+						0,0,0);
+
+     G4ThreeVector posCal = G4ThreeVector(0., (copyNum-17)*5.0*cm, 
+					  calorPos);
+
+     new G4PVPlacement(0, 
+		       posCal, 
+		       fLogicCalor[copyNum],
+		       "Calorimeter_MV", 
+		       worldLV,
+		       false,
+		       copyNum+1,
+		       fCheckOverlaps);
+
+     fLogicCalor[copyNum]->SetVisAttributes(G4Colour(0.,0.,0.));
+
+     for (int replicaNum=0; replicaNum<35; replicaNum++)
+       {
+	 if (replicaNum < 10||replicaNum>24)
+	   {G4Box* crystalS =  new G4Box("crystal",
+			 crystalFace/2,
+			 crystalFace/2,
+			 crystalLength/2);
+	     G4LogicalVolume* crystalLV = new G4LogicalVolume(crystalS, 
+							      fCalorMaterial,
+							      "CrystalLV", 
+							      0,0,0);
+
+	     G4ThreeVector  posCrys =
+	       G4ThreeVector(-hFace/2+2.5*cm+replicaNum*5.0*cm, 0,0);
+
+	     new G4PVPlacement(0, 
+			       posCrys,
+			       crystalLV, 
+			       "crystal", 
+			       fLogicCalor[copyNum],
+			       false, 
+			       replicaNum, 
+			       fCheckOverlaps);
+	     // if (copyNum==17)
+	     //   crystalLV-SetVisAttributes(G4Colour(1.0, 0.,0.));
+	     //else
+	     crystalLV->SetVisAttributes(G4Colour(0.5,0.,1.0));
+
+       }
+       }       
+ 
+   }
 
  //Visualization
 
