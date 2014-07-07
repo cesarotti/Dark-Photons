@@ -200,5 +200,4 @@ void makePlots() {
 
     canvas->cd(14);
     hneutronTheta->Draw();
-    canvas->SetLogy();
 }
