@@ -1,19 +1,10 @@
+#include <string>
 #include "TFile.h"
 #include "TH1.h"
-#include "TH2.h"
 #include "TGraph.h"
 #include "TCanvas.h"
-#include "TLegend.h"
-#include "TROOT.h"
-#include "TStyle.h"
-#include "TMath.h"
 #include "TTree.h"
-#include "TClonesArray.h"
-#include "TLorentzVector.h"
-
-#include <iostream>
-#include <iomanip>
-#include <vector>
+#include "TStyle.h"
 
 void gammaPlots() {
     /*
@@ -86,7 +77,11 @@ void gammaPlots() {
     int nEnergyBins = nEnergyMax/10;
 
     // gamma
-    TH1F* hgammaEnergy = new TH1F("hgammaEnergy", "gamma energy distribution", nEnergyBins, 0, nEnergyMax);
+    TH1D* hgammaEnergy = new TH1D("5 < theta < 10" ,                       // plot label
+                                  "Gamma Energy Distribution",  // title
+                                  nEnergyBins,                  // x number of bins
+                                  0,                            // x lower bound
+                                  nEnergyMax);                  // x upper bound
 
     // all entries and fill the histograms
     Int_t nentries = (Int_t)Hits_Info->GetEntries();
@@ -99,7 +94,13 @@ void gammaPlots() {
     }
 
     TCanvas* canvas = new TCanvas("canvas", "canvas", 700, 700);
-    // gamma
-    hgammaEnergy->Draw();
     canvas->SetLogy();
+    // gamma
+    hgammaEnergy->SetFillColor(kBlue);
+    hgammaEnergy->SetFillStyle(3001);
+    hgammaEnergy->Draw();
+    hgammaEnergy->GetXaxis()->SetTitle("Energy (MeV)");
+    hgammaEnergy->GetYaxis()->SetTitle("dN/dE");
+    hgammaEnergy->GetXaxis()->CenterTitle();
+    hgammaEnergy->GetYaxis()->CenterTitle();
 }
