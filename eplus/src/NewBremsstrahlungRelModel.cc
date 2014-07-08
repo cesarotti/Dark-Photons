@@ -54,6 +54,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 
 #include "NewBremsstrahlungRelModel.hh"
+#include "AngleBiasMessenger.hh"
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4Electron.hh"
@@ -87,6 +88,7 @@ using namespace std;
 NewBremsstrahlungRelModel::NewBremsstrahlungRelModel(
        const G4ParticleDefinition* p, const G4String& nam)
   : G4VEmModel(nam),
+    fMessenger(0),
     particle(0),
     bremFactor(fine_structure_const*classic_electr_radius*classic_electr_radius*16./3.),
     isElectron(true),
@@ -95,6 +97,7 @@ NewBremsstrahlungRelModel::NewBremsstrahlungRelModel(
     fXiLPM(0), fPhiLPM(0), fGLPM(0),
     use_completescreening(false),isInitialised(false)
 {
+  fMessenger = new AngleBiasMessenger(this);
   fParticleChange = 0;
   theGamma = G4Gamma::Gamma();
 
@@ -115,6 +118,13 @@ NewBremsstrahlungRelModel::NewBremsstrahlungRelModel(
 
   InitialiseConstants();
   if(p) { SetParticle(p); }
+
+  SetLowestEnergy(0.1*MeV);
+  SetHighestEnergy(1000*MeV);
+  SetLowestTheta(3*deg);
+  SetHighestTheta(4*deg);
+
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
@@ -132,6 +142,7 @@ void NewBremsstrahlungRelModel::InitialiseConstants()
 
 NewBremsstrahlungRelModel::~NewBremsstrahlungRelModel()
 {
+  delete fMessenger;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
@@ -510,8 +521,6 @@ void NewBremsstrahlungRelModel::SampleSecondaries(
   G4double xmin = G4Log(cut*cut + densityCorr);
   G4double xmax = G4Log(emax*emax  + densityCorr);
   G4double gammaEnergy, f, x; 
-  G4double thetaLowLimit=3,thetaUpLimit=4;
-  G4double EnergyLowLimit=1*MeV, EnergyHighLimit=1000*MeV;
 
 
   /*do {
@@ -545,9 +554,9 @@ void NewBremsstrahlungRelModel::SampleSecondaries(
 					      couple->GetMaterial());*/
 
   //Generate Gamma energy
-  gammaEnergy = pow(G4UniformRand()*(pow(EnergyHighLimit,-0.13)-pow(EnergyLowLimit,-0.13))+pow(EnergyLowLimit,-0.13),-1/0.13);
+  gammaEnergy = pow(G4UniformRand()*(pow(energyHigh,-0.13)-pow(energyLow,-0.13))+pow(energyLow,-0.13),-1/0.13);
   //G4cout << "Gamma Energy = " << gammaEnergy << G4endl;
-  G4double theta = pow(G4UniformRand()*(pow(thetaUpLimit,-2.01)-pow(thetaLowLimit,-2.01))+pow(thetaLowLimit,-2.01),-1/2.01)*twopi/360;
+  G4double theta = pow(G4UniformRand()*(pow(thetaHigh/rad,-2.01)-pow(thetaLow/rad,-2.01))+pow(thetaLow/rad,-2.01),-1/2.01);
   G4double phi = twopi*G4UniformRand(); 
   //G4cout << "Theta = " << theta << G4endl;
   //G4cout << "Phi = " << phi << G4endl;

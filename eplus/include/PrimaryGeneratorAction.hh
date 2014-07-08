@@ -9,7 +9,7 @@
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "globals.hh"
-#include "G4SingleParticleSource.hh"
+#include "G4GeneralParticleSource.hh"
 
 //!!!
 //May have to change depending on nature of final beam
@@ -24,13 +24,13 @@ public:
 
   virtual void GeneratePrimaries(G4Event* );
 
-  G4SingleParticleSource* GetParticleSource() {return fParticleSource;}
+  G4GeneralParticleSource* GetParticleSource() {return fParticleSource;}
 
   //Set methods
   void SetRandomFlag(G4bool );
 
 private :
-  G4SingleParticleSource* fParticleSource; //G4 particle gun
+  G4GeneralParticleSource* fParticleSource; //G4 particle gun
 };
 
 

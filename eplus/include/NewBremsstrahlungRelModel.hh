@@ -55,9 +55,11 @@
 #include "G4NistManager.hh"
 #include "G4Exp.hh"
 #include "G4Log.hh"
+#include "AngleBiasMessenger.hh"
 
 class G4ParticleChangeForLoss;
 class G4PhysicsVector;
+class AngleBiasMessenger;
 
 class NewBremsstrahlungRelModel : public G4VEmModel
 {
@@ -103,6 +105,16 @@ public:
 
   inline void SetLowestKinEnergy(G4double);
   inline G4double LowestKinEnergy() const;
+
+  inline void SetLowestEnergy(G4double);
+  inline G4double LowestEnergy() const;
+  inline void SetHighestEnergy(G4double);
+  inline G4double HighestEnergy() const;
+
+  inline void SetLowestTheta(G4double);
+  inline G4double LowestTheta() const;
+  inline void SetHighestTheta(G4double);
+  inline G4double HighestTheta() const;
 
 
 protected:
@@ -152,6 +164,7 @@ protected:
   G4double densityFactor;
   G4double densityCorr;
 
+
   G4bool   isElectron;
 
   G4ThreeVector fGammaDirection;
@@ -162,6 +175,7 @@ private:
   static const G4double Fel_light[5];
   static const G4double Finel_light[5];
 
+  AngleBiasMessenger* fMessenger;
   // consts
   G4double lowestKinEnergy;
   G4double fMigdalConstant;
@@ -169,6 +183,10 @@ private:
   G4double energyThresholdLPM;
   G4double facFel, facFinel;
   G4double preS1,logTwo;
+  G4double thetaLow;
+  G4double thetaHigh;
+  G4double energyLow;
+  G4double energyHigh;
 
   // cash
   G4double z13, z23, lnZ;
@@ -272,6 +290,14 @@ inline G4double NewBremsstrahlungRelModel::LowestKinEnergy() const
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
+inline void NewBremsstrahlungRelModel::SetLowestEnergy(G4double el){ energyLow=el; }
+inline void NewBremsstrahlungRelModel::SetHighestEnergy(G4double eh){ energyHigh=eh; }
+inline G4double NewBremsstrahlungRelModel::LowestEnergy() const { return energyLow; }
+inline G4double NewBremsstrahlungRelModel::HighestEnergy() const { return energyHigh; }
 
+inline void NewBremsstrahlungRelModel::SetLowestTheta(G4double tl){ thetaLow=tl; }
+inline void NewBremsstrahlungRelModel::SetHighestTheta(G4double th){ thetaHigh=th; }
+inline G4double NewBremsstrahlungRelModel::LowestTheta() const { return thetaLow; }
+inline G4double NewBremsstrahlungRelModel::HighestTheta() const { return thetaHigh; }
 
 #endif

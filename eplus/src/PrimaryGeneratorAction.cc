@@ -20,6 +20,7 @@
 #include "G4Box.hh"
 #include "G4Event.hh"
 #include "G4SingleParticleSource.hh"
+#include "G4GeneralParticleSource.hh"
 #include "G4ParticleTable.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4SystemOfUnits.hh"
@@ -32,7 +33,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction()
 {
   G4cout << "Primaries started" << G4endl;
-  fParticleSource = new G4SingleParticleSource();
+  fParticleSource = new G4GeneralParticleSource();
 
   // default particle kinematic
 
@@ -41,23 +42,23 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
     //Positron beam
     = G4ParticleTable::GetParticleTable()->FindParticle("e+");
 
-  fParticleSource->SetParticleDefinition(particleDefinition);
+  fParticleSource->GetCurrentSource()->SetParticleDefinition(particleDefinition);
 
-  fParticleSource->GetPosDist()->SetCentreCoords(G4ThreeVector(0,0,-8*m));
-  fParticleSource->GetPosDist()->SetPosRot1(G4ThreeVector(1,0,0));
-  fParticleSource->GetPosDist()->SetPosRot2(G4ThreeVector(0,1,0));
+  fParticleSource->GetCurrentSource()->GetPosDist()->SetCentreCoords(G4ThreeVector(0,0,-8*m));
+  fParticleSource->GetCurrentSource()->GetPosDist()->SetPosRot1(G4ThreeVector(1,0,0));
+  fParticleSource->GetCurrentSource()->GetPosDist()->SetPosRot2(G4ThreeVector(0,1,0));
 
-  fParticleSource->GetPosDist()->SetPosDisType("Beam");
-  fParticleSource->GetPosDist()->SetPosDisShape("Circle");
+  fParticleSource->GetCurrentSource()->GetPosDist()->SetPosDisType("Beam");
+  fParticleSource->GetCurrentSource()->GetPosDist()->SetPosDisShape("Circle");
 
-  fParticleSource->GetPosDist()->SetRadius(1e-6*mm);
-  fParticleSource->GetPosDist()->SetBeamSigmaInR(1*mm);
+  fParticleSource->GetCurrentSource()->GetPosDist()->SetRadius(1e-6*mm);
+  fParticleSource->GetCurrentSource()->GetPosDist()->SetBeamSigmaInR(1*mm);
    
-  fParticleSource->GetAngDist()->SetAngDistType("beam1d");
-  fParticleSource->GetAngDist()->DefineAngRefAxes("angref1", G4ThreeVector(-1,0,0));
-  fParticleSource->GetAngDist()->DefineAngRefAxes("angref2", G4ThreeVector(0,1,0));
+  fParticleSource->GetCurrentSource()->GetAngDist()->SetAngDistType("beam1d");
+  fParticleSource->GetCurrentSource()->GetAngDist()->DefineAngRefAxes("angref1", G4ThreeVector(-1,0,0));
+  fParticleSource->GetCurrentSource()->GetAngDist()->DefineAngRefAxes("angref2", G4ThreeVector(0,1,0));
   //fParticleSource->GetAngDist()->SetMaxTheta(1e-6*radian);
-  fParticleSource->GetAngDist()->SetBeamSigmaInAngR(1e-3*radian);
+  fParticleSource->GetCurrentSource()->GetAngDist()->SetBeamSigmaInAngR(1e-3*radian);
    //!!!
    //Energy Set to 5 GeV
   
@@ -66,13 +67,14 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
 
   //fParticleSource->GetEneDist()->SetMonoEnergy(5*GeV);
   
-  fParticleSource->GetEneDist()->SetEnergyDisType("Lin");
+  fParticleSource->GetCurrentSource()->GetEneDist()->SetEnergyDisType("Lin");
   G4double max=5*GeV;
   G4double range=50*MeV;
-  fParticleSource->GetEneDist()->SetEmax(max);
-  fParticleSource->GetEneDist()->SetEmin(max-range);
-  fParticleSource->GetEneDist()->SetGradient(0);
-  fParticleSource->GetEneDist()->SetInterCept(1);
+  G4double mass=particleDefinition->GetPDGMass();
+  fParticleSource->GetCurrentSource()->GetEneDist()->SetEmax(max-mass);
+  fParticleSource->GetCurrentSource()->GetEneDist()->SetEmin(max-range-mass);
+  fParticleSource->GetCurrentSource()->GetEneDist()->SetGradient(0);
+  fParticleSource->GetCurrentSource()->GetEneDist()->SetInterCept(1);
 
 
   G4cout << "Primaries finished" << G4endl;

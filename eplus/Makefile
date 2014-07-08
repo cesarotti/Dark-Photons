@@ -275,6 +275,30 @@ src/AngleBiasBrem.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasBrem.cc.s
 .PHONY : src/AngleBiasBrem.cc.s
 
+src/AngleBiasMessenger.o: src/AngleBiasMessenger.cc.o
+.PHONY : src/AngleBiasMessenger.o
+
+# target to build an object file
+src/AngleBiasMessenger.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o
+.PHONY : src/AngleBiasMessenger.cc.o
+
+src/AngleBiasMessenger.i: src/AngleBiasMessenger.cc.i
+.PHONY : src/AngleBiasMessenger.i
+
+# target to preprocess a source file
+src/AngleBiasMessenger.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.i
+.PHONY : src/AngleBiasMessenger.cc.i
+
+src/AngleBiasMessenger.s: src/AngleBiasMessenger.cc.s
+.PHONY : src/AngleBiasMessenger.s
+
+# target to generate assembly for a file
+src/AngleBiasMessenger.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.s
+.PHONY : src/AngleBiasMessenger.cc.s
+
 src/CalorHit.o: src/CalorHit.cc.o
 .PHONY : src/CalorHit.o
 
@@ -567,6 +591,9 @@ help:
 	@echo "... src/AngleBiasBrem.o"
 	@echo "... src/AngleBiasBrem.i"
 	@echo "... src/AngleBiasBrem.s"
+	@echo "... src/AngleBiasMessenger.o"
+	@echo "... src/AngleBiasMessenger.i"
+	@echo "... src/AngleBiasMessenger.s"
 	@echo "... src/CalorHit.o"
 	@echo "... src/CalorHit.i"
 	@echo "... src/CalorHit.s"
