@@ -19,7 +19,6 @@ public:
 
   virtual void BeginOfRunAction(const G4Run* run);
   virtual void EndOfRunAction(const G4Run* run);
- 
 };
 
 

@@ -38,7 +38,7 @@
 #include "G4ios.hh"
 #include "G4SDManager.hh"
 
-#include "BasicHit.hh"
+#include "TestHit.hh"
 
 
 EventAction::EventAction()
@@ -90,27 +90,36 @@ void EventAction::EndOfEventAction(const G4Event* event)
   G4SDManager* fSDM = G4SDManager::GetSDMpointer();
 
   //get ID for the calorimeter's hit collection
-  G4int collectionID = fSDM->GetCollectionID("BasicHitsCollection");
+  G4int collectionID = fSDM->GetCollectionID("TestHitsCollection");
 
-  BasicHitsCollection* hitColl = static_cast<BasicHitsCollection*>(hce->GetHC(collectionID));
+  TestHitsCollection* hitColl = static_cast<TestHitsCollection*>(hce->GetHC(collectionID));
 
-  G4int numHits = hitColl->entries();
-  
-  G4bool fill = false;
-  
-  for (G4int i=0; (i<numHits) && (i<1); i++)
+  G4int numHit(0);
+  G4double eDep(0.);
+  for (G4int i=0; i<1100; i++)
     {
-      fill = true;
+      TestHit* hit = (*hitColl)[i];
+      eDep = hit->GetEnergyDep();
+      if (eDep > 0.)
+	{
+	  numHit++;
+	  if (eDep>0.5*MeV)
+	    {
+	      G4int id = hit->GetCellID();
+	      analysisMan->FillNtupleIColumn(3, id);
+	      analysisMan->FillNtupleIColumn(1, id/36); 
+	      analysisMan->FillNtupleIColumn(2, id%36);
+	    }
       
+	}
     }
-
- if (fill) analysisMan->FillNtupleIColumn(0, 1);
+      analysisMan->FillNtupleIColumn(0, numHit);
   analysisMan->AddNtupleRow();
 
   
 
 
-
-
+ 
+    
 }
 

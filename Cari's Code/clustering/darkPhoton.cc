@@ -20,20 +20,18 @@
 #endif
 
 
-
+#include "G4HadronicProcessStore.hh"
 #include "G4UImanager.hh"
-#include "FTFP_BERT.hh"
+#include "G4VModularPhysicsList.hh"
 #include "G4StepLimiterPhysics.hh"
+#include "FTFP_BERT.hh"
 
 #include "Randomize.hh"
 
 //Visualization
-
 #ifdef G4VIS_USE
 #include "G4VisExecutive.hh"
 #endif
-
-
 
 //user interactive
 #ifdef G4UI_USE
@@ -63,10 +61,11 @@ int main(int argc, char** argv)
 // 4. Initializing the G4 kernel
    */
   //use specific physics list
-  G4VModularPhysicsList* physicsList = new FTFP_BERT; 
+ 
+  G4VModularPhysicsList* physicsList = new FTFP_BERT(0);
   physicsList->RegisterPhysics(new G4StepLimiterPhysics());
   runManager->SetUserInitialization(physicsList);
-
+  G4HadronicProcessStore::Instance()->SetVerbose(0);
 
   DetectorConstruction* test = new DetectorConstruction();
   runManager->SetUserInitialization(test);
@@ -76,20 +75,16 @@ int main(int argc, char** argv)
   //Initialize G4 kernel
 
   runManager->Initialize();
-  
+
   //Visualization
-  
 #ifdef G4VIS_USE
   G4VisManager* visManager = new G4VisExecutive; 
   visManager->Initialize();
 #endif
-  
-  
- 
-  
+
   //Interface manager
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
-  //!!!!
+ //!!!!
   //Don't want to hear it, Geant.
   UImanager->ApplyCommand("/tracking/verbose 0");
   UImanager->ApplyCommand("/control/verbose 0");
@@ -98,6 +93,8 @@ int main(int argc, char** argv)
   UImanager->ApplyCommand("/run/particle/verbose 0");
   UImanager->ApplyCommand("/process/verbose 0");
   UImanager->ApplyCommand("/vis/set/verbose 0");
+  UImanager->ApplyCommand("/particle/property/verbose 0");
+
 
 
     //batch mode
@@ -113,15 +110,12 @@ int main(int argc, char** argv)
 	G4UIExecutive* ui = new G4UIExecutive(argc, argv);
 
 	//checks if visualization is used
-	
-	
 #ifdef G4VIS_USE
 	UImanager->ApplyCommand("/control/execute init_vis.mac");
-	
-  #else
-	
+
+#else
 	UImanager->ApplyCommand("/control/execute init.mac");
-   #endif
+#endif
 	if (ui->IsGUI())
 	  UImanager->ApplyCommand("/control/execute gui.mac");
           ui->SessionStart();
@@ -135,11 +129,9 @@ int main(int argc, char** argv)
    *along with the deletion of the run manager
    *at the termination of the run.
    */
-   
-   #ifdef G4VIS_USE
-     delete visManager;
-     #endif
-     
+    //#ifdef G4VIS_USE
+    //  delete visManager;
+    //#endif
 
   delete runManager;
 
