@@ -26,12 +26,13 @@
 #include "G4StepLimiterPhysics.hh"
 
 #include "Randomize.hh"
-/*
+
 //Visualization
+
 #ifdef G4VIS_USE
 #include "G4VisExecutive.hh"
 #endif
-*/
+
 
 //user interactive
 #ifdef G4UI_USE
@@ -73,20 +74,24 @@ int main(int argc, char** argv)
   runManager->Initialize();
 
   //Visualization
-  /*
+  
 #ifdef G4VIS_USE
   G4VisManager* visManager = new G4VisExecutive; 
   visManager->Initialize();
 #endif
-  */
+  
 
   //Interface manager
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
-  //!!!!
-  //Sets default verbosity for tracking
+//!!!!
+  //Don't want to hear it, Geant.
   UImanager->ApplyCommand("/tracking/verbose 0");
+  UImanager->ApplyCommand("/control/verbose 0");
   UImanager->ApplyCommand("/run/verbose 0");
   UImanager->ApplyCommand("/event/verbose 0");
+  UImanager->ApplyCommand("/run/particle/verbose 0");
+  UImanager->ApplyCommand("/process/verbose 0");
+  UImanager->ApplyCommand("/vis/set/verbose 0");
 
     //batch mode
     if (argc !=1)
@@ -101,15 +106,15 @@ int main(int argc, char** argv)
 	G4UIExecutive* ui = new G4UIExecutive(argc, argv);
 
 	//checks if visualization is used
-	/*
+	
 #ifdef G4VIS_USE
 	UImanager->ApplyCommand("/control/execute init_vis.mac");
 
 #else
 	
 	UImanager->ApplyCommand("/control/execute init.mac");
-    #endif
-	*/
+      #endif
+       
 
 	UImanager->ApplyCommand("/control/execute init.mac");
 	if (ui->IsGUI())
@@ -125,9 +130,11 @@ int main(int argc, char** argv)
    *along with the deletion of the run manager
    *at the termination of the run.
    */
-    //#ifdef G4VIS_USE
-    //  delete visManager;
-    //#endif
+   
+   #ifdef G4VIS_USE
+     delete visManager;
+   #endif
+   
 
   delete runManager;
 

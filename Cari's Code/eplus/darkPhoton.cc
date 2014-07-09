@@ -79,9 +79,15 @@ int main(int argc, char** argv)
 
   //Interface manager
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
-  //!!!!
-  //Sets default verbosity for tracking
-  UImanager->ApplyCommand("/tracking/verbose 1");
+ //!!!!
+  //Don't want to hear it, Geant.
+  UImanager->ApplyCommand("/tracking/verbose 0");
+  UImanager->ApplyCommand("/control/verbose 0");
+  UImanager->ApplyCommand("/run/verbose 0");
+  UImanager->ApplyCommand("/event/verbose 0");
+  UImanager->ApplyCommand("/run/particle/verbose 0");
+  UImanager->ApplyCommand("/process/verbose 0");
+  UImanager->ApplyCommand("/vis/set/verbose 0");
 
     //batch mode
     if (argc !=1)

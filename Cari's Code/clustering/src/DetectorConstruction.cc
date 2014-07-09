@@ -3,13 +3,14 @@
  * !!!History:
  *    CJC 6.15.14 created
  *    CJC 6.18.14 changed calorimeter into tube
+ *    CJC 7.08.14 completely new set up
  *
  * file: DetectorConstruction.cc
  */
 
 #include "DetectorConstruction.hh"
 #include "DetectorMessenger.hh"
-#include "CalorimeterSD.hh"
+#include "TestSD.hh"
 
 #include "G4Material.hh"
 #include "G4NistManager.hh"
@@ -36,8 +37,7 @@
 #include "G4PhysicalConstants.hh"
 #include "G4SystemOfUnits.hh"
 
-#include "CellParameterisation.hh"
-#include "SplitParameterisation.hh"
+#include "SquareParameterisation.hh"
 #include "G4PVParameterised.hh"
 
 
@@ -48,7 +48,7 @@
 DetectorConstruction::DetectorConstruction()
   : G4VUserDetectorConstruction(),
 fLogicCalor(NULL), //logical volume for calorimeter
-  fLogicTarget(NULL), //logical volume for target
+    fLogicTarget(NULL),
   fTargetMaterial(NULL), //material of target
   fCalorMaterial(NULL), //material of calorimeter
     fWorldMaterial(NULL),
@@ -57,7 +57,7 @@ fLogicCalor(NULL), //logical volume for calorimeter
     //  fCenterToFront(0.)
 {
  fMessenger = new DetectorMessenger(this);
- fLogicCalor = new G4LogicalVolume*[35];
+ fLogicCalor = new G4LogicalVolume*[49];
 }
 
 DetectorConstruction::~DetectorConstruction()
@@ -162,12 +162,8 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double calorDist = 10*m + .5*targetLength;
   G4double calorPos = calorDist + targetPos; //position of calorimeter
 
-  //G4double calorOuterRad = 87.0*cm; //outer radius of calorimeter
-  //G4double calorInnerRad = 35.0*cm; //inner radius of calorimeter
 
   G4double worldLength = 3*(calorDist+crystalLength+targetLength-targetPos);
-
-  //fCenterToFront = calorDist-0.5*calorLength;
 
 
   G4GeometryManager::GetInstance()->SetWorldMaximumExtent(worldLength);
@@ -205,6 +201,7 @@ G4VPhysicalVolume* worldPV
 //!!!
 //Target
 
+/*
 
  G4ThreeVector positionTarget = G4ThreeVector(0, 0, targetPos); 
 
@@ -225,79 +222,93 @@ G4Box* targetS =
 
  G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
+*/
 
 
  //!!!
  //Calorimeter 
 
- G4int size = 36;
- G4double yShift = (11/2+8)*5.0*cm;
+ G4int crysLength = 25.*cm;
 
-G4VSolid* calorimeterS = 
-  new G4Box("calorimeterS", crystalFace*size/2, 11*size/2,
-	    crystalLength/2);
+G4VSolid* boxS =
+  new G4Box("boxS", crysLength/2, crysLength/2, crystalLength/2);
 
-G4LogicalVolume* calorimeter1LV = 
-  new G4LogicalVolume(calorimeterS, Air, "Calorimeter1LV");
+ G4int nLevel(0); 
+ G4int startID(0);
+ G4double xPos[49] = {};
+ G4double yPos[49] = {};
 
- new G4PVPlacement(0, 
-		   G4ThreeVector(2.5*cm,yShift+ 2.5*cm, 0.),
-		   calorimeter1LV, 
-		   "Calorimeter1MV", 
-		   worldLV, 
+ G4ThreeVector position = G4ThreeVector(); 
+ for (G4int i = 9; i<49; i++)
+   {
+     G4LogicalVolume* box = 
+       new G4LogicalVolume(boxS, Air, "Array", 0, 0, 0); 
+
+     if (i<1) { nLevel = 1; startID = 0;}
+     else if (i<9) {nLevel = 2; startID = 1; }
+     else if (i<25) {nLevel = 3; startID = 9; }
+     else if (i<49) {nLevel = 4; startID = 25 ;}
+
+     G4cout << "nLevel = " << nLevel << G4endl;
+
+     xPos[i] = (nLevel-1)*crysLength;
+     yPos[i] = (nLevel-1)*crysLength;
+
+     if (i <= startID+2*(nLevel-1) )
+       {xPos[i] = xPos[startID] - crysLength*(i-startID); }
+     else if (i <= startID + 4*(nLevel-1))
+       {yPos[i] = yPos[startID]-(i - (2*(nLevel-1))-startID)*crysLength;
+	 xPos[i] = xPos[startID+2*(nLevel-1)];}
+     else if (i <= startID + 6*(nLevel-1))
+       {yPos[i] = yPos[startID+4*(nLevel-1)];
+	 xPos[i] = xPos[startID+4*(nLevel-1)]+
+	   (i-(4*(nLevel-1)+startID))*crysLength;}
+     else if (i < pow(2*nLevel-1, 2))
+       {
+	 yPos[i] =
+	   yPos[startID+6*(nLevel-1)]+(i-(6*(nLevel-1)+startID))*crysLength;
+       }
+
+     G4cout << "xPos : " << xPos[i] << G4endl;
+     G4cout << "yPos : " << yPos[i] << G4endl;
+     
+     position = G4ThreeVector(xPos[i], yPos[i], 0.); 
+
+     fLogicCalor[i] = new G4LogicalVolume(boxS, 
+					  Air, 
+					  "clusterLV", 
+					  0,0,0);
+     
+      new G4PVPlacement(0, 
+		   position, 
+		   fLogicCalor[i],
+		   "ClusterPV", 
+		   worldLV,
 		   false, 
-		   0, 
-		   fCheckOverlaps);
-
-
-G4LogicalVolume* calorimeter2LV = 
-  new G4LogicalVolume(calorimeterS, Air, "Calorimeter2LV");
-
- new G4PVPlacement(0, 
-		   G4ThreeVector(2.5*cm,(-1)*yShift+ 7.5*cm, 0.),
-		   calorimeter2LV, 
-		   "Calorimeter2MV", 
-		   worldLV, 
-		   false, 
-		   0, 
+		   i,
 		   fCheckOverlaps);
 
 G4VSolid* crystalS = 
   new G4Box("crystalS", crystalFace/2, crystalFace/2, crystalLength/2);
 
 G4LogicalVolume* crystalLV = 
-  new G4LogicalVolume(crystalS, fCalorMaterial, "CrystalLV");
+  new G4LogicalVolume(crystalS, 
+		      fCalorMaterial, 
+		      "CrystalLV");
 
- G4VPVParameterisation* crysParam1 = new CellParameterisation(1);
+ G4VPVParameterisation* crysParam = new SquareParameterisation(5);
 
- new G4PVParameterised("CrystalPV", crystalLV, calorimeter1LV, 
-		       kXAxis, 396, crysParam1);
+ 
 
- G4VPVParameterisation* crysParam2 = new CellParameterisation(-1);
+new  G4PVParameterised("CrystalPV", 
+		   crystalLV, 
+		   fLogicCalor[i], 
+		   kXAxis, 
+		   25, 
+		   crysParam);
 
- new G4PVParameterised("CrystalPV", crystalLV, calorimeter2LV, 
-			kXAxis, 396, crysParam2);
 
-G4VSolid* calorimeterM = 
-  new G4Box("calorimeterM", crystalFace*size/2, crystalFace*14/2,
-	    crystalLength/2);
-
-G4LogicalVolume* calorimeterMLV = 
-  new G4LogicalVolume(calorimeterM, Air, "CalorimeterMLV");
-
-  new G4PVPlacement (0, 
-		     G4ThreeVector(2.5*cm, 2.5*cm, 0.),
-		     calorimeterMLV,
-		     "CalorimeterMMV", 
-		     worldLV, 
-		     false,
-		     0, 
-		     fCheckOverlaps);
-
- G4VPVParameterisation* crysParam3 = new SplitParameterisation(1);
-
- new G4PVParameterised("CrystalPV", crystalLV, calorimeterMLV, 
-		   kXAxis, 308, crysParam3); 
+     }
 
 
  //Visualization
@@ -309,7 +320,7 @@ G4LogicalVolume* calorimeterMLV =
 
  color->SetVisibility(true);
 
- fLogicTarget ->SetVisAttributes(pink);
+ //fLogicTarget ->SetVisAttributes(pink);
  //Setting user Limits
 
  G4double maxStep = 1.0*cm;
@@ -319,20 +330,24 @@ G4LogicalVolume* calorimeterMLV =
 
  return worldPV;
 
-}
+   }
+
 
 void DetectorConstruction::ConstructSDandField()
 {
   //!!!
   //Create a sensitive detector and put it with logical volumes
+  
   G4String calorimeterSDname = "CalorimeterSD";
-  CalorimeterSD* calorimeterSD =
-    new CalorimeterSD(calorimeterSDname, "CalorimeterHitsCollection");
+  TestSD* calorimeterSD =
+    new TestSD(calorimeterSDname, "TestHitsCollection");
 
   SetSensitiveDetector("CrystalLV", calorimeterSD, true); //sets SD to all logical volumes with the name CrystalLV
 
   G4cout << "SD Construction.....Complete!" << G4endl;
+ 
 }
+
 
 void DetectorConstruction::SetTargetMaterial(G4String materialName)
 {
@@ -364,7 +379,7 @@ G4Material* pttoMaterial =
  if(fCalorMaterial != pttoMaterial) {
    if ( pttoMaterial) {
      fCalorMaterial = pttoMaterial; 
-     for (G4int copyNum=0; copyNum<10; copyNum++){
+     for (G4int copyNum=0; copyNum<49; copyNum++){
      if (fLogicCalor[copyNum]) fLogicCalor[copyNum]->SetMaterial(fCalorMaterial);
      G4cout << "\n-----> The calorimeter is made of " << materialName << G4endl;
      }
