@@ -127,7 +127,7 @@ def update():
     plt.setTitle('Sample Rate: %0.2f'%r)
     
 
-
+    np.set_printoptions(threshold = 'nan')
     print v
     print str(v)
 
@@ -146,7 +146,7 @@ def update():
 timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
 timer.setSingleShot(True)
-timer.start(1000)
+timer.start(100)
 
 # Start Qt event loop.    
 if sys.flags.interactive == 0:
