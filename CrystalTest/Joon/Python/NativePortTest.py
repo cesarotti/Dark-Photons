@@ -3,6 +3,8 @@ import time, threading, sys
 import serial
 import numpy as np
 
+import binascii
+
 class SerialReader(threading.Thread):
     """ Defines a thread for reading and buffering serial data.
     By default, about 5MSamples are stored in the buffer.
@@ -110,7 +112,7 @@ s = serial.Serial('/dev/tty.usbmodem1411')
 app = pg.mkQApp()
 plt = pg.plot()
 plt.setLabels(left=('ADC Signal', 'V'), bottom=('Time', 's'))
-plt.setYRange(0.0, 3.3)
+#plt.setYRange(0.0, 3.3)
             
 # Create thread to read and buffer serial data.
 thread = SerialReader(s)
@@ -120,10 +122,21 @@ thread.start()
 # samples and plot them.
 def update():
     global plt, thread
-    t,v,r = thread.get(1000*1024, downsample=100)
+    t,v,r = thread.get(1000*1024, downsample = 10)
     plt.plot(t, v, clear=True)
     plt.setTitle('Sample Rate: %0.2f'%r)
     
+
+
+    print v
+    print str(v)
+
+    txtfl = open("voltagedata.txt", 'w')
+    txtfl.write(str(v))
+    #txtfl.close()
+
+
+
     if not plt.isVisible():
         thread.exit()
         timer.stop()
@@ -132,7 +145,8 @@ def update():
 # as rapidly as it can handle.
 timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
-timer.start(0)
+timer.setSingleShot(True)
+timer.start(1000)
 
 # Start Qt event loop.    
 if sys.flags.interactive == 0:
