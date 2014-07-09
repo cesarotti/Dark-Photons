@@ -9,27 +9,23 @@ class Plotter(object):
         self.rise = rise
         self.tail = tail
         self.filedir = filedir
-        self.dta = self.datastring.split()
+        self.dta = []
         self.listofdata = []
-    '''
-    #getters
-    def getdatastring(self):
-        return self.datastring
-    
-    def getdta(self):
-        return self.dta
-    
-    def getlistofdata(self):
-        return self.listofdata'''
     
     #filters the data
     def filterdata(self):
+        for i in range(len(self.datastring)):
+            self.dta.append(float(self.datastring[i]))
+    """
+    def filterdata(self):
         usefuldata = []
         for i in range(len(self.dta)):
+            usefuldata.append(float(self.dta[i]))
+            '''
             #makes sure the data is a number and is within range
-            if self.dta[i].isdigit() and int(self.dta[i]) < 4096:
-                usefuldata.append(int(self.dta[i]))
-        self.dta = usefuldata
+            if float(self.dta[i]) < 4096:
+                usefuldata.append(float(self.dta[i]))'''
+        self.dta = usefuldata"""
 
     #given a a trigger value, and expected rise/fall times, 
     #returns a list of pulses
@@ -82,13 +78,14 @@ class Plotter(object):
             plt.close()
 
 def main():
-    ser = serial.Serial('//dev//tty.usbmodem1411',115200)
-
-    dta = ""
-    for i in range(3):
-        dta += ser.readline().strip()
-
-    pltr = Plotter(dta, 0, filedir = "//Users//Joon//Desktop//TEMP")
+    voltagedata = open("voltagedata.txt", 'r')
+    voltages = voltagedata.read().split()
+    pltr = Plotter(voltages, 0.09, 10, 10, filedir = "//Users//Joon//Desktop//TEMP")
+    pltr.filterdata()
+    pltr.splicedata()
+    pltr.plotdatatog()
+    pltr.plotdatasep()
+    voltagedata.close()
 
 if __name__ == '__main__':
     main()

@@ -3,8 +3,6 @@ import time, threading, sys
 import serial
 import numpy as np
 
-import binascii
-
 class SerialReader(threading.Thread):
     """ Defines a thread for reading and buffering serial data.
     By default, about 5MSamples are stored in the buffer.
@@ -128,8 +126,6 @@ def update():
     
 
     np.set_printoptions(threshold = 'nan')
-    print v
-    print str(v)
 
     txtfl = open("voltagedata.txt", 'w')
     txtfl.write(str(v))
@@ -146,7 +142,7 @@ def update():
 timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
 timer.setSingleShot(True)
-timer.start(100)
+timer.start(500)
 
 # Start Qt event loop.    
 if sys.flags.interactive == 0:
