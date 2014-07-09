@@ -15,7 +15,8 @@ class Plotter(object):
     #filters the data
     def filterdata(self):
         for i in range(len(self.datastring)):
-            self.dta.append(float(self.datastring[i]))
+            if not "[" in self.datastring[i] and not "]" in self.datastring[i]:
+                self.dta.append(float(self.datastring[i]))
     """
     def filterdata(self):
         usefuldata = []
@@ -80,11 +81,11 @@ class Plotter(object):
 def main():
     voltagedata = open("voltagedata.txt", 'r')
     voltages = voltagedata.read().split()
-    pltr = Plotter(voltages, 0.09, 10, 10, filedir = "//Users//Joon//Desktop//TEMP")
+    pltr = Plotter(voltages, 10, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots")
     pltr.filterdata()
     pltr.splicedata()
     pltr.plotdatatog()
-    pltr.plotdatasep()
+    #pltr.plotdatasep()
     voltagedata.close()
 
 if __name__ == '__main__':

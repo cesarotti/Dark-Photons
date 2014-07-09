@@ -142,7 +142,7 @@ def update():
 timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
 timer.setSingleShot(True)
-timer.start(500)
+timer.start(100)
 
 # Start Qt event loop.    
 if sys.flags.interactive == 0:
