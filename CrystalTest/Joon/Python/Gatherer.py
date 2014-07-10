@@ -88,7 +88,7 @@ class SerialReader(threading.Thread):
         # Convert array to float and rescale to voltage.
         # Assume 3.3V / 12bits
         # (we need calibration data to do a better job on this)
-        data = data.astype(np.float32) #* (3.3 / 2**12)
+        data = data.astype(np.float32) #JOON * (3.3 / 2**12)
         if downsample > 1:  # if downsampling is requested, average N samples together
             data = data.reshape(num/downsample,downsample).mean(axis=1)
             num = data.shape[0]
@@ -106,11 +106,12 @@ class SerialReader(threading.Thread):
 # (your port string may vary; windows users need 'COMn')
 s = serial.Serial('/dev/tty.usbmodem1411')
 
+"""JOON
 # Create the GUI
 app = pg.mkQApp()
 plt = pg.plot()
 plt.setLabels(left=('ADC Signal', 'V'), bottom=('Time', 's'))
-#plt.setYRange(0.0, 3.3)
+#plt.setYRange(0.0, 3.3)"""
             
 # Create thread to read and buffer serial data.
 thread = SerialReader(s)
@@ -120,30 +121,37 @@ thread.start()
 # samples and plot them.
 def update():
     global plt, thread
-    t,v,r = thread.get(1000*1024, downsample = 10)
-    plt.plot(t, v, clear=True)
-    plt.setTitle('Sample Rate: %0.2f'%r)
+    t,v,r = thread.get(1000*1024, downsample = 10)#JOON
+    """JOON plt.plot(t, v, clear=True)
+    plt.setTitle('Sample Rate: %0.2f'%r)"""
     
-
+    #JOON makes sure that numpy won't truncate the middle of a long array
     np.set_printoptions(threshold = 'nan')
 
+    #JOON Simple write to txt
     txtfl = open("voltagedata.txt", 'w')
     txtfl.write(str(v))
-    #txtfl.close()
+    txtfl.close()
 
-
-
+    """JOON
     if not plt.isVisible():
         thread.exit()
-        timer.stop()
+        timer.stop()"""
+
 
 # Set up a timer with 0 interval so Qt will call update()
 # as rapidly as it can handle.
-timer = pg.QtCore.QTimer()
+"""JOON timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
 timer.setSingleShot(True)
 timer.start(100)
+"""
 
+#JOON
+update()
+
+
+"""JOON
 # Start Qt event loop.    
 if sys.flags.interactive == 0:
-    app.exec_()
+    app.exec_()"""
