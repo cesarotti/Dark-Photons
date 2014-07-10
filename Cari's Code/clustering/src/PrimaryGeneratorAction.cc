@@ -76,7 +76,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     G4cerr << "The gun will be place in the center." << G4endl;
   }
 
-  fParticleGun->SetParticlePosition(G4ThreeVector(2.5*cm, 14*5.0*cm, -worldZHalfLength));
+  fParticleGun->SetParticlePosition(G4ThreeVector(0.,-13*5.0*cm,-worldZHalfLength));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
  

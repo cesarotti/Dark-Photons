@@ -48,7 +48,7 @@ G4int hceID =
   G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]); 
  hce -> AddHitsCollection( hceID, fHitsCollection);
 
- for(G4int i=0; i<1100; i++)
+ for(G4int i=0; i<1000; i++)
    {
      TestHit* hit = new TestHit(i);
      fHitsCollection->insert(hit); 
@@ -60,16 +60,15 @@ G4bool TestSD::ProcessHits(G4Step* step,
 				  G4TouchableHistory* )
 {
   G4double edep = step->GetTotalEnergyDeposit();
-  if (edep==0.) return true;
 
   G4TouchableHistory* touchable 
     = (G4TouchableHistory*)(step->GetPreStepPoint()->GetTouchable());
   G4VPhysicalVolume* physical = touchable->GetVolume();
   G4int copyNo = physical->GetCopyNo();
-  G4int regionNo = step->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(1);
+  G4int spiralNo = step->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber(1);
  
 
-  TestHit* hit = (*fHitsCollection)[copyNo]; 
+  TestHit* hit = (*fHitsCollection)[copyNo+(spiralNo-9)*25]; 
 
   if(!(hit->GetLogV()))
     {
@@ -79,20 +78,8 @@ G4bool TestSD::ProcessHits(G4Step* step,
   hit->AddEdep(edep);
   hit->SetPos(step->GetPostStepPoint()->GetPosition());
   hit->SetCellID(copyNo);
-  hit->SetRegion(regionNo);
-  if (regionNo==1) {
-    hit->SetRow((copyNo/36)+7); 
-    hit->SetCol((copyNo%36)-18); }
-  if (regionNo==2) {
-    hit->SetRow((copyNo/22)-7);
-    G4int colC = copyNo%22; 
-    if (colC<11) {hit->SetCol(colC-18);}
-    else {hit->SetCol(colC+14);}
-  }
-  if (regionNo==3) {
-    hit->SetRow((copyNo/36)-18);
-    hit->SetCol((copyNo%36)-18);
-  }
+  hit->SetSpiralID(spiralNo);
+
 
 
   return true;

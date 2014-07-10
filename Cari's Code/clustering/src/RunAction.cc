@@ -33,13 +33,31 @@ RunAction::RunAction()
   G4cout << "Using" << analysisMan->GetType() << G4endl;
   analysisMan->SetVerboseLevel(2);
 
-   analysisMan->CreateNtuple("Gamma_Info", "Photon hits");
-   analysisMan->CreateNtupleIColumn("numHits"); // 0
-   analysisMan->CreateNtupleIColumn("Row"); // 1
-   analysisMan->CreateNtupleIColumn("Col"); // 2
-   analysisMan->CreateNtupleIColumn("CellID");
-   analysisMan->FinishNtuple();
+  for (G4int i=9; i<49; i++)
+    {
+      std::stringstream ss; 
+      ss << i; 
+      G4String string = ss.str();
+      analysisMan->CreateNtuple("Cluster_"+string, "Photon hits"+string);
+      for (G4int j = 0; j<25; j++)
+	{
+	  std::stringstream ss2; 
+	  ss2 << j; 
+	  G4String str = ss2.str();
+	  analysisMan->CreateNtupleIColumn(i-9, "Crystal_"+str);
+	}
+      analysisMan->FinishNtuple(i);
+    }
   
+analysisMan->CreateH2("Hit_Map", "Map",
+                   25, 0, 24, 
+                   40, 9, 48,
+                   "none", 
+                   "none",
+                   "CrystalNum", 
+                   "ClusterNum",
+                   "linear",
+                   "linear");
 
 }
 
