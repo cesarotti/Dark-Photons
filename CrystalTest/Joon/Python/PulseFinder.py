@@ -21,11 +21,9 @@ class Plotter(object):
     def filterdata(self):
         usefuldata = []
         for i in range(len(self.dta)):
-            usefuldata.append(float(self.dta[i]))
-            '''
             #makes sure the data is a number and is within range
             if float(self.dta[i]) < 4096:
-                usefuldata.append(float(self.dta[i]))'''
+                usefuldata.append(float(self.dta[i]))
         self.dta = usefuldata"""
 
     #given a a trigger value, and expected rise/fall times, 
