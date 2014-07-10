@@ -94,30 +94,23 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   TestHitsCollection* hitColl = static_cast<TestHitsCollection*>(hce->GetHC(collectionID));
 
-  G4int numHit(0);
   G4double eDep(0.);
-  for (G4int i=0; i<1100; i++)
+  for (G4int i=9; i<49; i++)
     {
-      TestHit* hit = (*hitColl)[i];
-      eDep = hit->GetEnergyDep();
-      if (eDep > 0.)
+      for (G4int j=0; j<25; j++)
 	{
-	  numHit++;
-	  if (eDep>0.5*MeV)
+	  TestHit* hit = (*hitColl)[(i-9)*25+j];
+	  eDep = hit->GetEnergyDep();
+	  if (eDep >0.5*MeV)
 	    {
-	      G4int id = hit->GetCellID();
-	      analysisMan->FillNtupleIColumn(3, id);
-	      analysisMan->FillNtupleIColumn(1, id/36); 
-	      analysisMan->FillNtupleIColumn(2, id%36);
+	      analysisMan->FillNtupleIColumn(i-9, j, eDep);
+	      analysisMan->FillH2(0, j, i-9, 1);
 	    }
       
 	}
+      analysisMan->AddNtupleRow(i-9);
     }
-      analysisMan->FillNtupleIColumn(0, numHit);
-  analysisMan->AddNtupleRow();
-
-  
-
+ 
 
  
     

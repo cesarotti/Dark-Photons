@@ -28,9 +28,7 @@ TestHit::TestHit()
     fPos(G4ThreeVector()), 
     fLogV(0), 
     fCellID(-1),
-    fRow(-1),
-    fCol(-1), 
-    fRegion(-2)
+    fSpiralID(-1)
 {}
 
 TestHit::~TestHit()
@@ -41,10 +39,8 @@ TestHit::TestHit(G4int z)
     fEnergyDep(0.), 
     fPos(G4ThreeVector()),
     fLogV(0), 
-    fCellID(z),
-    fRow(-1),
-    fCol(-1), 
-    fRegion(-2)
+    fCellID(z%25),
+    fSpiralID(z/25+9)
 {}
 
 //Create a hit from another hit
@@ -55,9 +51,7 @@ TestHit::TestHit(const TestHit& hit)
   fPos = hit.fPos;
   fLogV = hit.fLogV;
   fCellID = hit.fCellID;
-  fRow = hit.fRow;
-  fCol = hit.fCol;
-  fRegion = hit.fRegion;
+  fSpiralID = hit.fSpiralID;
   
 }
 
@@ -67,9 +61,7 @@ const TestHit& TestHit::operator=(const TestHit& hit)
   fPos = hit.fPos;
   fLogV = hit.fLogV;
   fCellID = hit.fCellID;
-  fRow = hit.fRow;
-  fCol = hit.fCol;
-  fRegion = hit.fRegion;
+  fSpiralID = hit.fSpiralID;
 
   return *this;
 
@@ -89,9 +81,16 @@ void TestHit::Draw()
       G4Circle circle(fPos);
       circle.SetScreenSize(4.);
       circle.SetFillStyle(G4Circle::filled);
-      G4Colour colour(0.,1.0,0.);
-      G4VisAttributes attribs(colour);
-      circle.SetVisAttributes(attribs);
+      if (fEnergyDep > .5*MeV)
+	{
+	  G4Colour colour(1., 0., 0.);
+	  G4VisAttributes attribs(colour);
+	  circle.SetVisAttributes(attribs);}
+      else
+	{
+	  G4Colour colour(0., 1., 0.);
+	  G4VisAttributes attribs(colour);
+	  circle.SetVisAttributes(attribs);}
       pVVisManager->Draw(circle);
     }
 }

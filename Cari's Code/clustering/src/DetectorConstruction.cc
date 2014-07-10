@@ -151,16 +151,14 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   //Sizes and lengths
 
   G4double targetLength = 10.0*cm; // depth of target
-  G4double targetFace = 10.0*cm; //lengths of sides of face of target
+  // G4double targetFace = 10.0*cm; //lengths of sides of face of target
 
   G4double crystalLength = 2.54*12.0*cm; 
-  G4double calorLength = crystalLength;
   G4double crystalFace = 5.0*cm;
 
   G4double calorSpacing = 10*m; //distance from target to calorimeter
   G4double targetPos = -(.5*calorSpacing); //position of Z coordinate of target
   G4double calorDist = 10*m + .5*targetLength;
-  G4double calorPos = calorDist + targetPos; //position of calorimeter
 
 
   G4double worldLength = 3*(calorDist+crystalLength+targetLength-targetPos);
@@ -241,15 +239,10 @@ G4VSolid* boxS =
  G4ThreeVector position = G4ThreeVector(); 
  for (G4int i = 9; i<49; i++)
    {
-     G4LogicalVolume* box = 
-       new G4LogicalVolume(boxS, Air, "Array", 0, 0, 0); 
-
      if (i<1) { nLevel = 1; startID = 0;}
      else if (i<9) {nLevel = 2; startID = 1; }
      else if (i<25) {nLevel = 3; startID = 9; }
      else if (i<49) {nLevel = 4; startID = 25 ;}
-
-     G4cout << "nLevel = " << nLevel << G4endl;
 
      xPos[i] = (nLevel-1)*crysLength;
      yPos[i] = (nLevel-1)*crysLength;
@@ -269,8 +262,6 @@ G4VSolid* boxS =
 	   yPos[startID+6*(nLevel-1)]+(i-(6*(nLevel-1)+startID))*crysLength;
        }
 
-     G4cout << "xPos : " << xPos[i] << G4endl;
-     G4cout << "yPos : " << yPos[i] << G4endl;
      
      position = G4ThreeVector(xPos[i], yPos[i], 0.); 
 
@@ -287,6 +278,10 @@ G4VSolid* boxS =
 		   false, 
 		   i,
 		   fCheckOverlaps);
+   }
+
+ for (int i=9; i<49; i++)
+   {
 
 G4VSolid* crystalS = 
   new G4Box("crystalS", crystalFace/2, crystalFace/2, crystalLength/2);
@@ -303,7 +298,7 @@ G4LogicalVolume* crystalLV =
 new  G4PVParameterised("CrystalPV", 
 		   crystalLV, 
 		   fLogicCalor[i], 
-		   kXAxis, 
+		   kZAxis, 
 		   25, 
 		   crysParam);
 
@@ -313,7 +308,6 @@ new  G4PVParameterised("CrystalPV",
 
  //Visualization
 
- G4VisAttributes* pink = new G4VisAttributes(G4Colour(1.0, 0.4, 0.8));
  G4VisAttributes* color  = new G4VisAttributes(G4Colour(0.9, 0.7, 0.2));
 
  worldLV ->SetVisAttributes(new G4VisAttributes(G4Colour(1.0,1.0,1.0)));
