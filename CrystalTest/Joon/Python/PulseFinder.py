@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import serial
 
 class Plotter(object):
     #dta: list of data to plot
@@ -79,7 +78,7 @@ class Plotter(object):
 def main():
     voltagedata = open("voltagedata.txt", 'r')
     voltages = voltagedata.read().split()
-    pltr = Plotter(voltages, 20, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots")
+    pltr = Plotter(voltages, 20, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots//TEMP4")
     pltr.filterdata()
     pltr.splicedata()
     pltr.plotdatatog()

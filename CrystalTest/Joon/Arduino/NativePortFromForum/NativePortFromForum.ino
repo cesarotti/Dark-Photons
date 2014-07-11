@@ -9,14 +9,16 @@
 // stty -F /dev/ttyACM0 raw -iexten -echo -echoe -echok -echoctl -echoke -onlcr
 
 volatile int bufn,obufn;
-uint16_t buf[8][4096];   // 4 buffers of 256 readings
+const int NBUFFER=4096;
+const int NSLOT = 8; // must be power of 2
+uint16_t buf[NSLOT][NBUFFER];   // 4 buffers of 256 readings
 
 void ADC_Handler(){     // move DMA pointers to next buffer
   int f=ADC->ADC_ISR;
   if (f&(1<<27)){
-   bufn=(bufn+1)&3;
-   ADC->ADC_RNPR=(uint32_t)buf[bufn];
-   ADC->ADC_RNCR=256;
+   bufn=(bufn+1)&(NSLOT-1);
+   ADC->ADC_RNPR=(uint32_t)buf[bufn]; //write the data to this location
+   ADC->ADC_RNCR=NBUFFER; //and write this many values
   } 
 }
 
@@ -33,9 +35,9 @@ void setup(){
   ADC->ADC_IDR=~(1<<27);
   ADC->ADC_IER=1<<27;
   ADC->ADC_RPR=(uint32_t)buf[0];   // DMA buffer
-  ADC->ADC_RCR=256;
+  ADC->ADC_RCR=4096;
   ADC->ADC_RNPR=(uint32_t)buf[1]; // next DMA buffer
-  ADC->ADC_RNCR=256;
+  ADC->ADC_RNCR=4096;
   bufn=obufn=1;
   ADC->ADC_PTCR=1;
   ADC->ADC_CR=2;
