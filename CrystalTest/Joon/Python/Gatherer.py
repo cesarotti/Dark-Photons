@@ -104,7 +104,7 @@ class SerialReader(threading.Thread):
 
 # Get handle to serial port
 # (your port string may vary; windows users need 'COMn')
-s = serial.Serial('/dev/tty.usbmodem1421')
+s = serial.Serial('/dev/tty.usbmodem1411')
 
 """JOON
 # Create the GUI
@@ -121,7 +121,7 @@ thread.start()
 # samples and plot them.
 def update():
     global plt, thread
-    t,v,r = thread.get(1000*1024, downsample = 2)#JOON
+    t,v,r = thread.get(1000, downsample = 1)#JOON
     """JOON plt.plot(t, v, clear=True)
     plt.setTitle('Sample Rate: %0.2f'%r)"""
     
@@ -129,9 +129,8 @@ def update():
     np.set_printoptions(threshold = 'nan')
 
     #JOON Simple write to txt
-    txtfl = open("voltagedata.txt", 'w')
+    global txtfl
     txtfl.write(str(v))
-    txtfl.close()
 
     """JOON
     if not plt.isVisible():
@@ -148,9 +147,11 @@ timer.start(100)
 """
 
 #JOON
+txtfl = open("voltagedataTEMP1000Runs2.txt", 'w')
 time.sleep(0.25)
-update()
-
+for i in range(1000):
+    update()
+txtfl.close()
 
 """JOON
 # Start Qt event loop.    
