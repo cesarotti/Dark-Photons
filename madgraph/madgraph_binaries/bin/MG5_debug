@@ -1,0 +1,54 @@
+#************************************************************
+#*                     MadGraph5_aMC@NLO                    *
+#*                                                          *
+#*                *                       *                 *
+#*                  *        * *        *                   *
+#*                    * * * * 5 * * * *                     *
+#*                  *        * *        *                   *
+#*                *                       *                 *
+#*                                                          *
+#*                                                          *
+#*         VERSION 2.1.2                 2014-07-03         *
+#*                                                          *
+#*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+#*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+#*                                                          *
+#************************************************************
+#*                                                          *
+#*               Command File for MadGraph5_aMC@NLO         *
+#*                                                          *
+#*     run as ./bin/mg5_aMC  filename                       *
+#*                                                          *
+#************************************************************
+set group_subprocesses Auto
+set ignore_six_quark_processes False
+set gauge unitary
+set complex_mass_scheme False
+import model sm-lepton masses
+Traceback (most recent call last):
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/extended_cmd.py", line 879, in onecmd
+    return self.onecmd_orig(line, **opt)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/extended_cmd.py", line 872, in onecmd_orig
+    return func(arg, **opt)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/master_interface.py", line 246, in do_import
+    self.cmd.do_import(self, *args, **opts)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/madgraph_interface.py", line 3969, in do_import
+    self.import_command_file(args[1])
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/extended_cmd.py", line 1035, in import_command_file
+    self.exec_cmd(line, precmd=True)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/extended_cmd.py", line 919, in exec_cmd
+    stop = Cmd.onecmd_orig(current_interface, line, **opt)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/extended_cmd.py", line 872, in onecmd_orig
+    return func(arg, **opt)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/master_interface.py", line 246, in do_import
+    self.cmd.do_import(self, *args, **opts)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/madgraph/interface/madgraph_interface.py", line 3902, in do_import
+    self._curr_model = import_ufo.import_model(args[1], prefix=prefix)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/models/import_ufo.py", line 131, in import_model
+    keep_external=keep_external)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/models/import_ufo.py", line 1210, in restrict_model
+    self.set_parameters_and_couplings(param_card)
+  File "/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/models/model_reader.py", line 81, in set_parameters_and_couplings
+    raise MadGraph5Error, "No such file %s" % param_card
+MadGraph5Error: No such file /home/local1/project/Dark-Photons/madgraph/madgraph_binaries/models/sm/restrict_lepton.dat
+Fail to write options with error No model currently active, please import a model!
