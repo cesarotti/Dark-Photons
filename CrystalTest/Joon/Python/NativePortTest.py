@@ -104,7 +104,7 @@ class SerialReader(threading.Thread):
 
 # Get handle to serial port
 # (your port string may vary; windows users need 'COMn')
-s = serial.Serial('/dev/tty.usbmodem1411')
+s = serial.Serial('/dev/tty.usbmodem1421')
 
 # Create the GUI
 app = pg.mkQApp()
@@ -120,7 +120,7 @@ thread.start()
 # samples and plot them.
 def update():
     global plt, thread
-    t,v,r = thread.get(1000*1024, downsample = 10)
+    t,v,r = thread.get(1000*1024, downsample = 2)
     plt.plot(t, v, clear=True)
     plt.setTitle('Sample Rate: %0.2f'%r)
     
@@ -142,7 +142,7 @@ def update():
 timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
 timer.setSingleShot(True)
-timer.start(100)
+timer.start(2000)
 
 # Start Qt event loop.    
 if sys.flags.interactive == 0:

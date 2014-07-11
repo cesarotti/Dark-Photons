@@ -104,7 +104,7 @@ class SerialReader(threading.Thread):
 
 # Get handle to serial port
 # (your port string may vary; windows users need 'COMn')
-s = serial.Serial('/dev/tty.usbmodem1411')
+s = serial.Serial('/dev/tty.usbmodem1421')
 
 """JOON
 # Create the GUI
@@ -121,7 +121,7 @@ thread.start()
 # samples and plot them.
 def update():
     global plt, thread
-    t,v,r = thread.get(1000*1024, downsample = 10)#JOON
+    t,v,r = thread.get(1000*1024, downsample = 2)#JOON
     """JOON plt.plot(t, v, clear=True)
     plt.setTitle('Sample Rate: %0.2f'%r)"""
     
@@ -148,6 +148,7 @@ timer.start(100)
 """
 
 #JOON
+time.sleep(0.25)
 update()
 
 
