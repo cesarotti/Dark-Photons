@@ -79,11 +79,11 @@ class Plotter(object):
 def main():
     voltagedata = open("voltagedata.txt", 'r')
     voltages = voltagedata.read().split()
-    pltr = Plotter(voltages, 10, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots")
+    pltr = Plotter(voltages, 20, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots")
     pltr.filterdata()
     pltr.splicedata()
     pltr.plotdatatog()
-    #pltr.plotdatasep()
+    pltr.plotdatasep()
     voltagedata.close()
 
 if __name__ == '__main__':
