@@ -1,0 +1,107 @@
+#************************************************************
+#*               MadGraph5_aMC@NLO/MadEvent                 *
+#*                                                          *
+#*                *                       *                 *
+#*                  *        * *        *                   *
+#*                    * * * * 5 * * * *                     *
+#*                  *        * *        *                   *
+#*                *                       *                 *
+#*                                                          *
+#*                                                          *
+#*         VERSION 5.2.1.2                                  *
+#*                                                          *
+#*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+#*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+#*                                                          *
+#************************************************************
+#*                                                          *
+#*               Command File for MadEvent                  *
+#*                                                          *
+#*     run as ./bin/madevent.py filename                    *
+#*                                                          *
+#************************************************************
+generate_events 
+Traceback (most recent call last):
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/extended_cmd.py", line 879, in onecmd
+    return self.onecmd_orig(line, **opt)
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/extended_cmd.py", line 872, in onecmd_orig
+    return func(arg, **opt)
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/madevent_interface.py", line 2107, in do_generate_events
+    postcmd=False)
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/extended_cmd.py", line 919, in exec_cmd
+    stop = Cmd.onecmd_orig(current_interface, line, **opt)
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/extended_cmd.py", line 872, in onecmd_orig
+    return func(arg, **opt)
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/madevent_interface.py", line 2476, in do_survey
+    self.configure_directory()
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/madevent_interface.py", line 3570, in configure_directory
+    self.compile(arg=[name], cwd=os.path.join(self.me_dir, 'Source'))
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/extended_cmd.py", line 987, in compile
+    return misc.compile(nb_core=self.options['nb_core'], *args, **opts)
+  File "/home/local1/project/Dark-Photons/madgraph/twogammamasses/bin/internal/misc.py", line 293, in compile
+    raise MadGraph5Error, error_text
+MadGraph5Error: A compilation Error occurs when trying to compile /home/local1/project/Dark-Photons/madgraph/twogammamasses/Source.
+The compilation fails with the following output message:
+    gfortran -O -w -fbounds-check -ffixed-line-length-132  -c -o setrun.o setrun.f
+    cd PDF; make	
+    cd MODEL; make    
+    make[1]: Entering directory `/home/local1/project/Dark-Photons/madgraph/twogammamasses/Source/PDF'
+    make[1]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
+    ar cru  ../../lib/libpdf.a  Ctq4Fn.o Ctq5Par.o Ctq5Pdf.o Partonx5.o Ctq6Pdf.o cteq3.o mrs98.o mrs98lo.o mrs98ht.o mrs99.o mrst2001.o mrst2002.o jeppe02.o pdfwrap.o opendata.o pdf.o PhotonFlux.o pdg2pdf.o NNPDFDriver.o
+    make[1]: Entering directory `/home/local1/project/Dark-Photons/madgraph/twogammamasses/Source/MODEL'
+    make[1]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
+    gfortran -O -w -fbounds-check -ffixed-line-length-132 -c -o rw_para.o rw_para.f
+    ar cru  ../../lib/libmodel.a  couplings.o lha_read.o printout.o rw_para.o model_functions.o couplings1.o couplings2.o
+    ranlib  ../../lib/libmodel.a
+    ar: ../../lib/libpdf.a: No space left on device
+    /tmp/cccdCG2o.s: Assembler messages:
+    /tmp/cccdCG2o.s:744: Fatal error: can't write setrun.o: No space left on device
+    /tmp/cccdCG2o.s:744: Fatal error: can't close setrun.o: No space left on device
+    make: *** [setrun.o] Error 1
+    make: *** Waiting for unfinished jobs....
+    make[1]: Leaving directory `/home/local1/project/Dark-Photons/madgraph/twogammamasses/Source/MODEL'
+    make[1]: *** [../../lib/libpdf.a] Error 1
+    make[1]: Leaving directory `/home/local1/project/Dark-Photons/madgraph/twogammamasses/Source/PDF'
+    make: *** [../lib/libpdf.a] Error 2
+    
+Please try to fix this compilations issue and retry.
+Help might be found at https://answers.launchpad.net/madgraph5.
+If you think that this is a bug, you can report this at https://bugs.launchpad.net/madgraph5
+                              Run Options    
+                              -----------    
+               stdout_level 	:	None
+
+                         MadEvent Options    
+                         ----------------    
+     automatic_html_opening 	:	False (user set)
+          cluster_temp_path 	:	None
+              cluster_queue 	:	madgraph
+             cluster_memory 	:	None
+               cluster_time 	:	None
+                    nb_core 	:	8 (user set)
+                   run_mode 	:	2
+
+                      Configuration Options    
+                      ---------------------    
+                text_editor 	:	None
+      cluster_status_update 	:	(600, 30)
+               pythia8_path 	:	None (user set)
+                  hwpp_path 	:	None (user set)
+            pythia-pgs_path 	:	/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/pythia-pgs (user set)
+                    td_path 	:	None (user set)
+               delphes_path 	:	None (user set)
+                thepeg_path 	:	None (user set)
+               cluster_type 	:	condor
+        exrootanalysis_path 	:	/home/local1/project/Dark-Photons/madgraph/madgraph_binaries/ExRootAnalysis (user set)
+                 eps_viewer 	:	None
+                web_browser 	:	None
+               syscalc_path 	:	None (user set)
+           madanalysis_path 	:	None (user set)
+                     lhapdf 	:	lhapdf-config
+                 hepmc_path 	:	None (user set)
+         cluster_retry_wait 	:	300
+           fortran_compiler 	:	None
+                auto_update 	:	7 (user set)
+           cluster_nb_retry 	:	1
+                    timeout 	:	60
+               cpp_compiler 	:	None
