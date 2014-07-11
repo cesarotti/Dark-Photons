@@ -9,7 +9,7 @@
 
 #include "DetectorConstruction.hh"
 #include "DetectorMessenger.hh"
-#include "CalorimeterSD.hh"
+#include "BasicHitSD.hh"
 
 #include "G4Material.hh"
 #include "G4NistManager.hh"
@@ -156,7 +156,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double calorDist = 10*m + .5*targetLength;
   G4double calorPos = calorDist + targetPos; //position of calorimeter
 
-  G4double worldLength = 3*(calorDist+crystalLength+targetLength-targetPos);
+  G4double worldLength = 2*calorSpacing;
 
   G4double centerToFront = calorDist-0.5*crystalLength;
 
@@ -202,7 +202,7 @@ G4VPhysicalVolume* worldPV
  G4ThreeVector positionTarget = G4ThreeVector(0, 0, targetPos); 
 
 G4Box* targetS = 
-  new G4Box("target", targetFace/2, targetFace/2, targetLength);
+  new G4Box("target", targetFace/2, targetFace/2, targetLength/2);
 
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
@@ -228,6 +228,9 @@ G4Box* targetS =
 
  G4double innerRad = 52.4*cm; //ThetaToDistance(theta1, centerToFront);
  G4double outerRad = 69.9*cm; //ThetaToDistance(theta2, centerToFront);
+
+G4cout << "The target is centered at: " << targetPos << G4endl;
+ G4cout << "The calorimeter is centered at : " << calorPos << G4endl;
 
 
 G4Tubs* calorimeterS = 
@@ -274,11 +277,11 @@ void DetectorConstruction::ConstructSDandField()
 {
   //!!!
   //Create a sensitive detector and put it with logical volumes
-  G4String calorimeterSDname = "CalorimeterSD";
-  CalorimeterSD* calorimeterSD =
-    new CalorimeterSD(calorimeterSDname, "CalorimeterHitsCollection");
+  G4String basicSDname = "BasicHitSD";
+  BasicHitSD* basicSD =
+    new BasicHitSD(basicSDname, "BasicHitsCollection");
 
-  SetSensitiveDetector("CrystalLV", calorimeterSD, true); //sets SD to all logical volumes with the name CrystalLV
+  SetSensitiveDetector("CrystalLV", basicSD, true); //sets SD to all logical volumes with the name CrystalLV
 
   G4cout << "SD Construction.....Complete!" << G4endl;
 }

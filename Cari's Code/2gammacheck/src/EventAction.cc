@@ -38,7 +38,7 @@
 #include "G4ios.hh"
 #include "G4SDManager.hh"
 
-#include "CalorHit.hh"
+#include "BasicHit.hh"
 
 
 EventAction::EventAction()
@@ -90,9 +90,9 @@ void EventAction::EndOfEventAction(const G4Event* event)
   G4SDManager* fSDM = G4SDManager::GetSDMpointer();
 
   //get ID for the calorimeter's hit collection
-  G4int collectionID = fSDM->GetCollectionID("CalorimeterHitsCollection");
+  G4int collectionID = fSDM->GetCollectionID("BasicHitsCollection");
 
-  CalorimeterHitsCollection* hitColl = static_cast<CalorimeterHitsCollection*>(hce->GetHC(collectionID));
+  BasicHitsCollection* hitColl = static_cast<BasicHitsCollection*>(hce->GetHC(collectionID));
 
   G4int numHits = hitColl->entries();
   

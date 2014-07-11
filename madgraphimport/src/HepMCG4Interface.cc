@@ -93,8 +93,12 @@ void HepMCG4Interface::HepMC2G4(const HepMC::GenEvent* hepmcevt,
     if (! CheckVertexInsideWorld(xvtx.vect()*mm)) continue;
 
     // create G4PrimaryVertex and associated G4PrimaryParticles
+
+  G4double calorSpacing = 10*m; //distance from target to calorimeter
+  G4double targetPos = -(.5*calorSpacing); //position of Z coordinate of target
+
     G4PrimaryVertex* g4vtx=
-      new G4PrimaryVertex(xvtx.x()*mm, xvtx.y()*mm, xvtx.z()*mm,
+      new G4PrimaryVertex(xvtx.x()*mm, xvtx.y()*mm, targetPos + xvtx.z()*mm,
                           xvtx.t()*mm/c_light);
 
     for (HepMC::GenVertex::particle_iterator

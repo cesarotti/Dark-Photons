@@ -33,6 +33,7 @@
 #define HEPMC_G4_INTERFACE_H
 
 #include "G4VPrimaryGenerator.hh"
+#include "HepMC/IO_HEPEVT.h"
 #include "HepMC/GenEvent.h"
 
 /// A base class for primary generation via HepMC object.

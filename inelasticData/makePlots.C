@@ -15,8 +15,6 @@
 #include <iomanip>
 #include <vector>
 
-void whut() {}
-
 void makePlots() {
     /*
     // declare objects
@@ -85,9 +83,9 @@ void makePlots() {
 
     // Initialize histograms
     int nEnergyBins = 50;
-    int nThetaBins = 24;
+    int nThetaBins = 100;
     int nEnergyMax = 6000;
-    int nThetaMax = 8;
+    int nThetaMax = 15;
 
     // electron
     TH1F* heplusEnergy = new TH1F("heplusEnergy", "positron energy distribution", nEnergyBins, 0, nEnergyMax);
@@ -122,7 +120,7 @@ void makePlots() {
     for (Int_t i=0;i<nentries;i++) {
         Hits_Info->GetEntry(i);
 
-        if (theta < 6) { // we're only interested in theta < 6 degrees
+        if (true) { // we're only interested in theta < 6 degrees
 
             if (pID == -11) { // positron
                 heplusEnergy->Fill(energy);
@@ -202,5 +200,4 @@ void makePlots() {
 
     canvas->cd(14);
     hneutronTheta->Draw();
-
 }
