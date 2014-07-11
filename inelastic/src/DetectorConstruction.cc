@@ -161,7 +161,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double calorPos = calorDist + targetPos; //position of calorimeter
 
   G4double calorOuterRad = calorSpacing*tan(10 * pi /180); //outer radius of calorimeter
-  G4double calorInnerRad = calorSpacing*tan(5 * pi / 180); //inner radius of calorimeter
+  G4double calorInnerRad = calorSpacing*tan(0 * pi / 180); //inner radius of calorimeter
 
   G4double worldLength = 1.2*(calorDist+crystalLength+targetLength-targetPos);
 
@@ -207,7 +207,7 @@ G4VPhysicalVolume* worldPV
  G4ThreeVector positionTarget = G4ThreeVector(0, 0, targetPos); 
 
 G4Box* targetS = 
-  new G4Box("target", targetFace/2, targetFace/2, targetLength);
+  new G4Box("target", targetFace/2, targetFace/2, targetLength/2);
 
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
