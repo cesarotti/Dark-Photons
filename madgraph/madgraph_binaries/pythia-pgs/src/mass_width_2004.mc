@@ -1,1 +1,0 @@
-../libraries/PGS4/examples/mass_width_2004.mc
