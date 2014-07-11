@@ -12,6 +12,7 @@
 #include "DetectorConstruction.hh"
 #include "ActionInitialization.hh"
 
+#include "G4PhysListFactory.hh"
 
 #ifdef G4MULTITHREADED
 #include "G4MTRunManager.hh"
@@ -59,6 +60,12 @@ int main(int argc, char** argv)
 // 3. Setting the action initialization
 // 4. Initializing the G4 kernel
    */
+
+  // REFERENCE PHYSICS LIST QGSP_BERT
+  // G4PhysListFactory* physListFactory = new G4PhysListFactory();
+  // G4VUserPhysicsList *physicsList = physListFactory->GetReferencePhysList("QGSP_BERT");
+  // runManager->SetUserInitialization(physicsList);
+
   //use specific physics list
   G4VUserPhysicsList* physicsList = new PositronPhysicsList1(); 
   runManager->SetUserInitialization(physicsList);

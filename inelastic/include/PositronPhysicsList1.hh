@@ -18,8 +18,10 @@ public:
 
 private:
 
-  void ConstructEM();
-  void ConstructHadronic();
+  void ConstructBremsstrahlung();
+  void Construct2Gamma();
+  void ConstructPositronNuclear();
+  void ConstructElectronNuclear();
   void ConstructDecay();
 
 };
