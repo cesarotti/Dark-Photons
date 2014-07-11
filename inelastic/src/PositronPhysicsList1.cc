@@ -38,6 +38,7 @@
 #include "G4DalitzDecayChannel.hh"
 
 #include "G4PositronNuclearProcess.hh"
+#include "G4ElectronNuclearProcess.hh"
 #include "G4ElectroVDNuclearModel.hh"
 
 #include "G4BosonConstructor.hh"
@@ -89,13 +90,15 @@ void PositronPhysicsList1::ConstructParticle()
 void PositronPhysicsList1::ConstructProcess()
 {
   AddTransportation();
-  //ConstructEM(); // commented out to isolate positron-nuclear process
-  ConstructHadronic();
+  //Construct2Gamma();
+  //ConstructBremsstrahlung();
+  ConstructPositronNuclear();
+  //ConstructElectronNuclear();
   ConstructDecay();
 
 }
 
-void PositronPhysicsList1::ConstructEM()
+void PositronPhysicsList1::Construct2Gamma()
 {
   G4ParticleDefinition* positron = G4Positron::PositronDefinition();
   G4ProcessManager* pman = positron->GetProcessManager();
@@ -113,7 +116,18 @@ void PositronPhysicsList1::ConstructEM()
 }
 
 // ####################################### BRIAN SHIN ####################################
-void PositronPhysicsList1::ConstructHadronic()
+void PositronPhysicsList1::ConstructBremsstrahlung() {
+  G4ParticleDefinition* electron = G4Electron::ElectronDefinition();
+  G4ProcessManager* pman = electron->GetProcessManager();
+  
+
+
+  G4eBremsstrahlung* brems = new G4eBremsstrahlung();
+  brems->SetCrossSectionBiasingFactor(100, true);
+  pman->AddProcess(brems, -1, 3, 3);
+}
+
+void PositronPhysicsList1::ConstructPositronNuclear()
 {
   // get pointer to positron process manager
   G4ParticleDefinition* positron = G4Positron::PositronDefinition();
@@ -127,7 +141,27 @@ void PositronPhysicsList1::ConstructHadronic()
   pnproc->RegisterMe(pnmodel);
 
   // set biasing
-  pnproc->BiasCrossSectionByFactor(10000000.);
+  pnproc->BiasCrossSectionByFactor(10000.);
+
+  // add process to process manager
+  pman->AddDiscreteProcess(pnproc);
+}
+
+void PositronPhysicsList1::ConstructElectronNuclear()
+{
+  // get pointer to positron process manager
+  G4ParticleDefinition* electron = G4Electron::ElectronDefinition();
+  G4ProcessManager* pman = electron->GetProcessManager();
+
+  // get pointer to positron-nuclear process
+  G4ElectronNuclearProcess* pnproc = new G4ElectronNuclearProcess("ElectroNuclear");
+  
+  // register positron-nuclear model
+  G4ElectroVDNuclearModel* pnmodel = new G4ElectroVDNuclearModel();
+  pnproc->RegisterMe(pnmodel);
+
+  // set biasing
+  pnproc->BiasCrossSectionByFactor(10000.);
 
   // add process to process manager
   pman->AddDiscreteProcess(pnproc);
@@ -156,6 +190,7 @@ void PositronPhysicsList1::ConstructDecay() {
   mode = new G4DalitzDecayChannel("pi0",0.012,"e-","e+");
   table->Insert(mode);
 }
+
 // ###################################### BRIAN SHIN ####################################
 
 void PositronPhysicsList1::SetCuts()
