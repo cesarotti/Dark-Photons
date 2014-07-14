@@ -6,7 +6,7 @@
 #include <iostream>
 #include "TCanvas.h"
 
-void plots2() {
+void plots() {
 
   double yPos, xPos, theta, energy = 0.;
   int numHit, pID = 0;
