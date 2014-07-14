@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
-import serial
 
 class Plotter(object):
-    #dta: list of data to plot
+    #datastring: array of strings containing voltage data
     def __init__(self, datastring, trigger = 1, rise = 1, tail = 1, filedir = "//"):
         self.datastring = datastring
         self.trigger = trigger
@@ -15,16 +14,27 @@ class Plotter(object):
     #filters the data
     def filterdata(self):
         for i in range(len(self.datastring)):
-            if not "[" in self.datastring[i] and not "]" in self.datastring[i]:
+            if self.datastring[i] == "[":
+                pass
+            elif "[" in self.datastring[i] and "]" in self.datastring[i]:
+                tempstring = self.datastring[i][:len(self.datastring[i]) - 2]
+                self.dta.append(float(tempstring))
+            elif "[" in self.datastring[i]:
+                tempstring = self.datastring[i][1:]
+                self.dta.append(float(tempstring))
+            elif "]" in self.datastring[i]:
+                tempstring = self.datastring[i][:len(self.datastring[i]) - 1]
+                self.dta.append(float(tempstring))
+            else:
                 self.dta.append(float(self.datastring[i]))
     """
     def filterdata(self):
-        usefuldata = []
-        for i in range(len(self.dta)):
-            #makes sure the data is a number and is within range
-            if float(self.dta[i]) < 4096:
-                usefuldata.append(float(self.dta[i]))
-        self.dta = usefuldata"""
+        for t in self.datastring.split():
+            try:
+                self.dta.append(float(t))            
+            except ValueError:
+                pass
+    """
 
     #given a a trigger value, and expected rise/fall times, 
     #returns a list of pulses
@@ -77,9 +87,9 @@ class Plotter(object):
             plt.close()
 
 def main():
-    voltagedata = open("voltagedata.txt", 'r')
+    voltagedata = open("voltagedataTEMP.txt", 'r')
     voltages = voltagedata.read().split()
-    pltr = Plotter(voltages, 20, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots")
+    pltr = Plotter(voltages, 20, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots//TEMP")
     pltr.filterdata()
     pltr.splicedata()
     pltr.plotdatatog()
