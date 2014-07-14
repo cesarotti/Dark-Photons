@@ -1405,7 +1405,7 @@ private:
 	 "LesHouchesEvents tag.");
     version = 1;
     if ( currentLine.find("version=\"3" ) != std::string::npos )
-      version = 2;
+      version = 1;
     else if ( currentLine.find("version=\"1" ) == std::string::npos )
       throw std::runtime_error
 	("Tried to read a LesHouchesEvents file which is not version 1.0.");
