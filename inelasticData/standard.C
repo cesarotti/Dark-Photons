@@ -102,7 +102,7 @@ void standard() {
     hgammaEnergy->SetFillStyle(3001);
     hgammaEnergy->Draw();
     hgammaEnergy->GetXaxis()->SetTitle("Energy (MeV)");
-    hgammaEnergy->GetYaxis()->SetTitle("Photons per #DeltaMeV per Second (MeV^{-1} s^{-1})");
+    hgammaEnergy->GetYaxis()->SetTitle("Photons per MeV per Second (MeV^{-1} s^{-1})");
     hgammaEnergy->GetXaxis()->CenterTitle();
     hgammaEnergy->GetYaxis()->CenterTitle();
 
@@ -114,7 +114,7 @@ void standard() {
     hgammaTheta->Draw();
     hgammaTheta->GetXaxis()->SetTitle("#theta (degrees)");
     hgammaTheta->GetXaxis()->CenterTitle();
-    hgammaTheta->GetYaxis()->SetTitle("Photons per #Delta#Omega per Second (sr^{-1} s^{-1})");
+    hgammaTheta->GetYaxis()->SetTitle("Photons per #Omega per Second (sr^{-1} s^{-1})");
     hgammaTheta->GetYaxis()->CenterTitle();
 
     p = (TPad*)canvas->cd(1);
@@ -122,7 +122,7 @@ void standard() {
     hm2->SetFillColor(kBlue);
     hm2->SetFillStyle(3001);
     hm2->GetXaxis()->SetTitle("M_{A'}^{2} (MeV^{2})");
-    hm2->GetYaxis()->SetTitle("Photons per #Delta(MeV^{2}) per Second (MeV^{-2} s^{-1})");
+    hm2->GetYaxis()->SetTitle("Photons per MeV^{2} per Second (MeV^{-2} s^{-1})");
     hm2->GetXaxis()->CenterTitle();
     hm2->GetYaxis()->CenterTitle();
     hm2->Draw();
