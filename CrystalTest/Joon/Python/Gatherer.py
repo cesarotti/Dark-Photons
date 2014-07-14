@@ -101,59 +101,33 @@ class SerialReader(threading.Thread):
         with self.exitMutex:
             self.exitFlag = True
 
-
-# Get handle to serial port
-# (your port string may vary; windows users need 'COMn')
-s = serial.Serial('/dev/tty.usbmodem1411')
-
-"""JOON
-# Create the GUI
-app = pg.mkQApp()
-plt = pg.plot()
-plt.setLabels(left=('ADC Signal', 'V'), bottom=('Time', 's'))
-#plt.setYRange(0.0, 3.3)"""
+def main():
+    # Get handle to serial port
+    s = serial.Serial('/dev/tty.usbmodem1421')
             
-# Create thread to read and buffer serial data.
-thread = SerialReader(s)
-thread.start()
+    # Create thread to read and buffer serial data.
+    thread = SerialReader(s)
+    thread.start()
 
-# Calling update() will request a copy of the most recently-acquired 
-# samples and plot them.
-def update():
-    global plt, thread
-    t,v,r = thread.get(1000, downsample = 1)#JOON
-    """JOON plt.plot(t, v, clear=True)
-    plt.setTitle('Sample Rate: %0.2f'%r)"""
+    # Calling update() will request a copy of the most recently-acquired 
+    # samples and write them to text.
+    def update():
+        global plt, thread
+        t,v,r = thread.get(1000, downsample = 1)
     
-    #JOON makes sure that numpy won't truncate the middle of a long array
-    np.set_printoptions(threshold = 'nan')
+        #JOON makes sure that numpy won't truncate the middle of a long array
+        np.set_printoptions(threshold = 'nan')
 
-    #JOON Simple write to txt
-    global txtfl
-    txtfl.write(str(v))
+        #JOON Simple write to txt
+        global txtfl
+        txtfl.write(str(v))
 
-    """JOON
-    if not plt.isVisible():
-        thread.exit()
-        timer.stop()"""
+    #JOON
+    txtfl = open("voltagedata.txt", 'w')
+    time.sleep(0.1)
+    for i in range(1000):
+        update()
+    txtfl.close()
 
-
-# Set up a timer with 0 interval so Qt will call update()
-# as rapidly as it can handle.
-"""JOON timer = pg.QtCore.QTimer()
-timer.timeout.connect(update)
-timer.setSingleShot(True)
-timer.start(100)
-"""
-
-#JOON
-txtfl = open("voltagedataTEMP1000Runs2.txt", 'w')
-time.sleep(0.25)
-for i in range(1000):
-    update()
-txtfl.close()
-
-"""JOON
-# Start Qt event loop.    
-if sys.flags.interactive == 0:
-    app.exec_()"""
+if __name__ == '__main__':
+    main()

@@ -35,9 +35,9 @@ void setup(){
   ADC->ADC_IDR=~(1<<27);
   ADC->ADC_IER=1<<27;
   ADC->ADC_RPR=(uint32_t)buf[0];   // DMA buffer
-  ADC->ADC_RCR=4096;
+  ADC->ADC_RCR=NBUFFER;
   ADC->ADC_RNPR=(uint32_t)buf[1]; // next DMA buffer
-  ADC->ADC_RNCR=4096;
+  ADC->ADC_RNCR=NBUFFER;
   bufn=obufn=1;
   ADC->ADC_PTCR=1;
   ADC->ADC_CR=2;
