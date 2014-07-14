@@ -36,10 +36,10 @@
 # lpp: 0=No PDF, 1=proton, -1=antiproton, 2=photon from proton,      *
 #                                         3=photon from electron     *
 #*********************************************************************
-        0     = lpp1    ! beam 1 type 
-        -0     = lpp2    ! beam 2 type
-     5     = ebeam1  ! beam 1 total energy in GeV
-     5     = ebeam2  ! beam 2 total energy in GeV
+        1     = lpp1    ! beam 1 type 
+        1     = lpp2    ! beam 2 type
+     6500     = ebeam1  ! beam 1 total energy in GeV
+     6500     = ebeam2  ! beam 2 total energy in GeV
 #*********************************************************************
 # Beam polarization from -100 (left-handed) to 100 (right-handed)    *
 #*********************************************************************
@@ -48,8 +48,7 @@
 #*********************************************************************
 # PDF CHOICE: this automatically fixes also alpha_s and its evol.    *
 #*********************************************************************
- 'cteq6l1'    = pdlabel     ! PDF set (lhapdf for using lhapdf)
-  10042        = lhaid      ! PDF number used ONLY for LHAPDF
+ 'nn23lo1'    = pdlabel     ! PDF set                                     
 #*********************************************************************
 # Renormalization and factorization scales                           *
 #*********************************************************************
@@ -70,6 +69,7 @@
  T        = pdfwgt           ! for ickkw=1, perform pdf reweighting
  5        = asrwgtflavor     ! highest quark flavor for a_s reweight
  T        = clusinfo         ! include clustering tag in output
+ 3.0      = lhe_version       ! Change the way clustering information pass to shower.        
 #*********************************************************************
 #**********************************************************
 #
@@ -105,8 +105,8 @@
 #*********************************************************************
  20  = ptj       ! minimum pt for the jets 
   0  = ptb       ! minimum pt for the b 
-  0.001  = pta       ! minimum pt for the photons 
- 0.001  = ptl       ! minimum pt for the charged leptons 
+ 10  = pta       ! minimum pt for the photons 
+ 10  = ptl       ! minimum pt for the charged leptons 
   0  = misset    ! minimum missing Et (sum of neutrino's momenta)
   0  = ptheavy   ! minimum pt for one heavy final state
  1.0 = ptonium   ! minimum pt for the quarkonium states
@@ -120,8 +120,8 @@
 #*********************************************************************
   0  = ej     ! minimum E for the jets 
   0  = eb     ! minimum E for the b 
-  0.01  = ea     ! minimum E for the photons 
-  0.01  = el     ! minimum E for the charged leptons 
+  0  = ea     ! minimum E for the photons 
+  0  = el     ! minimum E for the charged leptons 
  -1   = ejmax ! maximum E for the jets
  -1   = ebmax ! maximum E for the b
  -1   = eamax ! maximum E for the photons
@@ -131,8 +131,8 @@
 #*********************************************************************
    5  = etaj    ! max rap for the jets 
   -1  = etab    ! max rap for the b
- 5  = etaa    ! max rap for the photons 
- 5  = etal    ! max rap for the charged leptons 
+ 2.5  = etaa    ! max rap for the photons 
+ 2.5  = etal    ! max rap for the charged leptons 
  0.6  = etaonium ! max rap for the quarkonium states
    0  = etajmin ! min rap for the jets
    0  = etabmin ! min rap for the b
@@ -143,8 +143,8 @@
 #*********************************************************************
  0.4 = drjj    ! min distance between jets 
  0   = drbb    ! min distance between b's 
- 0 = drll    ! min distance between leptons 
- 0 = draa    ! min distance between gammas 
+ 0.4 = drll    ! min distance between leptons 
+ 0.4 = draa    ! min distance between gammas 
  0   = drbj    ! min distance between b and jet 
  0.4 = draj    ! min distance between gamma and jet 
  0.4 = drjl    ! min distance between jet and lepton 
@@ -233,7 +233,7 @@
 # When ptgmin>0, pta and draj are not going to be used                 *
 #***********************************************************************
    0 = ptgmin ! Min photon transverse momentum
- 0.0 = R0gamma ! Radius of isolation code
+ 0.4 = R0gamma ! Radius of isolation code
  1.0 = xn ! n parameter of eq.(3.4) in hep-ph/9801442
  1.0 = epsgamma ! epsilon_gamma parameter of eq.(3.4) in hep-ph/9801442
  .true. = isoEM ! isolate photons from EM energy (photons and leptons)
