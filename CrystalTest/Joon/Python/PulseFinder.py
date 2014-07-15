@@ -27,14 +27,6 @@ class Plotter(object):
                 self.dta.append(float(tempstring))
             else:
                 self.dta.append(float(self.datastring[i]))
-    """
-    def filterdata(self):
-        for t in self.datastring.split():
-            try:
-                self.dta.append(float(t))            
-            except ValueError:
-                pass
-    """
 
     #given a a trigger value, and expected rise/fall times, 
     #returns a list of pulses
@@ -69,6 +61,13 @@ class Plotter(object):
             else:
                 i += 1
     
+    #Simple plot
+    def plotsimple(self):
+        plt.plot(self.dta)
+        plt.savefig(self.filedir + "//simpleplot.png", dpi = 500)
+        #figure = plt.gcf()
+        plt.close()
+    
     #Plots all pulses together on one graph,
     #then saves it as plot.png
     def plotdatatog(self):
@@ -89,7 +88,7 @@ class Plotter(object):
 def main():
     voltagedata = open("voltagedataTEMP.txt", 'r')
     voltages = voltagedata.read().split()
-    pltr = Plotter(voltages, 20, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots//TEMP")
+    pltr = Plotter(voltages, 20, 5, 5, filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots")
     pltr.filterdata()
     pltr.splicedata()
     pltr.plotdatatog()
