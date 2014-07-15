@@ -35,7 +35,7 @@ txtflname = "voltagedata.txt"
 trigger = 20
 rise = 5
 tail = 5
-filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots//TEMP7"
+filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots//NewGet10Hz"
 
 # Get handle to serial port
 s = serial.Serial(serialportname)
@@ -55,4 +55,4 @@ for i in range(1000):
 
 txtfl.close()
 
-#analyze(txtflname, trigger, rise, tail, filedir)
+analyze(txtflname, trigger, rise, tail, filedir)
