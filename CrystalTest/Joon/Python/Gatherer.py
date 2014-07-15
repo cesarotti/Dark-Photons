@@ -11,16 +11,18 @@ class SerialReader(threading.Thread):
         threading.Thread.__init__(self)
         # circular buffer for storing serial data until it is 
         # fetched by the GUI
-        self.buffer = np.zeros(chunks*chunkSize, dtype=np.uint16)
+        self.buffer = np.zeros(chunks*chunkSize, dtype=np.uint16) #uint16: unsigned int (0 to 65535)
         
         self.chunks = chunks        # number of chunks to store in the buffer
         self.chunkSize = chunkSize  # size of a single chunk (items, not bytes)
-        self.ptr = 0                # pointer to most (recently collected buffer index) + 1
+        self.ptr = 0                # pointer to (most recently collected buffer index) + 1
         self.port = port            # serial port handle
         self.sps = 0.0              # holds the average sample acquisition rate
         self.exitFlag = False
         self.exitMutex = threading.Lock()
         self.dataMutex = threading.Lock()
+        
+        self.rptr = 0
         
         
     def run(self):
@@ -66,7 +68,7 @@ class SerialReader(threading.Thread):
                 
                 
     def get(self, num, downsample=1):
-        """ Return a tuple (time_values, voltage_values, rate)
+        """ Returns voltage_values
           - voltage_values will contain the *num* most recently-collected samples 
             as a 32bit float array. 
           - time_values assumes samples are collected at 1MS/s
@@ -76,25 +78,29 @@ class SerialReader(threading.Thread):
         this case, the voltage array will be returned as 32bit float.
         """
         with self.dataMutex:  # lock the buffer and copy the requested data out
-            ptr = self.ptr
-            if ptr-num < 0:
+            if self.rptr + num >= len(self.buffer): # takes care of overlap situation
                 data = np.empty(num, dtype=np.uint16)
-                data[:num-ptr] = self.buffer[ptr-num:]
-                data[num-ptr:] = self.buffer[:ptr]
+                data[:len(buffer) - self.rptr] = self.buffer[self.rptr:]
+                data[len(buffer) - self.rptr:] = self.buffer[:len(buffer) - self.rptr]
             else:
-                data = self.buffer[self.ptr-num:self.ptr].copy()
-            rate = self.sps
+                data = self.buffer[self.rptr:self.rptr + num].copy()
+            #JOON rate = self.sps
         
         # Convert array to float and rescale to voltage.
         # Assume 3.3V / 12bits
         # (we need calibration data to do a better job on this)
-        data = data.astype(np.float32) #JOON * (3.3 / 2**12)
+        data = data.astype(np.float32) #JOON Rescaling Disabled * (3.3 / 2**12)
         if downsample > 1:  # if downsampling is requested, average N samples together
             data = data.reshape(num/downsample,downsample).mean(axis=1)
             num = data.shape[0]
-            return np.linspace(0, (num-1)*1e-6*downsample, num), data, rate
+            return data
         else:
-            return np.linspace(0, (num-1)*1e-6, num), data, rate
+            if self.rptr + num >= len(self.buffer):
+                self.rptr = (self.rptr + num + 1) - len(self.buffer)
+                return data
+            else:
+                self.rptr = self.rptr + num + 1
+                return data
     
     def exit(self):
         """ Instruct the serial thread to exit."""
@@ -102,6 +108,8 @@ class SerialReader(threading.Thread):
             self.exitFlag = True
 
 def main():
+    #CURRENTLY SET UP TO RETURN VALUE OF r    
+    
     # Get handle to serial port
     s = serial.Serial('/dev/tty.usbmodem1421')
             
@@ -111,22 +119,15 @@ def main():
 
     # Calling update() will request a copy of the most recently-acquired 
     # samples and write them to text.
-    def update():
-        global plt, thread
-        t,v,r = thread.get(1000, downsample = 1)
-    
-        #JOON makes sure that numpy won't truncate the middle of a long array
-        np.set_printoptions(threshold = 'nan')
 
-        #JOON Simple write to txt
-        global txtfl
-        txtfl.write(str(v))
-
+    #JOON makes sure that numpy won't truncate the middle of a long array
+    np.set_printoptions(threshold = 'nan')
+        
     #JOON
-    txtfl = open("voltagedata.txt", 'w')
+    txtfl = open("rate.txt", 'w')
     time.sleep(0.1)
-    for i in range(1000):
-        update()
+    t,v,r = thread.get(1024, downsample = 1)
+    txtfl.write(str(r))
     txtfl.close()
 
 if __name__ == '__main__':
