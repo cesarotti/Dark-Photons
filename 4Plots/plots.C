@@ -8,21 +8,21 @@
 
 const double POSITRON_ENERGY = 5000.; //MeV
 const double ELECTRON_MASS = .511; //MeV/c^2
-const double GAMMA_CM_2 = POSITRON_ENERGY/(2*ELECTRON_MASS);
+const double GAMMA_PLUS = POSITRON_ENERGY/ELECTRON_MASS;
+const double GAMMA_CM_2 = (GAMMA_PLUS+1)/2;
 
-const double NUM_TOT_POSITRONS = 1e+07; 
+const double NUM_TOT_POSITRONS = 1e+05; 
 const double BIAS = 1e+03;
 const double POSITRONS_PER_SEC = 6e+09; 
 const double BINNING_WEIGHT = POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
+const double B = pow(1-pow(GAMMA_PLUS, -2.), .5);
 
 //Energy in MeV, theta in radians
 double mSquared(double energy, double theta)
 {
-  double labEnergy = POSITRON_ENERGY+ELECTRON_MASS;
-  double posEnergy2 = pow(POSITRON_ENERGY, 2.);
-  double momentum = sqrt(posEnergy2+pow(ELECTRON_MASS,2.));
-  return (labEnergy+ELECTRON_MASS)*(labEnergy-2*energy) - 
-    momentum*(momentum-2*energy*TMath::Cos(theta)); 
+  return 2*ELECTRON_MASS*(ELECTRON_MASS+POSITRON_ENERGY-
+     energy*(2*GAMMA_CM_2-B*POSITRON_ENERGY*TMath::Cos(theta)/ELECTRON_MASS));
+  
 }
 
 void plots() {
@@ -58,6 +58,7 @@ void plots() {
       engTheta->Fill(theta, energyTot); 
       energyH->Fill(energyTot, BINNING_WEIGHT/10.); //events per sec per  MeV
       thetaH->Fill(theta, BINNING_WEIGHT); //events per sec per mrad
+      cout << mSquared(energyTot, theta) << endl;
       M2->Fill(mSquared(energyTot, theta), BINNING_WEIGHT/10); 
     }
 
