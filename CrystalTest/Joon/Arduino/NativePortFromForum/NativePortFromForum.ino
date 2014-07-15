@@ -45,6 +45,6 @@ void setup(){
 
 void loop(){
   while(obufn==bufn); // wait for buffer to be full
-  SerialUSB.write((uint8_t *)buf[obufn],512); // send it - 512 bytes = 256 uint16_t
+  SerialUSB.write((uint8_t *)buf[obufn],2*NBUFFER); // send it - 512 bytes = 256 uint16_t
   obufn=(obufn+1)&3;    
 }
