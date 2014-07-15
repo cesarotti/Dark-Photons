@@ -22,9 +22,9 @@ import model sm-lepton_masses
 # Define multiparticle labels
 #define vl~ = ve~ vm~ vt~
 # Specify process(es) to run
-generate e+ e- > a a a
+generate e+ e- > a e+ e-
 # Output processes to MadEvent directory
-output ../../e+e-2yyy
+output ../../e+e-2e+e-y
 # This will create a directory PROC_$MODELNAME_$X
 # If you want to specify the path/name of the directory use
 # output PATH

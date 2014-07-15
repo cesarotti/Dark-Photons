@@ -1,0 +1,61 @@
+#!/bin/bash
+k=run1_app.log
+script=ajob33                        
+j=G22g
+     if [[ ! -e $j ]]; then
+          mkdir $j
+     fi
+     cd $j
+     rm -f $k
+     rm -f moffset.dat >& /dev/null
+      echo            7  > moffset.dat
+     if  [[ -e ftn26 ]]; then
+          cp ftn26 ftn25
+     fi
+     if [[ ! -e ftn25 ]]; then
+         echo "    2000       9       3" >& input_sg.txt
+         echo " -0.62662E-36" >> input_sg.txt
+         echo "2" >> input_sg.txt
+         echo "1" >> input_sg.txt
+         echo "   0 " >> input_sg.txt
+         echo "22" >>input_sg.txt
+          for((try=1;try<=16;try+=1)); 
+          do
+          ../madevent >> $k <input_sg.txt
+          if [ -s $k ]
+          then
+              break
+          else
+              echo $try > fail.log 
+          fi
+          done
+     echo "" >> $k; echo "ls status:" >> $k; ls >> $k
+          cat $k >> log.txt
+          if [[ -e ftn26 ]]; then
+               cp ftn26 ftn25
+          fi
+     else
+          rm -f $k
+         echo "    2000       9       3" >& input_sg.txt
+         echo " -0.62662E-36" >> input_sg.txt
+         echo "0" >> input_sg.txt
+         echo "1" >> input_sg.txt
+         echo "   0 " >> input_sg.txt
+         echo "22" >>input_sg.txt
+          if [[ -e ftn26 ]]; then
+               cp ftn26 ftn25
+          fi
+          for((try=1;try<=16;try+=1)); 
+          do
+          ../madevent >> $k <input_sg.txt
+          if [ -s $k ]
+          then
+              break
+          else
+              echo $try > fail.log 
+          fi
+          done
+     echo "" >> $k; echo "ls status:" >> $k; ls >> $k
+          cat $k >> log.txt
+     fi
+     cd ../
