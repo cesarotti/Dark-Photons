@@ -6,7 +6,8 @@
 #include <iostream>
 #include "TCanvas.h"
 
-const double POSITRON_ENERGY = 5000.; //MeV
+
+const double POSITRON_ENERGY = 4975.; //MeV
 const double ELECTRON_MASS = .511; //MeV/c^2
 const double GAMMA_PLUS = POSITRON_ENERGY/ELECTRON_MASS;
 const double GAMMA_CM_2 = (GAMMA_PLUS+1)/2;
@@ -18,6 +19,8 @@ const double BINNING_WEIGHT = POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
 const double B = pow(1-pow(GAMMA_PLUS, -2.), .5);
 
 //Energy in MeV, theta in radians
+
+
 double mSquared(double energy, double theta)
 {
   return 2*ELECTRON_MASS*(ELECTRON_MASS+POSITRON_ENERGY-
@@ -29,6 +32,7 @@ void plots() {
 
   double yPos, xPos, theta, energyTot = 0.;
   int numHit, id = 0;
+
 
   TFile* file = new TFile("complete.root");
 
@@ -42,6 +46,7 @@ void plots() {
   tree->SetBranchAddress("YPosition", &yPos);
   tree->SetBranchAddress("Particle_ID", &id);
   tree->SetBranchAddress("Theta", &theta);
+
 
   TH2D* engTheta = new TH2D("engTheta", "energy_v_theta", 50, .035, .085, 50, 10, 510);
 
@@ -58,7 +63,6 @@ void plots() {
       engTheta->Fill(theta, energyTot); 
       energyH->Fill(energyTot, BINNING_WEIGHT/10.); //events per sec per  MeV
       thetaH->Fill(theta, BINNING_WEIGHT); //events per sec per mrad
-      cout << mSquared(energyTot, theta) << endl;
       M2->Fill(mSquared(energyTot, theta), BINNING_WEIGHT/10); 
     }
 

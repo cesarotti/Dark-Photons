@@ -53,6 +53,8 @@ RunAction::RunAction()
    analysisMan->CreateNtupleDColumn("YPosition"); // 3
    analysisMan->CreateNtupleIColumn("Particle_ID"); // 4
    analysisMan->CreateNtupleDColumn("Theta"); // 5
+   analysisMan->CreateNtupleDColumn("TargetPos"); // 6
+   analysisMan->CreateNtupleDColumn("BeamEnergy"); // 7
    analysisMan->FinishNtuple();
   
 
