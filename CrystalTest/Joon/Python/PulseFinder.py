@@ -62,11 +62,15 @@ class Plotter(object):
                 i += 1
     
     #Simple plot
-    def plotsimple(self):
-        plt.plot(self.dta)
-        plt.savefig(self.filedir + "//simpleplot.png", dpi = 500)
-        #figure = plt.gcf()
-        plt.close()
+    def plotsimple(self, start = -1, end = -1):
+        if start == -1 and end == -1:
+            plt.plot(self.dta)
+            plt.savefig(self.filedir + "//simpleplot.png", dpi = 500)
+            plt.close()
+        else:
+            plt.plot(self.dta[start:end])
+            plt.savefig(self.filedir + "//simpleplot%s" % (start) + "to" + str(end) + ".png", dpi = 500)
+            plt.close()
     
     #Plots all pulses together on one graph,
     #then saves it as plot.png
