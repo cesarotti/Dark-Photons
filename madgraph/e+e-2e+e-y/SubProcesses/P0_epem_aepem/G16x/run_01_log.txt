@@ -1,0 +1,886 @@
+ Process in group number            0
+ No PDF is used, alpha_s(MZ) from param_card is used
+ Value of alpha_s from param_card:   0.11800000071525575     
+ The default order of alpha_s running is fixed to            2
+ Warning: pt or E min of a gamma should in general be >0
+ *****************************************************
+ *               MadGraph/MadEvent                   *
+ *        --------------------------------           *
+ *          http://madgraph.hep.uiuc.edu             *
+ *          http://madgraph.phys.ucl.ac.be           *
+ *          http://madgraph.roma2.infn.it            *
+ *        --------------------------------           *
+ *                                                   *
+ *          PARAMETER AND COUPLING VALUES            *
+ *                                                   *
+ *****************************************************
+
+  External Params
+  ---------------------------------
+  
+ aEWM1 =    132.50700378417969     
+ mdl_Gf =   1.16639000000000003E-005
+ aS =   0.11800000071525575     
+ mdl_ymb =    4.6999998092651367     
+ mdl_ymt =    173.00000000000000     
+ mdl_yme =   5.10999991092830896E-004
+ mdl_ymm =   0.10565999895334244     
+ mdl_ymtau =    1.7769999504089355     
+ mdl_MZ =    91.188003540039063     
+ mdl_MT =    173.00000000000000     
+ mdl_MB =    4.6999998092651367     
+ mdl_MH =    125.00000000000000     
+ mdl_Me =   5.10999991092830896E-004
+ mdl_MM =   0.10565999895334244     
+ mdl_MTA =    1.7769999504089355     
+ mdl_WZ =    2.4414041042327881     
+ mdl_WW =    2.0476000308990479     
+ mdl_WT =    1.4915000200271606     
+ mdl_WH =   6.38233916833996773E-003
+ mdl_WTau =   2.26999999999999982E-012
+  Internal Params
+  ---------------------------------
+  
+ mdl_conjg__CKM3x3 =    1.0000000000000000     
+ mdl_CKM3x3 =    1.0000000000000000     
+ mdl_conjg__CKM1x1 =    1.0000000000000000     
+ mdl_complexi =  (  0.0000000000000000     ,  1.0000000000000000     )
+ mdl_MZ__exp__2 =    8315.2519896181766     
+ mdl_MZ__exp__4 =    69143415.650849044     
+ mdl_sqrt__2 =    1.4142135623730951     
+ mdl_MH__exp__2 =    15625.000000000000     
+ mdl_aEW =   7.54677089845565054E-003
+ mdl_MW =    80.419007276179556     
+ mdl_sqrt__aEW =   8.68721526063194194E-002
+ mdl_ee =   0.30795376284704501     
+ mdl_MW__exp__2 =    6467.2167312862202     
+ mdl_sw2 =   0.22224645274001076     
+ mdl_cw =   0.88190336616887299     
+ mdl_sqrt__sw2 =   0.47143022043565552     
+ mdl_sw =   0.47143022043565552     
+ mdl_g1 =   0.34919218438279087     
+ mdl_gw =   0.65323296958447097     
+ mdl_vev =    246.21845810181631     
+ mdl_vev__exp__2 =    60623.529110035874     
+ mdl_lam =   0.12886910601690271     
+ mdl_yb =   2.69955531549349904E-002
+ mdl_ye =   2.93504850670934038E-006
+ mdl_ym =   6.06883028478528356E-004
+ mdl_yt =   0.99366614581500645     
+ mdl_ytau =   1.02066167158167895E-002
+ mdl_muH =    88.388347648318444     
+ mdl_I1x33 =  ( 2.69955531549349904E-002,  0.0000000000000000     )
+ mdl_I2x33 =  ( 0.99366614581500645     ,  0.0000000000000000     )
+ mdl_I3x33 =  ( 0.99366614581500645     ,  0.0000000000000000     )
+ mdl_I4x33 =  ( 2.69955531549349904E-002,  0.0000000000000000     )
+ mdl_ee__exp__2 =   9.48355200516540348E-002
+ mdl_sw__exp__2 =   0.22224645274001076     
+ mdl_cw__exp__2 =   0.77775354725998924     
+  Internal Params evaluated point by point
+  ----------------------------------------
+  
+ mdl_sqrt__aS =   0.34351128178744839     
+ mdl_G__exp__2 =    1.4828317414825511     
+  Couplings of sm-lepton_masses
+  ---------------------------------
+  
+         GC_3 =  -0.00000E+00  -0.30795E+00
+        GC_50 =  -0.00000E+00  -0.28804E+00
+        GC_59 =   0.00000E+00   0.82310E-01
+        GC_89 =  -0.00000E+00  -0.20754E-05
+
+ Collider parameters:
+ --------------------
+
+ Running at e e   machine @   7.00000000000000067E-002  GeV
+ PDF set = none   
+ alpha_s(Mz)= 0.1180 running at 2 loops.
+ alpha_s(Mz)= 0.1180 running at 2 loops.
+ Renormalization scale fixed @    91.188000000000002     
+ Factorization scales  fixed @    91.188000000000002        91.188000000000002     
+
+
+ getting user params
+Enter number of events and max and min iterations: 
+ Number of events and iterations         1000           9           3
+Enter desired fractional accuracy: 
+ Desired fractional accuracy:  -2.29190000000000003E-030
+Enter 0 for fixed, 2 for adjustable grid: 
+Suppress amplitude (0 no, 1 yes)? 
+ Using suppressed amplitude.
+Exact helicity sum (0 yes, n = number/event)? 
+ Explicitly summing over helicities
+Enter Configuration Number: 
+Running Configuration Number:   16
+ Not subdividing B.W.
+ Attempting mappinvarients           1           5
+ Completed mapping           5
+ about to integrate            5        1000           9           3           5           1
+ Using non-zero grid deformation.
+  5 dimensions   1000 events  5 invarients  9 iterations  1 config(s),  (0.99)
+ Using h-tuple random number sequence.
+ Error opening grid
+ Using Uniform Grid!
+ Using uniform alpha   1.0000000000000000     
+ Grid defined OK
+ Set CM energy to          0.07
+ Mapping Graph          16  to config          16
+Setting grid   1    0.53290E-04   1
+Setting grid   2    0.53290E-04   1
+ Masses: 0.511E-03 0.511E-03 0.000E+00 0.511E-03 0.511E-03
+  16   1   2   3   4   5
+ Got moffset          24
+Using random seed offsets    16 :      1
+  with seed                   27
+ Ranmar initialization seeds        4650       25008
+  Particle       3       4       5
+      Et >     0.0     0.0     0.0
+       E >     0.0     0.0     0.0
+     Eta <    -1.0    -1.0    -1.0
+   xqcut:      0.0     0.0     0.0
+d R # 3  >    -0.0     0.0     0.0
+d R # 4  >    -0.0    -0.0     0.4
+s min # 3>     0.0     0.0     0.0
+s min # 4>     0.0     0.0     0.0
+xqcutij # 3>     0.0     0.0     0.0
+xqcutij # 4>     0.0     0.0     0.0
+ alpha_s for scale    91.188000000000002       is   0.11800000071525575     
+ Added good helicity            1   4.8937003297042043       in event            1
+ Added good helicity            2  0.32621925180948846       in event            1
+ Added good helicity            3  1.65238695587553058E-006  in event            1
+ Added good helicity            5   2.8865567772523164       in event            1
+ Added good helicity            6  1.66521868336618110E-006  in event            1
+ Added good helicity            9  1.66477839913171661E-006  in event            1
+ Added good helicity           10   2.8103589268973299       in event            1
+ Added good helicity           13  0.31747272023344503       in event            1
+ Added good helicity           14   4.7656831585471036       in event            1
+ Added good helicity           16  1.65221248960589572E-006  in event            1
+ Added good helicity           17  1.65221249373897159E-006  in event            1
+ Added good helicity           19   4.7656831704263265       in event            1
+ Added good helicity           20  0.31747272103635182       in event            1
+ Added good helicity           23   2.8103589339026445       in event            1
+ Added good helicity           24  1.66477840331438902E-006  in event            1
+ Added good helicity           27  1.66521868753907853E-006  in event            1
+ Added good helicity           28   2.8865567772530798       in event            1
+ Added good helicity           30  1.65238695171262348E-006  in event            1
+ Added good helicity           31  0.32621925179708289       in event            1
+ Added good helicity           32   4.8937003297039681       in event            1
+ Added good helicity            7  7.18628875512709824E-006  in event            2
+ Added good helicity           11   3.7128373878141092       in event            2
+ Added good helicity           12  5.80775937887527168E-006  in event            2
+ Added good helicity           15   3.6375965741245904       in event            2
+ Added good helicity           18   3.6375965742285321       in event            2
+ Added good helicity           21  5.80775681099496760E-006  in event            2
+ Added good helicity           22   3.7128373877082406       in event            2
+ Added good helicity           26  7.18629163555372276E-006  in event            2
+ Added good helicity            4  1.52847580003116589E-005  in event            9
+ Added good helicity           29  1.52847580003073187E-005  in event            9
+ Iteration  1   Mean: 0.2330E+23 Abs mean: 0.2330E+23   Fluctuation:  0.233E+23   0.233E+26    98.3%
+  1    0.2330E+23 0.2330E+23 +- 0.2330E+23     31.62
+ Writing out events  2.63272928401681613E+018   31.622917558503350     
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        1000           0
+ Iteration  2   Mean: 0.4272E+28 Abs mean: 0.4272E+28   Fluctuation:  0.333E+28   0.641E+31    98.4%
+  2    0.4272E+28 0.4272E+28 +- 0.3331E+28     34.87
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        2000           0
+ Iteration  3   Mean: 0.2971E+29 Abs mean: 0.2971E+29   Fluctuation:  0.191E+29   0.709E+32    99.4%
+  3    0.2971E+29 0.2971E+29 +- 0.1913E+29     40.72
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        4000           0
+ Found           17  events.
+ Wrote            1  events.
+ Actual xsec   1.55638463382367499E+028
+ Correct abs xsec   1.55638463382367499E+028
+ Event xsec   1.55638463382367499E+028
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events  3.56707794226048050E-002           1  chi2:    223122403638.84067     
+ Found           17  events.
+ Wrote            2  events.
+ Actual xsec   1.55638463382367499E+028
+ Correct abs xsec   1.55638463382367499E+028
+ Event xsec   1.55638463382367499E+028
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Iteration  4   Mean: 0.3878E+33 Abs mean: 0.3878E+33   Fluctuation:  0.277E+33   0.181E+37    98.4%
+  4    0.3878E+33 0.3878E+33 +- 0.2773E+33     63.97
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        8000           0
+ Found           58  events.
+ Wrote            2  events.
+ Actual xsec   1.26081597326962231E+032
+ Correct abs xsec   1.26081597326962231E+032
+ Event xsec   1.26081597326962213E+032
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events   288.96641291366473                2  chi2:    738160788.53247213     
+ Found           58  events.
+ Wrote            1  events.
+ Actual xsec   1.26081597326962231E+032
+ Correct abs xsec   1.26081597326962231E+032
+ Event xsec   1.26081597326962213E+032
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Iteration  5   Mean: 0.2060E+33 Abs mean: 0.2060E+33   Fluctuation:  0.119E+33   0.162E+37    99.1%
+  5    0.2060E+33 0.2060E+33 +- 0.1190E+33     73.08
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       16000           0
+ Found           20  events.
+ Wrote            2  events.
+ Actual xsec   1.86780750042238065E+032
+ Correct abs xsec   1.86780750042238065E+032
+ Event xsec   1.86780750042238065E+032
+ Events wgts > 1:            1
+ % Cross section > 1:   3.62558749973594518E+024  1.94109269767685642E-006
+ Checking number of events   428.08280102180544                2  chi2:    47657429.556320690     
+ Found           20  events.
+ Wrote            2  events.
+ Actual xsec   1.86780750042238065E+032
+ Correct abs xsec   1.86780750042238065E+032
+ Event xsec   1.86780750042238065E+032
+ Events wgts > 1:            1
+ % Cross section > 1:   3.62558749973594518E+024  1.94109269767685642E-006
+ Iteration  6   Mean: 0.2422E+33 Abs mean: 0.2422E+33   Fluctuation:  0.125E+33   0.372E+37    98.3%
+  6    0.2422E+33 0.2422E+33 +- 0.1250E+33     92.32
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       32000           0
+ Found           72  events.
+ Wrote            1  events.
+ Actual xsec   2.62426842679175948E+032
+ Correct abs xsec   2.62426842679175948E+032
+ Event xsec   2.62426842679175948E+032
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events   601.45608073640335                1  chi2:   0.22746112804297960     
+ Found           72  events.
+ Wrote            1  events.
+ Actual xsec   2.62426842679175948E+032
+ Correct abs xsec   2.62426842679175948E+032
+ Event xsec   2.62426842679175948E+032
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Iteration  7   Mean: 0.1014E+37 Abs mean: 0.1014E+37   Fluctuation:  0.101E+37   0.649E+41    99.2%
+  7    0.1014E+37 0.1014E+37 +- 0.1014E+37    252.89
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       64000           0
+ Found          170  events.
+ Wrote            1  events.
+ Actual xsec   1.31107816031613110E+035
+ Correct abs xsec   1.31107816031613110E+035
+ Event xsec   1.31107816031613110E+035
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events   300486.00356285408                1  chi2:    1152878.4110723846     
+ Found          170  events.
+ Wrote            1  events.
+ Actual xsec   1.31107816031613110E+035
+ Correct abs xsec   1.31107816031613110E+035
+ Event xsec   1.31107816031613110E+035
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Iteration  8   Mean: 0.6084E+33 Abs mean: 0.6084E+33   Fluctuation:  0.265E+33   0.240E+38    98.4%
+  8    0.6084E+33 0.6084E+33 +- 0.2651E+33    155.86
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+      128000           0
+ Found           10  events.
+ Wrote            3  events.
+ Actual xsec   1.01634114283499745E+035
+ Correct abs xsec   1.01634114283499745E+035
+ Event xsec   1.01634114283499763E+035
+ Events wgts > 1:            1
+ % Cross section > 1:   4.73578351003410101E+027  4.65963967258477138E-006
+ Checking number of events   232935.22652635307                3  chi2:    401725.03490722983     
+ Found           10  events.
+ Wrote            3  events.
+ Actual xsec   1.01634114283499745E+035
+ Correct abs xsec   1.01634114283499745E+035
+ Event xsec   1.01634114283499763E+035
+ Events wgts > 1:            1
+ % Cross section > 1:   4.73578351003410101E+027  4.65963967258477138E-006
+ Iteration  9   Mean: 0.3185E+34 Abs mean: 0.3185E+34   Fluctuation:  0.225E+34   0.559E+39    98.9%
+  9    0.3185E+34 0.3185E+34 +- 0.2247E+34    356.94
+ Exceeded boost           2          96   128000.00    
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+      256000           0
+ Found          479  events.
+ Wrote            2  events.
+ Actual xsec   1.23718762161184079E+035
+ Correct abs xsec   1.23718762161184079E+035
+ Event xsec   1.23718762161184079E+035
+ Events wgts > 1:            1
+ % Cross section > 1:   3.31649386180147546E+027  2.68067171370552487E-006
+ Checking number of events   283551.03099721781                2  chi2:    109303.87001760879     
+ Found          479  events.
+ Wrote            1  events.
+ Actual xsec   1.23718762161184079E+035
+ Correct abs xsec   1.23718762161184079E+035
+ Event xsec   1.23718762161184079E+035
+ Events wgts > 1:            1
+ % Cross section > 1:   6.63298753913551018E+027  5.36134327830881328E-006
+
+ -------------------------------------------------------------------------------
+ Accumulated results:   Integral =  0.4657E+35
+                        Std dev  =  0.9920E+34
+                       Cross sec =  0.4657E+35
+             Chi**2 per DoF.     =     56.5379
+ -------------------------------------------------------------------------------
+-------------------------------------------------
+---------------------------
+ Results Last   3 iters: Integral =   0.1237E+36
+                     Abs integral =   0.1237E+36
+                          Std dev =   0.4300E+35
+                  Chi**2 per DoF. = 109303.8700
+-------------------------------------------------
+---------------------------
+ Status -2.29190000000000003E-030          10           9
+ Trying w/ fresh grid
+ Starting w/ ncall =         4000
+ Using non-zero grid deformation.
+  5 dimensions   4000 events  5 invarients  8 iterations  1 config(s),  (0.99)
+ Using h-tuple random number sequence.
+ Error opening grid
+ Using Uniform Grid!
+ Using uniform alpha   1.0000000000000000     
+ Grid defined OK
+Setting grid   1    0.53290E-04   1
+Setting grid   2    0.53290E-04   1
+ Iteration  1   Mean: 0.5207E+22 Abs mean: 0.5207E+22   Fluctuation:  0.220E+22   0.533E+25    97.9%
+  1    0.5207E+22 0.5207E+22 +- 0.2200E+22     26.72
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        4000           0
+ Iteration  2   Mean: 0.5971E+36 Abs mean: 0.5971E+36   Fluctuation:  0.597E+36   0.478E+40    98.1%
+  2    0.5971E+36 0.5971E+36 +- 0.5970E+36     89.43
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        8000           0
+ Iteration  3   Mean: 0.2836E+32 Abs mean: 0.2836E+32   Fluctuation:  0.208E+32   0.307E+36    99.3%
+  3    0.2836E+32 0.2836E+32 +- 0.2076E+32     92.62
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       16000           0
+ Found            5  events.
+ Wrote            1  events.
+ Actual xsec   7.05318446981255878E+034
+ Correct abs xsec   7.05318446981255878E+034
+ Event xsec   7.05318446981255878E+034
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events   161651.93486363403                1  chi2:   5.14104716438468092E+026
+ Found            5  events.
+ Wrote            1  events.
+ Actual xsec   7.05318446981255878E+034
+ Correct abs xsec   7.05318446981255878E+034
+ Event xsec   7.05318446981255878E+034
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Iteration  4   Mean: 0.4400E+34 Abs mean: 0.4400E+34   Fluctuation:  0.285E+34   0.880E+38    99.4%
+  4    0.4400E+34 0.4400E+34 +- 0.2850E+34    115.87
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       32000           0
+ Found          113  events.
+ Wrote            3  events.
+ Actual xsec   1.15790172735346815E+035
+ Correct abs xsec   1.15790172735346815E+035
+ Event xsec   1.15790172735346815E+035
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events   265379.49689214135                3  chi2:    15540795.665071331     
+ Found          113  events.
+ Wrote            1  events.
+ Actual xsec   1.15790172735346815E+035
+ Correct abs xsec   1.15790172735346815E+035
+ Event xsec   1.15790172735346815E+035
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Iteration  5   Mean: 0.9212E+37 Abs mean: 0.9212E+37   Fluctuation:  0.918E+37   0.587E+42    99.0%
+  5    0.9212E+37 0.9212E+37 +- 0.9175E+37    251.98
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       64000           0
+ Found          118  events.
+ Wrote            1  events.
+ Actual xsec   1.76828900254407135E+036
+ Correct abs xsec   1.76828900254407135E+036
+ Event xsec   1.76828900254407135E+036
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events   4052741.5649307570                1  chi2:    3626074789.3111043     
+ Found          118  events.
+ Wrote            1  events.
+ Actual xsec   1.76828900254407135E+036
+ Correct abs xsec   1.76828900254407135E+036
+ Event xsec   1.76828900254407135E+036
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Fixing grid
+ Iteration  6   Mean: 0.1022E+38 Abs mean: 0.1022E+38   Fluctuation:  0.897E+37   0.114E+43    99.4%
+  6    0.1022E+38 0.1022E+38 +- 0.8967E+37    313.86
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+      128000           0
+ Found           23  events.
+ Wrote            1  events.
+ Actual xsec   4.81316429815760069E+036
+ Correct abs xsec   4.81316429815760069E+036
+ Event xsec   4.81316429815760069E+036
+ Events wgts > 1:            1
+ % Cross section > 1:   1.16656150767573745E+030  2.42368935571610940E-005
+ Checking number of events   11031291.254947405                1  chi2:    1423468.4740646791     
+ Found           23  events.
+ Wrote            1  events.
+ Actual xsec   4.81316429815760069E+036
+ Correct abs xsec   4.81316429815760069E+036
+ Event xsec   4.81316429815760069E+036
+ Events wgts > 1:            1
+ % Cross section > 1:   1.16656150767573745E+030  2.42368935571610940E-005
+ Iteration  7   Mean: 0.2729E+36 Abs mean: 0.2729E+36   Fluctuation:  0.166E+36   0.386E+41    99.4%
+  7    0.2729E+36 0.2729E+36 +- 0.1661E+36    307.92
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+      256000           0
+ Found           36  events.
+ Wrote            2  events.
+ Actual xsec   4.65394883711663076E+036
+ Correct abs xsec   4.65394883711663076E+036
+ Event xsec   4.65394883711663135E+036
+ Events wgts > 1:            1
+ % Cross section > 1:   3.03564710892885010E+029  6.52273416656121850E-006
+ Checking number of events   10666385.339787606                2  chi2:    348.21404239578266     
+ Found           36  events.
+ Wrote            1  events.
+ Actual xsec   4.65394883711663076E+036
+ Correct abs xsec   4.65394883711663076E+036
+ Event xsec   4.65394883711663076E+036
+ Events wgts > 1:            1
+ % Cross section > 1:   6.07129382235950725E+029  1.30454674833103611E-005
+ Iteration  8   Mean: 0.2102E+36 Abs mean: 0.2102E+36   Fluctuation:  0.806E+35   0.342E+41    99.4%
+  8    0.2102E+36 0.2102E+36 +- 0.8060E+35    274.43
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+      512000           0
+ Found          319  events.
+ Wrote            2  events.
+ Actual xsec   1.88738118810876950E+035
+ Correct abs xsec   1.88738118810876950E+035
+ Event xsec   1.88738118810876950E+035
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events   3278862.0156560242                2  chi2:    139.42249027388397     
+ Found          319  events.
+ Wrote            3  events.
+ Actual xsec   1.88738118810876950E+035
+ Correct abs xsec   1.88738118810876950E+035
+ Event xsec   1.88738118810876913E+035
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+
+ -------------------------------------------------------------------------------
+ Accumulated results:   Integral =  0.1118E+37
+                        Std dev  =  0.2350E+36
+                       Cross sec =  0.1118E+37
+             Chi**2 per DoF.     =     22.1359
+ -------------------------------------------------------------------------------
+-------------------------------------------------
+---------------------------
+ Results Last   3 iters: Integral =   0.1431E+37
+                     Abs integral =   0.1431E+37
+                         Std dev =   0.4354E+36
+                 Chi**2 per DoF. =    139.4225
+-------------------------------------------------
+---------------------------
+
+ls status:
+events.lhe
+ftn25
+ftn26
+input_sg.txt
+moffset.dat
+results.dat
+run1_app.log
+ Process in group number            0
+ No PDF is used, alpha_s(MZ) from param_card is used
+ Value of alpha_s from param_card:   0.11800000071525575     
+ The default order of alpha_s running is fixed to            2
+ Warning: pt or E min of a gamma should in general be >0
+ *****************************************************
+ *               MadGraph/MadEvent                   *
+ *        --------------------------------           *
+ *          http://madgraph.hep.uiuc.edu             *
+ *          http://madgraph.phys.ucl.ac.be           *
+ *          http://madgraph.roma2.infn.it            *
+ *        --------------------------------           *
+ *                                                   *
+ *          PARAMETER AND COUPLING VALUES            *
+ *                                                   *
+ *****************************************************
+
+  External Params
+  ---------------------------------
+  
+ aEWM1 =    132.50700378417969     
+ mdl_Gf =   1.16639000000000003E-005
+ aS =   0.11800000071525575     
+ mdl_ymb =    4.6999998092651367     
+ mdl_ymt =    173.00000000000000     
+ mdl_yme =   5.10999991092830896E-004
+ mdl_ymm =   0.10565999895334244     
+ mdl_ymtau =    1.7769999504089355     
+ mdl_MZ =    91.188003540039063     
+ mdl_MT =    173.00000000000000     
+ mdl_MB =    4.6999998092651367     
+ mdl_MH =    125.00000000000000     
+ mdl_Me =   5.10999991092830896E-004
+ mdl_MM =   0.10565999895334244     
+ mdl_MTA =    1.7769999504089355     
+ mdl_WZ =    2.4414041042327881     
+ mdl_WW =    2.0476000308990479     
+ mdl_WT =    1.4915000200271606     
+ mdl_WH =   6.38233916833996773E-003
+ mdl_WTau =   2.26999999999999982E-012
+  Internal Params
+  ---------------------------------
+  
+ mdl_conjg__CKM3x3 =    1.0000000000000000     
+ mdl_CKM3x3 =    1.0000000000000000     
+ mdl_conjg__CKM1x1 =    1.0000000000000000     
+ mdl_complexi =  (  0.0000000000000000     ,  1.0000000000000000     )
+ mdl_MZ__exp__2 =    8315.2519896181766     
+ mdl_MZ__exp__4 =    69143415.650849044     
+ mdl_sqrt__2 =    1.4142135623730951     
+ mdl_MH__exp__2 =    15625.000000000000     
+ mdl_aEW =   7.54677089845565054E-003
+ mdl_MW =    80.419007276179556     
+ mdl_sqrt__aEW =   8.68721526063194194E-002
+ mdl_ee =   0.30795376284704501     
+ mdl_MW__exp__2 =    6467.2167312862202     
+ mdl_sw2 =   0.22224645274001076     
+ mdl_cw =   0.88190336616887299     
+ mdl_sqrt__sw2 =   0.47143022043565552     
+ mdl_sw =   0.47143022043565552     
+ mdl_g1 =   0.34919218438279087     
+ mdl_gw =   0.65323296958447097     
+ mdl_vev =    246.21845810181631     
+ mdl_vev__exp__2 =    60623.529110035874     
+ mdl_lam =   0.12886910601690271     
+ mdl_yb =   2.69955531549349904E-002
+ mdl_ye =   2.93504850670934038E-006
+ mdl_ym =   6.06883028478528356E-004
+ mdl_yt =   0.99366614581500645     
+ mdl_ytau =   1.02066167158167895E-002
+ mdl_muH =    88.388347648318444     
+ mdl_I1x33 =  ( 2.69955531549349904E-002,  0.0000000000000000     )
+ mdl_I2x33 =  ( 0.99366614581500645     ,  0.0000000000000000     )
+ mdl_I3x33 =  ( 0.99366614581500645     ,  0.0000000000000000     )
+ mdl_I4x33 =  ( 2.69955531549349904E-002,  0.0000000000000000     )
+ mdl_ee__exp__2 =   9.48355200516540348E-002
+ mdl_sw__exp__2 =   0.22224645274001076     
+ mdl_cw__exp__2 =   0.77775354725998924     
+  Internal Params evaluated point by point
+  ----------------------------------------
+  
+ mdl_sqrt__aS =   0.34351128178744839     
+ mdl_G__exp__2 =    1.4828317414825511     
+  Couplings of sm-lepton_masses
+  ---------------------------------
+  
+         GC_3 =  -0.00000E+00  -0.30795E+00
+        GC_50 =  -0.00000E+00  -0.28804E+00
+        GC_59 =   0.00000E+00   0.82310E-01
+        GC_89 =  -0.00000E+00  -0.20754E-05
+
+ Collider parameters:
+ --------------------
+
+ Running at e e   machine @   7.00000000000000067E-002  GeV
+ PDF set = none   
+ alpha_s(Mz)= 0.1180 running at 2 loops.
+ alpha_s(Mz)= 0.1180 running at 2 loops.
+ Renormalization scale fixed @    91.188000000000002     
+ Factorization scales  fixed @    91.188000000000002        91.188000000000002     
+
+
+ getting user params
+Enter number of events and max and min iterations: 
+ Number of events and iterations         2000           9           3
+Enter desired fractional accuracy: 
+ Desired fractional accuracy:  -6.26620000000000013E-037
+Enter 0 for fixed, 2 for adjustable grid: 
+Suppress amplitude (0 no, 1 yes)? 
+ Using suppressed amplitude.
+Exact helicity sum (0 yes, n = number/event)? 
+ Explicitly summing over helicities
+Enter Configuration Number: 
+Running Configuration Number:   16
+ Not subdividing B.W.
+ Attempting mappinvarients           1           5
+ Completed mapping           5
+ about to integrate            5        2000           9           3           5           1
+ Keeping grid fixed.
+  5 dimensions   2000 events  5 invarients  9 iterations  1 config(s),  (0.99)
+ Using h-tuple random number sequence.
+ Grid read from file
+ Grid defined OK
+ Set CM energy to          0.07
+ Mapping Graph          16  to config          16
+ No modification is setgrid, grid read from file
+ No modification is setgrid, grid read from file
+ Masses: 0.511E-03 0.511E-03 0.000E+00 0.511E-03 0.511E-03
+  16   1   2   3   4   5
+ Got moffset          24
+Using random seed offsets    16 :      1
+  with seed                   30
+ Ranmar initialization seeds        8307       25011
+  Particle       3       4       5
+      Et >     0.0     0.0     0.0
+       E >     0.0     0.0     0.0
+     Eta <    -1.0    -1.0    -1.0
+   xqcut:      0.0     0.0     0.0
+d R # 3  >    -0.0     0.0     0.0
+d R # 4  >    -0.0    -0.0     0.4
+s min # 3>     0.0     0.0     0.0
+s min # 4>     0.0     0.0     0.0
+xqcutij # 3>     0.0     0.0     0.0
+xqcutij # 4>     0.0     0.0     0.0
+ alpha_s for scale    91.188000000000002       is   0.11800000071525575     
+ Added good helicity            1   4.6495341432617048       in event            1
+ Added good helicity            2  4.02092393181311680E-002  in event            1
+ Added good helicity            5   3.3102566143584089       in event            1
+ Added good helicity           10   3.3102566161356997       in event            1
+ Added good helicity           13  4.02092394284839783E-002  in event            1
+ Added good helicity           14   4.6495341457690325       in event            1
+ Added good helicity           19   4.6495341457690289       in event            1
+ Added good helicity           20  4.02092394284839297E-002  in event            1
+ Added good helicity           23   3.3102566161356983       in event            1
+ Added good helicity           28   3.3102566143584089       in event            1
+ Added good helicity           31  4.02092393181312305E-002  in event            1
+ Added good helicity           32   4.6495341432617083       in event            1
+ Added good helicity            3  7.43747010946239255E-004  in event           79
+ Added good helicity           12  5.43924673447950934E-004  in event           79
+ Added good helicity           21  5.43924673439730622E-004  in event           79
+ Added good helicity           30  7.43747010935161311E-004  in event           79
+ Added good helicity            4  6.97845057501625691E-005  in event           82
+ Added good helicity            6  1.96470530252911079E-005  in event           82
+ Added good helicity            9  1.94504369539107525E-005  in event           82
+ Added good helicity           15  1.10947680402512659E-004  in event           82
+ Added good helicity           18  1.10947680401086255E-004  in event           82
+ Added good helicity           24  1.94504369523572230E-005  in event           82
+ Added good helicity           27  1.96470530252989142E-005  in event           82
+ Added good helicity           29  6.97845057493450129E-005  in event           82
+ Added good helicity           11  6.08852839459264536E-002  in event           85
+ Added good helicity           16  1.55899758972636872E-006  in event           85
+ Added good helicity           17  1.55899863268374589E-006  in event           85
+ Added good helicity           22  6.08852839830143835E-002  in event           85
+ Iteration  1   Mean: 0.4009E+32 Abs mean: 0.4009E+32   Fluctuation:  0.339E+32   0.676E+35    98.8%
+  1    0.4009E+32 0.4009E+32 +- 0.3388E+32     37.79
+ Writing out events  2.25478933690964039E+027   37.794019241887810     
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        2000           0
+ Iteration  2   Mean: 0.9258E+33 Abs mean: 0.9258E+33   Fluctuation:  0.837E+33   0.334E+37    99.1%
+  2    0.9258E+33 0.9258E+33 +- 0.8373E+33     57.19
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        4000           0
+ Iteration  3   Mean: 0.4146E+34 Abs mean: 0.4146E+34   Fluctuation:  0.403E+34   0.322E+38    99.1%
+  3    0.4146E+34 0.4146E+34 +- 0.4026E+34     86.85
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+        8000           0
+ Found           29  events.
+ Wrote            1  events.
+ Actual xsec   1.51637376045317906E+033
+ Correct abs xsec   1.51637376045317906E+033
+ Event xsec   1.51637376045317906E+033
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events  9.50190125775171048E-004           1  chi2:    950.03757067696858     
+ Found           29  events.
+ Wrote            1  events.
+ Actual xsec   1.51637376045317906E+033
+ Correct abs xsec   1.51637376045317906E+033
+ Event xsec   1.51637376045317906E+033
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Iteration  4   Mean: 0.2250E+37 Abs mean: 0.2250E+37   Fluctuation:  0.225E+37   0.360E+41    99.1%
+  4    0.2250E+37 0.2250E+37 +- 0.2249E+37    126.49
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       16000           0
+ Found           21  events.
+ Wrote            1  events.
+ Actual xsec   6.86848545876763938E+035
+ Correct abs xsec   6.86848545876763938E+035
+ Event xsec   6.86848545876763938E+035
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events  0.43039303581729782                1  chi2:    349967.23903678911     
+ Found           21  events.
+ Wrote            1  events.
+ Actual xsec   6.86848545876763938E+035
+ Correct abs xsec   6.86848545876763938E+035
+ Event xsec   6.86848545876763938E+035
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Iteration  5   Mean: 0.3313E+34 Abs mean: 0.3313E+34   Fluctuation:  0.280E+34   0.892E+38    99.1%
+  5    0.3313E+34 0.3313E+34 +- 0.2797E+34    151.05
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       32000           0
+ Found            7  events.
+ Wrote            1  events.
+ Actual xsec   6.52198799594604272E+035
+ Correct abs xsec   6.52198799594604272E+035
+ Event xsec   6.52198799594604272E+035
+ Events wgts > 1:            1
+ % Cross section > 1:   6.53195438611306082E+028  1.00152812151344239E-005
+ Checking number of events  0.40868081180197091                1  chi2:    39862.722226715217     
+ Found            7  events.
+ Wrote            1  events.
+ Actual xsec   6.52198799594604272E+035
+ Correct abs xsec   6.52198799594604272E+035
+ Event xsec   6.52198799594604272E+035
+ Events wgts > 1:            1
+ % Cross section > 1:   6.53195438611306082E+028  1.00152812151344239E-005
+ Iteration  6   Mean: 0.3682E+34 Abs mean: 0.3682E+34   Fluctuation:  0.354E+34   0.227E+39    99.1%
+  6    0.3682E+34 0.3682E+34 +- 0.3540E+34    243.22
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+       64000           0
+ Found           80  events.
+ Wrote            1  events.
+ Actual xsec   6.48096146667629778E+035
+ Correct abs xsec   6.48096146667629778E+035
+ Event xsec   6.48096146667629704E+035
+ Events wgts > 1:            1
+ % Cross section > 1:   3.35562258435581732E+028  5.17766168123310666E-006
+ Checking number of events  0.40611000742487019                1  chi2:    43136.982034619330     
+ Found           80  events.
+ Wrote            1  events.
+ Actual xsec   6.48096146667629778E+035
+ Correct abs xsec   6.48096146667629778E+035
+ Event xsec   6.48096146667629704E+035
+ Events wgts > 1:            1
+ % Cross section > 1:   3.35562258435581732E+028  5.17766168123310666E-006
+ Iteration  7   Mean: 0.6147E+33 Abs mean: 0.6147E+33   Fluctuation:  0.201E+33   0.198E+38    99.2%
+  7    0.6147E+33 0.6147E+33 +- 0.2012E+33    117.13
+ Relative summed weights:
+  0.1000E+01  0.0000E+00
+ Relative number of events:
+  0.1000E+01  0.0000E+00
+ Events:
+      128000           0
+ Found          172  events.
+ Wrote            3  events.
+ Actual xsec   1.21591196078583581E+033
+ Correct abs xsec   1.21591196078583581E+033
+ Event xsec   1.21591196078583566E+033
+ Events wgts > 1:            0
+ % Cross section > 1:    0.0000000000000000        0.0000000000000000     
+ Checking number of events  7.61914752867620497E-004           3  chi2:    4.9863869618830394     
+
+ -------------------------------------------------------------------------------
+ Accumulated results:   Integral =  0.1376E+36
+                        Std dev  =  0.3387E+35
+                       Cross sec =  0.4182E+02
+             Chi**2 per DoF.     =
+-------------------------------------------------
+---------------------------
+ Results Last   3 iters: Integral =   0.1216E+34
+                     Abs integral =   0.1216E+34
+                          Std dev =   0.3538E+33
+                  Chi**2 per DoF. =      4.9864
+-------------------------------------------------
+---------------------------
+ Status -6.26620000000000013E-037           8           9
+ We found enough events           3  7.61914752867620497E-004
+
+ls status:
+events.lhe
+ftn25
+ftn26
+input_sg.txt
+log.txt
+moffset.dat
+results.dat
+run1_app.log
