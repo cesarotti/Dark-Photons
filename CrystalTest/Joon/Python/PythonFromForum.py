@@ -1,7 +1,10 @@
+#Code exactly as is from forum
+
 import pyqtgraph as pg
 import time, threading, sys
 import serial
 import numpy as np
+
 
 class SerialReader(threading.Thread):
     """ Defines a thread for reading and buffering serial data.
@@ -11,18 +14,16 @@ class SerialReader(threading.Thread):
         threading.Thread.__init__(self)
         # circular buffer for storing serial data until it is 
         # fetched by the GUI
-        self.buffer = np.zeros(chunks*chunkSize, dtype=np.uint16) #uint16: unsigned int (0 to 65535)
+        self.buffer = np.zeros(chunks*chunkSize, dtype=np.uint16)
         
         self.chunks = chunks        # number of chunks to store in the buffer
         self.chunkSize = chunkSize  # size of a single chunk (items, not bytes)
-        self.ptr = 0                # pointer to (most recently collected buffer index) + 1
+        self.ptr = 0                # pointer to most (recently collected buffer index) + 1
         self.port = port            # serial port handle
         self.sps = 0.0              # holds the average sample acquisition rate
         self.exitFlag = False
         self.exitMutex = threading.Lock()
         self.dataMutex = threading.Lock()
-        
-        self.rptr = 0
         
         
     def run(self):
@@ -61,13 +62,14 @@ class SerialReader(threading.Thread):
             # write the new chunk into the circular buffer
             # and update the buffer pointer
             with dataMutex:
-                buffer[self.ptr:self.ptr + self.chunkSize] = data
+                buffer[self.ptr:self.ptr+self.chunkSize] = data
                 self.ptr = (self.ptr + self.chunkSize) % buffer.shape[0]
                 if sps is not None:
                     self.sps = sps
                 
-    def get(self, downsample=1):
-        """ Returns voltage_values
+                
+    def get(self, num, downsample=1):
+        """ Return a tuple (time_values, voltage_values, rate)
           - voltage_values will contain the *num* most recently-collected samples 
             as a 32bit float array. 
           - time_values assumes samples are collected at 1MS/s
@@ -77,59 +79,64 @@ class SerialReader(threading.Thread):
         this case, the voltage array will be returned as 32bit float.
         """
         with self.dataMutex:  # lock the buffer and copy the requested data out
-            
-            num = (self.ptr - self.rptr) % len(self.buffer)
-            if self.rptr + num >= len(self.buffer): # takes care of overlap situation
+            ptr = self.ptr
+            if ptr-num < 0:
                 data = np.empty(num, dtype=np.uint16)
-                data[:len(self.buffer) - self.rptr] = self.buffer[self.rptr:]
-                data[len(self.buffer) - self.rptr:] = self.buffer[:len(self.buffer) - self.rptr]
+                data[:num-ptr] = self.buffer[ptr-num:]
+                data[num-ptr:] = self.buffer[:ptr]
             else:
-                data = self.buffer[self.rptr:self.rptr + num].copy()
-            #JOON rate = self.sps
+                data = self.buffer[self.ptr-num:self.ptr].copy()
+            rate = self.sps
         
         # Convert array to float and rescale to voltage.
         # Assume 3.3V / 12bits
         # (we need calibration data to do a better job on this)
-        data = data.astype(np.float32) #JOON Rescaling Disabled * (3.3 / 2**12)
+        data = data.astype(np.float32) * (3.3 / 2**12)
         if downsample > 1:  # if downsampling is requested, average N samples together
             data = data.reshape(num/downsample,downsample).mean(axis=1)
             num = data.shape[0]
-            return data
+            return np.linspace(0, (num-1)*1e-6*downsample, num), data, rate
         else:
-            if self.rptr + num >= len(self.buffer):
-                self.rptr = (self.rptr + num + 1) - len(self.buffer)
-                return data
-            else:
-                self.rptr = self.rptr + num + 1
-                return data
+            return np.linspace(0, (num-1)*1e-6, num), data, rate
     
     def exit(self):
         """ Instruct the serial thread to exit."""
         with self.exitMutex:
             self.exitFlag = True
 
-def main():
-    #CURRENTLY SET UP TO RETURN VALUE OF r    
-    
-    # Get handle to serial port
-    s = serial.Serial('/dev/tty.usbmodem1411')
+
+# Get handle to serial port
+# (your port string may vary; windows users need 'COMn')
+s = serial.Serial('/dev/tty.usbmodem1421')
+
+# Create the GUI
+app = pg.mkQApp()
+plt = pg.plot()
+plt.setLabels(left=('ADC Signal', 'V'), bottom=('Time', 's'))
+plt.setYRange(0.0, 3.3)
             
-    # Create thread to read and buffer serial data.
-    thread = SerialReader(s)
-    thread.start()
+# Create thread to read and buffer serial data.
+thread = SerialReader(s)
+thread.start()
 
-    # Calling update() will request a copy of the most recently-acquired 
-    # samples and write them to text.
+# Calling update() will request a copy of the most recently-acquired 
+# samples and plot them.
+def update():
+    global plt, thread
+    t,v,r = thread.get(1000*1024, downsample=100)
+    plt.plot(t, v, clear=True)
+    plt.setTitle('Sample Rate: %0.2f'%r)
+    
+    if not plt.isVisible():
+        thread.exit()
+        timer.stop()
 
-    #JOON makes sure that numpy won't truncate the middle of a long array
-    np.set_printoptions(threshold = 'nan')
-        
-    #JOON
-    txtfl = open("rate.txt", 'w')
-    time.sleep(0.1)
-    t,v,r = thread.get(1024, downsample = 1)
-    txtfl.write(str(r))
-    txtfl.close()
+# Set up a timer with 0 interval so Qt will call update()
+# as rapidly as it can handle.
+timer = pg.QtCore.QTimer()
+timer.timeout.connect(update)
+timer.start(0)
 
-if __name__ == '__main__':
-    main()
+# Start Qt event loop.    
+if sys.flags.interactive == 0:
+    app.exec_()
