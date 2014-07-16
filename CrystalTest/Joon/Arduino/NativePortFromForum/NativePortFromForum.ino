@@ -9,7 +9,7 @@
 // stty -F /dev/ttyACM0 raw -iexten -echo -echoe -echok -echoctl -echoke -onlcr
 
 volatile int bufn,obufn;
-const int NBUFFER=4096;
+const int NBUFFER = 4096;
 const int NSLOT = 8; // must be power of 2
 uint16_t buf[NSLOT][NBUFFER];   // 4 buffers of 256 readings
 

@@ -34,6 +34,8 @@ class SerialReader(threading.Thread):
         sps = None
         lastUpdate = pg.ptime.time()
         
+        txtfl = open("txtbuffer.txt", 'w')        
+        
         while True:
             # see whether an exit was requested
             with exitMutex:
@@ -58,78 +60,28 @@ class SerialReader(threading.Thread):
                 count = 0
                 lastUpdate = now
                 
-            # write the new chunk into the circular buffer
-            # and update the buffer pointer
+            # write the new chunk into the textfile
             with dataMutex:
-                buffer[self.ptr:self.ptr + self.chunkSize] = data
-                self.ptr = (self.ptr + self.chunkSize) % buffer.shape[0]
+                txtfl.write(np.array_str(data))
                 if sps is not None:
                     self.sps = sps
-                
-    def get(self, downsample=1):
-        """ Returns voltage_values
-          - voltage_values will contain the *num* most recently-collected samples 
-            as a 32bit float array. 
-          - time_values assumes samples are collected at 1MS/s
-          - rate is the running average sample rate.
-        If *downsample* is > 1, then the number of values returned will be
-        reduced by averaging that number of consecutive samples together. In 
-        this case, the voltage array will be returned as 32bit float.
-        """
-        with self.dataMutex:  # lock the buffer and copy the requested data out
-            
-            num = (self.ptr - self.rptr) % len(self.buffer)
-            if self.rptr + num >= len(self.buffer): # takes care of overlap situation
-                data = np.empty(num, dtype=np.uint16)
-                data[:len(self.buffer) - self.rptr] = self.buffer[self.rptr:]
-                data[len(self.buffer) - self.rptr:] = self.buffer[:len(self.buffer) - self.rptr]
-            else:
-                data = self.buffer[self.rptr:self.rptr + num].copy()
-            #JOON rate = self.sps
         
-        # Convert array to float and rescale to voltage.
-        # Assume 3.3V / 12bits
-        # (we need calibration data to do a better job on this)
-        data = data.astype(np.float32) #JOON Rescaling Disabled * (3.3 / 2**12)
-        if downsample > 1:  # if downsampling is requested, average N samples together
-            data = data.reshape(num/downsample,downsample).mean(axis=1)
-            num = data.shape[0]
-            return data
-        else:
-            if self.rptr + num >= len(self.buffer):
-                self.rptr = (self.rptr + num + 1) - len(self.buffer)
-                return data
-            else:
-                self.rptr = self.rptr + num + 1
-                return data
-    
+        txtfl.close()
+
     def exit(self):
         """ Instruct the serial thread to exit."""
         with self.exitMutex:
             self.exitFlag = True
 
 def main():
-    #CURRENTLY SET UP TO RETURN VALUE OF r    
-    
     # Get handle to serial port
-    s = serial.Serial('/dev/tty.usbmodem1411')
+    s = serial.Serial('/dev/tty.usbmodem1421')
             
     # Create thread to read and buffer serial data.
     thread = SerialReader(s)
     thread.start()
-
-    # Calling update() will request a copy of the most recently-acquired 
-    # samples and write them to text.
-
     #JOON makes sure that numpy won't truncate the middle of a long array
     np.set_printoptions(threshold = 'nan')
-        
-    #JOON
-    txtfl = open("rate.txt", 'w')
-    time.sleep(0.1)
-    t,v,r = thread.get(1024, downsample = 1)
-    txtfl.write(str(r))
-    txtfl.close()
 
 if __name__ == '__main__':
     main()
