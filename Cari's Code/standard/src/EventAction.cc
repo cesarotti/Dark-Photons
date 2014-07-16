@@ -46,7 +46,7 @@ EventAction::EventAction()
     fDistance(0.) //distance from center of target to front of calorimeter
 {
   // DetectorConstruction* detector = new DetectorConstruction();
-  fDistance = 10*m + 5*cm;
+  fDistance = 9.99*m;
 }
 
 
@@ -95,23 +95,33 @@ void EventAction::EndOfEventAction(const G4Event* event)
   BasicHitsCollection* hitColl = static_cast<BasicHitsCollection*>(hce->GetHC(collectionID));
 
   G4int numHits = hitColl->entries();
-  G4double xPos(0.), yPos(0.);
+  G4int id(0);
+  G4double xPos(0.), yPos(0.), zPos(0.);
 
   for (int i=0; i<numHits; i++)
     {
       BasicHit* hit = (*hitColl)[i]; 
 
-      analysisMan->FillNtupleIColumn(0, 1);
-
-      analysisMan->FillNtupleDColumn(1, hit->GetTotalEnergy());
-
       G4ThreeVector position = hit->GetPosition();
+      if (position.getZ() > 0) {
+	analysisMan->FillNtupleIColumn(0,1);
+      analysisMan->FillNtupleDColumn(1, hit->GetTotalEnergy());
       analysisMan->FillNtupleDColumn(2,xPos = position.getX());
       analysisMan->FillNtupleDColumn(3,yPos = position.getY());
 
       analysisMan->FillNtupleIColumn(4, hit->GetPDGID());
 
       analysisMan->FillNtupleDColumn(5, CalcTheta(xPos, yPos));
+      }
+      else 
+	{
+	id = hit->GetPDGID();
+	if (id == 22)
+	analysisMan->FillNtupleDColumn(6, zPos = position.getZ());
+	if (id == -11)
+	analysisMan->FillNtupleDColumn(7, hit->GetTotalEnergy());
+	analysisMan->FillNtupleIColumn(0, -1); 
+	}
 
       analysisMan->AddNtupleRow();
     }
