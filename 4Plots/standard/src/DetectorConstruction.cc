@@ -207,7 +207,7 @@ G4Box* targetS =
   new G4Box("target", targetFace/2, targetFace/2, targetLength/2);
 
  fLogicTarget = 
-   new G4LogicalVolume(targetS, fTargetMaterial, "CrystalLV", 0,0,0);
+   new G4LogicalVolume(targetS, fTargetMaterial, "TargetLV", 0,0,0);
 
  new G4PVPlacement(0, 
 		   positionTarget,
@@ -253,24 +253,6 @@ G4LogicalVolume* calorimeterLV =
 	       false, 
 	       0, 
 	       fCheckOverlaps);
- /*
- 
-G4VSolid* beamS = 
-  new G4Box("beamS", targetLength, targetLength, 1.*cm);
-
- G4LogicalVolume* beamLV = 
-   new G4LogicalVolume (beamS, fWorldMaterial, "CrystalLV", 0, 0, 0);
- 
- new G4PVPlacement(0, 
-		   G4ThreeVector(0., 0., targetPos+6.*cm),
-		   beamLV, 
-		   "BeamCheck", 
-		   worldLV, 
-		   false, 
-		   0, 
-		   fCheckOverlaps);
- */
-
 
 
  //Visualization
