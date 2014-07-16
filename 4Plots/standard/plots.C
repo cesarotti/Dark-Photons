@@ -18,7 +18,11 @@ const double BINNING_WEIGHT = POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
 //Energy in MeV, theta in radians
 double mSquared(double energy, double theta)
 {
-  return (2*ELECTRON_MASS*(POSITRON_ENERGY-energy*(1+GAMMA_CM_2*pow(theta, 2.))));
+  double labEnergy = POSITRON_ENERGY+ELECTRON_MASS;
+  double posEnergy2 = pow(POSITRON_ENERGY, 2.);
+  double momentum = sqrt(posEnergy2+pow(ELECTRON_MASS,2.));
+  return (labEnergy+ELECTRON_MASS)*(labEnergy-2*energy) - 
+    momentum*(momentum-2*energy*TMath::Cos(theta)); 
 }
 
 void plots() {
@@ -57,17 +61,58 @@ void plots() {
       M2->Fill(mSquared(energyTot, theta), BINNING_WEIGHT/10); 
     }
 
-  TCanvas* can1 = new TCanvas("can1", "Energy_Mass_and_Theta", 1000, 500);
-  TCanvas* can2 = new TCanvas("can3", "Energy", 500, 500);
-  TCanvas* can3 = new TCanvas("can4", "Mass", 
-  can1->Divide(2,2); 
-  can1->cd(1); engTheta->Draw();
-  can1->cd(3); energyH->Draw();
-  can1->cd(4); thetaH->Draw();
-  can1->cd(2); M2->Draw();
-  can2->SetLogy(); energyH->Draw();
-  can3->SetLogy(); energyH->Draw();
 
+  // create canvas and draw histogram
+  TCanvas* canvas = new TCanvas("canvas", "canvas", 700, 700);
+  //canvas->SetCanvasSize(2000, 1000);
+  canvas->Divide(3,2);
+  TPad* p; 
+
+  p = (TPad*)canvas->cd(2);
+  p->SetLogy();
+  p->SetGrid();
+  energyH->SetFillColor(kBlue);
+  energyH->SetFillStyle(3001);
+  energyH->Draw();
+  energyH->GetXaxis()->SetTitle("Energy (MeV)");
+  energyH->GetYaxis()->SetTitle("Photons per MeV per Second (MeV^{-1} s^{-1})");
+  energyH->GetXaxis()->CenterTitle();
+  energyH->GetYaxis()->CenterTitle();
+
+  p = (TPad*)canvas->cd(5);
+  p->SetLogy();
+  p->SetGrid();
+  thetaH->SetFillColor(kBlue);
+  thetaH->SetFillStyle(3001);
+  thetaH->Draw();
+  thetaH->GetXaxis()->SetTitle("#theta (mrad)");
+  thetaH->GetXaxis()->CenterTitle();
+  thetaH->GetYaxis()->SetTitle("Photons per mrad per Second (mrad^{-1} s^{-1})");
+  thetaH->GetYaxis()->CenterTitle();
+
+  p = (TPad*)canvas->cd(1);
+  p->SetGrid();
+  M2->SetFillColor(kBlue);
+  M2->SetFillStyle(3001);
+  M2->GetXaxis()->SetTitle("M_{A'}^{2} (MeV^{2})");
+  M2->GetYaxis()->SetTitle("Photons per MeV^{2} per Second (MeV^{-2} s^{-1})");
+  M2->GetXaxis()->CenterTitle();
+  M2->GetYaxis()->CenterTitle();
+  M2->Draw();
+
+
+  p = (TPad*)canvas->cd(4);
+  p->SetLogy();
+  p->SetGrid();
+  M2->Draw();
+
+  p = (TPad*)canvas->cd(3);
+  // Hits_Info->Draw("theta:Energy", "PDGID==22 && theta>2 && theta<5 && Energy>10 && Energy<510");
+  engTheta->Draw();
+  engTheta->GetYaxis()->SetTitle("Energy (MeV)");
+  engTheta->GetXaxis()->SetTitle("#theta (mrad)");
+  engTheta->GetXaxis()->CenterTitle();
+  engTheta->GetYaxis()->CenterTitle();
 
   
 

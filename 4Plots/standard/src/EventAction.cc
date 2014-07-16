@@ -46,7 +46,7 @@ EventAction::EventAction()
     fDistance(0.) //distance from center of target to front of calorimeter
 {
   // DetectorConstruction* detector = new DetectorConstruction();
-  fDistance = 10*m + 5*cm;
+  fDistance = 9.99*m;
 }
 
 
@@ -65,12 +65,12 @@ void EventAction::BeginOfEventAction(const G4Event* /* run*/)
  *Calculates the angle from the Z axis the photon hits the target
  *returns G4double angle in degrees
  */
-G4double EventAction::CalcTheta(G4double x, G4double y)
+G4double EventAction::CalcTheta(G4double x, G4double y, G4double z)
 {
   G4double distance;
   distance  = std::sqrt(x*x+y*y);
 
-  G4float theta =  std::atan(distance/fDistance);
+  G4float theta =  std::atan(distance/(5*m+z));
 
 
   return G4double(theta*180/pi);
@@ -95,23 +95,24 @@ void EventAction::EndOfEventAction(const G4Event* event)
   BasicHitsCollection* hitColl = static_cast<BasicHitsCollection*>(hce->GetHC(collectionID));
 
   G4int numHits = hitColl->entries();
-  G4double xPos(0.), yPos(0.);
+  G4int id(0);
+  G4double xPos(0.), yPos(0.), zPos(0.);
 
   for (int i=0; i<numHits; i++)
     {
       BasicHit* hit = (*hitColl)[i]; 
 
-      analysisMan->FillNtupleIColumn(0, 1);
-
-      analysisMan->FillNtupleDColumn(1, hit->GetTotalEnergy());
-
       G4ThreeVector position = hit->GetPosition();
+      analysisMan->FillNtupleIColumn(0,1);
+      analysisMan->FillNtupleDColumn(1, hit->GetTotalEnergy());
       analysisMan->FillNtupleDColumn(2,xPos = position.getX());
       analysisMan->FillNtupleDColumn(3,yPos = position.getY());
+      zPos = position.getZ();
 
       analysisMan->FillNtupleIColumn(4, hit->GetPDGID());
 
-      analysisMan->FillNtupleDColumn(5, CalcTheta(xPos, yPos));
+      analysisMan->FillNtupleDColumn(5, CalcTheta(xPos, yPos, zPos));
+ 
 
       analysisMan->AddNtupleRow();
     }
