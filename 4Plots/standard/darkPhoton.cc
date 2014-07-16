@@ -96,7 +96,7 @@ int main(int argc, char** argv)
     //batch mode
     if (argc !=1)
       {
-	G4String command = "/control/execture ";
+	G4String command = "/control/execute ";
 	G4String fileName = argv[1]; 
 	UImanager->ApplyCommand(command+fileName);
       }

@@ -25,7 +25,7 @@ public:
 
 private:
 
-  G4double CalcTheta(G4double x, G4double y);
+  G4double CalcTheta(G4double x, G4double y, G4double z);
 
   G4double fDistance; //used in CalcTheta(x,y)
 
