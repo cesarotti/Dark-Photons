@@ -29,6 +29,7 @@
 #include "G4eBremsstrahlung.hh"
 
 #include "G4eplusAnnihilation.hh"
+#include "NewBremsstrahlung.hh"
 
 #include "G4VEmProcess.hh"
 
@@ -68,6 +69,10 @@ void PositronPhysicsList1::ConstructEM()
   //How to bias
   //eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
   pman->AddProcess(eplusProc, 0, -1, 4);
+
+  //Yimin's angle biased bremsstrahlung
+  //NewBremsstrahlung* eBrem = new NewBremsstrahlung();
+  //pman->AddProcess(eBrem,-1,3,3);
  
   
 }
