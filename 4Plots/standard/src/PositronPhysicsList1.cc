@@ -35,7 +35,7 @@
 
 PositronPhysicsList1::PositronPhysicsList1()
 {
-  defaultCutValue = 1.0*mm; //As me if you need energy cut offs, too
+  defaultCutValue = 1.0*mm; //Ask me if you need energy cut offs, too
   SetVerboseLevel(0);
 }
 
@@ -66,7 +66,7 @@ void PositronPhysicsList1::ConstructEM()
 
   G4VEmProcess* eplusProc = new G4eplusAnnihilation();
   //How to bias
-  eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
+  //eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
   pman->AddProcess(eplusProc, 0, -1, 4);
  
   
