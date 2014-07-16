@@ -14,6 +14,7 @@ class Plotter(object):
     #filters the data
     def filterdata(self):
         for i in range(len(self.datastring)):
+            """
             if self.datastring[i] == "[":
                 pass
             elif "[" in self.datastring[i] and "]" in self.datastring[i]:
@@ -27,6 +28,12 @@ class Plotter(object):
                 self.dta.append(float(tempstring))
             else:
                 self.dta.append(float(self.datastring[i]))
+            """
+            temp = self.datastring[i].translate(None, '[]')
+            if temp == "":
+                pass
+            else:
+                self.dta.append(float(temp))
 
     #given a a trigger value, and expected rise/fall times, 
     #returns a list of pulses
