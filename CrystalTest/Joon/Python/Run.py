@@ -1,4 +1,4 @@
-import GathererBackup
+import Gatherer
 import PulseFinder
 import time
 import numpy as np
@@ -9,7 +9,7 @@ import serial
 # samples and write them to the text file.
 def update():
     global plt, thread
-    t, v, r = thread.get(1024 * 64, downsample = 1)
+    v = thread.get()
 
     #Write to txt
     global txtfl
@@ -31,7 +31,7 @@ def analyze(txtflname, trigger, rise, tail, filedir):
 
 #PARAMETERS
 serialportname = '/dev/tty.usbmodem1421'
-txtflname = "txtbuffer.txt"
+txtflname = "voltagedata.txt"
 trigger = 20
 rise = 5
 tail = 5
@@ -42,7 +42,7 @@ filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots//Ju
 s = serial.Serial(serialportname)
      
 # Create thread to read and buffer serial data.
-thread = GathererBackup.SerialReader(s, 1024, 5000)
+thread = Gatherer.SerialReader(s, 1024, 5000)
 thread.start()
 
 #Makes sure that numpy won't truncate the middle of a long array
@@ -50,9 +50,7 @@ np.set_printoptions(threshold = 'nan')
 
 txtfl = open(txtflname, 'w')
 time.sleep(0.1)
-
 update()
-
 txtfl.close()
 
 analyze(txtflname, trigger, rise, tail, filedir)
