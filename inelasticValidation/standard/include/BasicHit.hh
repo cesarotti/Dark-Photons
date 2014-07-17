@@ -39,8 +39,10 @@ public:
 
   void SetTotalEnergy(G4double energy)
   {fTotalEnergy = energy;};
-  void SetPosition(G4ThreeVector position)
-  {fPos = position; };
+  void SetMomentum(G4ThreeVector mom)
+  {fMomentum = mom; };
+  void SetPosition(G4ThreeVector pos)
+  {fPos = pos; };
   void SetPDGID(G4int id)
   {fPDGID = id; };
 
@@ -49,6 +51,8 @@ public:
 
   G4double GetTotalEnergy()
   {return fTotalEnergy;};
+  G4ThreeVector GetMomentum()
+  {return fMomentum;};
   G4ThreeVector GetPosition()
   {return fPos;};
   G4int GetPDGID()
@@ -58,8 +62,10 @@ public:
 private:
 
   G4double fTotalEnergy; //total energy of particle
-  G4ThreeVector fPos;  //position of particle
+  G4ThreeVector fMomentum;  //Momentum of particl
+  G4ThreeVector fPos;  //Momentum of particl
   G4int fPDGID; //particle ID
+
 
 };
 
