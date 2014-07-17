@@ -1,5 +1,4 @@
-import pyqtgraph as pg
-import time, threading, sys
+import time, threading
 import serial
 import numpy as np
 
@@ -30,9 +29,11 @@ class SerialReader(threading.Thread):
         dataMutex = self.dataMutex
         buffer = self.buffer
         port = self.port
+        """
         count = 0
         sps = None
         lastUpdate = pg.ptime.time()
+        """
         
         while True:
             # see whether an exit was requested
@@ -45,6 +46,7 @@ class SerialReader(threading.Thread):
             # convert data to 16bit int numpy array
             data = np.fromstring(data, dtype=np.uint16)
             
+            """
             # keep track of the acquisition rate in samples-per-second
             count += self.chunkSize
             now = pg.ptime.time()
@@ -57,14 +59,17 @@ class SerialReader(threading.Thread):
                     sps = sps * 0.9 + (count / dt) * 0.1
                 count = 0
                 lastUpdate = now
-                
+            """
+            
             # write the new chunk into the circular buffer
             # and update the buffer pointer
             with dataMutex:
                 buffer[self.ptr:self.ptr + self.chunkSize] = data
                 self.ptr = (self.ptr + self.chunkSize) % buffer.shape[0]
+                """
                 if sps is not None:
                     self.sps = sps
+                """
                 
     def get(self):
         """ Returns voltage_values
@@ -81,7 +86,7 @@ class SerialReader(threading.Thread):
             if self.ptr <= self.rptr:
                 data = np.empty(len(self.buffer) - self.rptr + self.ptr, dtype = np.uint16)
                 data[:len(self.buffer) - self.rptr] = self.buffer[self.rptr:]
-                data[len(self.buffer) - self.rptr:] = self.buffer[:len(self.buffer) - self.rptr]
+                data[len(self.buffer) - self.rptr:] = self.buffer[:self.ptr]
             else:
                 data = self.buffer[self.rptr:self.ptr].copy()
             
@@ -107,6 +112,8 @@ class SerialReader(threading.Thread):
             return data
         else:
         """
+        print self.rptr
+        print self.ptr
         self.rptr = self.ptr
         return data
     
