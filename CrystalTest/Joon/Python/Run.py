@@ -9,11 +9,10 @@ import serial
 # samples and write them to the text file.
 def update():
     global plt, thread
-    v = thread.get(1024, downsample = 1)
-
-    #Write to txt
+    v = thread.get()
     global txtfl
     txtfl.write(str(v))
+    thread.exit()
 
 def analyze(txtflname, trigger, rise, tail, filedir):
     voltagedata = open(txtflname, 'r')
@@ -35,24 +34,24 @@ txtflname = "voltagedata.txt"
 trigger = 20
 rise = 5
 tail = 5
-filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots//NewGet10Hz"
+filedir = "//Users//Joon//OneDrive//Cornell//LEPPSummer2014DarkPhoton//Plots//July17"
+
 
 # Get handle to serial port
 s = serial.Serial(serialportname)
-            
+     
 # Create thread to read and buffer serial data.
-thread = Gatherer.SerialReader(s)
+thread = Gatherer.SerialReader(s, 1024, 500)
 thread.start()
 
 #Makes sure that numpy won't truncate the middle of a long array
 np.set_printoptions(threshold = 'nan')
 
 txtfl = open(txtflname, 'w')
-time.sleep(0.1)
-
-for i in range(1000):
-    update()
-
+time.sleep(2)
+print "sleeptime: 2sec"
+update()
+update()
 txtfl.close()
 
 analyze(txtflname, trigger, rise, tail, filedir)

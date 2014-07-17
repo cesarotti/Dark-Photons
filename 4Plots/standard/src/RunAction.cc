@@ -42,7 +42,7 @@ RunAction::RunAction()
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
   G4cout << "Using" << analysisMan->GetType() << G4endl;
-  analysisMan->SetVerboseLevel(2);
+  analysisMan->SetVerboseLevel(1);
 
   //Creating directories
   
