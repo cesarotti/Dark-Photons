@@ -92,8 +92,8 @@ void PositronPhysicsList1::ConstructProcess()
   AddTransportation();
   //Construct2Gamma();
   //ConstructBremsstrahlung();
-  ConstructPositronNuclear();
-  //ConstructElectronNuclear();
+  //ConstructPositronNuclear();
+  ConstructElectronNuclear();
   ConstructDecay();
 
 }

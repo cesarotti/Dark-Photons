@@ -82,11 +82,13 @@ G4bool BasicHitSD::ProcessHits(G4Step* aStep,
     G4double sigX = G4RandGauss::shoot(position.getX(), posSig);
     G4double sigY = G4RandGauss::shoot(position.getY(), posSig);
     hit->SetPosition(G4ThreeVector(sigX, sigY, position.getZ()));
+    hit->SetMomentum(aStep->GetTrack()->GetMomentum());
 
    }
 
     else {
       hit->SetPosition(aStep->GetTrack()->GetPosition());
+      hit->SetMomentum(aStep->GetTrack()->GetMomentum());
       hit->SetTotalEnergy(enTotal);  }
 
   fHitsCollection->insert(hit);

@@ -12,6 +12,7 @@
 #include "G4UserEventAction.hh"
 #include "DetectorConstruction.hh"
 #include "globals.hh"
+#include "G4ThreeVector.hh"
 
 
 class EventAction : public G4UserEventAction
@@ -25,7 +26,7 @@ public:
 
 private:
 
-  G4double CalcTheta(G4double x, G4double y, G4double z);
+  G4double CalcTheta(G4ThreeVector);
 
   G4double fDistance; //used in CalcTheta(x,y)
 

@@ -65,14 +65,10 @@ void EventAction::BeginOfEventAction(const G4Event* /* run*/)
  *Calculates the angle from the Z axis the photon hits the target
  *returns G4double angle in degrees
  */
-G4double EventAction::CalcTheta(G4double x, G4double y, G4double z)
+G4double EventAction::CalcTheta(G4ThreeVector mom)
 {
-  G4double distance;
-  distance  = std::sqrt(x*x+y*y);
-
-  G4float theta =  std::atan(distance/(5*m+z));
-
-
+  G4double theta = acos(mom.getZ() / mom.mag());
+  G4cout <<  theta << G4endl;
   return G4double(theta*180/pi);
 }
 
@@ -96,7 +92,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   G4int numHits = hitColl->entries();
   G4int id;
-  G4ThreeVector position;
+  G4ThreeVector momentum;
 
   G4int numProton = 0;
   G4int numPiPlus = 0;
@@ -105,7 +101,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
   for (int i=0; i < numHits; i++) {
     BasicHit* hit = (*hitColl)[i];
     id = hit->GetPDGID();
-    position = hit->GetPosition();
+    momentum = hit->GetMomentum();
 
 
     if (id == 2212) {
@@ -116,7 +112,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
       numPiMinius++;
     } else if (id == 11) {
       analysisMan->FillNtupleDColumn(0, hit->GetTotalEnergy());
-      analysisMan->FillNtupleDColumn(1, CalcTheta(position.getX(), position.getY(), position.getZ()));
+      analysisMan->FillNtupleDColumn(1, CalcTheta(momentum));
     }
   }
 

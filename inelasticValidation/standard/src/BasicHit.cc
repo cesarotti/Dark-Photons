@@ -24,7 +24,8 @@ G4ThreadLocal G4Allocator<BasicHit>* BasicHitAllocator;
 BasicHit::BasicHit()
   : G4VHit(),
     fTotalEnergy(0.), 
-    fPos(G4ThreeVector()), 
+    fMomentum(G4ThreeVector()), 
+    fPos(G4ThreeVector()),
     fPDGID(0)
 {}
 
@@ -35,6 +36,7 @@ BasicHit::BasicHit(const BasicHit& hit)
   : G4VHit()
 { 
   fTotalEnergy = hit.fTotalEnergy;
+  fMomentum = hit.fMomentum;
   fPos = hit.fPos;
   fPDGID = hit.fPDGID;
 }
@@ -42,6 +44,7 @@ BasicHit::BasicHit(const BasicHit& hit)
 const BasicHit& BasicHit::operator=(const BasicHit& hit)
 {
   fTotalEnergy = hit.fTotalEnergy;
+  fMomentum = hit.fMomentum;
   fPos = hit.fPos;
   fPDGID = hit.fPDGID;
 
