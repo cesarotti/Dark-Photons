@@ -207,7 +207,7 @@ G4Box* targetS =
   new G4Box("target", targetFace/2, targetFace/2, targetLength/2);
 
  fLogicTarget = 
-   new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
+   new G4LogicalVolume(targetS, fTargetMaterial, "TargetLV", 0,0,0);
 
  new G4PVPlacement(0, 
 		   positionTarget,
@@ -255,7 +255,6 @@ G4LogicalVolume* calorimeterLV =
 	       fCheckOverlaps);
 
 
-
  //Visualization
 
  G4VisAttributes* pink = new G4VisAttributes(G4Colour(1.0, 0.4, 0.8));
@@ -285,7 +284,7 @@ void DetectorConstruction::ConstructSDandField()
     new BasicHitSD(basicSDname, "BasicHitsCollection");
 
   //SMEARING
-  basicSD->SetSmearing(false);
+  basicSD->SetSmearing(true);
 
   SetSensitiveDetector("CrystalLV", basicSD, true); 
 

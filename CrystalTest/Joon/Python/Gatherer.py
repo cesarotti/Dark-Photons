@@ -1,5 +1,4 @@
-import pyqtgraph as pg
-import time, threading, sys
+import time, threading
 import serial
 import numpy as np
 
@@ -30,9 +29,11 @@ class SerialReader(threading.Thread):
         dataMutex = self.dataMutex
         buffer = self.buffer
         port = self.port
+        """
         count = 0
         sps = None
         lastUpdate = pg.ptime.time()
+        """
         
         while True:
             # see whether an exit was requested
@@ -45,6 +46,7 @@ class SerialReader(threading.Thread):
             # convert data to 16bit int numpy array
             data = np.fromstring(data, dtype=np.uint16)
             
+            """
             # keep track of the acquisition rate in samples-per-second
             count += self.chunkSize
             now = pg.ptime.time()
@@ -57,17 +59,19 @@ class SerialReader(threading.Thread):
                     sps = sps * 0.9 + (count / dt) * 0.1
                 count = 0
                 lastUpdate = now
-                
+            """
+            
             # write the new chunk into the circular buffer
             # and update the buffer pointer
             with dataMutex:
-                buffer[self.ptr:self.ptr+self.chunkSize] = data
+                buffer[self.ptr:self.ptr + self.chunkSize] = data
                 self.ptr = (self.ptr + self.chunkSize) % buffer.shape[0]
+                """
                 if sps is not None:
                     self.sps = sps
+                """
                 
-                
-    def get(self, num, downsample=1):
+    def get(self):
         """ Returns voltage_values
           - voltage_values will contain the *num* most recently-collected samples 
             as a 32bit float array. 
@@ -78,29 +82,40 @@ class SerialReader(threading.Thread):
         this case, the voltage array will be returned as 32bit float.
         """
         with self.dataMutex:  # lock the buffer and copy the requested data out
+            
+            if self.ptr <= self.rptr:
+                data = np.empty(len(self.buffer) - self.rptr + self.ptr, dtype = np.uint16)
+                data[:len(self.buffer) - self.rptr] = self.buffer[self.rptr:]
+                data[len(self.buffer) - self.rptr:] = self.buffer[:self.ptr]
+            else:
+                data = self.buffer[self.rptr:self.ptr].copy()
+            
+            """
+            num = (self.ptr - self.rptr) % len(self.buffer)
             if self.rptr + num >= len(self.buffer): # takes care of overlap situation
                 data = np.empty(num, dtype=np.uint16)
-                data[:len(buffer) - self.rptr] = self.buffer[self.rptr:]
-                data[len(buffer) - self.rptr:] = self.buffer[:len(buffer) - self.rptr]
+                data[:len(self.buffer) - self.rptr] = self.buffer[self.rptr:]
+                data[len(self.buffer) - self.rptr:] = self.buffer[:len(self.buffer) - self.rptr]
             else:
                 data = self.buffer[self.rptr:self.rptr + num].copy()
+            """
             #JOON rate = self.sps
         
         # Convert array to float and rescale to voltage.
         # Assume 3.3V / 12bits
         # (we need calibration data to do a better job on this)
         data = data.astype(np.float32) #JOON Rescaling Disabled * (3.3 / 2**12)
+        """
         if downsample > 1:  # if downsampling is requested, average N samples together
             data = data.reshape(num/downsample,downsample).mean(axis=1)
             num = data.shape[0]
             return data
         else:
-            if self.rptr + num >= len(self.buffer):
-                self.rptr = (self.rptr + num + 1) - len(self.buffer)
-                return data
-            else:
-                self.rptr = self.rptr + num + 1
-                return data
+        """
+        print self.rptr
+        print self.ptr
+        self.rptr = self.ptr
+        return data
     
     def exit(self):
         """ Instruct the serial thread to exit."""
@@ -111,7 +126,7 @@ def main():
     #CURRENTLY SET UP TO RETURN VALUE OF r    
     
     # Get handle to serial port
-    s = serial.Serial('/dev/tty.usbmodem1421')
+    s = serial.Serial('/dev/tty.usbmodem1411')
             
     # Create thread to read and buffer serial data.
     thread = SerialReader(s)
