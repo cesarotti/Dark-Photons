@@ -95,27 +95,36 @@ void EventAction::EndOfEventAction(const G4Event* event)
   BasicHitsCollection* hitColl = static_cast<BasicHitsCollection*>(hce->GetHC(collectionID));
 
   G4int numHits = hitColl->entries();
-  G4int id(0);
-  G4double xPos(0.), yPos(0.), zPos(0.);
+  G4int id;
+  G4ThreeVector position;
 
-  for (int i=0; i<numHits; i++)
-    {
-      BasicHit* hit = (*hitColl)[i]; 
+  G4int numProton = 0;
+  G4int numPiPlus = 0;
+  G4int numPiMinius = 0;
 
-      G4ThreeVector position = hit->GetPosition();
-      analysisMan->FillNtupleIColumn(0,1);
-      analysisMan->FillNtupleDColumn(1, hit->GetTotalEnergy());
-      analysisMan->FillNtupleDColumn(2,xPos = position.getX());
-      analysisMan->FillNtupleDColumn(3,yPos = position.getY());
-      zPos = position.getZ();
+  for (int i=0; i < numHits; i++) {
+    BasicHit* hit = (*hitColl)[i];
+    id = hit->GetPDGID();
+    position = hit->GetPosition();
 
-      analysisMan->FillNtupleIColumn(4, hit->GetPDGID());
 
-      analysisMan->FillNtupleDColumn(5, CalcTheta(xPos, yPos, zPos));
- 
-
-      analysisMan->AddNtupleRow();
+    if (id == 2212) {
+      numProton++;
+    } else if (id == 211) {
+      numPiPlus++;
+    } else if (id == -211) {
+      numPiMinius++;
+    } else if (id == 11) {
+      analysisMan->FillNtupleDColumn(0, hit->GetTotalEnergy());
+      analysisMan->FillNtupleDColumn(1, CalcTheta(position.getX(), position.getY(), position.getZ()));
     }
+  }
+
+  analysisMan->FillNtupleIColumn(2, numProton);
+  analysisMan->FillNtupleIColumn(3, numPiPlus);
+  analysisMan->FillNtupleIColumn(4, numPiMinius);
+
+  analysisMan->AddNtupleRow();
 
   
 

@@ -56,7 +56,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   G4ParticleDefinition* particleDefinition
     //!!!
     //Positron beam
-    = G4ParticleTable::GetParticleTable()->FindParticle("e+");
+    = G4ParticleTable::GetParticleTable()->FindParticle("e-");
 
   fParticleSource->GetCurrentSource()->SetParticleDefinition(particleDefinition);
 
@@ -75,7 +75,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   fParticleSource->GetCurrentSource()->GetAngDist()->DefineAngRefAxes("angref2", G4ThreeVector(0,1,0));
 
   fParticleSource->GetCurrentSource()->GetEneDist()->SetEnergyDisType("Lin");
-  G4double max=5*GeV;
+  G4double max=7.2*GeV;
   G4double range=50*MeV;
   G4double mass=particleDefinition->GetPDGMass();
   fParticleSource->GetCurrentSource()->GetEneDist()->SetEmax(max-mass);
