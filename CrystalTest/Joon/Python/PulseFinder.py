@@ -29,7 +29,7 @@ class Plotter(object):
             else:
                 self.dta.append(float(self.datastring[i]))
             """
-            temp = self.datastring[i].translate(None, '[]')
+            temp = self.datastring[i].translate(None, '[],')
             if temp == "":
                 pass
             else:
@@ -67,6 +67,14 @@ class Plotter(object):
                 i = k
             else:
                 i += 1
+        #throws out pulses cut off by the thread switching
+        l = 0
+        while l < range(len(self.listofdata)):
+            for m in range(self.rise,len(self.listofdata[l]) - self.tail):
+                if self.listofdata[l][m] == -10:
+                    self.listofdata.pop(l)
+                    break
+                    
     
     #Simple plot
     def plotsimple(self, start = -1, end = -1):
@@ -84,7 +92,7 @@ class Plotter(object):
     def plotdatatog(self):
         for item in self.listofdata:
             plt.plot(item)
-        plt.savefig(self.filedir + "//plot.png")
+        plt.savefig(self.filedir + "//plot.png", dpi = 500)
         plt.close()
 
     #Plots all pulses separately on individual graphs,
@@ -93,8 +101,14 @@ class Plotter(object):
         for i in range(0,len(self.listofdata)):
             plt.plot(self.listofdata[i])
             savename = "//plot%s.png" % (i + 1)
-            plt.savefig(self.filedir + savename)
+            plt.savefig(self.filedir + savename, dpi = 500)
             plt.close()
+            
+    #Saves pulses to textfile
+    def savepulses(self):
+        txtfl = open(self.filedir + "//pulses.txt", 'w')
+        txtfl.write(str(self.listofdata))
+        txtfl.close()
 
 def main():
     voltagedata = open("voltagedataTEMP.txt", 'r')
