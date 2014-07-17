@@ -148,17 +148,17 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   fCalorMaterial = Air;
   //Sizes and lengths
 
-  G4double targetLength = 10.0*cm; // depth of target
+  G4double targetLength = 9.0*cm; // depth of target
   G4double targetFace = 10.0*cm; //lengths of sides of face of target
 
-  G4double crystalLength = 2.54*12.0*cm; 
+  G4double crystalLength = 10.0*cm; 
 
-  G4double calorSpacing = 10*m; //distance from target to calorimeter
-  G4double targetPos = -(.5*calorSpacing); //position of Z coordinate of target
-  G4double calorDist = 10*m + .5*targetLength;
+  G4double calorSpacing = .10*m; //distance from target to calorimeter
+  G4double targetPos = -2.5*m; //position of Z coordinate of target
+  G4double calorDist = calorSpacing + .5*targetLength;
   G4double calorPos = calorDist + targetPos; //position of calorimeter
 
-  G4double worldLength = 2*calorSpacing;
+  G4double worldLength = 10*m;
 
   G4double centerToFront = calorDist-0.5*crystalLength;
 
@@ -225,8 +225,8 @@ G4Box* targetS =
  //!!!
  //Calorimeter 
 
- G4double theta1 = 2.*deg;
- G4double theta2 = 5.*deg;
+ G4double theta1 = 0.*deg;
+ G4double theta2 = 89.*deg;
 
  G4double innerRad = ThetaToDistance(theta1, centerToFront);
  G4double outerRad = ThetaToDistance(theta2, centerToFront);

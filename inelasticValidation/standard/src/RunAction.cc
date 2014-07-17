@@ -47,12 +47,11 @@ RunAction::RunAction()
   //Creating directories
   
    analysisMan->CreateNtuple("Signal", "Hits");
-   analysisMan->CreateNtupleIColumn("numHits"); // 0
-   analysisMan->CreateNtupleDColumn("energyTot"); // 1
-   analysisMan->CreateNtupleDColumn("XPosition"); // 2
-   analysisMan->CreateNtupleDColumn("YPosition"); // 3
-   analysisMan->CreateNtupleIColumn("Particle_ID"); // 4
-   analysisMan->CreateNtupleDColumn("Theta"); // 5
+   analysisMan->CreateNtupleDColumn("eEnergy"); // 0
+   analysisMan->CreateNtupleDColumn("eTheta"); // 1
+   analysisMan->CreateNtupleIColumn("numProtons"); // 2
+   analysisMan->CreateNtupleIColumn("numPiPlus"); // 3
+   analysisMan->CreateNtupleIColumn("numPiMinus"); // 4
    analysisMan->FinishNtuple();
   
 
