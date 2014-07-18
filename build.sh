@@ -25,10 +25,11 @@ cd ../../$1
 OUTPUT=$(basename $(find -maxdepth 1 -iname "*.cc") .cc)
 cd ../project-build/$1
 ./$OUTPUT
-mkdir ../../runs/$1/`date +%Y:%m:%d#%H:%M:%S`
-mv *.root ../../runs/$1/`date +%Y:%m:%d#%H:%M:%S`
+folderpath=$(date +%Y:%m:%d#%H:%M:%S)
+mkdir ../../runs/$1/$folderpath
+mv *.root ../../runs/$1/$folderpath
 rm -rf *.root
-cd ../../runs/$1/`date +%Y:%m:%d#%H:%M:%S`
+cd ../../runs/$1/$folderpath
 hadd complete.root *.root
 mkdir threadfiles
 mv *.root threadfiles
