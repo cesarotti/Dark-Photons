@@ -9,8 +9,8 @@
 // stty -F /dev/ttyACM0 raw -iexten -echo -echoe -echok -echoctl -echoke -onlcr
 
 volatile int bufn,obufn;
-const int NBUFFER = 4096;
-const int NSLOT = 8; // must be power of 2
+const int NBUFFER = pow(2,13);
+const int NSLOT = 4; // must be power of 2
 uint16_t buf[NSLOT][NBUFFER];   // 4 buffers of 256 readings
 
 void ADC_Handler(){     // move DMA pointers to next buffer
