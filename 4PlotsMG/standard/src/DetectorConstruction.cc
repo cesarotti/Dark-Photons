@@ -206,7 +206,7 @@ G4VPhysicalVolume* worldPV
 G4Box* targetS = 
   new G4Box("target", targetFace/2, targetFace/2, targetLength/2);
 
- /*fLogicTarget = 
+ fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
 
  new G4PVPlacement(0, 
@@ -220,7 +220,7 @@ G4Box* targetS =
 
  G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
-   */
+   
 
 
  //!!!

@@ -37,7 +37,7 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 HepMCG4AsciiReader::HepMCG4AsciiReader()
-  :  filename("xxx.dat"), verbose(0)
+  :  filename("xxx.dat"), verbose(1)
 {
   asciiInput= new HepMC::IO_GenEvent(filename.c_str(), std::ios::in);
 
