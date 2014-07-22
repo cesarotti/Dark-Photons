@@ -34,6 +34,13 @@
 /gui/addButton field "0.2 tesla" "/globalField/setValue 0.2 0 0 tesla"
 /gui/addButton field "2.0 tesla" "/globalField/setValue 2.0 0 0 tesla"
 #
+
+# Generator menu :
+/gui/addMenu generator Generator
+/gui/addButton gun "Geant4"       "/globalField/setValue 0   0 0 tesla"
+/gui/addButton field "MADGRAPH" "/globalField/setValue 0.2 0 0 tesla"
+#
+
 # Viewer menu :
 /gui/addMenu viewer Viewer
 /gui/addButton viewer "Set style surface" "/vis/viewer/set/style surface"

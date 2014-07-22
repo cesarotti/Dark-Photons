@@ -31,6 +31,7 @@
 #include "G4eplusAnnihilation.hh"
 
 #include "G4VEmProcess.hh"
+#include "AlwaysTwoGamma.hh"
 
 
 PositronPhysicsList1::PositronPhysicsList1()
@@ -61,13 +62,17 @@ void PositronPhysicsList1::ConstructEM()
 {
   G4ParticleDefinition* positron = G4Positron::PositronDefinition();
   G4ProcessManager* pman = positron->GetProcessManager();
-  
+  G4VEmProcess *always = new AlwaysTwoGamma();
+  always->SetCrossSectionBiasingFactor(1e+06, true); 
+
+  pman->AddProcess(always, 0, -1, 4);
 
 
-  G4VEmProcess* eplusProc = new G4eplusAnnihilation();
+
+ // G4VEmProcess* eplusProc = new G4eplusAnnihilation();
   //How to bias
-  eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
-  pman->AddProcess(eplusProc, 0, -1, 4);
+ // eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
+ // pman->AddProcess(eplusProc, 0, -1, 4);
  
   
 }

@@ -39,6 +39,8 @@
 #include "globals.hh"
 #include "G4VUserPrimaryGeneratorAction.hh"
 
+#include "G4GeneralParticleSource.hh"
+
 class G4Event;
 class G4VPrimaryGenerator;
 class H02PrimaryGeneratorMessenger;
@@ -60,6 +62,7 @@ private:
   G4VPrimaryGenerator* particleGun;
   G4VPrimaryGenerator* hepmcAscii;
   G4VPrimaryGenerator* pythiaGen;
+  G4GeneralParticleSource* fParticleSource; 
 
   G4VPrimaryGenerator* currentGenerator;
   G4String currentGeneratorName;
