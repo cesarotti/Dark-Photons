@@ -92,7 +92,8 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   G4int numHits = hitColl->entries();
   G4int id;
-  G4ThreeVector momentum;
+  G4double energy;
+  G4double theta;
 
   G4int numProton = 0;
   G4int numPiPlus = 0;
@@ -101,7 +102,9 @@ void EventAction::EndOfEventAction(const G4Event* event)
   for (int i=0; i < numHits; i++) {
     BasicHit* hit = (*hitColl)[i];
     id = hit->GetPDGID();
-    momentum = hit->GetMomentum();
+    energy = hit->GetTotalEnergy();
+    theta = CalcTheta(hit->GetMomentum());
+
 
 
     if (id == 2212) {
@@ -111,16 +114,24 @@ void EventAction::EndOfEventAction(const G4Event* event)
     } else if (id == -211) {
       numPiMinius++;
     } else if (id == 11) {
-      analysisMan->FillNtupleDColumn(0, hit->GetTotalEnergy());
-      analysisMan->FillNtupleDColumn(1, CalcTheta(momentum));
+      analysisMan->FillNtupleDColumn(0, 0, energy);
+      analysisMan->FillNtupleDColumn(0, 1, theta);
     }
+
+    // fill the general id, energy, theta ntuple
+    analysisMan->FillNtupleIColumn(1, 0, id);
+    analysisMan->FillNtupleDColumn(1, 1, energy);
+    analysisMan->FillNtupleDColumn(1, 2, theta);
+
+    analysisMan->AddNtupleRow(1);
   }
 
-  analysisMan->FillNtupleIColumn(2, numProton);
-  analysisMan->FillNtupleIColumn(3, numPiPlus);
-  analysisMan->FillNtupleIColumn(4, numPiMinius);
+  // fill the charged hadron ntuple
+  analysisMan->FillNtupleIColumn(0, 2, numProton);
+  analysisMan->FillNtupleIColumn(0, 3, numPiPlus);
+  analysisMan->FillNtupleIColumn(0, 4, numPiMinius);
 
-  analysisMan->AddNtupleRow();
+  analysisMan->AddNtupleRow(0);
 
   
 
