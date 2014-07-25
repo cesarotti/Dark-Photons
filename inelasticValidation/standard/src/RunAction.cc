@@ -45,14 +45,19 @@ RunAction::RunAction()
   analysisMan->SetVerboseLevel(1);
 
   //Creating directories
-  
-   analysisMan->CreateNtuple("Signal", "Hits");
-   analysisMan->CreateNtupleDColumn("eEnergy"); // 0
-   analysisMan->CreateNtupleDColumn("eTheta"); // 1
-   analysisMan->CreateNtupleIColumn("numProtons"); // 2
-   analysisMan->CreateNtupleIColumn("numPiPlus"); // 3
-   analysisMan->CreateNtupleIColumn("numPiMinus"); // 4
-   analysisMan->FinishNtuple();
+  analysisMan->CreateNtuple("Prongs", "Numbers");
+  analysisMan->CreateNtupleDColumn("eEnergy"); // 0
+  analysisMan->CreateNtupleDColumn("eTheta"); // 1
+  analysisMan->CreateNtupleIColumn("numProtons"); // 2
+  analysisMan->CreateNtupleIColumn("numPiPlus"); // 3
+  analysisMan->CreateNtupleIColumn("numPiMinus"); // 4
+  analysisMan->FinishNtuple();
+
+  analysisMan->CreateNtuple("Signal", "Energy and Angle");
+  analysisMan->CreateNtupleIColumn("PDGID"); // 0
+  analysisMan->CreateNtupleDColumn("Energy"); // 1
+  analysisMan->CreateNtupleDColumn("Theta"); // 2
+  analysisMan->FinishNtuple();
   
 
 }
