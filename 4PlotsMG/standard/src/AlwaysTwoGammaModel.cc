@@ -119,7 +119,7 @@ void AlwaysTwoGammaModel::Initialise(const G4ParticleDefinition*,
   if(isInitialised) { return; }
   G4cout << "Initializing AlwaysTwoGamma " << G4endl;
 
-  asciiInput = new HepMC::IO_GenEvent(*name_of_model, std::ios::in);
+  asciiInput = new HepMC::IO_GenEvent((*name_of_model + ".hepmc"), std::ios::in);
 
   fParticleChange = GetParticleChangeForGamma();
   isInitialised = true;

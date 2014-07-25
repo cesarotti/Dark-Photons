@@ -73,7 +73,7 @@ AlwaysTwoGamma::AlwaysTwoGamma(const G4String& name)
   G4cout << "Loaded AlwaysTwoGamma " << G4endl;
 
   name_of_model = name;
-  std::ifstream input((name + "_config").data());
+  std::ifstream input((name + ".config").data());
   G4double cross;
   G4int particle_pdg;
   
