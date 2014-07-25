@@ -67,7 +67,7 @@ class AlwaysTwoGamma : public G4VEmProcess
 
 public:
 
-  AlwaysTwoGamma(const G4String& name = "annihil");
+  AlwaysTwoGamma(const G4String& name = "twogamma");
 
   virtual ~AlwaysTwoGamma();
 
@@ -85,6 +85,8 @@ public:
   // Print out of the class parameters
   virtual void PrintInfo();
 
+
+
 protected:
 
   virtual void InitialiseProcess(const G4ParticleDefinition*);
@@ -93,6 +95,7 @@ private:
   
   G4bool  isInitialised;
   const G4ParticleDefinition* theGamma;
+  G4String name_of_model;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -54,6 +54,9 @@
 #define AlwaysTwoGammaModel_h 1
 
 #include "G4VEmModel.hh"
+#include "HepMCG4AsciiReader.hh"
+#include "HepMCG4AsciiReaderMessenger.hh"
+
 
 class G4ParticleChangeForGamma;
 
@@ -61,6 +64,8 @@ class AlwaysTwoGammaModel : public G4VEmModel
 {
 
 public:
+
+ 
 
   AlwaysTwoGammaModel(const G4ParticleDefinition* p = 0,
                       const G4String& nam = "eplus2gg");
@@ -103,6 +108,9 @@ private:
   AlwaysTwoGammaModel & operator=(const  AlwaysTwoGammaModel &right);
   AlwaysTwoGammaModel(const  AlwaysTwoGammaModel&);
 
+  HepMC::IO_GenEvent* asciiInput;
+
+  const G4String* name_of_model;
   G4double pi_rcl2;
   G4ParticleDefinition*  theGamma;
   G4ParticleChangeForGamma* fParticleChange;

@@ -59,6 +59,8 @@
 #include "G4Gamma.hh"
 #include "G4Positron.hh"
 #include "AlwaysTwoGammaModel.hh"
+#include <sstream>
+#include <string>
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 
@@ -67,6 +69,23 @@ using namespace std;
 AlwaysTwoGamma::AlwaysTwoGamma(const G4String& name)
   : G4VEmProcess(name), isInitialised(false)
 {
+
+  G4cout << "Loaded AlwaysTwoGamma " << G4endl;
+
+  name_of_model = name;
+  std::ifstream input((name + "_config").data());
+  G4double cross;
+  G4int particle_pdg;
+  
+  //while (input >> particle_pdg)
+  // {
+  //     SetSecondaryParticle
+  // }
+  input >> cross;
+
+  G4cout << "READ CROSS SECTION FROM FILE:" << cross << G4endl;
+  G4cout << "NAME OF MODEL IS " << name_of_model << G4endl;
+
   theGamma = G4Gamma::Gamma();
   SetIntegral(true);
   SetBuildTableFlag(false);
@@ -74,6 +93,9 @@ AlwaysTwoGamma::AlwaysTwoGamma(const G4String& name)
   SetSecondaryParticle(theGamma);
   SetProcessSubType(fAnnihilation);
   enableAtRestDoIt = true;
+
+  G4cout << "Finished constructor of AlwaysTwoGamma " << G4endl;
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
@@ -101,13 +123,17 @@ G4double AlwaysTwoGamma::AtRestGetPhysicalInteractionLength(
 
 void AlwaysTwoGamma::InitialiseProcess(const G4ParticleDefinition*)
 {
+
+  G4cout << "About to initialize model " << G4endl;
   if(!isInitialised) {
     isInitialised = true;
-    if(!EmModel(1)) { SetEmModel(new AlwaysTwoGammaModel(),1); }
+    G4cout << "ADDRESS NAME OF MODEL IN INITIALIZE " << name_of_model << G4endl;
+    if(!EmModel(1)) { SetEmModel(new AlwaysTwoGammaModel(0, name_of_model),1); }
     EmModel(1)->SetLowEnergyLimit(MinKinEnergy());
     EmModel(1)->SetHighEnergyLimit(MaxKinEnergy());
     AddEmModel(1, EmModel(1));
   }
+  G4cout << "Done initialize model " << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
