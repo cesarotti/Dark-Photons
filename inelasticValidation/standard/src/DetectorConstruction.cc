@@ -158,9 +158,14 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double calorDist = calorSpacing + .5*targetLength;
   G4double calorPos = calorDist + targetPos; //position of calorimeter
 
+  G4double cal2Spacing = -.10*m; // distance from target to 2nd cal
+  G4double cal2Dist = cal2Spacing - .5*targetLength;
+  G4double cal2Pos = cal2Dist + targetPos;
+
   G4double worldLength = 10*m;
 
-  G4double centerToFront = calorDist-0.5*crystalLength;
+  G4double centerToFront = calorDist - 0.5*crystalLength;
+  G4double centerToFront2 = cal2Dist + 0.5*crystalLength; 
 
 
   G4GeometryManager::GetInstance()->SetWorldMaximumExtent(worldLength);
@@ -254,6 +259,38 @@ G4LogicalVolume* calorimeterLV =
 	       0, 
 	       fCheckOverlaps);
 
+ //!!!
+ //Calorimeter 
+
+ G4double theta1_2 = 179*deg;
+ G4double theta2_2 = 91*deg;
+
+ G4double innerRad2 = ThetaToDistance(theta1_2, centerToFront2);
+ G4double outerRad2 = ThetaToDistance(theta2_2, centerToFront2);
+
+ G4cout << "The target is centered at: " << targetPos << G4endl;
+ G4cout << "The calorimeter is centered at : " << calorPos << G4endl;
+ G4cout << "Inner radius is: " << innerRad << G4endl;
+ G4cout << "Outer radius is: " << outerRad << G4endl;
+
+
+G4Tubs* calorimeterS2 = 
+  new G4Tubs("calorimeterS2", innerRad2,
+       outerRad2,
+       crystalLength/2, 0.*deg, 360.*deg);
+
+G4LogicalVolume* calorimeterLV2 = 
+  new G4LogicalVolume( calorimeterS2, fCalorMaterial, "CrystalLV2", 0,0,0);
+
+ new G4PVPlacement(0,
+         G4ThreeVector(0., 0., cal2Pos),
+         calorimeterLV2, 
+         "Calorimeter2",
+         worldLV, 
+         false, 
+         0, 
+         fCheckOverlaps);
+
 
  //Visualization
 
@@ -287,6 +324,7 @@ void DetectorConstruction::ConstructSDandField()
   basicSD->SetSmearing(true);
 
   SetSensitiveDetector("CrystalLV", basicSD, true); 
+  SetSensitiveDetector("CrystalLV2", basicSD, true);
 
   G4cout << "SD Construction.....Complete!" << G4endl;
 }
