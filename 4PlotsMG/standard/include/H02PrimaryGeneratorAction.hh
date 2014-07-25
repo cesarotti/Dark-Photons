@@ -38,6 +38,7 @@
 #include <map>
 #include "globals.hh"
 #include "G4VUserPrimaryGeneratorAction.hh"
+#include "AlwaysTwoGammaModel.hh"
 
 #include "G4GeneralParticleSource.hh"
 

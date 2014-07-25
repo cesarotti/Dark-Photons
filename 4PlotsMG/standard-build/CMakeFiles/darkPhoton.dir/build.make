@@ -121,9 +121,33 @@ CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.o.provides: CMakeFiles/darkPhoto
 CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.o
 .PHONY : CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.o.provides.build
 
+CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o: CMakeFiles/darkPhoton.dir/flags.make
+CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaMessenger.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaMessenger.cc
+
+CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaMessenger.cc > CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.i
+
+CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaMessenger.cc -o CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.s
+
+CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.requires:
+.PHONY : CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.requires
+
+CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.provides: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.requires
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.provides.build
+.PHONY : CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.provides
+
+CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o
+.PHONY : CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.provides.build
+
 CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaModel.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaModel.cc
 
@@ -147,7 +171,7 @@ CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o.provides.build: CMakeFile
 
 CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/BasicHit.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/BasicHit.cc
 
@@ -171,7 +195,7 @@ CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o.provides.build: CMakeFiles/darkPhoto
 
 CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/BasicHitSD.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/BasicHitSD.cc
 
@@ -195,7 +219,7 @@ CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o.provides.build: CMakeFiles/darkPho
 
 CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/DetectorConstruction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/DetectorConstruction.cc
 
@@ -219,7 +243,7 @@ CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o.provides.build: CMakeFil
 
 CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/DetectorMessenger.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/DetectorMessenger.cc
 
@@ -243,7 +267,7 @@ CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o.provides.build: CMakeFiles/
 
 CMakeFiles/darkPhoton.dir/src/EventAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/EventAction.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/EventAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/EventAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/EventAction.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/EventAction.cc
 
@@ -267,7 +291,7 @@ CMakeFiles/darkPhoton.dir/src/EventAction.cc.o.provides.build: CMakeFiles/darkPh
 
 CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorAction.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/H02PrimaryGeneratorAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorAction.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/H02PrimaryGeneratorAction.cc
 
@@ -291,7 +315,7 @@ CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorAction.cc.o.provides.build: CMa
 
 CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorMessenger.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorMessenger.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/H02PrimaryGeneratorMessenger.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorMessenger.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorMessenger.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/H02PrimaryGeneratorMessenger.cc
 
@@ -315,7 +339,7 @@ CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorMessenger.cc.o.provides.build: 
 
 CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/H02SteppingAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/H02SteppingAction.cc
 
@@ -339,7 +363,7 @@ CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o.provides.build: CMakeFiles/
 
 CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/HEPEvtcom.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/HEPEvtcom.cc
 
@@ -363,7 +387,7 @@ CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.provides.build: CMakeFiles/darkPhot
 
 CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/HepMCG4AsciiReader.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/HepMCG4AsciiReader.cc
 
@@ -387,7 +411,7 @@ CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o.provides.build: CMakeFiles
 
 CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/HepMCG4AsciiReaderMessenger.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/HepMCG4AsciiReaderMessenger.cc
 
@@ -411,7 +435,7 @@ CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o.provides.build: C
 
 CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/HepMCG4Interface.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/HepMCG4Interface.cc
 
@@ -435,7 +459,7 @@ CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o.provides.build: CMakeFiles/d
 
 CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/PositronPhysicsList1.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/PositronPhysicsList1.cc
 
@@ -459,7 +483,7 @@ CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o.provides.build: CMakeFil
 
 CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/PrimaryGeneratorAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/PrimaryGeneratorAction.cc
 
@@ -483,7 +507,7 @@ CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o.provides.build: CMakeF
 
 CMakeFiles/darkPhoton.dir/src/RunAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/RunAction.cc.o: /media/sf_darkphotons/4PlotsMG/standard/src/RunAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/RunAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/RunAction.cc.o -c /media/sf_darkphotons/4PlotsMG/standard/src/RunAction.cc
 
@@ -510,6 +534,7 @@ darkPhoton_OBJECTS = \
 "CMakeFiles/darkPhoton.dir/darkPhoton.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.o" \
+"CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o" \
@@ -533,6 +558,7 @@ darkPhoton_EXTERNAL_OBJECTS =
 darkPhoton: CMakeFiles/darkPhoton.dir/darkPhoton.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.o
+darkPhoton: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o
@@ -638,6 +664,7 @@ CMakeFiles/darkPhoton.dir/build: darkPhoton
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/darkPhoton.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.o.requires
+CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaModel.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o.requires

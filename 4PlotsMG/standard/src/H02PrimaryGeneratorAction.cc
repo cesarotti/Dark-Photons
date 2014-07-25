@@ -39,6 +39,7 @@
 #include "G4SPSAngDistribution.hh"
 #include "G4SingleParticleSource.hh"
 #include "G4GeneralParticleSource.hh"
+#include "AlwaysTwoGammaMessenger.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 H02PrimaryGeneratorAction::H02PrimaryGeneratorAction()

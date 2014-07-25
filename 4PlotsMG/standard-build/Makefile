@@ -224,6 +224,30 @@ src/AlwaysTwoGamma.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGamma.cc.s
 .PHONY : src/AlwaysTwoGamma.cc.s
 
+src/AlwaysTwoGammaMessenger.o: src/AlwaysTwoGammaMessenger.cc.o
+.PHONY : src/AlwaysTwoGammaMessenger.o
+
+# target to build an object file
+src/AlwaysTwoGammaMessenger.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.o
+.PHONY : src/AlwaysTwoGammaMessenger.cc.o
+
+src/AlwaysTwoGammaMessenger.i: src/AlwaysTwoGammaMessenger.cc.i
+.PHONY : src/AlwaysTwoGammaMessenger.i
+
+# target to preprocess a source file
+src/AlwaysTwoGammaMessenger.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.i
+.PHONY : src/AlwaysTwoGammaMessenger.cc.i
+
+src/AlwaysTwoGammaMessenger.s: src/AlwaysTwoGammaMessenger.cc.s
+.PHONY : src/AlwaysTwoGammaMessenger.s
+
+# target to generate assembly for a file
+src/AlwaysTwoGammaMessenger.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AlwaysTwoGammaMessenger.cc.s
+.PHONY : src/AlwaysTwoGammaMessenger.cc.s
+
 src/AlwaysTwoGammaModel.o: src/AlwaysTwoGammaModel.cc.o
 .PHONY : src/AlwaysTwoGammaModel.o
 
@@ -630,6 +654,9 @@ help:
 	@echo "... src/AlwaysTwoGamma.o"
 	@echo "... src/AlwaysTwoGamma.i"
 	@echo "... src/AlwaysTwoGamma.s"
+	@echo "... src/AlwaysTwoGammaMessenger.o"
+	@echo "... src/AlwaysTwoGammaMessenger.i"
+	@echo "... src/AlwaysTwoGammaMessenger.s"
 	@echo "... src/AlwaysTwoGammaModel.o"
 	@echo "... src/AlwaysTwoGammaModel.i"
 	@echo "... src/AlwaysTwoGammaModel.s"

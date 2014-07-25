@@ -32,6 +32,7 @@
 
 #include "G4VEmProcess.hh"
 #include "AlwaysTwoGamma.hh"
+#include "AlwaysTwoGammaMessenger.hh"
 
 
 PositronPhysicsList1::PositronPhysicsList1()
@@ -61,11 +62,18 @@ void PositronPhysicsList1::ConstructProcess()
 void PositronPhysicsList1::ConstructEM()
 {
   G4ParticleDefinition* positron = G4Positron::PositronDefinition();
-  G4ProcessManager* pman = positron->GetProcessManager();
-  G4VEmProcess *always = new AlwaysTwoGamma();
+  pman = positron->GetProcessManager();
+  G4cout << "About to register messenger" << G4endl;
+
+  ModelMessenger = new AlwaysTwoGammaMessenger(this);
+
+G4cout << "Registered messenger" << G4endl;
+  /*G4VEmProcess *always = new AlwaysTwoGamma();
   always->SetCrossSectionBiasingFactor(1e+06, true); 
 
   pman->AddProcess(always, 0, -1, 4);
+  */
+
 
 
 

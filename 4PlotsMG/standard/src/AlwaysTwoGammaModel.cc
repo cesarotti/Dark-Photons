@@ -100,8 +100,10 @@ AlwaysTwoGammaModel::AlwaysTwoGammaModel(const G4ParticleDefinition*,
     pi_rcl2(pi*classic_electr_radius*classic_electr_radius),
     isInitialised(false)
 {
-  theGamma = G4Gamma::Gamma();
+  G4cout << "Constructor AlwaysTwoGammaModel " << G4endl;
   fParticleChange = 0;
+  name_of_model = &nam;
+  G4cout << "Name is" << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
@@ -117,7 +119,7 @@ void AlwaysTwoGammaModel::Initialise(const G4ParticleDefinition*,
   if(isInitialised) { return; }
   G4cout << "Initializing AlwaysTwoGamma " << G4endl;
 
- HepMC::IO_GenEvent* asciiInput= new HepMC::IO_GenEvent("/media/sf_darkphotons/4PlotsMG/input.hepmc", std::ios::in);
+  asciiInput = new HepMC::IO_GenEvent(*name_of_model, std::ios::in);
 
   fParticleChange = GetParticleChangeForGamma();
   isInitialised = true;
@@ -142,8 +144,12 @@ G4double AlwaysTwoGammaModel::ComputeCrossSectionPerElectron(
   G4double bg    = sqrt(bg2);
   G4double multiplier = 10^6;
 
-  G4double cross = pi_rcl2*((gamma2+4*gam+1.)*G4Log(gam+bg) - (gam+3.)*bg)
+  G4double cross = 261e-28; // * 10^(−30);//* 10^(-28);
+
+  G4double real_cross = pi_rcl2*((gamma2+4*gam+1.)*G4Log(gam+bg) - (gam+3.)*bg)
                  / (bg2*(gam+1.));
+                 
+  cout << "AlwaysTwoGammaModel REAL CROSS SECTION IS " << real_cross << G4endl;
   cout << "AlwaysTwoGammaModel CROSS SECTION IS " << cross << G4endl;
   return cross; //Changed this.  
 }

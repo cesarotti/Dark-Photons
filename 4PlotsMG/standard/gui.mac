@@ -37,8 +37,8 @@
 
 # Generator menu :
 /gui/addMenu generator Generator
-/gui/addButton gun "Geant4"       "/globalField/setValue 0   0 0 tesla"
-/gui/addButton field "MADGRAPH" "/globalField/setValue 0.2 0 0 tesla"
+/gui/addButton generator "Geant4"       "/generator/select particleGun"
+/gui/addButton generator "MADGRAPH" "/generator/select hepmcAscii"
 #
 
 # Viewer menu :
