@@ -151,7 +151,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   G4double targetLength = 9.0*cm; // depth of target
   G4double targetFace = 10.0*cm; //lengths of sides of face of target
 
-  G4double crystalLength = 10.0*cm; 
+  G4double crystalLength = 1.0*cm; 
 
   G4double calorSpacing = .10*m; //distance from target to calorimeter
   G4double targetPos = -2.5*m; //position of Z coordinate of target
@@ -262,7 +262,7 @@ G4LogicalVolume* calorimeterLV =
  //!!!
  //Calorimeter 
 
- G4double theta1_2 = 179*deg;
+ G4double theta1_2 = 135*deg;
  G4double theta2_2 = 91*deg;
 
  G4double innerRad2 = ThetaToDistance(theta1_2, centerToFront2);
