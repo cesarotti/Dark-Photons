@@ -320,6 +320,54 @@ src/BasicHitSD.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.s
 .PHONY : src/BasicHitSD.cc.s
 
+src/DarkPhoton.o: src/DarkPhoton.cc.o
+.PHONY : src/DarkPhoton.o
+
+# target to build an object file
+src/DarkPhoton.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o
+.PHONY : src/DarkPhoton.cc.o
+
+src/DarkPhoton.i: src/DarkPhoton.cc.i
+.PHONY : src/DarkPhoton.i
+
+# target to preprocess a source file
+src/DarkPhoton.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.i
+.PHONY : src/DarkPhoton.cc.i
+
+src/DarkPhoton.s: src/DarkPhoton.cc.s
+.PHONY : src/DarkPhoton.s
+
+# target to generate assembly for a file
+src/DarkPhoton.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.s
+.PHONY : src/DarkPhoton.cc.s
+
+src/DarkPhotonModel.o: src/DarkPhotonModel.cc.o
+.PHONY : src/DarkPhotonModel.o
+
+# target to build an object file
+src/DarkPhotonModel.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.o
+.PHONY : src/DarkPhotonModel.cc.o
+
+src/DarkPhotonModel.i: src/DarkPhotonModel.cc.i
+.PHONY : src/DarkPhotonModel.i
+
+# target to preprocess a source file
+src/DarkPhotonModel.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.i
+.PHONY : src/DarkPhotonModel.cc.i
+
+src/DarkPhotonModel.s: src/DarkPhotonModel.cc.s
+.PHONY : src/DarkPhotonModel.s
+
+# target to generate assembly for a file
+src/DarkPhotonModel.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.s
+.PHONY : src/DarkPhotonModel.cc.s
+
 src/DetectorConstruction.o: src/DetectorConstruction.cc.o
 .PHONY : src/DetectorConstruction.o
 
@@ -666,6 +714,12 @@ help:
 	@echo "... src/BasicHitSD.o"
 	@echo "... src/BasicHitSD.i"
 	@echo "... src/BasicHitSD.s"
+	@echo "... src/DarkPhoton.o"
+	@echo "... src/DarkPhoton.i"
+	@echo "... src/DarkPhoton.s"
+	@echo "... src/DarkPhotonModel.o"
+	@echo "... src/DarkPhotonModel.i"
+	@echo "... src/DarkPhotonModel.s"
 	@echo "... src/DetectorConstruction.o"
 	@echo "... src/DetectorConstruction.i"
 	@echo "... src/DetectorConstruction.s"
