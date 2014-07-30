@@ -1,6 +1,7 @@
 #include "TMath.h"
 #include "TTree.h"
 #include "TFile.h"
+#include "TString.h"
 #include "TH1.h"
 #include "TH2.h"
 #include <iostream>
@@ -8,7 +9,7 @@
 
 
 
-const double POSITRON_ENERGY = 4975.; //MeV
+const double POSITRON_ENERGY = 7200.; //MeV
 const double ELECTRON_MASS = .511; //MeV/c^2
 const double GAMMA_PLUS = POSITRON_ENERGY/ELECTRON_MASS;
 const double GAMMA_CM_2 = (GAMMA_PLUS+1)/2;
@@ -58,8 +59,8 @@ void plotsGamma() {
   int nThetaBins = 50;
   double dThetaBinSize = (nThetaMax - nThetaMin) / nThetaBins;
 
-  double nM2Min = -5000; // MeV
-  double nM2Max = 5000; // MeV
+  double nM2Min = -7200; // MeV
+  double nM2Max = 7200; // MeV
   int nM2Bins = 100;
   double dM2BinSize = (nM2Max - nM2Min) / nM2Bins;
 
@@ -93,7 +94,7 @@ void plotsGamma() {
     if (id == 22) { // gammas only
       theta*= TMath::Pi()/180; //radians
       hgammaEnergy->Fill(energy, BINNING_WEIGHT / dEnergyBinSize);
-      hgammaTheta->Fill(theta, BINNING_WEIGHT / dThetaBinSize);
+      hgammaTheta->Fill(theta, BINNING_WEIGHT / (dThetaBinSize * TMath::Sin(theta)));
       hm2->Fill(mSquared(energy, theta), BINNING_WEIGHT / dM2BinSize);
     }
   }
@@ -125,7 +126,7 @@ void plotsGamma() {
   hgammaTheta->Draw();
   hgammaTheta->GetXaxis()->SetTitle("#theta (rad)");
   hgammaTheta->GetXaxis()->CenterTitle();
-  hgammaTheta->GetYaxis()->SetTitle("Photons per rad per Second (mrad^{-1} s^{-1})");
+  hgammaTheta->GetYaxis()->SetTitle("Photons per Steradian per Second (str^{-1} s^{-1})");
   hgammaTheta->GetYaxis()->CenterTitle();
 
   p = (TPad*)canvas->cd(1);
