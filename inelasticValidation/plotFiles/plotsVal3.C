@@ -59,7 +59,7 @@ int Q2toInt(double q2) {
   else {return -1;}
 }
 
-void plotsVal2() {
+void plotsVal3() {
 
   double theta, energy = 0.;  // NOTE: theta comes in degrees
   int prot, piplus, piminus = 0;
@@ -114,36 +114,46 @@ void plotsVal2() {
   c1->Divide(2, 2);
   TVirtualPad* p;
   TLegend* leg;
-  TH1F *frame;
-  TGraph* gr1;
-  TGraph* gr2;
-  //char *legHead;
+  TH1D *h1, *h2;
   string legHead;
 
   double array[6] = {1, 2, 3, 4, 5, 6};
   string wbounds[5] = {"1.3", "1.5", "1.8", "2.2", "2.8"};
+  double q2bounds[7] = {0.3, 0.4, 0.5, 0.6, 0.7, 1.0, 1.4};
 
   for (int i=0; i<4; i++) {
     p = c1->cd(i+1);
+    p->SetGrid();
 
-    legHead = wbounds[i] + " < W < " + wbounds[i+1];
-    frame = p->DrawFrame(0, 0, 7, 4, legHead.c_str());
-    frame->GetYaxis()->SetTitle("n_{ch}");
-    frame->GetYaxis()->CenterTitle();
+    legHead = wbounds[i] + " GeV < W < " + wbounds[i+1] + " GeV";
 
-    gr1 = new TGraph(6, array, dataGeant[i]);
-    gr1->SetMarkerColor(2);
-    gr1->SetMarkerStyle(20);
-    gr1->Draw("P");
+    h1 = new TH1D("h1" + i, legHead.c_str(), 6, q2bounds);
+    h2 = new TH1D("h2" + i, legHead.c_str(), 6, q2bounds);
 
-    gr2 = new TGraph(6, array, dataDESY[i]);
-    gr2->SetMarkerColor(4);
-    gr2->SetMarkerStyle(21);
-    gr2->Draw("*");
+    for (int j=0; j<6; j++) {
+      h1->SetBinContent(j+1, dataGeant[i][j]);
+      h2->SetBinContent(j+1, dataDESY[i][j]);
+    }
+
+    h1->Draw();
+    h1->GetXaxis()->SetTitle("Q^{2} (GeV^{2})");
+    h1->GetXaxis()->CenterTitle();
+    h1->GetYaxis()->SetTitle("n_{ch}");
+    h1->GetYaxis()->CenterTitle();
+    h1->SetMinimum(0);
+    h1->SetMaximum(4);
+    h1->SetStats(0);
+    h1->SetFillStyle(3005);
+    h1->SetFillColor(2);
+
+    h2->Draw("same");
+    h2->SetFillStyle(3004);
+    h2->SetFillColor(4);
+    h2->SetStats(0);
 
     leg = new TLegend(0.6,0.7,0.85,0.85);
-    leg->AddEntry(gr1, "Data from Geant4", "p");
-    leg->AddEntry(gr2, "Data from DESY", "p");
+    leg->AddEntry(h1, "Data from Geant4", "f");
+    leg->AddEntry(h2, "Data from DESY", "f");
     leg->Draw();
   }
 
