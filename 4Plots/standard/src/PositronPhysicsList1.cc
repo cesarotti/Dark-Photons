@@ -33,6 +33,8 @@
 
 #include "G4VEmProcess.hh"
 
+#include "DarkPhoton.hh"
+
 
 PositronPhysicsList1::PositronPhysicsList1()
 {
@@ -65,9 +67,9 @@ void PositronPhysicsList1::ConstructEM()
   
 
 
-  G4VEmProcess* eplusProc = new G4eplusAnnihilation();
+  G4VEmProcess* eplusProc = new DarkPhoton();
   //How to bias
-  //eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
+  eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
   pman->AddProcess(eplusProc, 0, -1, 4);
 
   //Yimin's angle biased bremsstrahlung
