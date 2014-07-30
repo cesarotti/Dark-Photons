@@ -1,6 +1,7 @@
 #include "TMath.h"
 #include "TTree.h"
 #include "TFile.h"
+#include "TString.h"
 #include "TH1.h"
 #include "TH2.h"
 #include <iostream>
@@ -8,7 +9,7 @@
 
 
 
-const double POSITRON_ENERGY = 4975.; //MeV
+const double POSITRON_ENERGY = 7200.; //MeV
 const double ELECTRON_MASS = .511; //MeV/c^2
 const double GAMMA_PLUS = POSITRON_ENERGY/ELECTRON_MASS;
 const double GAMMA_CM_2 = (GAMMA_PLUS+1)/2;
@@ -64,13 +65,13 @@ void plotsCHadron() {
   double dM2BinSize = (nM2Max - nM2Min) / nM2Bins;
 
   TH1D* hgammaEnergy = new TH1D("Energy" ,                    // plot label
-                                "Gamma Energy Distribution",  // title
+                                "Charged Hadron Energy Distribution",  // title
                                 nEnergyBins,                  // x number of bins
                                 nEnergyMin,                   // x lower bound
                                 nEnergyMax);                  // x upper bound
 
   TH1D* hgammaTheta = new TH1D("#theta" ,                      // plot label
-                               "Gamma #theta Distribution",    // title
+                               "Charged Hadron #theta Distribution",    // title
                                nThetaBins,                    // x number of bins
                                nThetaMin,                     // x lower bound
                                nThetaMax);                    // x upper bound
@@ -93,7 +94,7 @@ void plotsCHadron() {
     if (id == 2212 || id == 211 || id == -211) { // charged Hadrons
       theta*= TMath::Pi()/180; //radians
       hgammaEnergy->Fill(energy, BINNING_WEIGHT / dEnergyBinSize);
-      hgammaTheta->Fill(theta, BINNING_WEIGHT / dThetaBinSize);
+      hgammaTheta->Fill(theta, BINNING_WEIGHT / (dThetaBinSize * TMath::Sin(theta)));
       hm2->Fill(mSquared(energy, theta), BINNING_WEIGHT / dM2BinSize);
     }
   }
@@ -125,7 +126,7 @@ void plotsCHadron() {
   hgammaTheta->Draw();
   hgammaTheta->GetXaxis()->SetTitle("#theta (rad)");
   hgammaTheta->GetXaxis()->CenterTitle();
-  hgammaTheta->GetYaxis()->SetTitle("Charged Hadrons per rad per Second (mrad^{-1} s^{-1})");
+  hgammaTheta->GetYaxis()->SetTitle("Charged Hadrons per Steradian per Second (str^{-1} s^{-1})");
   hgammaTheta->GetYaxis()->CenterTitle();
 
   p = (TPad*)canvas->cd(1);

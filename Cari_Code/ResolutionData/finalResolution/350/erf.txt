@@ -1,0 +1,39 @@
+Erf resolution for 350 MeV
+
+fitting x energy: 
+ FCN=87.5212 FROM MIGRAD    STATUS=CONVERGED     561 CALLS         562 TOTAL
+                     EDM=4.54869e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   7.4 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.93895e+01   3.56230e+01   2.91112e-02   1.69044e-04
+   2  Mean        -1.03092e+02   1.71592e+01  -1.31361e-02   3.77175e-04
+   3  Sigma        5.82778e+01   4.20830e+01  -6.09656e-05** at limit **
+fitting y energy: 
+ FCN=109.828 FROM MIGRAD    STATUS=CONVERGED     628 CALLS         629 TOTAL
+                     EDM=9.30346e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   4.1 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.77268e+01   3.07024e+01  -1.55351e-02   1.18397e-04
+   2  Mean        -1.02880e+02   1.49463e+01   9.29801e-03   1.91987e-04
+   3  Sigma        5.79835e+01   4.76538e+01   5.28348e-04  -8.89442e-04
+fitting position x
+ FCN=8190.2 FROM MIGRAD    STATUS=CONVERGED     100 CALLS         101 TOTAL
+                     EDM=1.49571e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   1.5 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.66206e+04   8.13880e+01  -2.61315e-01  -1.11783e-06
+   2  Mean        -1.95097e-03   1.32201e-03  -1.05252e-06  -4.44572e-03
+   3  Sigma        3.64008e-01   1.19578e-03  -1.64705e-06  -1.30330e-01
+fitting position y
+ FCN=8058.01 FROM MIGRAD    STATUS=CONVERGED      90 CALLS          91 TOTAL
+                     EDM=6.63875e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   3.2 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.67540e+04   8.16759e+01   1.72128e-01  -1.71708e-06
+   2  Mean         5.22753e-04   1.31515e-03   1.51085e-07  -5.85260e-03
+   3  Sigma        3.63171e-01   1.18419e-03  -1.18795e-06   3.01486e-02
+
+X Energy Sigma: 58.3
+Y Energy Sigma: 58.0
+X Position sigma: .364
+Y Position sigma: .363
