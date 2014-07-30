@@ -16,8 +16,8 @@ const double GAMMA_CM_2 = (GAMMA_PLUS+1)/2;
 
 /*UPDATE TO YOUR SIMULATION */
 
-const double NUM_TOT_POSITRONS = 1e+02; 
-const double BIAS = 1e+03;
+const double NUM_TOT_POSITRONS = 100; 
+const double BIAS = 1e+06;
 const double POSITRONS_PER_SEC = 6e+09; 
 const double BINNING_WEIGHT = POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
 const double B = pow(1-pow(GAMMA_PLUS, -2.), .5);
@@ -34,7 +34,7 @@ double mSquared(double energy, double theta)
 
 
 
-void plots() {
+void plotFinal() {
 
   double yPos, xPos, theta, energy = 0.;  // NOTE: theta comes in degrees
   int numHit, pID = 0;
