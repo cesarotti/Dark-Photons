@@ -41,14 +41,14 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
 
   fParticleGun->SetParticleDefinition(particleDefinition);
 
-  angle = true;
+  angle = false;
 
   if (angle)
     {fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,.0612,1.));}
   else 
     {fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));}
 
-  fParticleGun->SetParticleEnergy(350*MeV);
+  fParticleGun->SetParticleEnergy(1000*MeV);
   G4cout << "Primaries finished" << G4endl;
 }
 
@@ -80,7 +80,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     G4cerr << "The gun will be place in the center." << G4endl;
   }
 
-  fParticleGun->SetParticlePosition(G4ThreeVector(0., 0., -worldZHalfLength));
+  fParticleGun->SetParticlePosition(G4ThreeVector(0, 2.49*cm, -worldZHalfLength));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
  

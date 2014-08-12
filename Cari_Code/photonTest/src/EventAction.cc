@@ -100,30 +100,16 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
 
-  G4int numHit(0);
   G4double energyDep(0.);
 
-  for (G4int i=0; i<900; i++)
+  for (G4int i=0; i<121; i++)
     {
       TestHit* hit = (*tHC)[i];
       G4double eDep = hit->GetEnergyDep();
-      if (eDep>0.)
-	{
-	  numHit++;
-	  energyDep+= eDep;
-	  if (eDep>0.5*MeV)
-	    {
-	      analysisMan->FillNtupleIColumn(2, hit->GetCellID());
-	      analysisMan->FillNtupleIColumn(3, hit->GetRow());
-	      analysisMan->FillNtupleIColumn(4, hit->GetCol());
-	}
-
+       analysisMan->FillNtupleDColumn(0, i, eDep);
+       analysisMan->FillNtupleDColumn(1, 0, eDep);
+      analysisMan->AddNtupleRow(1);
     }
-  analysisMan->FillNtupleIColumn(0, numHit);
-  analysisMan->FillNtupleDColumn(1, energyDep);
-
-  analysisMan->AddNtupleRow();
-    }
-
+  analysisMan->AddNtupleRow(0);
 }
 

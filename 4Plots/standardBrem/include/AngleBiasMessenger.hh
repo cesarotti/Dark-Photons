@@ -23,42 +23,51 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: CellParameterisation.cc 76474 2013-11-11 10:36:34Z gcosmo $
+/// \file electromagnetic/TestEm5/include/PhysicsListMessenger.hh
+/// \brief Definition of the PhysicsListMessenger class
 //
-/// \file CellParameterisation.cc
-/// \brief Implementation of the CellParameterisation class
+// $Id: PhysicsListMessenger.hh 66241 2012-12-13 18:34:42Z gunter $
+//
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#include "CellParameterisation.hh"
+#ifndef AngleBiasMessenger_h
+#define AngleBiasMessenger_h 1
 
-#include "G4VPhysicalVolume.hh"
-#include "G4ThreeVector.hh"
-#include "G4SystemOfUnits.hh"
+#include "G4UImessenger.hh"
+#include "NewBremsstrahlungRelModel.hh"
+#include "globals.hh"
+
+class NewBremsstrahlungRelModel;
+class G4UIdirectory;
+class G4UIcmdWithAString;
+class G4UIcmdWithADoubleAndUnit;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-CellParameterisation::CellParameterisation()
-: G4VPVParameterisation()
+class AngleBiasMessenger: public G4UImessenger
 {
-    for (G4int copyNo=0;copyNo<121;copyNo++)
-    {
-        G4int column = copyNo % 11;
-        G4int row = copyNo / 11;
-        fXCell[copyNo] = (column-5)*5.*cm;
-        fYCell[copyNo] = (row-5)*5*cm;
-    }
-}
+public:
+  
+  AngleBiasMessenger(NewBremsstrahlungRelModel* );
+ ~AngleBiasMessenger();
+    
+  virtual void SetNewValue(G4UIcommand*, G4String);
+    
+private:
+  
+  NewBremsstrahlungRelModel* fBremRelModel;
+    
+  G4UIdirectory*             fPhysDir;    
+  G4UIcmdWithADoubleAndUnit* fThetaHighCmd;
+  G4UIcmdWithADoubleAndUnit* fThetaLowCmd;
+
+  G4UIcmdWithADoubleAndUnit* fEnergyHighCmd;
+  G4UIcmdWithADoubleAndUnit* fEnergyLowCmd;
+
+};
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-CellParameterisation::~CellParameterisation()
-{}
+#endif
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void CellParameterisation::ComputeTransformation
-(const G4int copyNo,G4VPhysicalVolume *physVol) const
-{
-    physVol->SetTranslation(G4ThreeVector(fXCell[copyNo],fYCell[copyNo],0.));
-}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
