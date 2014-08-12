@@ -48,8 +48,10 @@ public:
   {fLogV = vol;}
   void SetCellID(G4int id)
   {fCellID = id;}
-  void SetSpiralID(G4int id)
-  {fSpiralID = id;}
+  void SetXPos(G4int x)
+  {fXPos = x;}
+  void SetYPos(G4int y)
+  {fYPos=y;}
 
   //Get methods
   G4double GetEnergyDep()
@@ -60,8 +62,11 @@ public:
   {return fLogV;}
   G4int GetCellID()
   {return fCellID;}
-  G4int GetSpiralID()
-  {return fSpiralID;}
+  G4int GetXPos()
+  {return fXPos;}
+  G4int GetYPos()
+  {return fYPos;}
+
 
 private:
 
@@ -69,7 +74,8 @@ private:
   G4ThreeVector fPos;
   const G4LogicalVolume* fLogV;
   G4int fCellID;
-  G4int fSpiralID;
+  G4int fXPos;
+  G4int fYPos;
 
 };
 

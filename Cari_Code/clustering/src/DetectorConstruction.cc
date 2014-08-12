@@ -57,7 +57,7 @@ fLogicCalor(NULL), //logical volume for calorimeter
     //  fCenterToFront(0.)
 {
  fMessenger = new DetectorMessenger(this);
- fLogicCalor = new G4LogicalVolume*[49];
+ fLogicCalor = new G4LogicalVolume*[1225];
 }
 
 DetectorConstruction::~DetectorConstruction()
@@ -146,7 +146,6 @@ void DetectorConstruction::DefineMaterials()
 G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 {
 
-  G4Material* Air = G4Material::GetMaterial("G4_AIR");
 
   //Sizes and lengths
 
@@ -154,7 +153,6 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   // G4double targetFace = 10.0*cm; //lengths of sides of face of target
 
   G4double crystalLength = 2.54*12.0*cm; 
-  G4double crystalFace = 5.0*cm;
 
   G4double calorSpacing = 10*m; //distance from target to calorimeter
   G4double targetPos = -(.5*calorSpacing); //position of Z coordinate of target
@@ -226,84 +224,44 @@ G4Box* targetS =
  //!!!
  //Calorimeter 
 
- G4int crysLength = 25.*cm;
+ G4int crysLength = 5.*cm;
 
 G4VSolid* boxS =
   new G4Box("boxS", crysLength/2, crysLength/2, crystalLength/2);
 
- G4int nLevel(0); 
- G4int startID(0);
- G4double xPos[49] = {};
- G4double yPos[49] = {};
+ G4double xPos[1225] = {};
+ G4double yPos[1225] = {};
 
  G4ThreeVector position = G4ThreeVector(); 
- for (G4int i = 9; i<49; i++)
+
+ for (G4int i=0; i<1225; i++)
    {
-     if (i<1) { nLevel = 1; startID = 0;}
-     else if (i<9) {nLevel = 2; startID = 1; }
-     else if (i<25) {nLevel = 3; startID = 9; }
-     else if (i<49) {nLevel = 4; startID = 25 ;}
+     xPos[i] = (i%35-17)*crysLength; 
+     yPos[i] = (i/35-17)*crysLength;
 
-     xPos[i] = (nLevel-1)*crysLength;
-     yPos[i] = (nLevel-1)*crysLength;
-
-     if (i <= startID+2*(nLevel-1) )
-       {xPos[i] = xPos[startID] - crysLength*(i-startID); }
-     else if (i <= startID + 4*(nLevel-1))
-       {yPos[i] = yPos[startID]-(i - (2*(nLevel-1))-startID)*crysLength;
-	 xPos[i] = xPos[startID+2*(nLevel-1)];}
-     else if (i <= startID + 6*(nLevel-1))
-       {yPos[i] = yPos[startID+4*(nLevel-1)];
-	 xPos[i] = xPos[startID+4*(nLevel-1)]+
-	   (i-(4*(nLevel-1)+startID))*crysLength;}
-     else if (i < pow(2*nLevel-1, 2))
+     position = G4ThreeVector(xPos[i], yPos[i], 0.);
+     fLogicCalor[i] = new G4LogicalVolume(boxS,
+					  fCalorMaterial,
+					  "CrystalLV", 
+					  0, 0, 0);
+    
+     if (i<360 || (i>374 && i <395) ||(i>409 && i <430)||(i>444 && i<465) || 
+	 (i>479 && i<500) || (i>514 && i<535) || (i>549 && i<570) ||
+	 (i>584 && i<605) || (i>619 && i<640) || (i>654 && i<675) ||
+	 (i>689 && i<710) || (i>724 && i<745) || (i>759 && i<780) ||
+	 (i>794 && i<815) || (i>829 && i<850) || (i>864))
        {
-	 yPos[i] =
-	   yPos[startID+6*(nLevel-1)]+(i-(6*(nLevel-1)+startID))*crysLength;
-       }
-
-     
-     position = G4ThreeVector(xPos[i], yPos[i], 0.); 
-
-     fLogicCalor[i] = new G4LogicalVolume(boxS, 
-					  Air, 
-					  "clusterLV", 
-					  0,0,0);
-     
-      new G4PVPlacement(0, 
-		   position, 
-		   fLogicCalor[i],
-		   "ClusterPV", 
-		   worldLV,
-		   false, 
-		   i,
-		   fCheckOverlaps);
+	 new G4PVPlacement(0, 
+			   position, 
+			   fLogicCalor[i], 
+			   "ClusterPV", 
+			   worldLV, 
+			   false, 
+			   i, 
+			   fCheckOverlaps);
+       		
+     }			  
    }
-
- for (int i=9; i<49; i++)
-   {
-
-G4VSolid* crystalS = 
-  new G4Box("crystalS", crystalFace/2, crystalFace/2, crystalLength/2);
-
-G4LogicalVolume* crystalLV = 
-  new G4LogicalVolume(crystalS, 
-		      fCalorMaterial, 
-		      "CrystalLV");
-
- G4VPVParameterisation* crysParam = new SquareParameterisation(5);
-
- 
-
-new  G4PVParameterised("CrystalPV", 
-		   crystalLV, 
-		   fLogicCalor[i], 
-		   kZAxis, 
-		   25, 
-		   crysParam);
-
-
-     }
 
 
  //Visualization
@@ -393,19 +351,9 @@ void DetectorConstruction::SetMaxStep(G4double maxStep)
 
 void DetectorConstruction::SetCheckOverlaps(G4bool checkOverlaps)
 {
-  G4cout << "Checking overlaps....." <<G4endl;
   fCheckOverlaps = checkOverlaps; 
-  G4cout << fCheckOverlaps <<G4endl;
 }
 
-//Implement later
-/*
-G4double DetectorConstruction::GetCalorDistance()
-{
-  return fCenterToFront;
-}
-*/
-       
 
 
 

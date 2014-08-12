@@ -28,7 +28,8 @@ TestHit::TestHit()
     fPos(G4ThreeVector()), 
     fLogV(0), 
     fCellID(-1),
-    fSpiralID(-1)
+    fXPos(-1),
+    fYPos(-1)
 {}
 
 TestHit::~TestHit()
@@ -39,8 +40,9 @@ TestHit::TestHit(G4int z)
     fEnergyDep(0.), 
     fPos(G4ThreeVector()),
     fLogV(0), 
-    fCellID(z%25),
-    fSpiralID(z/25+9)
+    fCellID(z),
+    fXPos(z%35-17), 
+    fYPos(z/35-17)
 {}
 
 //Create a hit from another hit
@@ -51,7 +53,8 @@ TestHit::TestHit(const TestHit& hit)
   fPos = hit.fPos;
   fLogV = hit.fLogV;
   fCellID = hit.fCellID;
-  fSpiralID = hit.fSpiralID;
+  fXPos = hit.fXPos;
+  fYPos = hit.fYPos;
   
 }
 
@@ -61,7 +64,8 @@ const TestHit& TestHit::operator=(const TestHit& hit)
   fPos = hit.fPos;
   fLogV = hit.fLogV;
   fCellID = hit.fCellID;
-  fSpiralID = hit.fSpiralID;
+  fXPos = hit.fXPos;
+  fYPos = hit.fYPos;
 
   return *this;
 

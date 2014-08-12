@@ -23,13 +23,14 @@ public:
 
   virtual void GeneratePrimaries(G4Event* );
 
-  G4ParticleGun* GetParticleGun() {return fParticleGun;}
+  G4ParticleGun* GetParticleGun() {return fParticleGun1;}
 
   //Set methods
   void SetRandomFlag(G4bool );
 
 private :
-  G4ParticleGun* fParticleGun; //G4 particle gun
+  G4ParticleGun* fParticleGun1; //G4 particle gun
+  G4ParticleGun* fParticleGun2;
 };
 
 

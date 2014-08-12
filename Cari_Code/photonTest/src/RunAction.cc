@@ -29,15 +29,23 @@ RunAction::RunAction()
   G4RunManager::GetRunManager()->SetPrintProgress(1);
 
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
-  analysisMan->SetVerboseLevel(2);
+  analysisMan->SetVerboseLevel(1);
 
-  analysisMan->CreateNtuple("CalorimeterData", "Energy_In_Crystals"); 
-  analysisMan->CreateNtupleIColumn("numHits"); //0
-  analysisMan->CreateNtupleDColumn("Energy_Dep"); //1
-  analysisMan->CreateNtupleIColumn("CellID"); // 2
-  analysisMan->CreateNtupleIColumn("Row"); //3
-  analysisMan->CreateNtupleIColumn("Column"); //4
-  analysisMan->FinishNtuple();
+  analysisMan->CreateNtuple("Signal", "SignalTest");
+  
+  for (G4int j=0; j<121; j++)
+    {
+      std::stringstream ss2;
+      ss2 << j; 
+      G4String str = ss2.str();
+      analysisMan->CreateNtupleDColumn(0, "Crystal_"+str);
+    }
+  analysisMan->FinishNtuple(0);
+
+  analysisMan->CreateNtuple("Energy", "Threshold");
+  analysisMan->CreateNtupleDColumn(1, "Energies");
+  analysisMan->FinishNtuple(1);
+
 }
 
 
@@ -53,10 +61,10 @@ void RunAction::BeginOfRunAction(const G4Run*)
 {
 
   //Save random number seed
-  // G4RunManager::GetRunManager()->SetRandomNumberStore(false);
+   G4RunManager::GetRunManager()->SetRandomNumberStore(false);
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
 
-  analysisMan->OpenFile("Calorimeter");
+  analysisMan->OpenFile("Signal");
 
 }
 

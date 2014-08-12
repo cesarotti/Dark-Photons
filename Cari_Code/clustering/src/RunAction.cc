@@ -30,35 +30,21 @@ RunAction::RunAction()
 
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
-  G4cout << "Using" << analysisMan->GetType() << G4endl;
-  analysisMan->SetVerboseLevel(2);
 
-  for (G4int i=9; i<49; i++)
-    {
-      std::stringstream ss; 
-      ss << i; 
-      G4String string = ss.str();
-      analysisMan->CreateNtuple("Cluster_"+string, "Photon hits"+string);
-      for (G4int j = 0; j<25; j++)
+  analysisMan->SetVerboseLevel(1);
+
+  analysisMan->CreateNtuple("Signal", "SignalTest");
+
+      for (G4int j = 0; j<1225; j++)
 	{
 	  std::stringstream ss2; 
 	  ss2 << j; 
 	  G4String str = ss2.str();
-	  analysisMan->CreateNtupleIColumn(i-9, "Crystal_"+str);
+	  analysisMan->CreateNtupleDColumn("Crystal_"+str);
 	}
-      analysisMan->FinishNtuple(i);
-    }
   
-analysisMan->CreateH2("Hit_Map", "Map",
-                   25, 0, 24, 
-                   40, 9, 48,
-                   "none", 
-                   "none",
-                   "CrystalNum", 
-                   "ClusterNum",
-                   "linear",
-                   "linear");
-
+      analysisMan->FinishNtuple();
+  
 }
 
 
@@ -74,12 +60,12 @@ void RunAction::BeginOfRunAction(const G4Run*)
 {
 
   //Save random number seed
-  // G4RunManager::GetRunManager()->SetRandomNumberStore(false);
+  G4RunManager::GetRunManager()->SetRandomNumberStore(false);
   
   // Data storage and analysis
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
  
-   analysisMan->OpenFile("TwoGamma");
+   analysisMan->OpenFile("Signal");
 
 }
 

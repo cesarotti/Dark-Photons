@@ -46,7 +46,7 @@ EventAction::EventAction()
     fDistance(0.) //distance from center of target to front of calorimeter
 {
   // DetectorConstruction* detector = new DetectorConstruction();
-  fDistance = 10*m;
+  fDistance = 9.99*m;
 }
 
 
@@ -83,7 +83,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 {
   G4cout << "End of Event Action" << G4endl;
   
-  G4HCofThisEvent* hce = event->GetHCofThisEvent(); //hit collection array allows for several kinds of hits
+  G4HCofThisEvent* hce = event->GetHCofThisEvent(); //hit collection array allows for several kinds of hits 
 
   //analysis manager
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
@@ -93,26 +93,16 @@ void EventAction::EndOfEventAction(const G4Event* event)
   G4int collectionID = fSDM->GetCollectionID("TestHitsCollection");
 
   TestHitsCollection* hitColl = static_cast<TestHitsCollection*>(hce->GetHC(collectionID));
-
+  
   G4double eDep(0.);
-  for (G4int i=9; i<49; i++)
+ 
+  for (int i=0; i<1225; i++)
     {
-      for (G4int j=0; j<25; j++)
-	{
-	  TestHit* hit = (*hitColl)[(i-9)*25+j];
+	  TestHit* hit = (*hitColl)[i];
 	  eDep = hit->GetEnergyDep();
-	  if (eDep >0.5*MeV)
-	    {
-	      analysisMan->FillNtupleIColumn(i-9, j, eDep);
-	      analysisMan->FillH2(0, j, i-9, 1);
-	    }
-      
-	}
-      analysisMan->AddNtupleRow(i-9);
+	  analysisMan->FillNtupleDColumn(i, eDep);    
+     
     }
- 
-
- 
-    
+  analysisMan->AddNtupleRow(); // now root number of events matches Geant
 }
 
