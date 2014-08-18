@@ -43,6 +43,7 @@ RunAction::RunAction()
 	  analysisMan->CreateNtupleDColumn("Crystal_"+str);
 	}
   
+      analysisMan->CreateNtupleIColumn("hits");
       analysisMan->FinishNtuple();
   
 }

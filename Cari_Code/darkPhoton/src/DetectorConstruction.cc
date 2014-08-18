@@ -39,6 +39,7 @@
 
 #include "SquareParameterisation.hh"
 #include "G4PVParameterised.hh"
+#include "G4SubtractionSolid.hh"
 
 
 
@@ -53,7 +54,8 @@ fLogicCalor(NULL), //logical volume for calorimeter
   fCalorMaterial(NULL), //material of calorimeter
     fWorldMaterial(NULL),
   fStepLimit(NULL), 
-    fCheckOverlaps(true) 
+    fCheckOverlaps(true), 
+    fLiningMaterial(NULL)
     //  fCenterToFront(0.)
 {
  fMessenger = new DetectorMessenger(this);
@@ -137,6 +139,15 @@ void DetectorConstruction::DefineMaterials()
 
   fCalorMaterial = CsI;
 
+  //Lead for lining calorimeter
+  a = 207.20*g/mole;
+  G4Element* elPb = new G4Element(name="lead",symbol="Pb", z=82., a);
+
+  density = 11.34*g/cm3;
+  G4Material* Pb = new G4Material(name="Lead", density, nComp=1);
+  Pb->AddElement(elPb, 1);
+  fLiningMaterial = Pb;
+
   //Print Materials
   G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 
@@ -154,9 +165,9 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 
   G4double crystalLength = 2.54*12.0*cm; 
 
-  G4double calorSpacing = 10*m; //distance from target to calorimeter
+  G4double calorSpacing = 10.*m; //distance from target to calorimeter
   G4double targetPos = -(.5*calorSpacing); //position of Z coordinate of target
-  G4double calorDist = 10*m + .5*targetLength;
+  G4double calorDist = .5*calorSpacing + .5*targetLength;
 
 
   G4double worldLength = 3*(calorDist+crystalLength+targetLength-targetPos);
@@ -206,7 +217,7 @@ G4Box* targetS =
 
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
-
+ 
  new G4PVPlacement(0, // no rotation
 		   positionTarget, // at (x,y,z)
 		   fLogicTarget, // logical volume
@@ -215,6 +226,7 @@ G4Box* targetS =
 		   false, //no booleans
 		   0, // copy number
 		   fCheckOverlaps); //true
+ 
 
  G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
@@ -239,7 +251,7 @@ G4VSolid* boxS =
      xPos[i] = (i%35-17)*crysLength; 
      yPos[i] = (i/35-17)*crysLength;
 
-     position = G4ThreeVector(xPos[i], yPos[i], 0.);
+     position = G4ThreeVector(xPos[i], yPos[i], calorDist);
      fLogicCalor[i] = new G4LogicalVolume(boxS,
 					  fCalorMaterial,
 					  "CrystalLV", 
@@ -262,6 +274,57 @@ G4VSolid* boxS =
        		
      }			  
    }
+ // Lining
+ 
+ G4VSolid* outerS =
+   new G4Box("outerS", 5.*cm+17.5*crysLength, 5.*cm+17.5*crysLength, crystalLength/2);
+ 
+G4VSolid* innerS = 
+  new G4Box("innerS", 17.5*crysLength+.5*mm, 17.5*crysLength+.5*mm, crystalLength/2);
+ 
+ G4SubtractionSolid* liningS = new G4SubtractionSolid("Lining", outerS, innerS);
+
+G4LogicalVolume* liningLV =
+  new G4LogicalVolume ( liningS, 
+			fLiningMaterial, 
+			"LiningLV",
+			0, 0, 0);
+
+ new G4PVPlacement(0, 
+		   G4ThreeVector(0., 0., calorDist),
+		   liningLV,
+		   "LiningPV", 
+		   worldLV, 
+		   false,
+		   0, 
+		   fCheckOverlaps);
+
+ G4VSolid* holeOutS =
+   new G4Box("holeOutS", 7.5*crysLength-.5*mm, 7.5*crysLength-.5*mm, crystalLength/2);
+ 
+G4VSolid* holeInS = 
+  new G4Box("holeInS", 7.5*crysLength - 5.*cm, 7.5*crysLength - 5.*cm, crystalLength/2);
+ 
+ G4SubtractionSolid* liningHS = 
+   new G4SubtractionSolid("LiningH", holeOutS, holeInS);
+
+G4LogicalVolume* liningHLV =
+  new G4LogicalVolume ( liningHS, 
+			fLiningMaterial, 
+			"LiningHLV",
+			0, 0, 0);
+
+ new G4PVPlacement(0, 
+		   G4ThreeVector(0., 0., calorDist),
+		   liningHLV,
+		   "LiningHPV", 
+		   worldLV, 
+		   false,
+		   0, 
+		   fCheckOverlaps);
+
+
+
 
 
  //Visualization
@@ -270,6 +333,9 @@ G4VSolid* boxS =
 
  worldLV ->SetVisAttributes(new G4VisAttributes(G4Colour(1.0,1.0,1.0)));
  fLogicTarget ->SetVisAttributes(color);
+
+ liningHLV->SetVisAttributes(new G4VisAttributes(G4Colour(.7, .7, .7)));
+ liningLV->SetVisAttributes(new G4VisAttributes(G4Colour(.7, .7, .7)));
 
 
 

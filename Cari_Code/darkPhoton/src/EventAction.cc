@@ -28,7 +28,6 @@
 #include <iomanip>
 
 #include "Analysis.hh"
-
 #include "G4PhysicalConstants.hh"
 
 #include "G4Event.hh"
@@ -95,14 +94,20 @@ void EventAction::EndOfEventAction(const G4Event* event)
   TestHitsCollection* hitColl = static_cast<TestHitsCollection*>(hce->GetHC(collectionID));
   
   G4double eDep(0.);
+  G4bool hits = false;
  
   for (int i=0; i<1225; i++)
     {
 	  TestHit* hit = (*hitColl)[i];
 	  eDep = hit->GetEnergyDep();
-	  analysisMan->FillNtupleDColumn(i, eDep);    
+	  if (eDep > 0)
+	    {
+	      analysisMan->FillNtupleDColumn(i, eDep);
+	      hits = true;
+	    }
      
     }
+  if (hits) {analysisMan->FillNtupleIColumn(1225, 1);}
   analysisMan->AddNtupleRow(); // now root number of events matches Geant
 }
 
