@@ -30,6 +30,10 @@ public:
 
 private :
   G4ParticleGun* fParticleGun1; //G4 particle gun
+  G4ParticleGun* fParticleGun2;
+  G4ParticleGun* fParticleGun3;
+  G4ParticleGun* fParticleGun4;
+
 };
 
 

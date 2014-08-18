@@ -31,19 +31,46 @@
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction()
-{
-  double energy = 500.*MeV;
+{ 
+  /*
+  G4double energySig = 250.*MeV;
+  G4double energy  = G4RandGauss::shoot(500.*MeV, energySig);
+  */
+
+  G4double energy = 5.*GeV;
   G4int nofParticles = 1;
   fParticleGun1 = new G4ParticleGun(nofParticles);
 
   G4ParticleDefinition* particleDefinition 
     = G4ParticleTable::GetParticleTable()->FindParticle("e+");
   fParticleGun1->SetParticleDefinition(particleDefinition);
-  fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(0.,0.,-1.));
+  fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(0.,0., 1.));
   fParticleGun1->SetParticleEnergy(energy);
-
+  
   /*
+  
+  fParticleGun2 = new G4ParticleGun(nofParticles);
+  //energy  = G4RandGauss::shoot(500.*MeV, energySig);
+  fParticleGun2->SetParticleDefinition(particleDefinition);
+  fParticleGun2->SetParticleMomentumDirection(G4ThreeVector(0.,0.,-1.));
+  fParticleGun2->SetParticleEnergy(energy);
 
+  fParticleGun3 = new G4ParticleGun(nofParticles);
+  //energy  = G4RandGauss::shoot(500.*MeV, energySig);
+  fParticleGun3->SetParticleDefinition(particleDefinition);
+  fParticleGun3->SetParticleMomentumDirection(G4ThreeVector(0.,0.,-1.));
+  fParticleGun3->SetParticleEnergy(energy);
+
+  
+  fParticleGun4 = new G4ParticleGun(nofParticles);
+  energy  = G4RandGauss::shoot(500.*MeV, energySig);
+  fParticleGun4->SetParticleDefinition(particleDefinition);
+  fParticleGun4->SetParticleMomentumDirection(G4ThreeVector(0.,0.,-1.));
+  fParticleGun4->SetParticleEnergy(energy);
+  */
+
+ 
+  /*
   
   fParticleSource= new G4GeneralParticleSource();
 
@@ -68,7 +95,6 @@ G4ParticleDefinition* particleDefinition =
     ->DefineAngRefAxes("angref1", G4ThreeVector(-1.,0.,0.)); 
   fParticleSource->GetCurrentSource()->GetAngDist()
     ->DefineAngeRefAxes("angref2", G4ThreeVector(0.,1.,0.));
-
 
   */
 
@@ -109,9 +135,38 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   G4double sigY = G4RandGauss::shoot(0., sigma);
 
   fParticleGun1->SetParticlePosition(G4ThreeVector(sigX, sigY, worldZHalfLength));
-  */
-
-  fParticleGun1->SetParticlePosition(G4ThreeVector(0., 0., worldZHalfLength));
+*/
+  fParticleGun1->SetParticlePosition(G4ThreeVector( 0., 0., -worldZHalfLength));
   fParticleGun1->GeneratePrimaryVertex(anEvent);
+
+  /*
+  sigX = G4RandGauss::shoot(0., sigma);
+  sigY = G4RandGauss::shoot(0., sigma);
+  fParticleGun2->SetParticlePosition(G4ThreeVector(sigX, sigY, worldZHalfLength));
+  
+ 
+  
+  fParticleGun2->SetParticlePosition(G4ThreeVector(13.49*5.*cm, 0., worldZHalfLength));
+   fParticleGun2->GeneratePrimaryVertex(anEvent);
+  
+   
+   
+  sigX = G4RandGauss::shoot(0., sigma);
+  sigY = G4RandGauss::shoot(0., sigma);
+  fParticleGun3->SetParticlePosition(G4ThreeVector(sigX, sigY, worldZHalfLength));
+   
+   
+   fParticleGun3->SetParticlePosition(G4ThreeVector(-13.49*5.0*cm, .49*5.0*cm, worldZHalfLength));
+   
+   fParticleGun3->GeneratePrimaryVertex(anEvent);
+   
+
+  
+  sigX = G4RandGauss::shoot(0., sigma);
+  sigY = G4RandGauss::shoot(0., sigma);
+  fParticleGun4->SetParticlePosition(G4ThreeVector(sigX, sigY, worldZHalfLength));
+
+   fParticleGun4->GeneratePrimaryVertex(anEvent);
+   */
 
 }

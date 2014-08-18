@@ -25,7 +25,7 @@
 #include "G4VModularPhysicsList.hh"
 #include "G4StepLimiterPhysics.hh"
 #include "FTFP_BERT.hh"
-
+#include "PositronPhysicsList1.hh"
 #include "Randomize.hh"
 
 //Visualization
@@ -61,10 +61,15 @@ int main(int argc, char** argv)
 // 4. Initializing the G4 kernel
    */
   //use specific physics list
- 
+  /*
   G4VModularPhysicsList* physicsList = new FTFP_BERT(0);
   physicsList->RegisterPhysics(new G4StepLimiterPhysics());
   runManager->SetUserInitialization(physicsList);
+  */
+
+   G4VUserPhysicsList* physicsList = new PositronPhysicsList1(); 
+  runManager->SetUserInitialization(physicsList);
+
   G4HadronicProcessStore::Instance()->SetVerbose(0);
 
   DetectorConstruction* test = new DetectorConstruction();

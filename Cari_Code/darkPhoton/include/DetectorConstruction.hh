@@ -63,6 +63,7 @@ private:
   G4Material* fTargetMaterial; // pointer to target material
   G4Material* fCalorMaterial; // pointer to calorimeter material
   G4Material* fWorldMaterial; // pointer to world material
+  G4Material* fLiningMaterial; // pointer to material for lining calorimeter
 
   G4UserLimits* fStepLimit; // pointer to user step limits
 
