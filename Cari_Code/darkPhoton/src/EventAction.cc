@@ -103,6 +103,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 	  if (eDep > 0)
 	    {
 	      analysisMan->FillNtupleDColumn(i, eDep);
+	      G4cout << "Hit registered" << G4endl;
 	      hits = true;
 	    }
      
