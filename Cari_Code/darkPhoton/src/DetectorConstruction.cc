@@ -119,6 +119,7 @@ void DetectorConstruction::DefineMaterials()
 				   a); // mass / mole
 
   density = .07085*g/cm3; //density of Liquid Hydrogen
+  density*=100.;
   G4Material* lh2 = new G4Material(name = "Liquid Hydrogen", density, nComp =1);
 
   lh2->AddElement(ele_H, nAtom=2);
