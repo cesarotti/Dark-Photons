@@ -25,7 +25,6 @@
 #include "G4StepLimiterPhysics.hh"
 #include "FTFP_BERT.hh"
 #include "Randomize.hh"
-#include "DarkPhysicsList.hh"
 
 
 //Visualization
@@ -65,8 +64,6 @@ int main(int argc, char** argv)
   G4VModularPhysicsList* physicsList = new FTFP_BERT(0);
   physicsList->RegisterPhysics(new G4StepLimiterPhysics());
   runManager->SetUserInitialization(physicsList);
- 
-
 
   // runManager->SetUserInitialization(new DarkPhysicsList);
 
