@@ -39,12 +39,12 @@
 CellParameterisation::CellParameterisation()
 : G4VPVParameterisation()
 {
-    for (G4int copyNo=0;copyNo<900;copyNo++)
+    for (G4int copyNo=0;copyNo<121;copyNo++)
     {
-        G4int column = copyNo / 30;
-        G4int row = copyNo % 30;
-        fXCell[copyNo] = (column-14)*5.*cm - 2.5*cm;
-        fYCell[copyNo] = (row-14)*5*cm - 2.5*cm;
+        G4int column = copyNo % 11;
+        G4int row = copyNo / 11;
+        fXCell[copyNo] = (column-5)*5.*cm;
+        fYCell[copyNo] = (row-5)*5*cm;
     }
 }
 

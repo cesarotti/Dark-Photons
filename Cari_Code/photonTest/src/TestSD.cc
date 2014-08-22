@@ -48,7 +48,7 @@ G4int hceID =
   G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]); 
  hce -> AddHitsCollection( hceID, fHitsCollection);
 
- for(G4int i=0; i<900; i++)
+ for(G4int i=0; i<121; i++)
    {
      TestHit* hit = new TestHit(i);
      fHitsCollection->insert(hit); 
@@ -60,13 +60,11 @@ G4bool TestSD::ProcessHits(G4Step* step,
 				  G4TouchableHistory* )
 {
   G4double edep = step->GetTotalEnergyDeposit();
-  if (edep==0.) return true;
 
   G4TouchableHistory* touchable 
     = (G4TouchableHistory*)(step->GetPreStepPoint()->GetTouchable());
   G4VPhysicalVolume* physical = touchable->GetVolume();
   G4int copyNo = physical->GetCopyNo();
-
 
   TestHit* hit = (*fHitsCollection)[copyNo]; 
 
@@ -77,6 +75,9 @@ G4bool TestSD::ProcessHits(G4Step* step,
 
   hit->AddEdep(edep);
   hit->SetPos(step->GetPostStepPoint()->GetPosition());
+  hit->SetCellID(copyNo);
+  hit->SetXPos(copyNo%11-5);
+  hit->SetYPos(copyNo/11-5);
 
   return true;
 }

@@ -2,11 +2,12 @@
 #include "TTree.h"
 #include "TFile.h"
 #include "TString.h"
+#include "TGraph.h"
 #include "TH2.h"
 #include <iostream>
 #include "TCanvas.h"
 
-const double data [4][6] = {
+const double dataDESY [4][6] = {
   {1.49, 1.44, 1.37, 1.43, 1.39, 1.41},
   {1.69, 1.72, 1.76, 1.72, 1.67, 1.75},
   {2.06, 2.05, 2.07, 2.14, 2.05, 1.96},
@@ -84,7 +85,7 @@ void plotsVal2() {
   Hits_Info->SetBranchAddress("numPiMinus", &piminus);
 
 
-  // go through all entries and fill the histograms
+  // go through all entries
   int nentries = Hits_Info->GetEntries();
   int a, b;
 
@@ -100,11 +101,50 @@ void plotsVal2() {
     }
   }
 
-  for (int j=0; j<4; j++) {
-    for (int i=0; i<6; i++) {
-      std::cout << sum[j][i] / count[j][i] << '\t';
+  // calculate data values
+  double dataGeant[4][6];
+  for (int i=0; i<4; i++) {
+    for (int j=0; j<6; j++) {
+      dataGeant[i][j] = sum[i][j] / count[i][j];
     }
-    std::cout << '\n';
+  }
+
+  // Draw graphs
+  TCanvas* c1 = new TCanvas("c1","Average Number of Charged Hadrons by W and Q^{2}",200,10,700,500);
+  c1->Divide(2, 2);
+  TVirtualPad* p;
+  TLegend* leg;
+  TH1F *frame;
+  TGraph* gr1;
+  TGraph* gr2;
+  //char *legHead;
+  string legHead;
+
+  double array[6] = {1, 2, 3, 4, 5, 6};
+  string wbounds[5] = {"1.3", "1.5", "1.8", "2.2", "2.8"};
+
+  for (int i=0; i<4; i++) {
+    p = c1->cd(i+1);
+
+    legHead = wbounds[i] + " < W < " + wbounds[i+1];
+    frame = p->DrawFrame(0, 0, 7, 4, legHead.c_str());
+    frame->GetYaxis()->SetTitle("n_{ch}");
+    frame->GetYaxis()->CenterTitle();
+
+    gr1 = new TGraph(6, array, dataGeant[i]);
+    gr1->SetMarkerColor(2);
+    gr1->SetMarkerStyle(20);
+    gr1->Draw("P");
+
+    gr2 = new TGraph(6, array, dataDESY[i]);
+    gr2->SetMarkerColor(4);
+    gr2->SetMarkerStyle(21);
+    gr2->Draw("*");
+
+    leg = new TLegend(0.6,0.7,0.85,0.85);
+    leg->AddEntry(gr1, "Data from Geant4", "p");
+    leg->AddEntry(gr2, "Data from DESY", "p");
+    leg->Draw();
   }
 
 }
