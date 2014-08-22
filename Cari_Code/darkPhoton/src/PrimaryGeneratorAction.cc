@@ -37,12 +37,12 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   G4double energy  = G4RandGauss::shoot(500.*MeV, energySig);
   */
 
-  G4double energy = 5.*GeV;
+  G4double energy = 5000.*MeV;
   G4int nofParticles = 1;
   fParticleGun1 = new G4ParticleGun(nofParticles);
 
   G4ParticleDefinition* particleDefinition 
-    = G4ParticleTable::GetParticleTable()->FindParticle("gamma");
+    = G4ParticleTable::GetParticleTable()->FindParticle("e+");
   fParticleGun1->SetParticleDefinition(particleDefinition);
   fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(0.,0., 1.));
   fParticleGun1->SetParticleEnergy(energy);
@@ -84,7 +84,10 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   fParticleGun1->SetParticlePosition(G4ThreeVector(sigX, sigY, worldZHalfLength));
 */
 
-  fParticleGun1->SetParticlePosition(G4ThreeVector(0., 0., 13.498*5.*cm, -worldZHalfLength));
+  G4double crystalUnit = 5.*cm;
+  fParticleGun1->SetParticlePosition(G4ThreeVector( 0.*crystalUnit, 
+						    0.*crystalUnit, 
+						    -worldZHalfLength));
   fParticleGun1->GeneratePrimaryVertex(anEvent);
 
 }
