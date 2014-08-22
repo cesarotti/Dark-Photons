@@ -36,14 +36,6 @@ G4VUserActionInitialization.hh
 g4root.hh
 /media/sf_darkphotons/4Plots/standard/include/g4root.hh
 
-/media/sf_darkphotons/4Plots/standard/include/AngleBiasMessenger.hh
-G4UImessenger.hh
-/media/sf_darkphotons/4Plots/standard/include/G4UImessenger.hh
-NewBremsstrahlungRelModel.hh
-/media/sf_darkphotons/4Plots/standard/include/NewBremsstrahlungRelModel.hh
-globals.hh
-/media/sf_darkphotons/4Plots/standard/include/globals.hh
-
 /media/sf_darkphotons/4Plots/standard/include/BasicHit.hh
 G4VHit.hh
 /media/sf_darkphotons/4Plots/standard/include/G4VHit.hh
@@ -94,28 +86,6 @@ DetectorConstruction.hh
 globals.hh
 /media/sf_darkphotons/4Plots/standard/include/globals.hh
 
-/media/sf_darkphotons/4Plots/standard/include/NewBremsstrahlung.hh
-G4VEnergyLossProcess.hh
-/media/sf_darkphotons/4Plots/standard/include/G4VEnergyLossProcess.hh
-G4DynamicParticle.hh
-/media/sf_darkphotons/4Plots/standard/include/G4DynamicParticle.hh
-G4Electron.hh
-/media/sf_darkphotons/4Plots/standard/include/G4Electron.hh
-G4Positron.hh
-/media/sf_darkphotons/4Plots/standard/include/G4Positron.hh
-
-/media/sf_darkphotons/4Plots/standard/include/NewBremsstrahlungRelModel.hh
-G4VEmModel.hh
-/media/sf_darkphotons/4Plots/standard/include/G4VEmModel.hh
-G4NistManager.hh
-/media/sf_darkphotons/4Plots/standard/include/G4NistManager.hh
-G4Exp.hh
-/media/sf_darkphotons/4Plots/standard/include/G4Exp.hh
-G4Log.hh
-/media/sf_darkphotons/4Plots/standard/include/G4Log.hh
-AngleBiasMessenger.hh
-/media/sf_darkphotons/4Plots/standard/include/AngleBiasMessenger.hh
-
 /media/sf_darkphotons/4Plots/standard/include/PositronPhysicsList1.hh
 G4VUserPhysicsList.hh
 /media/sf_darkphotons/4Plots/standard/include/G4VUserPhysicsList.hh
@@ -145,18 +115,6 @@ RunAction.hh
 /media/sf_darkphotons/4Plots/standard/src/RunAction.hh
 EventAction.hh
 /media/sf_darkphotons/4Plots/standard/src/EventAction.hh
-
-/media/sf_darkphotons/4Plots/standard/src/AngleBiasMessenger.cc
-AngleBiasMessenger.hh
-/media/sf_darkphotons/4Plots/standard/src/AngleBiasMessenger.hh
-NewBremsstrahlungRelModel.hh
-/media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlungRelModel.hh
-G4UIdirectory.hh
-/media/sf_darkphotons/4Plots/standard/src/G4UIdirectory.hh
-G4UIcmdWithAString.hh
-/media/sf_darkphotons/4Plots/standard/src/G4UIcmdWithAString.hh
-G4UIcmdWithADoubleAndUnit.hh
-/media/sf_darkphotons/4Plots/standard/src/G4UIcmdWithADoubleAndUnit.hh
 
 /media/sf_darkphotons/4Plots/standard/src/BasicHit.cc
 BasicHit.hh
@@ -334,60 +292,6 @@ G4SDManager.hh
 BasicHit.hh
 /media/sf_darkphotons/4Plots/standard/src/BasicHit.hh
 
-/media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlung.cc
-NewBremsstrahlung.hh
-/media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlung.hh
-G4SystemOfUnits.hh
-/media/sf_darkphotons/4Plots/standard/src/G4SystemOfUnits.hh
-G4Gamma.hh
-/media/sf_darkphotons/4Plots/standard/src/G4Gamma.hh
-G4SeltzerBergerModel.hh
-/media/sf_darkphotons/4Plots/standard/src/G4SeltzerBergerModel.hh
-NewBremsstrahlungRelModel.hh
-/media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlungRelModel.hh
-G4UnitsTable.hh
-/media/sf_darkphotons/4Plots/standard/src/G4UnitsTable.hh
-G4LossTableManager.hh
-/media/sf_darkphotons/4Plots/standard/src/G4LossTableManager.hh
-G4ProductionCutsTable.hh
-/media/sf_darkphotons/4Plots/standard/src/G4ProductionCutsTable.hh
-G4MaterialCutsCouple.hh
-/media/sf_darkphotons/4Plots/standard/src/G4MaterialCutsCouple.hh
-
-/media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlungRelModel.cc
-NewBremsstrahlungRelModel.hh
-/media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlungRelModel.hh
-AngleBiasMessenger.hh
-/media/sf_darkphotons/4Plots/standard/src/AngleBiasMessenger.hh
-G4PhysicalConstants.hh
-/media/sf_darkphotons/4Plots/standard/src/G4PhysicalConstants.hh
-G4SystemOfUnits.hh
-/media/sf_darkphotons/4Plots/standard/src/G4SystemOfUnits.hh
-G4Electron.hh
-/media/sf_darkphotons/4Plots/standard/src/G4Electron.hh
-G4Positron.hh
-/media/sf_darkphotons/4Plots/standard/src/G4Positron.hh
-G4Gamma.hh
-/media/sf_darkphotons/4Plots/standard/src/G4Gamma.hh
-Randomize.hh
-/media/sf_darkphotons/4Plots/standard/src/Randomize.hh
-G4Material.hh
-/media/sf_darkphotons/4Plots/standard/src/G4Material.hh
-G4Element.hh
-/media/sf_darkphotons/4Plots/standard/src/G4Element.hh
-G4ElementVector.hh
-/media/sf_darkphotons/4Plots/standard/src/G4ElementVector.hh
-G4ProductionCutsTable.hh
-/media/sf_darkphotons/4Plots/standard/src/G4ProductionCutsTable.hh
-G4ParticleChangeForLoss.hh
-/media/sf_darkphotons/4Plots/standard/src/G4ParticleChangeForLoss.hh
-G4LossTableManager.hh
-/media/sf_darkphotons/4Plots/standard/src/G4LossTableManager.hh
-G4ModifiedTsai.hh
-/media/sf_darkphotons/4Plots/standard/src/G4ModifiedTsai.hh
-G4DipBustGenerator.hh
-/media/sf_darkphotons/4Plots/standard/src/G4DipBustGenerator.hh
-
 /media/sf_darkphotons/4Plots/standard/src/PositronPhysicsList1.cc
 PositronPhysicsList1.hh
 /media/sf_darkphotons/4Plots/standard/src/PositronPhysicsList1.hh
@@ -415,10 +319,10 @@ G4eBremsstrahlung.hh
 /media/sf_darkphotons/4Plots/standard/src/G4eBremsstrahlung.hh
 G4eplusAnnihilation.hh
 /media/sf_darkphotons/4Plots/standard/src/G4eplusAnnihilation.hh
-NewBremsstrahlung.hh
-/media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlung.hh
 G4VEmProcess.hh
 /media/sf_darkphotons/4Plots/standard/src/G4VEmProcess.hh
+DarkPhoton.hh
+/media/sf_darkphotons/4Plots/standard/src/DarkPhoton.hh
 
 /media/sf_darkphotons/4Plots/standard/src/PrimaryGeneratorAction.cc
 PrimaryGeneratorAction.hh
@@ -1164,10 +1068,6 @@ globals.hh
 
 /usr/local/geant4.10.00.p01/include/Geant4/G4AtomicShellEnumerator.hh
 
-/usr/local/geant4.10.00.p01/include/Geant4/G4AutoLock.hh
-G4Threading.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4Threading.hh
-
 /usr/local/geant4.10.00.p01/include/Geant4/G4AuxiliaryNavServices.hh
 G4Types.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4Types.hh
@@ -1236,28 +1136,6 @@ G4Box.icc
 G4VSolid.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4VSolid.hh
 
-/usr/local/geant4.10.00.p01/include/Geant4/G4Cache.hh
-G4CacheDetails.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4CacheDetails.hh
-map
--
-iostream
--
-sstream
--
-G4AutoLock.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4AutoLock.hh
-
-/usr/local/geant4.10.00.p01/include/Geant4/G4CacheDetails.hh
-vector
--
-G4Threading.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4Threading.hh
-iostream
--
-sstream
--
-
 /usr/local/geant4.10.00.p01/include/Geant4/G4Circle.hh
 G4VMarker.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4VMarker.hh
@@ -1325,14 +1203,6 @@ G4VModelFactory.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4VModelFactory.hh
 G4VDigi.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4VDigi.hh
-
-/usr/local/geant4.10.00.p01/include/Geant4/G4DipBustGenerator.hh
-G4ios.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4ios.hh
-globals.hh
-/usr/local/geant4.10.00.p01/include/Geant4/globals.hh
-G4VEmAngularDistribution.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4VEmAngularDistribution.hh
 
 /usr/local/geant4.10.00.p01/include/Geant4/G4DisplacedSolid.hh
 G4VSolid.hh
@@ -1770,18 +1640,6 @@ globals.hh
 CLHEP/Vector/LorentzVector.h
 -
 
-/usr/local/geant4.10.00.p01/include/Geant4/G4LossTableManager.hh
-map
--
-vector
--
-globals.hh
-/usr/local/geant4.10.00.p01/include/Geant4/globals.hh
-G4VEnergyLossProcess.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4VEnergyLossProcess.hh
-G4ThreadLocalSingleton.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4ThreadLocalSingleton.hh
-
 /usr/local/geant4.10.00.p01/include/Geant4/G4MCCIndexConversionTable.hh
 vector
 -
@@ -1957,14 +1815,6 @@ G4ModelingParameters.icc
 /usr/local/geant4.10.00.p01/include/Geant4/G4ModelingParameters.icc
 
 /usr/local/geant4.10.00.p01/include/Geant4/G4ModelingParameters.icc
-
-/usr/local/geant4.10.00.p01/include/Geant4/G4ModifiedTsai.hh
-G4ios.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4ios.hh
-globals.hh
-/usr/local/geant4.10.00.p01/include/Geant4/globals.hh
-G4VEmAngularDistribution.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4VEmAngularDistribution.hh
 
 /usr/local/geant4.10.00.p01/include/Geant4/G4MuBremsstrahlung.hh
 globals.hh
@@ -2778,12 +2628,6 @@ G4Scene.hh
 vector
 -
 
-/usr/local/geant4.10.00.p01/include/Geant4/G4SeltzerBergerModel.hh
-G4eBremsstrahlungRelModel.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4eBremsstrahlungRelModel.hh
-globals.hh
-/usr/local/geant4.10.00.p01/include/Geant4/globals.hh
-
 /usr/local/geant4.10.00.p01/include/Geant4/G4SensitiveVolumeList.hh
 vector
 -
@@ -3031,14 +2875,6 @@ globals.hh
 /usr/local/geant4.10.00.p01/include/Geant4/globals.hh
 map
 -
-
-/usr/local/geant4.10.00.p01/include/Geant4/G4ThreadLocalSingleton.hh
-G4Cache.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4Cache.hh
-list
--
-G4AutoLock.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4AutoLock.hh
 
 /usr/local/geant4.10.00.p01/include/Geant4/G4Threading.hh
 G4Types.hh
@@ -4147,16 +3983,6 @@ G4Electron.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4Electron.hh
 G4Positron.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4Positron.hh
-
-/usr/local/geant4.10.00.p01/include/Geant4/G4eBremsstrahlungRelModel.hh
-G4VEmModel.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4VEmModel.hh
-G4NistManager.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4NistManager.hh
-G4Exp.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4Exp.hh
-G4Log.hh
-/usr/local/geant4.10.00.p01/include/Geant4/G4Log.hh
 
 /usr/local/geant4.10.00.p01/include/Geant4/G4eIonisation.hh
 G4VEnergyLossProcess.hh

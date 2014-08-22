@@ -97,33 +97,9 @@ CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o.provides: CMakeFiles/dar
 CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o
 .PHONY : CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o.provides.build
 
-CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o: CMakeFiles/darkPhoton.dir/flags.make
-CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o: /media/sf_darkphotons/4Plots/standard/src/AngleBiasMessenger.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o -c /media/sf_darkphotons/4Plots/standard/src/AngleBiasMessenger.cc
-
-CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/sf_darkphotons/4Plots/standard/src/AngleBiasMessenger.cc > CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.i
-
-CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/sf_darkphotons/4Plots/standard/src/AngleBiasMessenger.cc -o CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.s
-
-CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.requires:
-.PHONY : CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.requires
-
-CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.provides: CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.requires
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.provides.build
-.PHONY : CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.provides
-
-CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o
-.PHONY : CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.provides.build
-
 CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o: /media/sf_darkphotons/4Plots/standard/src/BasicHit.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o -c /media/sf_darkphotons/4Plots/standard/src/BasicHit.cc
 
@@ -147,7 +123,7 @@ CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o.provides.build: CMakeFiles/darkPhoto
 
 CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o: /media/sf_darkphotons/4Plots/standard/src/BasicHitSD.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o -c /media/sf_darkphotons/4Plots/standard/src/BasicHitSD.cc
 
@@ -171,7 +147,7 @@ CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o.provides.build: CMakeFiles/darkPho
 
 CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o: /media/sf_darkphotons/4Plots/standard/src/DarkPhoton.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o -c /media/sf_darkphotons/4Plots/standard/src/DarkPhoton.cc
 
@@ -195,7 +171,7 @@ CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o.provides.build: CMakeFiles/darkPho
 
 CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.o: /media/sf_darkphotons/4Plots/standard/src/DarkPhotonModel.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.o -c /media/sf_darkphotons/4Plots/standard/src/DarkPhotonModel.cc
 
@@ -219,7 +195,7 @@ CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.o.provides.build: CMakeFiles/da
 
 CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o: /media/sf_darkphotons/4Plots/standard/src/DetectorConstruction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o -c /media/sf_darkphotons/4Plots/standard/src/DetectorConstruction.cc
 
@@ -243,7 +219,7 @@ CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o.provides.build: CMakeFil
 
 CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o: /media/sf_darkphotons/4Plots/standard/src/DetectorMessenger.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o -c /media/sf_darkphotons/4Plots/standard/src/DetectorMessenger.cc
 
@@ -267,7 +243,7 @@ CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o.provides.build: CMakeFiles/
 
 CMakeFiles/darkPhoton.dir/src/EventAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/EventAction.cc.o: /media/sf_darkphotons/4Plots/standard/src/EventAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/EventAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/EventAction.cc.o -c /media/sf_darkphotons/4Plots/standard/src/EventAction.cc
 
@@ -289,57 +265,9 @@ CMakeFiles/darkPhoton.dir/src/EventAction.cc.o.provides: CMakeFiles/darkPhoton.d
 CMakeFiles/darkPhoton.dir/src/EventAction.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/EventAction.cc.o
 .PHONY : CMakeFiles/darkPhoton.dir/src/EventAction.cc.o.provides.build
 
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o: CMakeFiles/darkPhoton.dir/flags.make
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o: /media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlung.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_11)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o -c /media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlung.cc
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlung.cc > CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.i
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlung.cc -o CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.s
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.requires:
-.PHONY : CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.requires
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.provides: CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.requires
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.provides.build
-.PHONY : CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.provides
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o
-.PHONY : CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.provides.build
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o: CMakeFiles/darkPhoton.dir/flags.make
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o: /media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlungRelModel.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_12)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o -c /media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlungRelModel.cc
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlungRelModel.cc > CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.i
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/sf_darkphotons/4Plots/standard/src/NewBremsstrahlungRelModel.cc -o CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.s
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.requires:
-.PHONY : CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.requires
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.provides: CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.requires
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.provides.build
-.PHONY : CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.provides
-
-CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o
-.PHONY : CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.provides.build
-
 CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o: /media/sf_darkphotons/4Plots/standard/src/PositronPhysicsList1.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o -c /media/sf_darkphotons/4Plots/standard/src/PositronPhysicsList1.cc
 
@@ -363,7 +291,7 @@ CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o.provides.build: CMakeFil
 
 CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o: /media/sf_darkphotons/4Plots/standard/src/PrimaryGeneratorAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o -c /media/sf_darkphotons/4Plots/standard/src/PrimaryGeneratorAction.cc
 
@@ -387,7 +315,7 @@ CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o.provides.build: CMakeF
 
 CMakeFiles/darkPhoton.dir/src/RunAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/RunAction.cc.o: /media/sf_darkphotons/4Plots/standard/src/RunAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4Plots/standard-build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/RunAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/RunAction.cc.o -c /media/sf_darkphotons/4Plots/standard/src/RunAction.cc
 
@@ -413,7 +341,6 @@ CMakeFiles/darkPhoton.dir/src/RunAction.cc.o.provides.build: CMakeFiles/darkPhot
 darkPhoton_OBJECTS = \
 "CMakeFiles/darkPhoton.dir/darkPhoton.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o" \
-"CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o" \
@@ -421,8 +348,6 @@ darkPhoton_OBJECTS = \
 "CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/EventAction.cc.o" \
-"CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o" \
-"CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/RunAction.cc.o"
@@ -432,7 +357,6 @@ darkPhoton_EXTERNAL_OBJECTS =
 
 darkPhoton: CMakeFiles/darkPhoton.dir/darkPhoton.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o
-darkPhoton: CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o
@@ -440,8 +364,6 @@ darkPhoton: CMakeFiles/darkPhoton.dir/src/DarkPhotonModel.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/EventAction.cc.o
-darkPhoton: CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o
-darkPhoton: CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/RunAction.cc.o
@@ -532,7 +454,6 @@ CMakeFiles/darkPhoton.dir/build: darkPhoton
 
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/darkPhoton.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.o.requires
-CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/BasicHit.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/BasicHitSD.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/DarkPhoton.cc.o.requires
@@ -540,8 +461,6 @@ CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/DarkPhotonMode
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/DetectorConstruction.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/DetectorMessenger.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/EventAction.cc.o.requires
-CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o.requires
-CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/PositronPhysicsList1.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/RunAction.cc.o.requires

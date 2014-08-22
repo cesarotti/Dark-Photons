@@ -200,30 +200,6 @@ src/ActionInitialization.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/ActionInitialization.cc.s
 .PHONY : src/ActionInitialization.cc.s
 
-src/AngleBiasMessenger.o: src/AngleBiasMessenger.cc.o
-.PHONY : src/AngleBiasMessenger.o
-
-# target to build an object file
-src/AngleBiasMessenger.cc.o:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.o
-.PHONY : src/AngleBiasMessenger.cc.o
-
-src/AngleBiasMessenger.i: src/AngleBiasMessenger.cc.i
-.PHONY : src/AngleBiasMessenger.i
-
-# target to preprocess a source file
-src/AngleBiasMessenger.cc.i:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.i
-.PHONY : src/AngleBiasMessenger.cc.i
-
-src/AngleBiasMessenger.s: src/AngleBiasMessenger.cc.s
-.PHONY : src/AngleBiasMessenger.s
-
-# target to generate assembly for a file
-src/AngleBiasMessenger.cc.s:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/AngleBiasMessenger.cc.s
-.PHONY : src/AngleBiasMessenger.cc.s
-
 src/BasicHit.o: src/BasicHit.cc.o
 .PHONY : src/BasicHit.o
 
@@ -392,54 +368,6 @@ src/EventAction.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/EventAction.cc.s
 .PHONY : src/EventAction.cc.s
 
-src/NewBremsstrahlung.o: src/NewBremsstrahlung.cc.o
-.PHONY : src/NewBremsstrahlung.o
-
-# target to build an object file
-src/NewBremsstrahlung.cc.o:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.o
-.PHONY : src/NewBremsstrahlung.cc.o
-
-src/NewBremsstrahlung.i: src/NewBremsstrahlung.cc.i
-.PHONY : src/NewBremsstrahlung.i
-
-# target to preprocess a source file
-src/NewBremsstrahlung.cc.i:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.i
-.PHONY : src/NewBremsstrahlung.cc.i
-
-src/NewBremsstrahlung.s: src/NewBremsstrahlung.cc.s
-.PHONY : src/NewBremsstrahlung.s
-
-# target to generate assembly for a file
-src/NewBremsstrahlung.cc.s:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlung.cc.s
-.PHONY : src/NewBremsstrahlung.cc.s
-
-src/NewBremsstrahlungRelModel.o: src/NewBremsstrahlungRelModel.cc.o
-.PHONY : src/NewBremsstrahlungRelModel.o
-
-# target to build an object file
-src/NewBremsstrahlungRelModel.cc.o:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.o
-.PHONY : src/NewBremsstrahlungRelModel.cc.o
-
-src/NewBremsstrahlungRelModel.i: src/NewBremsstrahlungRelModel.cc.i
-.PHONY : src/NewBremsstrahlungRelModel.i
-
-# target to preprocess a source file
-src/NewBremsstrahlungRelModel.cc.i:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.i
-.PHONY : src/NewBremsstrahlungRelModel.cc.i
-
-src/NewBremsstrahlungRelModel.s: src/NewBremsstrahlungRelModel.cc.s
-.PHONY : src/NewBremsstrahlungRelModel.s
-
-# target to generate assembly for a file
-src/NewBremsstrahlungRelModel.cc.s:
-	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/NewBremsstrahlungRelModel.cc.s
-.PHONY : src/NewBremsstrahlungRelModel.cc.s
-
 src/PositronPhysicsList1.o: src/PositronPhysicsList1.cc.o
 .PHONY : src/PositronPhysicsList1.o
 
@@ -531,9 +459,6 @@ help:
 	@echo "... src/ActionInitialization.o"
 	@echo "... src/ActionInitialization.i"
 	@echo "... src/ActionInitialization.s"
-	@echo "... src/AngleBiasMessenger.o"
-	@echo "... src/AngleBiasMessenger.i"
-	@echo "... src/AngleBiasMessenger.s"
 	@echo "... src/BasicHit.o"
 	@echo "... src/BasicHit.i"
 	@echo "... src/BasicHit.s"
@@ -555,12 +480,6 @@ help:
 	@echo "... src/EventAction.o"
 	@echo "... src/EventAction.i"
 	@echo "... src/EventAction.s"
-	@echo "... src/NewBremsstrahlung.o"
-	@echo "... src/NewBremsstrahlung.i"
-	@echo "... src/NewBremsstrahlung.s"
-	@echo "... src/NewBremsstrahlungRelModel.o"
-	@echo "... src/NewBremsstrahlungRelModel.i"
-	@echo "... src/NewBremsstrahlungRelModel.s"
 	@echo "... src/PositronPhysicsList1.o"
 	@echo "... src/PositronPhysicsList1.i"
 	@echo "... src/PositronPhysicsList1.s"
