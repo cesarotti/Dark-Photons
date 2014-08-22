@@ -135,7 +135,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 
   //Sizes and lengths
 
-  G4int size = 30; 
+  G4int size = 11; 
 
   G4double crystalLength = 2.54*12.0*cm; 
   G4double crystalFace = 5.0*cm;
@@ -185,7 +185,7 @@ G4LogicalVolume* calorimeterLV =
   new G4LogicalVolume(calorimeterS, Air, "CalorimeterLV");
 
  new G4PVPlacement(0, 
-		   G4ThreeVector(2.5*cm, 2.5*cm + .612*m, 0.), 
+		   G4ThreeVector(0., 0., 0.), 
 		   calorimeterLV, 
 		   "CalorimeterMV", 
 		   worldLV, 
@@ -206,7 +206,7 @@ G4LogicalVolume* crystalLV =
 
  new G4PVParameterised("CrystalPV", crystalLV, 
 		       calorimeterLV, 
-		       kXAxis, 900, crysParam);
+		       kXAxis, 121, crysParam);
 
 
 
