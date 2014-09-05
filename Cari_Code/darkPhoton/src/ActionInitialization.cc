@@ -12,7 +12,7 @@
  */
 
 #include "ActionInitialization.hh"
-#include "PrimaryGeneratorAction.hh"
+#include "H02PrimaryGeneratorAction.hh"
 #include "RunAction.hh"
 #include "EventAction.hh"
 
@@ -35,7 +35,7 @@ void ActionInitialization::BuildForMaster() const
 void ActionInitialization::Build() const
 {
 
-  SetUserAction(new PrimaryGeneratorAction);
+  SetUserAction(new H02PrimaryGeneratorAction); //CHANGED AUG 27th to add manual madgraph importing! SetUserAction(new PrimaryGeneratorAction);
   SetUserAction(new RunAction);
   SetUserAction(new EventAction);
 

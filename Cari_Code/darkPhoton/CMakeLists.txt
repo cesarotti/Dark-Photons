@@ -22,8 +22,12 @@ endif()
 # Setup Geant4 include directories and compile definitions
 # Setup include directory for this project
 #
+
 include(${Geant4_USE_FILE})
-include_directories(${PROJECT_SOURCE_DIR}/include)
+find_package(HepMC REQUIRED)
+include_directories(${PROJECT_SOURCE_DIR}/include 
+                    ${Geant4_INCLUDE_DIR}
+                    ${HEPMC_INCLUDE_DIR})
 
 #----------------------------------------------------------------------------
 # Locate sources and headers for this project
@@ -36,8 +40,10 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 # Add the executable, and link it to the Geant4 libraries
 #
 add_executable(darkPhoton darkPhoton.cc ${sources} ${headers})
-target_link_libraries(darkPhoton ${Geant4_LIBRARIES})
-
+target_link_libraries(darkPhoton ${Geant4_LIBRARIES}
+                      ${HEPMC_LIBRARIES} ${HEPMC_FIO_LIBRARIES}
+                      ${PYTHIA6_LIBRARIES} gfortran)
+                      
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
 # build B2a. This is so that we can run the executable directly because it
