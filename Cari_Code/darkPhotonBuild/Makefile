@@ -392,6 +392,30 @@ src/H02SteppingAction.cc.s:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.s
 .PHONY : src/H02SteppingAction.cc.s
 
+src/HEPEvtcom.o: src/HEPEvtcom.cc.o
+.PHONY : src/HEPEvtcom.o
+
+# target to build an object file
+src/HEPEvtcom.cc.o:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o
+.PHONY : src/HEPEvtcom.cc.o
+
+src/HEPEvtcom.i: src/HEPEvtcom.cc.i
+.PHONY : src/HEPEvtcom.i
+
+# target to preprocess a source file
+src/HEPEvtcom.cc.i:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.i
+.PHONY : src/HEPEvtcom.cc.i
+
+src/HEPEvtcom.s: src/HEPEvtcom.cc.s
+.PHONY : src/HEPEvtcom.s
+
+# target to generate assembly for a file
+src/HEPEvtcom.cc.s:
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.s
+.PHONY : src/HEPEvtcom.cc.s
+
 src/HepMCG4AsciiReader.o: src/HepMCG4AsciiReader.cc.o
 .PHONY : src/HepMCG4AsciiReader.o
 
@@ -627,6 +651,9 @@ help:
 	@echo "... src/H02SteppingAction.o"
 	@echo "... src/H02SteppingAction.i"
 	@echo "... src/H02SteppingAction.s"
+	@echo "... src/HEPEvtcom.o"
+	@echo "... src/HEPEvtcom.i"
+	@echo "... src/HEPEvtcom.s"
 	@echo "... src/HepMCG4AsciiReader.o"
 	@echo "... src/HepMCG4AsciiReader.i"
 	@echo "... src/HepMCG4AsciiReader.s"

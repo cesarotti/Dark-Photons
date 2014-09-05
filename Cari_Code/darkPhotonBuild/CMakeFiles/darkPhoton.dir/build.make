@@ -289,9 +289,33 @@ CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o.provides: CMakeFiles/darkPh
 CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o
 .PHONY : CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o.provides.build
 
+CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o: CMakeFiles/darkPhoton.dir/flags.make
+CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/HEPEvtcom.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_11)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/HEPEvtcom.cc
+
+CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/sf_darkphotons/Cari_Code/darkPhoton/src/HEPEvtcom.cc > CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.i
+
+CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/sf_darkphotons/Cari_Code/darkPhoton/src/HEPEvtcom.cc -o CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.s
+
+CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.requires:
+.PHONY : CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.requires
+
+CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.provides: CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.requires
+	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.provides.build
+.PHONY : CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.provides
+
+CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.provides.build: CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o
+.PHONY : CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.provides.build
+
 CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/HepMCG4AsciiReader.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/HepMCG4AsciiReader.cc
 
@@ -315,7 +339,7 @@ CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o.provides.build: CMakeFiles
 
 CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/HepMCG4AsciiReaderMessenger.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/HepMCG4AsciiReaderMessenger.cc
 
@@ -339,7 +363,7 @@ CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o.provides.build: C
 
 CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/HepMCG4Interface.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/HepMCG4Interface.cc
 
@@ -363,7 +387,7 @@ CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o.provides.build: CMakeFiles/d
 
 CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/PrimaryGeneratorAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/PrimaryGeneratorAction.cc
 
@@ -387,7 +411,7 @@ CMakeFiles/darkPhoton.dir/src/PrimaryGeneratorAction.cc.o.provides.build: CMakeF
 
 CMakeFiles/darkPhoton.dir/src/RunAction.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/RunAction.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/RunAction.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/RunAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/RunAction.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/RunAction.cc
 
@@ -411,7 +435,7 @@ CMakeFiles/darkPhoton.dir/src/RunAction.cc.o.provides.build: CMakeFiles/darkPhot
 
 CMakeFiles/darkPhoton.dir/src/SquareParameterisation.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/SquareParameterisation.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/SquareParameterisation.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/SquareParameterisation.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/SquareParameterisation.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/SquareParameterisation.cc
 
@@ -435,7 +459,7 @@ CMakeFiles/darkPhoton.dir/src/SquareParameterisation.cc.o.provides.build: CMakeF
 
 CMakeFiles/darkPhoton.dir/src/TestHit.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/TestHit.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/TestHit.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/TestHit.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/TestHit.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/TestHit.cc
 
@@ -459,7 +483,7 @@ CMakeFiles/darkPhoton.dir/src/TestHit.cc.o.provides.build: CMakeFiles/darkPhoton
 
 CMakeFiles/darkPhoton.dir/src/TestSD.cc.o: CMakeFiles/darkPhoton.dir/flags.make
 CMakeFiles/darkPhoton.dir/src/TestSD.cc.o: /media/sf_darkphotons/Cari_Code/darkPhoton/src/TestSD.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/Cari_Code/darkPhotonBuild/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/darkPhoton.dir/src/TestSD.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/darkPhoton.dir/src/TestSD.cc.o -c /media/sf_darkphotons/Cari_Code/darkPhoton/src/TestSD.cc
 
@@ -493,6 +517,7 @@ darkPhoton_OBJECTS = \
 "CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorAction.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorMessenger.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o" \
+"CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o" \
 "CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o" \
@@ -515,6 +540,7 @@ darkPhoton: CMakeFiles/darkPhoton.dir/src/EventAction.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorAction.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorMessenger.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o
+darkPhoton: CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o
 darkPhoton: CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o
@@ -619,6 +645,7 @@ CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/EventAction.cc
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorAction.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/H02PrimaryGeneratorMessenger.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/H02SteppingAction.cc.o.requires
+CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/HEPEvtcom.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReader.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/HepMCG4AsciiReaderMessenger.cc.o.requires
 CMakeFiles/darkPhoton.dir/requires: CMakeFiles/darkPhoton.dir/src/HepMCG4Interface.cc.o.requires
