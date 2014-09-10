@@ -1,4 +1,4 @@
-##!/bin/bash
+#!/bin/bash
 # Run annihilation
 
 cd darkPhotonBuild
@@ -6,11 +6,12 @@ cmake -DGEANT4_BUILD_MULTITHREADED=OFF -DGeant4_DIR=/usr/local/geant4.10.00.p01/
 make clean
 make -j4
 ./darkPhoton
-mkdir ../../standardPlots
-mkdir ../../standardPlots/`date +%Y:%m:%d#%H:%M:%S`
-mv *.root ../../standardPlots/`date +%Y:%m:%d#%H:%M:%S`
+mkdir /home/local1/clusterData/FinalPlots/HighLevel
+currentfolder=$(date +%Y:%m:%d#%H:%M:%S)
+mkdir /home/local1/clusterData/FinalPlots/HighLevel/$currentfolder
+mv *.root /home/local1/clusterData/FinalPlots/HighLevel/$currentfolder
 rm -rf *.root
-cd ../../standardPlots/`date +%Y:%m:%d#%H:%M:%S`
+cd /home/local1/clusterData/FinalPlots/HighLevel/$currentfolder
 hadd complete.root *.root
 mkdir threadfiles
 mv *.root threadfiles

@@ -44,7 +44,11 @@ RunAction::RunAction()
 	}
   
       analysisMan->CreateNtupleIColumn("hits");
-      analysisMan->CreateNtupleDColumn("Energy"); //starts at 1226
+      analysisMan->FinishNtuple(); 
+
+      analysisMan->CreateNtuple("Check", "Check");
+ 
+      analysisMan->CreateNtupleDColumn("Energy");
       analysisMan->CreateNtupleDColumn("PosX");
       analysisMan->CreateNtupleDColumn("PosY");
       analysisMan->FinishNtuple();
