@@ -93,7 +93,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 	  eDep = hit->GetEnergyDep();
 	  if (eDep > 0)
 	    {
-	      analysisMan->FillNtupleDColumn(i, eDep);
+	      analysisMan->FillNtupleDColumn(0, i, eDep);
 	      hits = true;
 	    }
      
@@ -104,14 +104,15 @@ void EventAction::EndOfEventAction(const G4Event* event)
   energy = hit2->GetTotalEnergy(); 
   if (energy > 0.)
     {
-      analysisMan->FillNtupleDColumn(1226, energy); 
-      analysisMan->FillNtupleDColumn(1227, hit2->GetPos().getX());
-      analysisMan->FillNtupleDColumn(1228, hit2->GetPos().getY());
+      analysisMan->FillNtupleDColumn(1, 0, energy); 
+      analysisMan->FillNtupleDColumn(1, 1, hit2->GetPos().getX());
+      analysisMan->FillNtupleDColumn(1, 2, hit2->GetPos().getY());
     }
   
 
-if (hits) {analysisMan->FillNtupleIColumn(1225, 1);}
-analysisMan->AddNtupleRow(); 
+if (hits) {analysisMan->FillNtupleIColumn(0, 1225, 1);}
+analysisMan->AddNtupleRow(0); // now root number of events matches Geant
+analysisMan->AddNtupleRow(1);
   
 }
 

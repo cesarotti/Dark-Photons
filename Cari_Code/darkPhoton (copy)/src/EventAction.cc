@@ -38,14 +38,14 @@
 #include "G4SDManager.hh"
 
 #include "TestHit.hh"
-#include "OmniHit.hh"
 
 
 EventAction::EventAction()
-  : G4UserEventAction(), 
-    fTHSD(-1), 
-    fOHSD(-1)
+  : G4UserEventAction(),
+    fDistance(0.) //distance from center of target to front of calorimeter
 {
+  // DetectorConstruction* detector = new DetectorConstruction();
+  fDistance = 9.99*m;
 }
 
 
@@ -56,14 +56,23 @@ EventAction::~EventAction()
 //Reset your variables
 void EventAction::BeginOfEventAction(const G4Event* /* run*/)
 {
-  if (fTHSD==-1)
-    {
-      G4SDManager* sdMan = G4SDManager::GetSDMpointer();
-      fTHSD = sdMan->GetCollectionID("calorimeterSD/TestHitsCollection");
-      fOHSD = sdMan->GetCollectionID("omniSD/OmniHitsCollection");
-    }
+
 }
 
+/*
+ *Calculates the angle from the Z axis the photon hits the target
+ *returns G4double angle in degrees
+ */
+G4double EventAction::CalcTheta(G4double x, G4double y)
+{
+  G4double distance;
+  distance  = std::sqrt(x*x+y*y);
+
+  G4float theta =  std::atan(distance/fDistance);
+
+
+  return G4double(theta*180/pi);
+}
 
 //!!!
 //Fill your data analysis
@@ -78,18 +87,16 @@ void EventAction::EndOfEventAction(const G4Event* event)
   G4SDManager* fSDM = G4SDManager::GetSDMpointer();
 
   //get ID for the calorimeter's hit collection
-  //G4int collectionID = fSDM->GetCollectionID("TestHitsCollection");
+  G4int collectionID = fSDM->GetCollectionID("TestHitsCollection");
 
-  TestHitsCollection* testHitColl = static_cast<TestHitsCollection*>(hce->GetHC(fTHSD));
-
-  OmniHitsCollection* omniHitColl = static_cast<OmniHitsCollection*>(hce->GetHC(fOHSD));
+  TestHitsCollection* hitColl = static_cast<TestHitsCollection*>(hce->GetHC(collectionID));
   
   G4double eDep(0.);
   G4bool hits = false;
  
   for (int i=0; i<1225; i++)
     {
-	  TestHit* hit = (*testHitColl)[i];
+	  TestHit* hit = (*hitColl)[i];
 	  eDep = hit->GetEnergyDep();
 	  if (eDep > 0)
 	    {
@@ -98,20 +105,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 	    }
      
     }
-  G4double energy(0.);
-  
-  OmniHit* hit2 = (*omniHitColl)[0];
-  energy = hit2->GetTotalEnergy(); 
-  if (energy > 0.)
-    {
-      analysisMan->FillNtupleDColumn(1226, energy); 
-      analysisMan->FillNtupleDColumn(1227, hit2->GetPos().getX());
-      analysisMan->FillNtupleDColumn(1228, hit2->GetPos().getY());
-    }
-  
-
-if (hits) {analysisMan->FillNtupleIColumn(1225, 1);}
-analysisMan->AddNtupleRow(); 
-  
+  if (hits) {analysisMan->FillNtupleIColumn(1225, 1);}
+  analysisMan->AddNtupleRow(); // now root number of events matches Geant
 }
 

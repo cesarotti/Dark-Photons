@@ -221,7 +221,6 @@ G4Box* targetS =
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
  
- /*
  new G4PVPlacement(0, // no rotation
 		   positionTarget, // at (x,y,z)
 		   fLogicTarget, // logical volume
@@ -235,7 +234,7 @@ G4Box* targetS =
  G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
 
- */
+
 
  //!!!
  //Calorimeter 
@@ -331,13 +330,13 @@ G4LogicalVolume* liningHLV =
  G4double startRad = 7.5; 
      G4VSolid* omni = 
        new G4Tubs("omniS", (startRad)*crysConst, (startRad+(15))*crysConst,
-		  .005*cm, 0.*deg, 360.*deg);
+		  .01*cm, 0.*deg, 360.*deg);
 
      G4LogicalVolume* omniLV = 
        new G4LogicalVolume(omni, fWorldMaterial, "OmniLV");
 
      new G4PVPlacement(0, 
-		   G4ThreeVector(0., 0.,calorDist-.5*crystalLength-.01*cm), 
+		   G4ThreeVector(0., 0.,calorDist-.5*crystalLength-.03*cm), 
 		   omniLV, 
 		   "Omni", 
 		   worldLV, 
