@@ -122,7 +122,9 @@ void HepMCG4Interface::HepMC2G4(const HepMC::GenEvent* hepmcevt,
     }
     g4event-> AddPrimaryVertex(g4vtx);
   }
+
 }
+
 
 /*void HepMCG4Interface::HepMCVertexes(const HepMC::GenEvent* hepmcevt,
                                 G4Event* g4event)
