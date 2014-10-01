@@ -83,7 +83,7 @@ G4bool BasicHitSD::ProcessHits(G4Step* aStep,
     G4double sigY = G4RandGauss::shoot(position.getY(), posSig);
     hit->SetPosition(G4ThreeVector(sigX, sigY, position.getZ()));
 
-   }
+ }
 
     else {
       hit->SetPosition(aStep->GetTrack()->GetPosition());
