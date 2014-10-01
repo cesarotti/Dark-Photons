@@ -50,6 +50,8 @@ public:
   {fCham = num;};
   void SetLogV(G4LogicalVolume* vol)
   {fLogV = vol;}
+  void SetHit(G4bool v)
+  {fHit = v;}
 
   //Get methods
   G4int GetTrack()
@@ -64,6 +66,8 @@ public:
   {return fCham;};
   const G4LogicalVolume* GetLogV() const
   {return fLogV;}
+  G4bool GetHit()
+  {return fHit;}
 
 
 private:
@@ -74,6 +78,7 @@ private:
   G4ThreeVector fMomentum;
   G4int fCham;
   const G4LogicalVolume* fLogV;
+  G4bool fHit;
 };
 
 //Allow for a hits collection of OmniHits

@@ -62,8 +62,8 @@ void plotFinal() {
   int nThetaBins = 50;
   double dThetaBinSize = (nThetaMax - nThetaMin) / nThetaBins;
 
-  double nM2Min = -5000; // MeV
-  double nM2Max = 5000; // MeV
+  double nM2Min = -1000; // MeV
+  double nM2Max = 1000; // MeV
   int nM2Bins = 100;
   double dM2BinSize = (nM2Max - nM2Min)/nM2Bins;
 

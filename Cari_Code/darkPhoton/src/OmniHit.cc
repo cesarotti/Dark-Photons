@@ -26,7 +26,8 @@ OmniHit::OmniHit()
     fTotalEnergy(0.),
     fPos(G4ThreeVector()), 
     fMomentum(G4ThreeVector()), 
-    fCham(-1)
+    fCham(-1), 
+    fHit(false)
 {}
 
 OmniHit::~OmniHit()
@@ -46,6 +47,7 @@ OmniHit::OmniHit(const OmniHit& hit)
   fPos = hit.fPos;
   fMomentum = hit.fMomentum;
   fCham = hit.fCham;
+  fHit = hit.fHit;
 }
 
 const OmniHit& OmniHit::operator=(const OmniHit& hit)
@@ -55,6 +57,7 @@ const OmniHit& OmniHit::operator=(const OmniHit& hit)
   fPos = hit.fPos;
   fMomentum = hit.fMomentum;
   fCham = hit.fCham;
+  fHit= hit.fHit;
 
   return *this;
 
