@@ -73,7 +73,7 @@ AlwaysTwoGamma::AlwaysTwoGamma(const G4String& name)
   G4cout << "Loaded AlwaysTwoGamma " << G4endl;
 
   name_of_model = name;
-  std::ifstream input((name + ".config").data());
+  std::ifstream input((name + "_config").data());
   G4double cross;
   G4int particle_pdg;
   
@@ -153,7 +153,9 @@ G4VParticleChange* AlwaysTwoGamma::AtRestDoIt(const G4Track& aTrack,
 //
 // Note : Effects due to binding of atomic electrons are negliged.
 {
-  fParticleChange.InitializeForPostStep(aTrack);
+
+  /* NOT IN USE */
+  /*fParticleChange.InitializeForPostStep(aTrack);
 
   G4double cosTeta = 2.*G4UniformRand()-1.; 
   G4double sinTeta = sqrt((1.-cosTeta)*(1.0 + cosTeta));
@@ -189,6 +191,7 @@ G4VParticleChange* AlwaysTwoGamma::AtRestDoIt(const G4Track& aTrack,
   fParticleChange.ProposeTrackStatus(fStopAndKill);
   G4cout << "#######ATRESTCALLED"<< G4endl;
   return &fParticleChange;
+  */
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....

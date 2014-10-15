@@ -1,0 +1,7 @@
+set main.currentdir = /media/sf_darkphotons/madanalysis/madanalysis5/bin
+import ../../../madgraph/e+e-2yy/Events/run_11/unweighted_events.lhe.gz
+import ../../../madgraph/e+e-2yy/Events/run_11/unweighted_events.lhe
+plot MET
+plot PT(a) 20 0 100
+generate pdflatex test.pdf
+generate_pdflatex test.pdf

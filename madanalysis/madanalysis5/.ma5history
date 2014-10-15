@@ -1,0 +1,22 @@
+8
+exit
+import ../../../madgraph/e+e-2yy/Events/run_11/unweighted_events.lhe.gz
+import ../../../madgraph/e+e-2yy/Events/run_11/unweighted_events.lhe
+plot MET
+plot PT(a) 20 0 100
+generate pdflatex test.pdf
+generate_pdflatex test.pdf
+submit test
+plot PT(a) 50 0 1
+submit test2
+plot PT(a) 50 0 0.1
+submit test2
+y
+plot PT(a) 100 0 0.05
+submit test2
+y
+import ../../../madgraph/e+e-2yy/Events/run_11/unweighted_events.lhe
+exit
+import ../../../madgraph/e+e-2yyy/Events/run_09/unweighted_events.lhe
+plot PT(a) 100 0 0.05
+submit e+e-2yyy

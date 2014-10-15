@@ -141,7 +141,7 @@ sm-lepton_masses
 # If you want to run Pythia, avoid more than 50k events in a run.    *
 #*********************************************************************
   1000000 = nevents ! Number of unweighted events requested 
- 21 = iseed   ! rnd seed (0=assigned automatically=default))
+ 48 = iseed   ! rnd seed (0=assigned automatically=default))
 #*********************************************************************
 # Collider type and energy                                           *
 # lpp: 0=No PDF, 1=proton, -1=antiproton, 2=photon from proton,      *
@@ -149,8 +149,8 @@ sm-lepton_masses
 #*********************************************************************
         0     = lpp1    ! beam 1 type 
         -0     = lpp2    ! beam 2 type
-     0.035     = ebeam1  ! beam 1 total energy in GeV
-     0.035     = ebeam2  ! beam 2 total energy in GeV
+     0.035744     = ebeam1  ! beam 1 total energy in GeV
+     0.035744     = ebeam2  ! beam 2 total energy in GeV
 #*********************************************************************
 # Beam polarization from -100 (left-handed) to 100 (right-handed)    *
 #*********************************************************************
@@ -214,7 +214,7 @@ sm-lepton_masses
 #*********************************************************************
 # Minimum and maximum pt's (for max, -1 means no cut)                *
 #*********************************************************************
- 20  = ptj       ! minimum pt for the jets 
+ 0  = ptj       ! minimum pt for the jets 
   0  = ptb       ! minimum pt for the b 
  0  = pta       ! minimum pt for the photons 
  0  = ptl       ! minimum pt for the charged leptons 
@@ -240,7 +240,7 @@ sm-lepton_masses
 #*********************************************************************
 # Maximum and minimum absolute rapidity (for max, -1 means no cut)   *
 #*********************************************************************
-   5  = etaj    ! max rap for the jets 
+   -1  = etaj    ! max rap for the jets 
   -1  = etab    ! max rap for the b
   -1 = etaa
 #  1.58619 = etaa    ! max rap for the photons 
@@ -474,8 +474,8 @@ DECAY  21 0.000000 # g : 0.0
 DECAY  22 0.000000 # a : 0.0
 </slha>
 <MGGenerationInfo>
-#  Number of Events        :       117
-#  Integrated weight (pb)  :       2.401982e+40
+#  Number of Events        :       109
+#  Integrated weight (pb)  :       3.6085e+40
 </MGGenerationInfo>
 </header>
 </LesHouchesEvents>

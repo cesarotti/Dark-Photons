@@ -56,7 +56,7 @@ H02PrimaryGeneratorMessenger::H02PrimaryGeneratorMessenger
   select-> SetGuidance("select generator type");
   select-> SetParameterName("generator_type", false, false);
   select-> SetCandidates("particleGun pythia hepmcAscii");
-  select-> SetDefaultValue("particleGun");
+  select-> SetDefaultValue("hepmcAscii");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

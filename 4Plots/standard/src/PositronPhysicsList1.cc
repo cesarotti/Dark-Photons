@@ -70,7 +70,7 @@ void PositronPhysicsList1::ConstructEM()
   //How to bias
 
 
-  eplusProc->SetCrossSectionBiasingFactor(1e+03, true); 
+  eplusProc->SetCrossSectionBiasingFactor(1e+17, true); 
   pman->AddProcess(eplusProc, 0, -1, 4);
  
   

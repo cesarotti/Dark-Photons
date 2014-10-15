@@ -109,6 +109,7 @@ private:
   AlwaysTwoGammaModel(const  AlwaysTwoGammaModel&);
 
   HepMC::IO_GenEvent* asciiInput;
+  G4double count;
 
   const G4String* name_of_model;
   G4double pi_rcl2;

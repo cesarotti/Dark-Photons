@@ -33,6 +33,7 @@
 #include "G4VEmProcess.hh"
 #include "AlwaysTwoGamma.hh"
 #include "AlwaysTwoGammaMessenger.hh"
+#include "DarkPhoton.hh"
 
 
 PositronPhysicsList1::PositronPhysicsList1()
@@ -65,22 +66,30 @@ void PositronPhysicsList1::ConstructEM()
   pman = positron->GetProcessManager();
   G4cout << "About to register messenger" << G4endl;
 
-  ModelMessenger = new AlwaysTwoGammaMessenger(this);
-
-G4cout << "Registered messenger" << G4endl;
-  /*G4VEmProcess *always = new AlwaysTwoGamma();
-  always->SetCrossSectionBiasingFactor(1e+06, true); 
-
-  pman->AddProcess(always, 0, -1, 4);
-  */
+  //ModelMessenger = new AlwaysTwoGammaMessenger(this);
 
 
+  //CHANGED TO ALLOW FOR MANUAL INSERTION OF EVENTS
+  //G4cout << "Registered messenger" << G4endl;
+
+  //G4VEmProcess* new_process = new AlwaysTwoGamma("twogamma");
+  //new_process->SetCrossSectionBiasingFactor(1e+06, true); 
+
+  //pman->AddProcess(new_process, 0, -1, 4);
+ 
+  //G4VEmProcess *always = new DarkPhoton();
+  //always->SetCrossSectionBiasingFactor(1e+06, true); 
+
+  //pman->AddProcess(always, 0, -1, 4);*/
+  
 
 
- // G4VEmProcess* eplusProc = new G4eplusAnnihilation();
+
+
+ //G4VEmProcess* eplusProc = new G4eplusAnnihilation();
   //How to bias
- // eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
- // pman->AddProcess(eplusProc, 0, -1, 4);
+ //eplusProc->SetCrossSectionBiasingFactor(1e+06, true); 
+ //pman->AddProcess(eplusProc, 0, -1, 4);
  
   
 }

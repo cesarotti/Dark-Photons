@@ -11,8 +11,8 @@ DetectorConstruction.hh
 /media/sf_darkphotons/4PlotsMG/standard/DetectorConstruction.hh
 ActionInitialization.hh
 /media/sf_darkphotons/4PlotsMG/standard/ActionInitialization.hh
-G4RunManager.hh
-/media/sf_darkphotons/4PlotsMG/standard/G4RunManager.hh
+G4MTRunManager.hh
+/media/sf_darkphotons/4PlotsMG/standard/G4MTRunManager.hh
 G4UImanager.hh
 /media/sf_darkphotons/4PlotsMG/standard/G4UImanager.hh
 PositronPhysicsList1.hh
@@ -118,6 +118,14 @@ BasicHit.hh
 vector
 -
 
+/media/sf_darkphotons/4PlotsMG/standard/include/DarkPhoton.hh
+G4VEmProcess.hh
+/media/sf_darkphotons/4PlotsMG/standard/include/G4VEmProcess.hh
+
+/media/sf_darkphotons/4PlotsMG/standard/include/DarkPhotonModel.hh
+G4VEmModel.hh
+/media/sf_darkphotons/4PlotsMG/standard/include/G4VEmModel.hh
+
 /media/sf_darkphotons/4PlotsMG/standard/include/DetectorConstruction.hh
 globals.hh
 /media/sf_darkphotons/4PlotsMG/standard/include/globals.hh
@@ -205,8 +213,8 @@ globals.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/ActionInitialization.cc
 ActionInitialization.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/ActionInitialization.hh
-H02PrimaryGeneratorAction.hh
-/media/sf_darkphotons/4PlotsMG/standard/src/H02PrimaryGeneratorAction.hh
+PrimaryGeneratorAction.hh
+/media/sf_darkphotons/4PlotsMG/standard/src/PrimaryGeneratorAction.hh
 RunAction.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/RunAction.hh
 EventAction.hh
@@ -349,8 +357,8 @@ Randomize.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/Randomize.hh
 
 /media/sf_darkphotons/4PlotsMG/standard/src/DarkPhoton.cc
-AlwaysTwoGamma.hh
-/media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGamma.hh
+DarkPhoton.hh
+/media/sf_darkphotons/4PlotsMG/standard/src/DarkPhoton.hh
 G4PhysicalConstants.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/G4PhysicalConstants.hh
 G4MaterialCutsCouple.hh
@@ -359,12 +367,12 @@ G4Gamma.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/G4Gamma.hh
 G4Positron.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/G4Positron.hh
-AlwaysTwoGammaModel.hh
-/media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaModel.hh
+DarkPhotonModel.hh
+/media/sf_darkphotons/4PlotsMG/standard/src/DarkPhotonModel.hh
 
 /media/sf_darkphotons/4PlotsMG/standard/src/DarkPhotonModel.cc
-AlwaysTwoGammaModel.hh
-/media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaModel.hh
+DarkPhotonModel.hh
+/media/sf_darkphotons/4PlotsMG/standard/src/DarkPhotonModel.hh
 G4PhysicalConstants.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/G4PhysicalConstants.hh
 G4SystemOfUnits.hh
@@ -623,6 +631,8 @@ AlwaysTwoGamma.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGamma.hh
 AlwaysTwoGammaMessenger.hh
 /media/sf_darkphotons/4PlotsMG/standard/src/AlwaysTwoGammaMessenger.hh
+DarkPhoton.hh
+/media/sf_darkphotons/4PlotsMG/standard/src/DarkPhoton.hh
 
 /media/sf_darkphotons/4PlotsMG/standard/src/PrimaryGeneratorAction.cc
 PrimaryGeneratorAction.hh
@@ -2698,6 +2708,18 @@ G4MTRandGeneral.icc
 
 /usr/local/geant4.10.00.p01/include/Geant4/G4MTRandGeneral.icc
 
+/usr/local/geant4.10.00.p01/include/Geant4/G4MTRunManager.hh
+G4RunManager.hh
+/usr/local/geant4.10.00.p01/include/Geant4/G4RunManager.hh
+G4Threading.hh
+/usr/local/geant4.10.00.p01/include/Geant4/G4Threading.hh
+G4RNGHelper.hh
+/usr/local/geant4.10.00.p01/include/Geant4/G4RNGHelper.hh
+list
+-
+map
+-
+
 /usr/local/geant4.10.00.p01/include/Geant4/G4Material.hh
 vector
 -
@@ -3671,6 +3693,16 @@ G4ParticleDefinition.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4ParticleDefinition.hh
 G4Ions.hh
 /usr/local/geant4.10.00.p01/include/Geant4/G4Ions.hh
+
+/usr/local/geant4.10.00.p01/include/Geant4/G4RNGHelper.hh
+G4Types.hh
+/usr/local/geant4.10.00.p01/include/Geant4/G4Types.hh
+vector
+-
+queue
+-
+globals.hh
+/usr/local/geant4.10.00.p01/include/Geant4/globals.hh
 
 /usr/local/geant4.10.00.p01/include/Geant4/G4RayTracer.hh
 G4VGraphicsSystem.hh

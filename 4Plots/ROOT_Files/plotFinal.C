@@ -16,7 +16,7 @@ const double GAMMA_CM_2 = (GAMMA_PLUS+1)/2;
 
 /*UPDATE TO YOUR SIMULATION */
 
-const double NUM_TOT_POSITRONS = 100; 
+const double NUM_TOT_POSITRONS = 100000; 
 const double BIAS = 1e+06;
 const double POSITRONS_PER_SEC = 6e+09; 
 const double BINNING_WEIGHT = POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
@@ -102,15 +102,18 @@ void plotFinal() {
   int nentries = Hits_Info->GetEntries();
   for (int i=0; i<nentries; i++) {
     Hits_Info->GetEntry(i);
-
     if (pID == 22) { // gammas only
       theta*= TMath::Pi()/180; //radians
-      hgammaEnergy->Fill(energy,BINNING_WEIGHT / dEnergyBinSize);
+      cout << "M^2 is: " << mSquared(energy*1000.0, theta) << endl;
+      cout << "Energy is: " << energy*1000.0 << endl;
+           
+      hgammaEnergy->Fill(energy*1000.0,BINNING_WEIGHT / dEnergyBinSize);
       hgammaTheta->Fill(theta*1000, BINNING_WEIGHT / dThetaBinSize);
-      henergytheta->Fill(theta*1000, energy);
-      hm2->Fill(mSquared(energy, theta), BINNING_WEIGHT / dM2BinSize);
+      henergytheta->Fill(theta*1000, energy*1000.0);
+      hm2->Fill(mSquared(energy*1000.0, theta), BINNING_WEIGHT / dM2BinSize);
     }
   }
+  cout << "DM2binsize is:" << dM2BinSize << endl;
 
 
 

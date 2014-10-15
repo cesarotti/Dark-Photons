@@ -78,6 +78,8 @@ void RunAction::BeginOfRunAction(const G4Run*)
  
    analysisMan->OpenFile("Signal");
 
+   G4cout << "BEGINNING OF RUN LOADED" << G4endl;
+
 
 
    //Cross Section
@@ -150,6 +152,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
 void RunAction::EndOfRunAction(const G4Run* )
 {
   
+  G4cout << "END OF RUN ACTION" << G4endl;
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
   analysisMan->Write();
   analysisMan->CloseFile();

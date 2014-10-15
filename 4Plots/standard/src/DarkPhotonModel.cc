@@ -141,13 +141,14 @@ G4double DarkPhotonModel::ComputeCrossSectionPerElectron(
   G4double r0 = 0.282;
   G4cout << "gp for calc xsec is: " << gp <<G4endl;
 
-  G4double cross = pi_rcl2*((gamma2+4*gam+1.)*G4Log(gam+bg) - (gam+3.)*bg)
-                 / (bg2*(gam+1.));
+  //G4double cross = pi_rcl2*((gamma2+4*gam+1.)*G4Log(gam+bg) - (gam+3.)*bg)
+  //               / (bg2*(gam+1.));
 
-  /*G4double cross = - (((twopi/2.)*std::pow(r0,2)*(sqrt((-1 + gp)/(1 + gp))*(4*(1 + gp)*(3 + gp) + std::pow(M_a,4)) - 
+  G4double cross = - (((twopi/2.)*std::pow(r0,2)*(sqrt((-1 + gp)/(1 + gp))*(4*(1 + gp)*(3 + gp) + std::pow(M_a,4)) - 
          2*(4*gp*(4 + gp) + std::pow(-2 + std::pow(M_a,2),2))*atanh(sqrt((-1 + gp)/(1 + gp)))))/
      ((-1 + std::pow(gp,2))*(2 + 2*gp - std::pow(M_a,2))));
-*/
+
+G4cout << "cross is  " << cross <<G4endl;
   //pi_rcl2*((gamma2+4*gam+1.)*G4Log(gam+bg) - (gam+3.)*bg)
   //               / (bg2*(gam+1.));
 

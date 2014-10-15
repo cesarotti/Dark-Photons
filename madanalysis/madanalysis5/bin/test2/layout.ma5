@@ -1,0 +1,90 @@
+################################################################################
+#                  MADANALYSIS5 CONFIGURATION FILE FOR PLOTS                   #
+#                      produced by MadAnalysis5 version                        #
+#                                                                              #
+################################################################################
+
+################################################################################
+#                               Files and Paths                                #
+################################################################################
+<Files>
+  jodir = /media/sf_darkphotons/madanalysis/madanalysis5/bin/test2
+  html = 1
+  latex = 1
+  pdflatex = 1
+</Files>
+
+################################################################################
+#                   Global information related to the layout                   #
+################################################################################
+<Main>
+  lumi = 10 # fb^{-1}
+  S_over_B = "S/B"
+  S_over_B_error = "1./(B**2)*sqrt(B**2*ES**2+S**2*EB**2)"
+  stack = 1
+</Main>
+
+################################################################################
+#                            Definition of datasets                            #
+################################################################################
+<Dataset name="defaultset">
+  <Physics>
+    background = False
+    weight = 1.0
+    xsection = 0.0
+  </Physics>
+  <Layout>
+    title = defaultset
+    linecolor = 0
+    linestyle = 0
+    lineshade = 0
+    linewidth = 1
+    backcolor = 0
+    backstyle = 1
+    backshade = 0
+  </Layout>
+</Dataset>
+
+################################################################################
+#              Definition of the selection : histograms and cuts               #
+################################################################################
+<Histogram name="selection0">
+  stack = 0
+  titleX = "#slash{E}_{T} (GeV) "
+  titleY = "Events "
+  xmin = 0.0
+  xmax = 1000.0
+</Histogram>
+
+<Histogram name="selection1">
+  stack = 0
+  titleX = "p_{T} [ a ] (GeV/c) "
+  titleY = "N. of a"
+  xmin = 0.0
+  xmax = 100.0
+</Histogram>
+
+<Histogram name="selection2">
+  stack = 0
+  titleX = "p_{T} [ a ] (GeV/c) "
+  titleY = "N. of a"
+  xmin = 0.0
+  xmax = 1.0
+</Histogram>
+
+<Histogram name="selection3">
+  stack = 0
+  titleX = "p_{T} [ a ] (GeV/c) "
+  titleY = "N. of a"
+  xmin = 0.0
+  xmax = 0.1
+</Histogram>
+
+<Histogram name="selection4">
+  stack = 0
+  titleX = "p_{T} [ a ] (GeV/c) "
+  titleY = "N. of a"
+  xmin = 0.0
+  xmax = 0.05
+</Histogram>
+

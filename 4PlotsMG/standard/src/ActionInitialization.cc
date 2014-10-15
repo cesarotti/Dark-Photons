@@ -13,6 +13,7 @@
 
 #include "ActionInitialization.hh"
 #include "H02PrimaryGeneratorAction.hh"
+#include "PrimaryGeneratorAction.hh"
 #include "RunAction.hh"
 #include "EventAction.hh"
 
@@ -26,7 +27,6 @@ ActionInitialization::~ActionInitialization()
 // Creates instances of the necessary classes for running
 void ActionInitialization::BuildForMaster() const
 {
- 
   SetUserAction(new RunAction);
 }
 
