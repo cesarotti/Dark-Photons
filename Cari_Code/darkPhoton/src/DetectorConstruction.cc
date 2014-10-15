@@ -11,6 +11,8 @@
 #include "DetectorConstruction.hh"
 #include "DetectorMessenger.hh"
 #include "TestSD.hh"
+#include "OmniSD.hh"
+#include "G4SDManager.hh"
 
 #include "G4Material.hh"
 #include "G4NistManager.hh"
@@ -219,6 +221,7 @@ G4Box* targetS =
  fLogicTarget = 
    new G4LogicalVolume(targetS, fTargetMaterial, "Target", 0,0,0);
  
+ /*
  new G4PVPlacement(0, // no rotation
 		   positionTarget, // at (x,y,z)
 		   fLogicTarget, // logical volume
@@ -232,7 +235,7 @@ G4Box* targetS =
  G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
 
-
+ */
 
  //!!!
  //Calorimeter 
@@ -324,7 +327,24 @@ G4LogicalVolume* liningHLV =
 		   0, 
 		   fCheckOverlaps);
 
+ G4double crysConst = 5.*cm;
+ G4double startRad = 7.5; 
+     G4VSolid* omni = 
+       new G4Tubs("omniS", (startRad)*crysConst, (startRad+(15))*crysConst,
+		  .005*cm, 0.*deg, 360.*deg);
 
+     G4LogicalVolume* omniLV = 
+       new G4LogicalVolume(omni, fWorldMaterial, "OmniLV");
+
+     new G4PVPlacement(0, 
+		   G4ThreeVector(0., 0.,calorDist-.5*crystalLength-.01*cm), 
+		   omniLV, 
+		   "Omni", 
+		   worldLV, 
+		   false, 
+		   0, 
+		   fCheckOverlaps);
+   
 
 
 
@@ -358,14 +378,24 @@ void DetectorConstruction::ConstructSDandField()
 {
   //!!!
   //Create a sensitive detector and put it with logical volumes
-  
-  G4String calorimeterSDname = "CalorimeterSD";
+  G4SDManager* sdMan = G4SDManager::GetSDMpointer();
+  G4String SDname;
+
+
+  SDname = "/calorimeterSD";
   TestSD* calorimeterSD =
-    new TestSD(calorimeterSDname, "TestHitsCollection");
+    new TestSD(SDname, "TestHitsCollection");
+  sdMan->AddNewDetector(calorimeterSD);
 
   SetSensitiveDetector("CrystalLV", calorimeterSD, true); //sets SD to all logical volumes with the name CrystalLV
 
-  G4cout << "SD Construction.....Complete!" << G4endl;
+
+  SDname = "/omniSD";
+  OmniSD* omniSD = 
+    new OmniSD(SDname, "OmniHitsCollection");
+  sdMan->AddNewDetector(omniSD);
+  SetSensitiveDetector("OmniLV", omniSD, true);
+  
  
 }
 

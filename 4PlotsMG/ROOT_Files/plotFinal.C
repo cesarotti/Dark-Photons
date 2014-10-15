@@ -39,7 +39,7 @@ void plotFinal() {
   double yPos, xPos, theta, energy = 0.;  // NOTE: theta comes in degrees
   int numHit, pID = 0;
 
-  TFile* file = new TFile("e+e-2yyMADGRAPH.root");
+  TFile* file = new TFile("complete.root");
 
   TTree* Hits_Info = (TTree *)file->Get("Signal");
 

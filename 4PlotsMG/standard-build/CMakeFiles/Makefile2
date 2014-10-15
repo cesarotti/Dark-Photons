@@ -47,10 +47,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_darkphotons/4PlotsMG/standard
+CMAKE_SOURCE_DIR = /home/local1/Dark-Photons/4PlotsMG/standard
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_darkphotons/4PlotsMG/standard-build
+CMAKE_BINARY_DIR = /home/local1/Dark-Photons/4PlotsMG/standard-build
 
 #=============================================================================
 # Target rules for target CMakeFiles/darkPhoton.dir
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /media/sf_darkphotons/4PlotsMG/standard-build
 CMakeFiles/darkPhoton.dir/all:
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/depend
 	$(MAKE) -f CMakeFiles/darkPhoton.dir/build.make CMakeFiles/darkPhoton.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/local1/Dark-Photons/4PlotsMG/standard-build/CMakeFiles  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 	@echo "Built target darkPhoton"
 .PHONY : CMakeFiles/darkPhoton.dir/all
 
@@ -69,9 +69,9 @@ all: CMakeFiles/darkPhoton.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/darkPhoton.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/local1/Dark-Photons/4PlotsMG/standard-build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/darkPhoton.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_darkphotons/4PlotsMG/standard-build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/local1/Dark-Photons/4PlotsMG/standard-build/CMakeFiles 0
 .PHONY : CMakeFiles/darkPhoton.dir/rule
 
 # Convenience name for target.

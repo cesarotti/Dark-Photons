@@ -32,7 +32,7 @@ RunAction::RunAction()
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
 
   analysisMan->SetVerboseLevel(1);
-
+  
   analysisMan->CreateNtuple("Signal", "SignalTest");
 
       for (G4int j = 0; j<1225; j++)
@@ -44,9 +44,14 @@ RunAction::RunAction()
 	}
   
       analysisMan->CreateNtupleIColumn("hits");
+      analysisMan->CreateNtupleDColumn("Energy"); //starts at 1226
+      analysisMan->CreateNtupleDColumn("PosX");
+      analysisMan->CreateNtupleDColumn("PosY");
       analysisMan->FinishNtuple();
-  
+
+      
 }
+
 
 
 //delete your analysis manager
