@@ -1,7 +1,7 @@
 
 <HTML> 
 <HEAD> 
-     
+    <META HTTP-EQUIV="Refresh" CONTENT="10"> 
     <META HTTP-EQUIV="EXPIRES" CONTENT="20" > 
     <TITLE>Online Event Generation</TITLE>
     <link rel=stylesheet href="./HTML/mgstyle.css" type="text/css">
@@ -37,6 +37,40 @@ function check_link(url,alt, id){
  </H2> 
     <HR>
     
+<H2 ALIGN=CENTER> Currently Running </H2>
+<TABLE BORDER=2 ALIGN=CENTER>
+    <TR ALIGN=CENTER>
+        <TH nowrap ROWSPAN=2 font color="#0000FF"> Run Name </TH>
+        <TH nowrap ROWSPAN=2 font color="#0000FF"> Tag Name </TH>
+        <TH nowrap ROWSPAN=2 font color="#0000FF"> Cards </TH>   
+        <TH nowrap ROWSPAN=2 font color="#0000FF"> Results </TH> 
+        <TH nowrap ROWSPAN=1 COLSPAN=3 font color="#0000FF"> Status/Jobs </TH>
+    </TR>
+        <TR> 
+            <TH>   Queued </TH>
+            <TH>  Running </TH>
+            <TH> Done  </TH>
+        </TR>
+    <TR ALIGN=CENTER> 
+        <TD nowrap ROWSPAN=2> run_01 </TD>
+        <TD nowrap ROWSPAN=2> tag_1 </TD>
+        <TD nowrap ROWSPAN=2> <a href="./Cards/param_card.dat">param_card</a><BR>
+                    <a href="./Cards/run_card.dat">run_card</a><BR>
+                     <a href="./Cards/plot_card.dat">plot_card</a><BR>
+                    
+                    
+                    
+                    
+                    
+        </TD>
+        <TD nowrap ROWSPAN=2> <A HREF="./HTML/run_01/results.html">8.105e+09 <font face=symbol>&#177;</font> 4.071e+08 (pb)</A> </TD> 
+        <td> 69 </td> <td> 8 </td> <td> 27 </td>
+                </tr><tr><td colspan=3><center> All job submitted for refine number 1 </center></td>
+ </TR>
+ <TR></TR>
+   
+ </TABLE>
+
     <br>
     <br>
     <H2 align="center"> Available Results </H2>
@@ -58,10 +92,10 @@ function check_link(url,alt, id){
         
         <td rowspan=1> <a href="./Events/run_01/run_01_tag_1_banner.txt">tag_1</a></td>
         
-        <td rowspan=1><center><a href="./HTML/run_01/results.html"> 3.609e+40 <font face=symbol>&#177;</font> 8.2e+33</a>  </center></td>
-        <td rowspan=1><center> 109<center></td><td> parton madevent </td>
-        <td>  <a  id='run_01_tag_1_parton_LHE' href='./Events/run_01/unweighted_events.lhe.gz' onClick="check_link('./Events/run_01/unweighted_events.lhe.gz','./Events/run_01/unweighted_events.lhe','run_01_tag_1_parton_LHE')">LHE</a></td>
-        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_01 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_01 ')"></td>
+        <td rowspan=1><center><a href="./HTML/run_01/results.html"> 8.105e+09 <font face=symbol>&#177;</font> 4.1e+08</a>  </center></td>
+        <td rowspan=1><center> 109<center></td><td>  </td>
+        <td> banner only</td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_01 banner --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='re-run from the banner' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: banner_run run_01 ')"></td>
         </tr>
         </tr>
         
@@ -69,9 +103,9 @@ function check_link(url,alt, id){
         <td rowspan=1>run_02</td> 
         <td rowspan=1><center> e+ e- <br> 0.035 x 0.035  GeV </center></td>
         
-        <td rowspan=1> <a href="./Events/run_02/run_02_tag_1_banner.txt">tag_1</a></td>
+        <td rowspan=1> <a href="./Events/run_02/run_02_tag_1_banner.txt">tag_1</a><br><font color=red>Interrupted</font></td>
         
-        <td rowspan=1><center><a href="./HTML/run_02/results.html"> 1.152e+40 <font face=symbol>&#177;</font> 1.8e+42</a>  </center></td>
+        <td rowspan=1><center><a href="./HTML/run_02/results.html"> 1.23e+16 <font face=symbol>&#177;</font> 1.4e+15</a>  </center></td>
         <td rowspan=1><center> 73<center></td><td>  </td>
         <td> banner only</td>
         <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_02 banner --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='re-run from the banner' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: banner_run run_02 ')"></td>
