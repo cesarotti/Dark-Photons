@@ -104,6 +104,19 @@ function check_link(url,alt, id){
         </tr>
         </tr>
         
+        <tr>
+        <td rowspan=1>run_05</td> 
+        <td rowspan=1><center> e+ e- <br> 0.035744 x 0.035744  GeV </center></td>
+        
+        <td rowspan=1> <a href="./Events/run_05/run_05_tag_1_banner.txt">tag_1</a></td>
+        
+        <td rowspan=1><center><a href="./HTML/run_05/results.html"> 2.372e+09 <font face=symbol>&#177;</font> 3.5e+05</a>  </center></td>
+        <td rowspan=1><center> 100000<center></td><td> parton madevent </td>
+        <td>  <a  id='run_05_tag_1_parton_LHE' href='./Events/run_05/unweighted_events.lhe.gz' onClick="check_link('./Events/run_05/unweighted_events.lhe.gz','./Events/run_05/unweighted_events.lhe','run_05_tag_1_parton_LHE')">LHE</a></td>
+        <td> <INPUT TYPE=SUBMIT VALUE='remove run' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: remove run_05 parton --tag=tag_1')"><INPUT TYPE=SUBMIT VALUE='launch detector simulation' onClick="alert('Launch ./bin/madevent in a shell, and run the following command: pythia run_05 ')"></td>
+        </tr>
+        </tr>
+        
         </TABLE>
     <H3 align=center><A HREF="./index.html"> Main Page </A></H3>
 </BODY> 

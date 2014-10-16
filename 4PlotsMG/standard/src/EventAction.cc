@@ -98,23 +98,29 @@ void EventAction::EndOfEventAction(const G4Event* event)
   G4int id(0);
   G4double xPos(0.), yPos(0.), zPos(0.);
 
+  if(numHits > 0) {
+    analysisMan->FillNtupleIColumn(1, 0, 1);
+    analysisMan->AddNtupleRow(1);
+  }
+
   for (int i=0; i<numHits; i++)
     {
       BasicHit* hit = (*hitColl)[i]; 
 
       G4ThreeVector position = hit->GetPosition();
-      analysisMan->FillNtupleIColumn(0,1);
-      analysisMan->FillNtupleDColumn(1, hit->GetTotalEnergy());
-      analysisMan->FillNtupleDColumn(2,xPos = position.getX());
-      analysisMan->FillNtupleDColumn(3,yPos = position.getY());
+      analysisMan->FillNtupleIColumn(0, 0,1);
+      analysisMan->FillNtupleDColumn(0, 1, hit->GetTotalEnergy());
+      analysisMan->FillNtupleDColumn(0, 2,xPos = position.getX());
+      analysisMan->FillNtupleDColumn(0, 3,yPos = position.getY());
       zPos = position.getZ();
 
-      analysisMan->FillNtupleIColumn(4, hit->GetPDGID());
+      analysisMan->FillNtupleIColumn(0, 4, hit->GetPDGID());
 
-      analysisMan->FillNtupleDColumn(5, CalcTheta(xPos, yPos, zPos));
+      analysisMan->FillNtupleDColumn(0, 5, CalcTheta(xPos, yPos, zPos));
  
 
-      analysisMan->AddNtupleRow();
+      analysisMan->AddNtupleRow(0);
+
     }
 
   

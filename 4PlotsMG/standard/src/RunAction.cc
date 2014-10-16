@@ -54,6 +54,11 @@ RunAction::RunAction()
    analysisMan->CreateNtupleIColumn("Particle_ID"); // 4
    analysisMan->CreateNtupleDColumn("Theta"); // 5
    analysisMan->FinishNtuple();
+
+   //Keep track of number of events that reach the detector
+   analysisMan->CreateNtuple("Event", "Hits");
+   analysisMan->CreateNtupleIColumn("Hit_Detector_Bool"); // 1
+   analysisMan->FinishNtuple();
   
 
 }
