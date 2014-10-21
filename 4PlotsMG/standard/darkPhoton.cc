@@ -14,9 +14,9 @@
 
 
 //#ifdef G4MULTITHREADED
-//#include "G4MTRunManager.hh"
+#include "G4MTRunManager.hh"
 //#else
-#include "G4RunManager.hh"
+//#include "G4RunManager.hh"
 //#endif
 
 
@@ -49,10 +49,10 @@ int main(int argc, char** argv)
   //construct default run manager
 
 //#ifdef G4MULTITHREADED
-//  G4MTRunManager* runManager = new G4MTRunManager; 
-//  runManager->SetNumberOfThreads(4);
+  G4MTRunManager* runManager = new G4MTRunManager; 
+  runManager->SetNumberOfThreads(1);
 //#else
-  G4RunManager * runManager = new G4RunManager;
+  //G4RunManager * runManager = new G4RunManager;
 //#endif
 
   /*Set classes required by Geant. Geant needs for 

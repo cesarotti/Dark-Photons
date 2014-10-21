@@ -57,8 +57,8 @@ void plotFinal() {
   int nEnergyBins = 50;
   double dEnergyBinSize = (double)(nEnergyMax - nEnergyMin) / (double)nEnergyBins;
 
-  double nThetaMin = 34; // mrad
-  double nThetaMax = 88; // mrad
+  double nThetaMin = 8.; // mrad
+  double nThetaMax = 35.; // mrad
   int nThetaBins = 50;
   double dThetaBinSize = (nThetaMax - nThetaMin) / nThetaBins;
 

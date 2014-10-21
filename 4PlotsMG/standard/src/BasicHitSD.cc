@@ -56,10 +56,14 @@ G4bool BasicHitSD::ProcessHits(G4Step* aStep,
 				  G4TouchableHistory* )
 {
  
-  G4double lowThreshold = 10*MeV; 
+  //G4double lowThreshold = 10.0*MeV; 
   G4double enTotal = aStep->GetTrack()->GetTotalEnergy();
-  if (enTotal < lowThreshold) {return true;}
+  //if (enTotal < lowThreshold) {return true;}
 
+  BasicHit* hit = new BasicHit();
+
+
+  if ( aStep->GetPreStepPoint()->GetStepStatus() == fGeomBoundary ){
   BasicHit* hit = new BasicHit();
 
   G4int PDGID = aStep -> GetTrack()->GetDefinition()->GetPDGEncoding();
@@ -89,6 +93,7 @@ G4bool BasicHitSD::ProcessHits(G4Step* aStep,
       hit->SetTotalEnergy(enTotal);  }
 
   fHitsCollection->insert(hit);
+  }
 
   return true;
 }

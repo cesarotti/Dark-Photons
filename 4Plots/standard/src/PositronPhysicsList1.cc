@@ -65,7 +65,7 @@ void PositronPhysicsList1::ConstructEM()
 
 
   G4VEmProcess* eplusProc = new G4eplusAnnihilation();
-  eplusProc->SetCrossSectionBiasingFactor(1e+06, true);
+  eplusProc->SetCrossSectionBiasingFactor(1e+03, true);
   pman->AddProcess(eplusProc, 0, -1, 4);
   
 }
