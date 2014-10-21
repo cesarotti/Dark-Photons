@@ -53,6 +53,12 @@ RunAction::RunAction()
    analysisMan->CreateNtupleDColumn("YPosition"); // 3
    analysisMan->CreateNtupleIColumn("Particle_ID"); // 4
    analysisMan->CreateNtupleDColumn("Theta"); // 5
+   analysisMan->CreateNtupleDColumn("zPosition"); //6
+   analysisMan->FinishNtuple();
+
+   //Keep track of number of events that reach the detector
+   analysisMan->CreateNtuple("Event", "Hits");
+   analysisMan->CreateNtupleIColumn("Hit_Detector_Bool"); // 1
    analysisMan->FinishNtuple();
   
 
@@ -77,6 +83,8 @@ void RunAction::BeginOfRunAction(const G4Run*)
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
  
    analysisMan->OpenFile("Signal");
+
+   G4cout << "BEGINNING OF RUN LOADED" << G4endl;
 
 
 
@@ -150,6 +158,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
 void RunAction::EndOfRunAction(const G4Run* )
 {
   
+  G4cout << "END OF RUN ACTION" << G4endl;
   G4AnalysisManager* analysisMan = G4AnalysisManager::Instance();
   analysisMan->Write();
   analysisMan->CloseFile();

@@ -11,7 +11,7 @@ void plots() {
   double yPos, xPos, theta, energy = 0.;
   int numHit, pID = 0;
 
-  TFile* file = new TFile("complete.root");
+  TFile* file = new TFile("e+e-2yyMADGRAPH.root");
 
   TTree* Hits_Info = (TTree *)file->Get("Signal");
 

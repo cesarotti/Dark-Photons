@@ -79,7 +79,7 @@ H02PrimaryGeneratorAction::H02PrimaryGeneratorAction()
   fParticleSource->GetCurrentSource()->GetEneDist()->SetGradient(0);
   fParticleSource->GetCurrentSource()->GetEneDist()->SetInterCept(1);
 
-  currentGeneratorName= "particleGun";
+  currentGeneratorName= "hepmcAscii";
   hepmcAscii= new HepMCG4AsciiReader();
 
   gentypeMap["particleGun"]= particleGun;

@@ -120,6 +120,7 @@ void AlwaysTwoGammaModel::Initialise(const G4ParticleDefinition*,
   G4cout << "Initializing AlwaysTwoGamma " << G4endl;
 
   asciiInput = new HepMC::IO_GenEvent((*name_of_model + ".hepmc"), std::ios::in);
+  count = 0;
 
   fParticleChange = GetParticleChangeForGamma();
   isInitialised = true;
@@ -142,9 +143,9 @@ G4double AlwaysTwoGammaModel::ComputeCrossSectionPerElectron(
   G4double gamma2= gam*gam;
   G4double bg2   = tau * (tau+2.0);
   G4double bg    = sqrt(bg2);
-  G4double multiplier = 10^6;
+  //G4double multiplier = 10^8;
 
-  G4double cross = 261e-28; // * 10^(−30);//* 10^(-28);
+  G4double cross = 145e-28; // * 10^(−30);//* 10^(-28);
 
   G4double real_cross = pi_rcl2*((gamma2+4*gam+1.)*G4Log(gam+bg) - (gam+3.)*bg)
                  / (bg2*(gam+1.));
@@ -180,7 +181,7 @@ G4double AlwaysTwoGammaModel::CrossSectionPerVolume(
   
   G4double eDensity = material->GetElectronDensity();
   G4double cross = eDensity*ComputeCrossSectionPerElectron(p,kineticEnergy);
-  G4cout << "AlwaysTwoGammaModel3 CROSS SECTION IS " << cross << G4endl;
+  G4cout << "AlwaysTwoGammaModel CROSS SECTION PER VOLUME IS " << cross << G4endl;
   return cross;
 }
 
@@ -210,6 +211,9 @@ void AlwaysTwoGammaModel::SampleSecondaries(vector<G4DynamicParticle*>* vdp,
 
   G4cout << "PROCESSING A NEW EVENT!!!" << G4endl;
 
+  count = count + 1.0;
+
+  G4cout << "NUMBER OF MADGRAPH EVENTS READ" << count << G4endl;
   HepMC::GenEvent* aevent= asciiInput-> read_next_event();
 
 
