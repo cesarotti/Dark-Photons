@@ -3,35 +3,45 @@
 from ROOT import TFile, TTree, TH1D, TDirectory, gROOT, gDirectory, TF1, TPad, gPad
 import numpy
 
+## FIXME: store fitted histograms in this file? 
 
 
+### fit the pulse shape to a landau convoluted with a gaussian
 def fit(hhh):
     hh = hhh.Clone("hh")
     nbins = hh.GetNbinsX()
     for i in range(1,nbins):
+        ### FIXME : 288 is hard-coded pedestal 
         val = hh.GetBinContent(i) - 288
         hh.SetBinContent(i,val)
         hh.SetBinError(i, 0.01*(val+288.))
     func = TF1("langaus", langaufun, 0, 60,4)
     func.SetParameter(0,.5)
-    func.SetParameter(1, 17)
-    func.SetParameter(2,170)
-    func.SetParameter(3,2)
-    func.SetRange(10,27)
+    func.SetParameter(1, 17) ## most probable value
+    func.SetParameter(2,170) ## normalization (area)
+    func.SetParameter(3,2) ## width of gaussian
+    ## the way I set up the histogram the peak is usually
+    ## around bin 15-17. We get some of the pre-pulse
+    ## but avoid the undershoot by cutting off pretty early
+    func.SetRange(10,27) 
     hh.Fit("langaus", "R")
     peaktime = func.GetParameter(1)
     peak = func.Eval(peaktime)
+    ## if you comment out these next two lines it'll probably go faster
     gPad.Modified()
     gPad.Update()
     return peak
 
-gROOT.ProcessLine(".L /Users/wittich/scratch/day/root_v5.34.12/tutorials/fit/langaus.C")
+### FIXME
+## this loads a file from the root distribution that has a Landau convoluted with a Gaussian
+## which I use to fit the signal pulses
+gROOT.ProcessLine(".L $ROOTSYS/tutorials/fit/langaus.C")
 
 from ROOT import langaufun
-    
-filename = "/Users/wittich/Downloads/out2.root"
 
-# skip header
+### FIXME -- output of createHistos.py
+# open root file with found peak histograms
+filename = "./out2.root"
 f = TFile.Open(filename, "read")
 
 dirlist = f.GetListOfKeys()
