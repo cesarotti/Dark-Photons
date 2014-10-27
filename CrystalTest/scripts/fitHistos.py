@@ -2,13 +2,14 @@
 
 from ROOT import TFile, TTree, TH1D, TDirectory, gROOT, gDirectory, TF1, TPad, gPad
 import numpy
+import sys
 
 ## FIXME: store fitted histograms in this file? 
 
 
 ### fit the pulse shape to a landau convoluted with a gaussian
 def fit(hhh):
-    hh = hhh.Clone("hh")
+    hh = hhh.Clone("h" + hhh.GetName())
     nbins = hh.GetNbinsX()
     for i in range(1,nbins):
         ### FIXME : 288 is hard-coded pedestal 
@@ -27,6 +28,7 @@ def fit(hhh):
     hh.Fit("langaus", "R")
     peaktime = func.GetParameter(1)
     peak = func.Eval(peaktime)
+    hh.Write()
     ## if you comment out these next two lines it'll probably go faster
     gPad.Modified()
     gPad.Update()
@@ -42,6 +44,9 @@ from ROOT import langaufun
 ### FIXME -- output of createHistos.py
 # open root file with found peak histograms
 filename = "./out2.root"
+if len(sys.argv) > 1 :
+    filename = sys.argv[1]
+print "input filename is ", filename
 f = TFile.Open(filename, "read")
 
 dirlist = f.GetListOfKeys()
