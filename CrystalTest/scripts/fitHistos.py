@@ -1,13 +1,13 @@
-#! /usr/bin/env python
+#! /usr/bin/python
 
 from ROOT import TFile, TTree, TH1D, TDirectory, gROOT, gDirectory, TF1, TPad, gPad
 import numpy
 import sys
 
+filename = "./out2.root"
 if len(sys.argv) > 1 :
     filename = sys.argv[1]
 print "input filename is ", filename
-filename = "./out2.root"
 
 
 
