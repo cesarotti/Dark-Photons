@@ -4,7 +4,11 @@ from ROOT import TFile, TTree, TH1D, TDirectory, gROOT, gDirectory, TF1, TPad, g
 import numpy
 import sys
 
-## FIXME: store fitted histograms in this file? 
+if len(sys.argv) > 1 :
+    filename = sys.argv[1]
+print "input filename is ", filename
+filename = "./out2.root"
+
 
 
 ### fit the pulse shape to a landau convoluted with a gaussian
@@ -13,7 +17,7 @@ def fit(hhh):
     nbins = hh.GetNbinsX()
     for i in range(1,nbins):
         ### FIXME : 288 is hard-coded pedestal 
-        val = hh.GetBinContent(i) - 288
+        val = hh.GetBinContent(i) 
         hh.SetBinContent(i,val)
         hh.SetBinError(i, 0.01*(val+288.))
     func = TF1("langaus", langaufun, 0, 60,4)
@@ -41,9 +45,8 @@ gROOT.ProcessLine(".L $ROOTSYS/tutorials/fit/langaus.C")
 
 from ROOT import langaufun
 
-### FIXME -- output of createHistos.py
+### output of createHistos.py
 # open root file with found peak histograms
-filename = "./out2.root"
 if len(sys.argv) > 1 :
     filename = sys.argv[1]
 print "input filename is ", filename
