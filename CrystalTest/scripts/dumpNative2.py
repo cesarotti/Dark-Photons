@@ -8,26 +8,20 @@ import timing
 import serial
 
 import numpy as np
-import math
-from ROOT import TFile, TTree, TH1D
+from ROOT import TFile, TTree
 from array import array
 
 import Queue
-import time
 from threading import Thread
 
 def source(serialportname, chunkSize, nmax):
     """returns voltage data from the serial port, looping forever"""
     # Get handle to serial port
     s = serial.Serial(serialportname)
-    print("port init")
-    voltages = []
     print("collecting data...")
     curr = 0
     while curr<nmax:
-        print curr
         data = s.read(chunkSize)
-        print "here 1"
         data = np.fromstring(data, dtype=np.uint16)
         q.put(data)
         curr = curr + 1
@@ -35,12 +29,15 @@ def source(serialportname, chunkSize, nmax):
 
 
 def worker():
+    """ worker thread that puts data into root tree """
     while True:
         vals = q.get()
-        print "got data"
         iterable = iter(xrange(0,len(vals)))
+        print len(vals)
         for i in iterable:
             adc[0] = vals[i]
+            if ( adc[0] - 2036 > 10 ) :
+                print adc[0]
             rawtree.Fill()
                 
                 
@@ -63,7 +60,7 @@ t.daemon = True
 t.start()
 
 # last argument is the number of chunkSize reads to do 
-source(serialportname, chunkSize, 1000)
+source(serialportname, chunkSize, 5000)
 #q.join()
 
 ### end
