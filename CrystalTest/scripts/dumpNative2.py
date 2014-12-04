@@ -1,7 +1,12 @@
 #!/usr/bin/python
+
+### read out serial port from Arduino, dump data compressed to a root file
+### you need PYROOT installed
+### uses a Queue and two threads so that we don't loose any data
+
 import timing
 import serial
-import sys
+
 import numpy as np
 import math
 from ROOT import TFile, TTree, TH1D
@@ -42,10 +47,9 @@ def worker():
 
 # PARAMETERS
 serialportname = '/dev/cu.usbmodem1421'
-chunkSize = 2**13 # One loop collects this many data points
-loops = 30000  # Must result in > 34000 data points
-rise = 1
+chunkSize = 2**13 # size of each read on the serial port, presumably in bytes
 
+# output root file name FIXME
 rootf = TFile.Open("out_direct.root", "recreate")
 rawtree = TTree("raw", "raw data tree")
 adc = array('i', [0])
@@ -58,6 +62,7 @@ t = Thread(target=worker)
 t.daemon = True
 t.start()
 
+# last argument is the number of chunkSize reads to do 
 source(serialportname, chunkSize, 1000)
 #q.join()
 
