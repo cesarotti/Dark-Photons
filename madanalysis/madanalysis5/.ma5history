@@ -20,3 +20,20 @@ exit
 import ../../../madgraph/e+e-2yyy/Events/run_09/unweighted_events.lhe
 plot PT(a) 100 0 0.05
 submit e+e-2yyy
+exit
+import ../../../madgraph/e+e-2e+e-y/Events/run_02/unweighted_events.lhe
+plot a.pt 100 0 0.05
+a
+plot a
+plot dr(a, e) 100 0 0.005
+plot DR(a, e) 100 0 0.005
+plot DR(a) 100 0 0.005
+plot dR(a, e-) 100 0 0.005
+plot dR(a e-) 100 0 0.005
+submit e+e-2e+e-yDR
+plot dR(a e-) 100 0 5
+exit
+import ../../../madgraph/e+e-2e+e-y/Events/run_02/unweighted_events.lhe
+plot dR(a e-) 100 0 5 
+submit e+e-2e+e-yDR2
+exit

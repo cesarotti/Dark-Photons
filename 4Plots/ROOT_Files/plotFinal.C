@@ -19,8 +19,11 @@ const double GAMMA_CM_2 = (GAMMA_PLUS+1)/2;
 const double NUM_TOT_POSITRONS = 100000; 
 const double BIAS = 1e+06;
 const double POSITRONS_PER_SEC = 6e+09; 
-const double BINNING_WEIGHT = 30000 * POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
+const double XSEC  = 8222.; // e+e-2e+e-y currently
+const double NORMAL_FACTOR = 0.3836841728489; //1.8728253857;
+const double BINNING_WEIGHT = XSEC * NORMAL_FACTOR * POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
 const double B = pow(1-pow(GAMMA_PLUS, -2.), .5);
+
 
 
 
@@ -53,12 +56,19 @@ void plotFinal() {
 
   // Initialize histograms
   double nEnergyMin = 10; // MeV
-  double nEnergyMax = 510; // MeV
+  double nEnergyMax = 1510; // MeV
   int nEnergyBins = 50;
   double dEnergyBinSize = (double)(nEnergyMax - nEnergyMin) / (double)nEnergyBins;
 
-  double nThetaMin = 34; // mrad
-  double nThetaMax = 88; // mrad
+  /* 0.5 to 2 
+  double nThetaMin = 26.179938779906866; //1.5deg //34; // mrad
+  double nThetaMax = 34.90658503987582; //2deg //88; // mrad
+  */
+  /* 2 to 5 */
+  double nThetaMin = 34.90658503987582; //1.5deg //34; // mrad
+  double nThetaMax = 87.26646259968956; //2deg //88; // mrad
+  /**/
+  
   int nThetaBins = 50;
   double dThetaBinSize = (nThetaMax - nThetaMin) / nThetaBins;
 
@@ -102,18 +112,27 @@ void plotFinal() {
   int nentries = Hits_Info->GetEntries();
   for (int i=0; i<nentries; i++) {
     Hits_Info->GetEntry(i);
-    //if (pID == 22) { // gammas only
+    if (pID == 22 && energy > 20) { // gammas only
       theta*= TMath::Pi()/180; //radians
-      cout << "M^2 is: " << mSquared(energy, theta) << endl;
-      cout << "Energy is: " << energy << endl;
+      
+
+      if(mSquared(energy, theta) > 0){
+        cout << "M^2 is: " << mSquared(energy, theta) << endl;
+      }
+      //cout << "Energy is: " << energy << endl;
            
       hgammaEnergy->Fill(energy,BINNING_WEIGHT / dEnergyBinSize);
       hgammaTheta->Fill(theta*1000, BINNING_WEIGHT / dThetaBinSize);
       henergytheta->Fill(theta*1000, energy);
       hm2->Fill(mSquared(energy, theta), BINNING_WEIGHT / dM2BinSize);
-    //}
+    }
   }
-  cout << "DM2binsize is:" << dM2BinSize << endl;
+
+  TAxis *axis = hm2->GetXaxis();
+  int bmin = axis->FindBin(-5000); //in your case xmin=-1.5
+  int bmax = axis->FindBin(5000); //in your case xmax=0.8
+  double integral = hm2->Integral(bmin,bmax);
+  cout << "Area under graph is" << integral << endl;
 
 
 

@@ -15,16 +15,18 @@ const double GAMMA_PLUS = POSITRON_ENERGY/ELECTRON_MASS;
 const double GAMMA_CM_2 = (GAMMA_PLUS+1)/2;
 
 
+
 /*UPDATE TO YOUR SIMULATION */
 
-const double NUM_TOT_POSITRONS = 100000; 
-const double BIAS = 1e+06;
-const double XSECyy = 145e-28;
-const double XSECyyy = 28e-28;
-const double POSITRONS_PER_SEC = 6e+09; 
-const double BINNING_WEIGHT = POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
-const double B = pow(1-pow(GAMMA_PLUS, -2.), .5);
-
+double NUM_TOT_POSITRONS = 100000; 
+double BIAS = 1e+06;
+double XSECyy = 145;
+double XSECyyy = 25;
+double XSECepluseminusy = 8222;
+double NORMAL_FACTOR = 0.3836841728489; //This is the factor for 0.5-2
+double POSITRONS_PER_SEC = 6e+09; 
+double BINNING_WEIGHT = NORMAL_FACTOR * POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
+double B = pow(1-pow(GAMMA_PLUS, -2.), .5);
 
 
 //Energy in MeV, theta in radians
@@ -88,7 +90,7 @@ void msquared() {
       cout << "M^2 is: " << mSquared(energy, theta) << endl;
       cout << "Energy is: " << energy << endl;
            
-      hmyy->Fill(mSquared(energy, theta), BINNING_WEIGHT * 145. / dM2BinSize);
+      hmyy->Fill(mSquared(energy, theta), XSECyy * BINNING_WEIGHT / dM2BinSize);
     }
   }
   cout << "DM2binsize is:" << dM2BinSize << endl;
@@ -102,7 +104,7 @@ void msquared() {
   hmyy->GetYaxis()->SetTitle("Photons per MeV^{2} per Second (MeV^{-2} s^{-1})");
   hmyy->GetXaxis()->CenterTitle();
   hmyy->GetYaxis()->CenterTitle();
-  hs->Add(hmyy);
+
 
   TFile* fileyyy = new TFile("e+e-2yyyGUN.root");
   TTree* Hits_Infoyyy = (TTree *)fileyyy->Get("Signal");
@@ -128,7 +130,7 @@ void msquared() {
       cout << "M^2 is: " << mSquared(energy, theta) << endl;
       cout << "Energy is: " << energy << endl;
            
-      hmyyy->Fill(mSquared(energy, theta), BINNING_WEIGHT * 25. / dM2BinSize);
+      hmyyy->Fill(mSquared(energy, theta), XSECyyy * BINNING_WEIGHT / dM2BinSize);
     }
   }
   cout << "DM2binsize is:" << dM2BinSize << endl;
@@ -141,67 +143,159 @@ void msquared() {
   hmyyy->GetXaxis()->CenterTitle();
   hmyyy->GetYaxis()->CenterTitle();
 
-  hs->Add(hmyyy);
 
 
-  TFile* fileepluseminus = new TFile("e+e-2e+e-GUN.root");
-  TTree* Hits_Infoepluseminus = (TTree *)fileepluseminus->Get("Signal");
+  
+  TFile* fileepluseminusy = new TFile("e+e-2e+e-yECUT0.3NOPT_2_5_1000000.root");
+  //This is 1000000 events so DOWNEIGHT IT:
+  XSECepluseminusy = 0.1 * XSECepluseminusy;
+  TTree* Hits_Infoepluseminusy = (TTree *)fileepluseminusy->Get("Signal");
 
-  Hits_Infoepluseminus->SetBranchAddress("numHits", &numHit);
-  Hits_Infoepluseminus->SetBranchAddress("energyTot", &energy);
-  Hits_Infoepluseminus->SetBranchAddress("XPosition", &xPos);
-  Hits_Infoepluseminus->SetBranchAddress("YPosition", &yPos);
-  Hits_Infoepluseminus->SetBranchAddress("Particle_ID", &pID);
-  Hits_Infoepluseminus->SetBranchAddress("Theta", &theta);
+  Hits_Infoepluseminusy->SetBranchAddress("numHits", &numHit);
+  Hits_Infoepluseminusy->SetBranchAddress("energyTot", &energy);
+  Hits_Infoepluseminusy->SetBranchAddress("XPosition", &xPos);
+  Hits_Infoepluseminusy->SetBranchAddress("YPosition", &yPos);
+  Hits_Infoepluseminusy->SetBranchAddress("Particle_ID", &pID);
+  Hits_Infoepluseminusy->SetBranchAddress("Theta", &theta);
 
-  TH1D* hmepluseminus = new TH1D("M_{A'}^{2}" ,             // plot label
-                       "e+e- > e+e-",    // title
+  TH1D* hmepluseminusy = new TH1D("M_{A'}^{2}" ,             // plot label
+                       "e+e- > e+e-y (only registering gammas)",    // title
                        nM2Bins,                   // x number of bins
                        nM2Min,                    // x lower bound
                        nM2Max);                   // x upper bound
   // go through all entries and fill the histograms
-  nentries = Hits_Infoepluseminus->GetEntries();
+  nentries = Hits_Infoepluseminusy->GetEntries();
   for (int i=0; i<nentries; i++) {
-    Hits_Infoepluseminus->GetEntry(i);
-    //if (pID == 22) { // gammas only
+    Hits_Infoepluseminusy->GetEntry(i);
+    if (pID == 22) { // gammas only
       theta*= TMath::Pi()/180; //radians
       cout << "M^2 is: " << mSquared(energy, theta) << endl;
       cout << "Energy is: " << energy << endl;
            
-      hmepluseminus->Fill(mSquared(energy, theta), BINNING_WEIGHT * 30000. / dM2BinSize);
-    //}
+      hmepluseminusy->Fill(mSquared(energy, theta), XSECepluseminusy * BINNING_WEIGHT / dM2BinSize);
+    }
   }
   cout << "DM2binsize is:" << dM2BinSize << endl;
 
 
-  hmepluseminus->SetFillColor(kGreen);
-  hmepluseminus->SetFillStyle(3001);
-  hmepluseminus->GetXaxis()->SetTitle("M_{A'}^{2} (MeV^{2})");
-  hmepluseminus->GetYaxis()->SetTitle("Photons per MeV^{2} per Second (MeV^{-2} s^{-1})");
-  hmepluseminus->GetXaxis()->CenterTitle();
-  hmepluseminus->GetYaxis()->CenterTitle();
+  hmepluseminusy->SetFillColor(7);
+  hmepluseminusy->SetFillStyle(3001);
+  hmepluseminusy->GetXaxis()->SetTitle("M_{A'}^{2} (MeV^{2})");
+  hmepluseminusy->GetYaxis()->SetTitle("Photons per MeV^{2} per Second (MeV^{-2} s^{-1})");
+  hmepluseminusy->GetXaxis()->CenterTitle();
+  hmepluseminusy->GetYaxis()->CenterTitle();
 
-  hs->Add(hmepluseminus);
+
+  
+
+  
+
+  //ADD YIMIN'S PLOT
+
+  TFile *f = new TFile("YIMINPLOTBREM.root"); 
+
+  f->ls(); 
+  
+  TH1F * hYIMIN = (TH1F*)f->Get("M^2"); 
+  hYIMIN->SetFillColor(kOrange);
+  hYIMIN->SetTitle("Bremsstrahlung");
+  hYIMIN->SetFillStyle(3001);
+  hYIMIN->GetXaxis()->SetTitle("M_{A'}^{2} (MeV^{2})");
+  hYIMIN->GetYaxis()->SetTitle("Photons per MeV^{2} per Second (MeV^{-2} s^{-1})");
+  hYIMIN->GetXaxis()->CenterTitle();
+  hYIMIN->GetYaxis()->CenterTitle();
+
+
+
+
+  /**********************
+      ADD BRIANS PLOT
+    ********************/
+
+  NUM_TOT_POSITRONS = 1e+07; 
+  BIAS = 1e+04; 
+  BINNING_WEIGHT = POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
+  B = pow(1-pow(GAMMA_PLUS, -2.), .5);
+
+  TFile* fileinelastic = new TFile("brian_1e7_pos_1e4_bias.root");
+  TTree* Hits_Infoinelastic = (TTree *)fileinelastic->Get("Signal");
+
+  Hits_Infoinelastic->SetBranchAddress("numHits", &numHit);
+  Hits_Infoinelastic->SetBranchAddress("energyTot", &energy);
+  Hits_Infoinelastic->SetBranchAddress("XPosition", &xPos);
+  Hits_Infoinelastic->SetBranchAddress("YPosition", &yPos);
+  Hits_Infoinelastic->SetBranchAddress("Particle_ID", &pID);
+  Hits_Infoinelastic->SetBranchAddress("Theta", &theta);
+
+  TH1D* hminelastic = new TH1D("M_{A'}^{2}" ,             // plot label
+                       "Inelastic (only registering gammas)",    // title
+                       nM2Bins,                   // x number of bins
+                       nM2Min,                    // x lower bound
+                       nM2Max);                   // x upper bound
+  // go through all entries and fill the histograms
+  nentries = Hits_Infoinelastic->GetEntries();
+  for (int i=0; i<nentries; i++) {
+    Hits_Infoinelastic->GetEntry(i);
+    if (pID == 22) { // gammas only
+      theta*= TMath::Pi()/180; //radians
+      cout << "M^2 is: " << mSquared(energy, theta) << endl;
+      cout << "Energy is: " << energy << endl;
+           
+      hminelastic->Fill(mSquared(energy, theta), BINNING_WEIGHT / dM2BinSize);
+    }
+  }
+  cout << "DM2binsize is:" << dM2BinSize << endl;
+
+
+  hminelastic->SetFillColor(kGreen);
+  hminelastic->SetFillStyle(3001);
+  hminelastic->GetXaxis()->SetTitle("M_{A'}^{2} (MeV^{2})");
+  hminelastic->GetYaxis()->SetTitle("Photons per MeV^{2} per Second (MeV^{-2} s^{-1})");
+  hminelastic->GetXaxis()->CenterTitle();
+  hminelastic->GetYaxis()->CenterTitle();
+
+
+
+ hs->Add(hminelastic);
+  hs->Add(hYIMIN);
+      hs->Add(hmyyy);
+  hs->Add(hmepluseminusy);
+    hs->Add(hmyy);
+
+
 
   // create canvas and draw histogram
   TCanvas* canvas = new TCanvas("canvas", "canvas", 700, 700);
-  canvas->Divide(2,2);
+  canvas->Divide(3,2);
   TPad* p;
 
   p = (TPad*)canvas->cd(1);
-  p->SetGrid();
+  //p->SetGrid();
+  p->SetLogy();
 
  
 
 
   hs->Draw();
 
+    hs->GetXaxis()->SetTitle("M_{A'}^{2} (MeV^{2})");
+  hs->GetYaxis()->SetTitle("Photons per MeV^{2} per Second (MeV^{-2} s^{-1})");
+  hs->GetXaxis()->CenterTitle();
+  hs->GetYaxis()->CenterTitle();
+  
   p = (TPad*)canvas->cd(4);
-  hmepluseminus->Draw();
+  hmepluseminusy->Draw();
+  
   p = (TPad*)canvas->cd(3);
   hmyyy->Draw();
   p = (TPad*)canvas->cd(2);
   hmyy->Draw();
+
+  p = (TPad*)canvas->cd(5);
+  hYIMIN->Draw();
+
+  p = (TPad*)canvas->cd(6);
+  hminelastic->Draw();
 
 /*
   p = (TPad*)canvas->cd(4);
