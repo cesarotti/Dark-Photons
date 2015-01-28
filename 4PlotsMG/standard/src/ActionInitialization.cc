@@ -35,7 +35,11 @@ void ActionInitialization::BuildForMaster() const
 void ActionInitialization::Build() const
 {
 
+<<<<<<< HEAD
   SetUserAction(new PrimaryGeneratorAction);
+=======
+  SetUserAction(new H02PrimaryGeneratorAction);
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
   SetUserAction(new RunAction);
   SetUserAction(new EventAction);
 

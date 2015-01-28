@@ -110,8 +110,14 @@ void EventAction::EndOfEventAction(const G4Event* event)
       G4ThreeVector position = hit->GetPosition();
       analysisMan->FillNtupleIColumn(0, 0,1);
       analysisMan->FillNtupleDColumn(0, 1, hit->GetTotalEnergy());
+<<<<<<< HEAD
       analysisMan->FillNtupleDColumn(0, 2,xPos = position.getX());
       analysisMan->FillNtupleDColumn(0, 3,yPos = position.getY());
+=======
+      analysisMan->FillNtupleDColumn(0, 2, xPos = position.getX());
+      analysisMan->FillNtupleDColumn(0, 3, yPos = position.getY());
+      analysisMan->FillNtupleDColumn(0, 6, zPos = position.getZ());
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
       zPos = position.getZ();
 
       analysisMan->FillNtupleIColumn(0, 4, hit->GetPDGID());

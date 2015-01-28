@@ -19,7 +19,11 @@
 #include "G4RunManager.hh"
 #endif
 
+<<<<<<< HEAD
 
+=======
+#include "G4VUserPhysicsList.hh"
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
 #include "G4UImanager.hh"
 #include "PositronPhysicsList1.hh"

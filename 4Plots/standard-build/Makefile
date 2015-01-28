@@ -39,10 +39,17 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /media/sf_darkphotons/4Plots/standard
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /media/sf_darkphotons/4Plots/standard-build
+=======
+CMAKE_SOURCE_DIR = /media/sf_DarkCode/Dark-Photons/4Plots/standard
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /media/sf_DarkCode/Dark-Photons/4Plots/standard-build
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,9 +117,15 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_darkphotons/4Plots/standard-build/CMakeFiles /media/sf_darkphotons/4Plots/standard-build/CMakeFiles/progress.make
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_darkphotons/4Plots/standard-build/CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_DarkCode/Dark-Photons/4Plots/standard-build/CMakeFiles /media/sf_DarkCode/Dark-Photons/4Plots/standard-build/CMakeFiles/progress.make
+	$(MAKE) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_DarkCode/Dark-Photons/4Plots/standard-build/CMakeFiles 0
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 .PHONY : all
 
 # The main clean target

@@ -50,6 +50,11 @@ public:
   {fCham = num;};
   void SetLogV(G4LogicalVolume* vol)
   {fLogV = vol;}
+<<<<<<< HEAD
+=======
+  void SetHit(G4bool v)
+  {fHit = v;}
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
   //Get methods
   G4int GetTrack()
@@ -64,6 +69,11 @@ public:
   {return fCham;};
   const G4LogicalVolume* GetLogV() const
   {return fLogV;}
+<<<<<<< HEAD
+=======
+  G4bool GetHit()
+  {return fHit;}
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
 
 private:
@@ -74,6 +84,10 @@ private:
   G4ThreeVector fMomentum;
   G4int fCham;
   const G4LogicalVolume* fLogV;
+<<<<<<< HEAD
+=======
+  G4bool fHit;
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 };
 
 //Allow for a hits collection of OmniHits

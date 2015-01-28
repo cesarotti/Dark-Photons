@@ -46,7 +46,11 @@ G4int hceID =
   G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]); 
  hce -> AddHitsCollection( hceID, fHitsCollection);
 
+<<<<<<< HEAD
  for(G4int i=0; i<15; i++) //15 sectors
+=======
+ for(G4int i=0; i<1; i++) //15 sectors
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
    {
     OmniHit* hit = new OmniHit(i); 
     fHitsCollection->insert(hit);
@@ -73,18 +77,33 @@ G4bool OmniSD::ProcessHits(G4Step* step,
     = (G4TouchableHistory*)(step->GetPreStepPoint()->GetTouchable());
   G4VPhysicalVolume* physical = touchable->GetVolume();
   G4int copyNo = physical->GetCopyNo();
+<<<<<<< HEAD
 
   OmniHit* hit = (*fHitsCollection)[copyNo]; 
 
   if(!(hit->GetLogV()))
+=======
+  G4double energyTots = step->GetTrack()->GetTotalEnergy();
+
+  if ( step->GetPreStepPoint()->GetStepStatus() == fGeomBoundary && energyTots > 50*MeV ){
+  OmniHit* hit = (*fHitsCollection)[copyNo]; 
+
+  if(!(hit->GetLogV())&&!(hit->GetHit()))
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
     {
       hit->SetLogV(physical->GetLogicalVolume());
     }
 
   hit->SetPos(step->GetPostStepPoint()->GetPosition());
   hit->SetMomentum(step->GetTrack()->GetMomentum());
+<<<<<<< HEAD
   hit->SetTotalEnergy(step->GetTrack()->GetTotalEnergy()); 
   hit->SetChamber(copyNo);
+=======
+  hit->SetTotalEnergy(energyTots); 
+  hit->SetChamber(copyNo);
+  hit->SetHit(true);
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
   
   /*
   OmniHit* hit = new OmniHit();
@@ -95,7 +114,11 @@ G4bool OmniSD::ProcessHits(G4Step* step,
 
   fHitsCollection->insert(hit);
   */
+<<<<<<< HEAD
 
+=======
+  }
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
   return true; 
 }
 

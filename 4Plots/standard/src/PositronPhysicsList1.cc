@@ -32,8 +32,11 @@
 
 #include "G4VEmProcess.hh"
 
+<<<<<<< HEAD
 #include "DarkPhoton.hh"
 
+=======
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
 PositronPhysicsList1::PositronPhysicsList1()
 {
@@ -66,6 +69,7 @@ void PositronPhysicsList1::ConstructEM()
   
 
 
+<<<<<<< HEAD
   G4VEmProcess* eplusProc = new DarkPhoton();
   //How to bias
 
@@ -73,6 +77,11 @@ void PositronPhysicsList1::ConstructEM()
   eplusProc->SetCrossSectionBiasingFactor(1e+17, true); 
   pman->AddProcess(eplusProc, 0, -1, 4);
  
+=======
+  G4VEmProcess* eplusProc = new G4eplusAnnihilation();
+  eplusProc->SetCrossSectionBiasingFactor(1e+03, true);
+  pman->AddProcess(eplusProc, 0, -1, 4);
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
   
 }
 

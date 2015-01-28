@@ -225,8 +225,13 @@ G4Box* targetS =
  //!!!
  //Calorimeter 
 
+<<<<<<< HEAD
  G4double theta1 = 2.*deg;
  G4double theta2 = 5.*deg;
+=======
+ G4double theta1 = 0.5*deg;
+ G4double theta2 = 2.*deg;
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
  G4double innerRad = ThetaToDistance(theta1, centerToFront);
  G4double outerRad = ThetaToDistance(theta2, centerToFront);

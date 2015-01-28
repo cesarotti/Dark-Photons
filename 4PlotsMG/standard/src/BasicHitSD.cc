@@ -56,9 +56,15 @@ G4bool BasicHitSD::ProcessHits(G4Step* aStep,
 				  G4TouchableHistory* )
 {
  
+<<<<<<< HEAD
   G4double lowThreshold = 10.0*MeV; 
   G4double enTotal = aStep->GetTrack()->GetTotalEnergy();
   if (enTotal < lowThreshold) {return true;}
+=======
+  //G4double lowThreshold = 10.0*MeV; 
+  G4double enTotal = aStep->GetTrack()->GetTotalEnergy();
+  //if (enTotal < lowThreshold) {return true;}
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
   BasicHit* hit = new BasicHit();
 

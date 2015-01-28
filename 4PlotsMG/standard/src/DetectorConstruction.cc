@@ -200,7 +200,11 @@ G4VPhysicalVolume* worldPV
 
 
 
+<<<<<<< HEAD
 /* REMOVED TO ALLOW EVENTS INSERTION!! */
+=======
+/* REMOVED TO ALLOW EVENTS INSERTION!!
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
  G4ThreeVector positionTarget = G4ThreeVector(0, 0, targetPos); 
 
 G4Box* targetS = 
@@ -221,13 +225,22 @@ G4Box* targetS =
  G4cout << "Target is " << targetLength/cm << " cm of " <<
    fTargetMaterial->GetName() << G4endl;
    
+<<<<<<< HEAD
 /**/
+=======
+*/
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
  //!!!
  //Calorimeter 
 
+<<<<<<< HEAD
  G4double theta1 = 2*deg;
  G4double theta2 = 5.*deg;
+=======
+ G4double theta1 = 1.5*deg;
+ G4double theta2 = 2.*deg;
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
  G4double innerRad = ThetaToDistance(theta1, centerToFront);
  G4double outerRad = ThetaToDistance(theta2, centerToFront);

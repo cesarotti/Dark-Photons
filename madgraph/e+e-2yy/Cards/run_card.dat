@@ -38,8 +38,13 @@
 #*********************************************************************
         0     = lpp1    ! beam 1 type 
         -0     = lpp2    ! beam 2 type
+<<<<<<< HEAD
      0.035744     = ebeam1  ! beam 1 total energy in GeV
      0.035744     = ebeam2  ! beam 2 total energy in GeV
+=======
+     0.035     = ebeam1  ! beam 1 total energy in GeV
+     0.035     = ebeam2  ! beam 2 total energy in GeV
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 #*********************************************************************
 # Beam polarization from -100 (left-handed) to 100 (right-handed)    *
 #*********************************************************************
@@ -105,16 +110,25 @@
 #*********************************************************************
  20  = ptj       ! minimum pt for the jets 
   0  = ptb       ! minimum pt for the b 
+<<<<<<< HEAD
 0.003  = pta       ! minimum pt for the photons 
+=======
+ 0.013753  = pta       ! minimum pt for the photons 
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
  0  = ptl       ! minimum pt for the charged leptons 
   0  = misset    ! minimum missing Et (sum of neutrino's momenta)
   0  = ptheavy   ! minimum pt for one heavy final state
  1.0 = ptonium   ! minimum pt for the quarkonium states
  -1  = ptjmax    ! maximum pt for the jets
  -1  = ptbmax    ! maximum pt for the b
+<<<<<<< HEAD
  #0.01778  = ptamax    ! maximum pt for the photons
 -1 = ptamax 
 -1  = ptlmax    ! maximum pt for the charged leptons
+=======
+ 0.01778  = ptamax    ! maximum pt for the photons
+ -1  = ptlmax    ! maximum pt for the charged leptons
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
  -1  = missetmax ! maximum missing Et (sum of neutrino's momenta)
 #*********************************************************************
 # Minimum and maximum E's (in the center of mass frame)              *

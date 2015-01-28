@@ -77,10 +77,17 @@ void PositronPhysicsList1::ConstructEM()
 
   //pman->AddProcess(new_process, 0, -1, 4);
  
+<<<<<<< HEAD
   G4VEmProcess *always = new DarkPhoton();
   always->SetCrossSectionBiasingFactor(1e+04, true); 
 
   pman->AddProcess(always, 0, -1, 4);
+=======
+  //G4VEmProcess *always = new DarkPhoton();
+  //always->SetCrossSectionBiasingFactor(1e+06, true); 
+
+  //pman->AddProcess(always, 0, -1, 4);*/
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
   
 
 

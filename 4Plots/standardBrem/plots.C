@@ -11,7 +11,11 @@ const double ELECTRON_MASS = .511; //MeV/c^2
 const double GAMMA_CM_2 = POSITRON_ENERGY/(2*ELECTRON_MASS);
 
 const double NUM_TOT_POSITRONS = 1e+07; 
+<<<<<<< HEAD
 const double BIAS = 1;//1e+03;
+=======
+const double BIAS = 1e+03;
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 const double POSITRONS_PER_SEC = 6e+09; 
 const double BINNING_WEIGHT = POSITRONS_PER_SEC/(BIAS*NUM_TOT_POSITRONS);
 

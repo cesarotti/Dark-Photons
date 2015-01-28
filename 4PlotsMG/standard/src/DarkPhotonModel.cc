@@ -136,6 +136,7 @@ G4double DarkPhotonModel::ComputeCrossSectionPerElectron(
   G4double bg    = sqrt(bg2);
   //G4double multiplier = 10^6;
 
+<<<<<<< HEAD
 
   G4double gp = kineticEnergy/electron_mass_c2;
   G4double r0 = 0.282;
@@ -152,6 +153,10 @@ G4cout << "cross is  " << cross <<G4endl;
   //               / (bg2*(gam+1.));
 
   return cross;
+=======
+  G4double cross = pi_rcl2*((gamma2+4*gam+1.)*G4Log(gam+bg) - (gam+3.)*bg)
+                 / (bg2*(gam+1.));
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
 
 }
 
@@ -192,7 +197,11 @@ void DarkPhotonModel::SampleSecondaries(vector<G4DynamicParticle*>* vdp,
               G4double)
 {
   G4double PositKinEnergy = dp->GetKineticEnergy();
+<<<<<<< HEAD
   G4DynamicParticle *aGamma1;
+=======
+  G4DynamicParticle *aGamma1, *aGamma2;
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
    
 
   G4double gp = PositKinEnergy/dp->GetMass();
@@ -213,9 +222,13 @@ void DarkPhotonModel::SampleSecondaries(vector<G4DynamicParticle*>* vdp,
    (-1. + std::pow(gp,2));
   //G4double energy = -(5000 + 0.511) * (sqrt(-1.+gp)*(2.+2.*gp-std::pow(M_a,2.))*(-((std::pow((1.+gp),(3./2.))*(1.+sqrt((-1.+gp)/(1.+gp)))*(1-std::pow(M_a,2.)/(2.*(1.+gp))))/(sqrt(-1.+gp)*(2.+2.*gp-std::pow(M_a,2.))))+rand1))/(2.*std::pow((1.+gp),3./2.));
 
+<<<<<<< HEAD
   //G4double theta_lab = acos(  (energy - dp->GetMass() * (1.-(std::pow(M_a,2.)/sss)))  /(beta*energy));
    G4cout << " TRYING TO ACOS " << (1./beta) - ((electron_mass * (1.-(std::pow(M_a,2.)/sss)))  /(beta*energy)) << G4endl;
   G4double theta_lab = acos(  (1/beta) - ( (electron_mass * (1.-(std::pow(M_a,2.)/sss)))  / (beta*energy) ));
+=======
+  G4double theta_lab = acos(  (energy - dp->GetMass() * (1.-(std::pow(M_a,2.)/sss)))  /(beta*energy));
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
   G4double theta_cm = (cos(theta_lab) - beta)/(1.-beta*cos(theta_lab));
 
    G4double sint = sqrt((1.+cos(theta_lab))*(1.-cos(theta_lab)));
@@ -225,9 +238,12 @@ void DarkPhotonModel::SampleSecondaries(vector<G4DynamicParticle*>* vdp,
   G4ThreeVector Phot1Direction(sint*cos(phi), sint*sin(phi), cos(theta_lab));
   //Phot1Direction.rotateUz(PositDirection);
 
+<<<<<<< HEAD
   //me*(1 - mA^2/s[Ep])/(1 - beta[Ep]*Cos[thLAB]);
 
 
+=======
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
   G4cout << "New gamma from darkphoton process has properties: " <<  theta_lab << " angle from beampipe and " << energy << "energy!" << G4endl;
     aGamma1 = new G4DynamicParticle (theGamma,Phot1Direction, energy);
     phi = twopi * G4UniformRand();
@@ -235,7 +251,11 @@ void DarkPhotonModel::SampleSecondaries(vector<G4DynamicParticle*>* vdp,
     pol1.rotateUz(Phot1Direction);
     aGamma1->SetPolarization(pol1.x(),pol1.y(),pol1.z());
 
+<<<<<<< HEAD
   vdp->push_back(aGamma1);
+=======
+      vdp->push_back(aGamma1);
+>>>>>>> 911b5ec345c81b054214c521136984e9d6306827
   fParticleChange->SetProposedKineticEnergy(0.);
   fParticleChange->ProposeTrackStatus(fStopAndKill);
 
